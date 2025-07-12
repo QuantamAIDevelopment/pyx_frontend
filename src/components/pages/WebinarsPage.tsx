@@ -5,14 +5,14 @@ import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
 import { Input } from '../common/ui/input'
-import { Tabs,  TabsList, TabsTrigger } from '../common/ui/tabs'
+import { Tabs, TabsList, TabsTrigger } from '../common/ui/tabs'
 // import { Progress } from '../common/ui/progress'
 // import { Separator } from '../common/ui/separator'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../common/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../common/ui/select'
 import { ScrollArea } from '../common/ui/scroll-area'
 import { Avatar, AvatarFallback, AvatarImage } from '../common/ui/avatar'
-import { 
+import {
   Calendar,
   Clock,
   Users,
@@ -397,12 +397,12 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
 
   const filteredWebinars = webinars.filter(webinar => {
     const matchesSearch = webinar.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         webinar.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         webinar.host.name.toLowerCase().includes(searchTerm.toLowerCase())
+      webinar.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      webinar.host.name.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = selectedCategory === 'all' || webinar.category === selectedCategory
-    const matchesTab = currentTab === 'all' || 
-                      (currentTab === 'upcoming' && webinar.status === 'upcoming') ||
-                      (currentTab === 'past' && webinar.status === 'completed')
+    const matchesTab = currentTab === 'all' ||
+      (currentTab === 'upcoming' && webinar.status === 'upcoming') ||
+      (currentTab === 'past' && webinar.status === 'completed')
     return matchesSearch && matchesCategory && matchesTab
   }).sort((a, b) => {
     switch (sortBy) {
@@ -498,13 +498,13 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Join live sessions with AI experts, learn from real-world case studies, 
+              Join live sessions with AI experts, learn from real-world case studies,
               and master the art of building intelligent agents.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto"
                 onClick={handleGetStarted}
               >
@@ -512,8 +512,8 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                 Get Started
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="lg"
                 className="w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
@@ -549,14 +549,14 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
       {/* Featured Webinars */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 ">
             <h2 className="text-3xl font-bold mb-4">Featured Sessions</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Don't miss these expert-led sessions on AI fundamentals and advanced techniques
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-20">
             {webinars.filter(webinar => webinar.featured).map((webinar) => {
               const CategoryIcon = getCategoryIcon(webinar.category)
               return (
@@ -635,8 +635,8 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                           </Badge>
                         ))}
                       </div>
-                      <Button 
-                        size="sm" 
+                      <Button
+                        size="sm"
                         className="group-hover:bg-primary group-hover:text-primary-foreground"
                         onClick={(e) => {
                           e.stopPropagation()
@@ -669,9 +669,9 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
       </section>
 
       {/* All Webinars */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 px-20">
             <div>
               <h2 className="text-3xl font-bold mb-2">All Sessions</h2>
               <p className="text-muted-foreground">Browse upcoming webinars and past recordings</p>
@@ -687,7 +687,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                 />
               </div>
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-full sm:w-40">
+                <SelectTrigger className="w-full sm:w-40 ">
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent>
@@ -701,14 +701,14 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
           </div>
 
           {/* Tabs and Filters */}
-          <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
+          <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full px-20">
             <div className="flex flex-col lg:flex-row gap-4 mb-8">
               <TabsList className="grid w-full lg:w-auto grid-cols-3">
                 <TabsTrigger value="upcoming">Upcoming ({upcomingWebinars.length})</TabsTrigger>
                 <TabsTrigger value="past">Past ({completedWebinars.length})</TabsTrigger>
                 <TabsTrigger value="all">All ({webinars.length})</TabsTrigger>
               </TabsList>
-              
+
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => {
                   const IconComponent = category.icon
@@ -718,7 +718,8 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                       variant={selectedCategory === category.id ? 'default' : 'outline'}
                       size="sm"
                       onClick={() => setSelectedCategory(category.id)}
-                      className="flex items-center gap-1"
+                      className={`flex items-center gap-1 ${selectedCategory === category.id ? '!bg-black text-white hover:bg-black border-none' : ''
+                        }`}
                     >
                       <IconComponent className="h-3 w-3" />
                       {category.name}
@@ -726,6 +727,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                         {category.count}
                       </Badge>
                     </Button>
+
                   )
                 })}
               </div>
@@ -798,9 +800,9 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                             </Badge>
                           ))}
                         </div>
-                        <Button 
-                          size="sm" 
-                          variant="outline" 
+                        <Button
+                          size="sm"
+                          variant="outline"
                           className="group-hover:bg-primary group-hover:text-primary-foreground"
                           onClick={(e) => {
                             e.stopPropagation()
@@ -841,12 +843,12 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
               Ready to Learn from the Experts?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Join thousands of developers and business leaders who are mastering 
+              Join thousands of developers and business leaders who are mastering
               AI agent development through our expert-led webinars.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="secondary"
                 className="w-full sm:w-auto"
                 onClick={handleGetStarted}
@@ -855,10 +857,10 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                 Start Building
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-black bg-white hover:bg-white hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
                 <Phone className="h-4 w-4 mr-2" />
@@ -970,8 +972,8 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
 
               {/* Registration/Watch Button */}
               <div className="flex justify-center pt-4">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="w-full sm:w-auto"
                   onClick={() => {
                     if (selectedWebinar?.status === 'upcoming') {
@@ -1020,7 +1022,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                 <div>Host: {selectedWebinar?.host?.name}</div>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-2 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
               <CheckCircle className="h-5 w-5 text-green-600" />
               <div>

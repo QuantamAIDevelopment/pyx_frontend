@@ -146,7 +146,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
       department: 'Engineering',
       location: 'San Francisco, CA',
       type: 'Full-time',
-      salary: '$150k - $220k',
+      salary: 'Rs150000 - Rs22000',
       remote: true
     },
     'fullstack-engineer': {
@@ -154,7 +154,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
       department: 'Engineering',
       location: 'Remote',
       type: 'Full-time',
-      salary: '$120k - $160k',
+      salary: 'Rs12000 - Rs16000',
       remote: true
     },
     'product-manager': {
@@ -162,7 +162,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
       department: 'Product',
       location: 'San Francisco, CA',
       type: 'Full-time',
-      salary: '$140k - $180k',
+      salary: 'Rs140000 - Rs180000',
       remote: false
     }
   }

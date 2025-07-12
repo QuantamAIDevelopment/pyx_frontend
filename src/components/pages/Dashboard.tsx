@@ -84,7 +84,7 @@ const myAgents = [
     name: 'SmartSummarizer',
     status: 'active',
     usage: 89,
-    cost: '$12.50',
+    cost: 'Rs1250',
     category: 'Content',
     lastUsed: '2 hours ago',
     performance: 94
@@ -94,7 +94,7 @@ const myAgents = [
     name: 'SupportGenie',
     status: 'active',
     usage: 67,
-    cost: '$8.30',
+    cost: 'Rs830',
     category: 'Support',
     lastUsed: '1 hour ago',
     performance: 91
@@ -104,7 +104,7 @@ const myAgents = [
     name: 'PriceOptimizer',
     status: 'paused',
     usage: 0,
-    cost: '$0.00',
+    cost: 'Rs0.00',
     category: 'Sales',
     lastUsed: '3 days ago',
     performance: 87
@@ -114,7 +114,7 @@ const myAgents = [
     name: 'StockSense',
     status: 'active',
     usage: 45,
-    cost: '$5.20',
+    cost: 'Rs520',
     category: 'Inventory',
     lastUsed: '30 minutes ago',
     performance: 96
@@ -296,7 +296,7 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">${userWallet.balance.toFixed(2)}</div>
+                  <div className="text-2xl font-bold">Rs{userWallet.balance.toFixed(2)}</div>
                   <p className="text-xs text-muted-foreground">-12% from last month</p>
                 </CardContent>
               </Card>

@@ -45,11 +45,11 @@ const featuredAgents: Agent[] = [
     description: 'Smart pricing optimization that adjusts rates in real-time based on market conditions and competitor analysis.',
     category: 'Sales Optimization',
     icon: DollarSign,
-    price: '$29/mo',
+    price: 'Rs29/mo',
     rating: 4.9,
     reviews: 892,
     isPopular: true,
-    sampleOutput: 'Wireless Earbuds ZX100: $89.99 → $79.99 (12% demand increase predicted)'
+    sampleOutput: 'Wireless Earbuds ZX100: Rs89.99 → Rs79.99 (12% demand increase predicted)'
   },
   {
     id: '3',
@@ -57,7 +57,7 @@ const featuredAgents: Agent[] = [
     description: 'Predictive inventory control that prevents stockouts and reduces overstock with intelligent demand forecasting.',
     category: 'Inventory Management',
     icon: Package,
-    price: '$39/mo',
+    price: 'Rs39/mo',
     rating: 4.7,
     reviews: 654,
     sampleOutput: 'Wireless Earbuds ZX100: Reorder 150 units by Dec 15 (predicted stockout Dec 22)'
@@ -68,7 +68,7 @@ const featuredAgents: Agent[] = [
     description: '24/7 intelligent customer service that handles inquiries, processes returns, and escalates complex issues.',
     category: 'Customer Support',
     icon: MessageCircle,
-    price: '$19/mo',
+    price: 'Rs19/mo',
     rating: 4.8,
     reviews: 1156,
     isPopular: true,

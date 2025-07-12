@@ -141,7 +141,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
         cost: { value: 60, change: 'decrease', label: 'Support Cost Reduction' }
       },
       metrics: [
-        { label: 'Monthly Revenue', before: '$2.1M', after: '$8.4M', change: 300 },
+        { label: 'Monthly Revenue', before: 'Rs2.1M', after: '$8.4M', change: 300 },
         { label: 'Average Response Time', before: '4.2 hours', after: '12 seconds', change: -85 },
         { label: 'Customer Satisfaction', before: '3.2/5', after: '4.8/5', change: 50 },
         { label: 'Support Team Size', before: '45 agents', after: '12 agents', change: -73 }
@@ -195,12 +195,12 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
     },
     {
       id: '3',
-      title: 'FinanceFlow: Fraud Detection That Saved $12M Annually',
+      title: 'FinanceFlow: Fraud Detection That Saved Rs12M Annually',
       company: 'FinanceFlow Bank',
       industry: 'finance',
       logo: '/api/placeholder/60/60',
       image: '/api/placeholder/600/400',
-      summary: 'FinanceFlow prevented $12M in fraud losses while improving customer experience with AI-powered fraud detection',
+      summary: 'FinanceFlow prevented Rs12M in fraud losses while improving customer experience with AI-powered fraud detection',
       description: 'FinanceFlow Bank implemented QAID AI agents for real-time fraud detection, risk assessment, and automated compliance monitoring.',
       challenge: 'Rising fraud losses and false positives in fraud detection were costing millions and frustrating legitimate customers.',
       solution: 'Deployed AI agents for real-time transaction monitoring, behavioral analysis, and automated risk scoring.',
@@ -211,7 +211,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
         compliance: { value: 99.8, change: 'increase', label: 'Compliance Accuracy' }
       },
       metrics: [
-        { label: 'Annual Fraud Losses', before: '$18.5M', after: '$6.2M', change: -67 },
+        { label: 'Annual Fraud Losses', before: 'Rs18.5M', after: '$6.2M', change: -67 },
         { label: 'False Positive Rate', before: '12%', after: '3%', change: -75 },
         { label: 'Detection Time', before: '4.8 hours', after: '0.3 seconds', change: -90 },
         { label: 'Compliance Score', before: '94.2%', after: '99.8%', change: 6 }
@@ -282,7 +282,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
       },
       metrics: [
         { label: 'Average Delivery Time', before: '2.8 hours', after: '1.7 hours', change: -39 },
-        { label: 'Fuel Cost per Mile', before: '$0.85', after: '$0.64', change: -25 },
+        { label: 'Fuel Cost per Mile', before: 'Rs0.85', after: '$0.64', change: -25 },
         { label: 'On-Time Delivery Rate', before: '82%', after: '95%', change: 16 },
         { label: 'Fleet Utilization', before: '68%', after: '87%', change: 28 }
       ],
@@ -368,11 +368,11 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
 
   const formatNumber = (value: number) => {
     if (value >= 1000000) {
-      return `$${(value / 1000000).toFixed(1)}M`
+      return `Rs${(value / 1000000).toFixed(1)}M`
     } else if (value >= 1000) {
-      return `$${(value / 1000).toFixed(1)}K`
+      return `Rs${(value / 1000).toFixed(1)}K`
     } else {
-      return `$${value}`
+      return `Rs${value}`
     }
   }
 
@@ -444,7 +444,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
                 <div className="text-sm text-muted-foreground">Case Studies</div>
               </div>
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <div className="text-2xl font-bold text-orange-600">$50M+</div>
+                <div className="text-2xl font-bold text-orange-600">Rs50M+</div>
                 <div className="text-sm text-muted-foreground">Total Savings</div>
               </div>
             </div>
@@ -462,7 +462,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-20 ">
             {caseStudies.filter(study => study.featured).map((study) => {
               const IndustryIcon = getIndustryIcon(study.industry)
               return (
@@ -543,14 +543,14 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
       </section>
 
       {/* All Case Studies */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 px-20">
             <div>
               <h2 className="text-3xl font-bold mb-2">All Case Studies</h2>
               <p className="text-muted-foreground">Explore success stories from various industries</p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 ">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
@@ -574,7 +574,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
           </div>
 
           {/* Industry Filters */}
-          <Tabs value={selectedIndustry} onValueChange={setSelectedIndustry} className="w-full">
+          <Tabs value={selectedIndustry} onValueChange={setSelectedIndustry} className="w-full px-20">
             <TabsList className="flex flex-wrap justify-center gap-2 h-auto bg-transparent p-2 mb-12 md:grid md:grid-cols-3 lg:grid-cols-6 lg:gap-0">
               {industries.map((industry) => {
                 const IconComponent = industry.icon
@@ -691,7 +691,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+                className="border-white bg-white text-black hover:bg-white hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
                 <Phone className="h-4 w-4 mr-2" />

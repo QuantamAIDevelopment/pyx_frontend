@@ -166,7 +166,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
       faqs: [
         {
           question: 'How does pricing work?',
-          answer: 'Our pricing is based on the number of AI agents and monthly executions. We offer a free plan, Professional plan at $49/month, and Enterprise plan at $199/month. You can also pay annually for a 20% discount. Custom enterprise pricing is available for large organizations.'
+          answer: 'Our pricing is based on the number of AI agents and monthly executions. We offer a free plan, Professional plan at Rs49/month, and Enterprise plan at $199/month. You can also pay annually for a 20% discount. Custom enterprise pricing is available for large organizations.'
         },
         {
           question: 'What happens if I exceed my plan limits?',
@@ -324,7 +324,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-20">
             {supportOptions.map((option, index) => {
               const IconComponent = option.icon
               return (
@@ -355,9 +355,9 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
       </section>
 
       {/* Main Content */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full px-20">
             {/* Category Tabs */}
             <TabsList className="flex flex-wrap justify-center gap-2 h-auto bg-transparent p-2 mb-12 md:grid md:grid-cols-4 lg:grid-cols-7 lg:gap-0">
               {categories.map((category) => {
@@ -422,7 +422,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
                         </div>
                         <span>Updated {article.updated}</span>
                       </div>
-                      <Button className="w-full group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all">
+                      <Button className="w-full group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all !bg-black border-none text-white">
                         <FileText className="h-4 w-4 mr-2" />
                         Read Article
                       </Button>
@@ -549,7 +549,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+                className="border-white bg-white text-black hover:bg-white hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('premium-support')}
               >
                 <Award className="h-4 w-4 mr-2" />

@@ -515,7 +515,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-20">
             {learningPaths.map((path) => {
               const IconComponent = path.icon
               return (
@@ -552,7 +552,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                         </div>
                       </div>
                       <Button 
-                        className="w-full group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all"
+                        className="w-full group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all !bg-black border-none text-white"
                         onClick={() => handleLearningPathClick(path)}
                       >
                         <Play className="h-4 w-4 mr-2" />
@@ -568,9 +568,9 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
       </section>
 
       {/* Main Content */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full px-20">
             {/* Search and Filter */}
             <div className="flex flex-col md:flex-row gap-4 mb-8">
               <div className="relative flex-1">
@@ -888,7 +888,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+                className="border-white text-black hover:bg-white hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('help')}
               >
                 <BookOpen className="h-4 w-4 mr-2" />

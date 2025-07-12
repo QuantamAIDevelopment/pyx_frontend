@@ -68,7 +68,7 @@ export function PremiumSupportPage({ onViewChange, isLoggedIn, onShowAuth }: Pre
     {
       id: 'developer',
       name: 'Developer Support',
-      price: '$29',
+      price: 'Rs29000',
       period: 'per month',
       description: 'Enhanced support for individual developers and small teams',
       features: [
@@ -86,7 +86,7 @@ export function PremiumSupportPage({ onViewChange, isLoggedIn, onShowAuth }: Pre
     {
       id: 'business',
       name: 'Business Support',
-      price: '$99',
+      price: 'Rs99000',
       period: 'per month',
       description: 'Comprehensive support for growing businesses',
       features: [
@@ -105,7 +105,7 @@ export function PremiumSupportPage({ onViewChange, isLoggedIn, onShowAuth }: Pre
     {
       id: 'enterprise',
       name: 'Enterprise Support',
-      price: '$299',
+      price: 'Rs299000',
       period: 'per month',
       description: 'Premium support for mission-critical applications',
       features: [

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { Button } from '../common/ui/button'
 import { ArrowRight, Sparkles, Zap, TrendingUp, Play } from 'lucide-react'
-import { ImageWithFallback } from '../figma/ImageWithFallback'
 
 interface HeroProps {
   onExploreAgents: () => void
@@ -13,6 +12,11 @@ interface HeroProps {
 export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+
+  // Debug: Log the image path to verify it's correct
+  useEffect(() => {
+    console.log('Hero component mounted, image path:', '/assets/nebula.png');
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -53,32 +57,33 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full overflow-hidden">
           {/* Custom cosmic nebula background - optimized for both light and dark modes */}
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2000&h=1200&fit=crop&crop=center&q=80"
+          <img
+            src="/assets/nebula.png"
             alt="Spectacular cosmic nebula with vibrant red, orange, and blue stellar formations representing the infinite possibilities of AI automation"
-            className="w-full h-full object-cover opacity-45 dark:opacity-35"
+            className="w-full h-full object-cover "
+         
           />
           
           {/* Enhanced multi-layered overlays for superior text readability with vibrant background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/97 via-white/80 to-white/50 dark:from-slate-900/97 dark:via-slate-900/80 dark:to-slate-900/50" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/85 via-indigo-50/70 to-purple-50/85 dark:from-blue-900/60 dark:via-indigo-900/40 dark:to-purple-900/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/60 to-white/40 dark:from-slate-900/40 dark:via-slate-900/60 dark:to-slate-900/40" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-white/30 to-white/20 dark:from-slate-900/50 dark:via-slate-900/30 dark:to-slate-900/20" /> */}
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-indigo-50/15 to-purple-50/20 dark:from-blue-900/15 dark:via-indigo-900/10 dark:to-purple-900/15" /> */}
+          {/* <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/15 to-white/10 dark:from-slate-900/10 dark:via-slate-900/15 dark:to-slate-900/10" /> */}
           
           {/* Premium vignette effect with enhanced focus for vibrant background */}
-          <div className="absolute inset-0" style={{
-            background: 'radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0.25) 80%, rgba(0,0,0,0.4) 100%)'
-          }} />
+          {/* <div className="absolute inset-0" style={{
+            background: 'radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0.25) 100%)'
+          }} /> */}
           
           {/* Cosmic color harmony overlay to blend with the vibrant nebula */}
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/40 via-blue-50/50 to-purple-50/40 dark:from-cyan-900/20 dark:via-blue-900/25 dark:to-purple-900/20" />
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/20 via-blue-50/25 to-purple-50/20 dark:from-cyan-900/10 dark:via-blue-900/12 dark:to-purple-900/10" /> */}
           
           {/* Additional contrast overlay for text clarity */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/20 dark:from-slate-900/30 dark:via-transparent dark:to-slate-900/20" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/10 dark:from-slate-900/15 dark:via-transparent dark:to-slate-900/10" /> */}
         </div>
       </div>
 
       {/* Enhanced Background Layer - Light/Dark Mode */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/70 to-purple-50/70 dark:from-slate-900/70 dark:via-purple-900/70 dark:to-indigo-900/70 z-1" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-indigo-50/40 to-purple-50/40 dark:from-slate-900/40 dark:via-purple-900/40 dark:to-indigo-900/40 z-1" />
       
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-15 dark:opacity-10 z-2">
@@ -162,6 +167,7 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
       {/* Foreground Content */}
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 w-full z-20">
         <div className="text-center max-w-5xl mx-auto">
+      
           {/* Enhanced Badge with cosmic styling - Light/Dark Mode */}
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-100/90 to-purple-100/90 dark:from-blue-600/30 dark:to-purple-600/30 backdrop-blur-md px-6 py-3 rounded-full mb-8 border border-blue-200/80 dark:border-blue-400/40 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
             <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400 animate-spin" style={{ animationDuration: '3s' }} />
@@ -186,11 +192,11 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
           </p>
 
           {/* Premium Enhanced CTA Buttons - Light/Dark Mode */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 ">
             <Button 
               onClick={onExploreAgents}
               size="lg" 
-              className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:via-blue-500 hover:to-purple-500 text-white px-12 py-7 text-lg font-semibold rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-3xl transform hover:scale-110 border-0 relative overflow-hidden"
+              className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:via-blue-500 hover:to-purple-500 text-white px-12 py-7 text-lg font-semibold rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-3xl transform hover:scale-110 border-0 relative overflow-hidden border-none"
             >
               {/* Animated background shine effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000"></div>

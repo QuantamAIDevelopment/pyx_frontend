@@ -225,7 +225,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background px-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {pricingPlans.map((plan, index) => {
@@ -263,7 +263,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                       {plan.description}
                     </CardDescription>
                     
-                    <div className="mb-6">
+                    <div className="mb-6 ">
                       <div className="flex items-baseline justify-center">
                         <span className="text-4xl font-bold">
                           ${currentPrice}
@@ -317,7 +317,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
       </section>
 
       {/* Feature Comparison */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -454,7 +454,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary"
+                className="border-none hover:bg-white hover:text-primary"
                 onClick={() => onViewChange('contact')}
               >
                 <Phone className="h-4 w-4 mr-2" />

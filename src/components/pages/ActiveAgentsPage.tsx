@@ -88,7 +88,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '2 minutes ago',
     usage: 89,
     performance: 94,
-    cost: '$12.50',
+    cost: 'Rs12.50',
     dailyCost: 4.25,
     executions: 1247,
     successRate: 98.5,
@@ -115,7 +115,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '1 minute ago',
     usage: 67,
     performance: 91,
-    cost: '$8.30',
+    cost: 'Rs8.30',
     dailyCost: 2.85,
     executions: 2156,
     successRate: 96.2,
@@ -142,7 +142,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '30 minutes ago',
     usage: 45,
     performance: 96,
-    cost: '$5.20',
+    cost: 'Rs5.20',
     dailyCost: 1.75,
     executions: 456,
     successRate: 99.1,
@@ -169,7 +169,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '5 minutes ago',
     usage: 78,
     performance: 87,
-    cost: '$9.80',
+    cost: 'Rs9.80',
     dailyCost: 3.45,
     executions: 892,
     successRate: 94.8,
@@ -328,7 +328,7 @@ export function ActiveAgentsPage({ onViewChange }: ActiveAgentsPageProps) {
                 <DollarSign className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">${totalCost.toFixed(2)}</div>
+                <div className="text-2xl font-bold">Rs{totalCost.toFixed(2)}</div>
                 <p className="text-xs text-muted-foreground">
                   <span className="text-red-600 flex items-center">
                     <ArrowUpRight className="h-3 w-3 mr-1" />

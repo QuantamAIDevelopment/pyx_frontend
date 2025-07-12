@@ -290,9 +290,9 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20 ">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
+          <div className="text-center max-w-4xl mx-auto ">
             <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
               <Zap className="h-3 w-3 mr-1" />
               50+ Integrations
@@ -320,7 +320,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto ">
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto"
@@ -347,8 +347,8 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
       {/* Stats Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 px-20">
+            <div className="text-center ">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
                 <Globe className="h-6 w-6 text-white" />
               </div>
@@ -385,11 +385,11 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
       </section>
 
       {/* Categories and Integrations */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full px-20">
             {/* Category Tabs */}
-            <TabsList className="flex flex-wrap justify-center gap-2 h-auto bg-transparent p-2 mb-12 md:grid md:grid-cols-4 lg:grid-cols-7 lg:gap-0">
+            <TabsList className="flex flex-wrap justify-center gap-2 h-auto bg-transparent p-2 mb-12 md:grid md:grid-cols-4 lg:grid-cols-7 lg:gap-0 ">
               {categories.map((category) => {
                 const IconComponent = category.icon
                 return (
@@ -471,7 +471,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                     
                     <div className="flex gap-2 mt-auto">
                       <Button 
-                        className="flex-1 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all"
+                        className="flex-1 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all !bg-black border-none text-white"
                         onClick={handleGetStarted}
                       >
                         <Settings className="h-4 w-4 mr-2" />

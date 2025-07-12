@@ -84,7 +84,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       type: 'Full-time',
       experience: 'Senior',
       remote: true,
-      salary: '$150k - $220k',
+      salary: 'Rs15000 - Rs2200',
       description: 'Join our AI team to build cutting-edge machine learning models that power intelligent automation workflows.',
       requirements: [
         '5+ years of experience in machine learning and AI',
@@ -110,7 +110,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       type: 'Full-time',
       experience: 'Mid-level',
       remote: true,
-      salary: '$120k - $160k',
+      salary: 'Rs12000 - Rs16000',
       description: 'Build scalable web applications and APIs that serve millions of workflow executions daily.',
       requirements: [
         '3+ years of full-stack development experience',
@@ -136,7 +136,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       type: 'Full-time',
       experience: 'Senior',
       remote: false,
-      salary: '$140k - $180k',
+      salary: 'Rs14000 - Rs18000',
       description: 'Lead product strategy and development for our core automation platform, working closely with engineering and design teams.',
       requirements: [
         '5+ years of product management experience',
@@ -162,7 +162,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       type: 'Full-time',
       experience: 'Mid-level',
       remote: true,
-      salary: '$100k - $140k',
+      salary: 'Rs10000 - Rs14000',
       description: 'Create intuitive and beautiful user experiences for our workflow automation platform.',
       requirements: [
         '3+ years of UX/UI design experience',
@@ -188,7 +188,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       type: 'Full-time',
       experience: 'Mid-level',
       remote: true,
-      salary: '$110k - $150k',
+      salary: 'Rs11000 - Rs15000',
       description: 'Build relationships with our developer community and create technical content to help developers succeed with QAID.',
       requirements: [
         '3+ years of software development experience',
@@ -214,7 +214,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       type: 'Full-time',
       experience: 'Senior',
       remote: false,
-      salary: '$130k - $170k + Commission',
+      salary: 'Rs13000 - Rs17000 + Commission',
       description: 'Work with enterprise customers to understand their automation needs and demonstrate how QAID can solve their challenges.',
       requirements: [
         '5+ years of technical sales or solutions engineering',
@@ -259,7 +259,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       category: 'Growth & Development',
       icon: TrendingUp,
       items: [
-        '$5,000 annual learning and development budget',
+        'Rs5,00000 annual learning and development budget',
         'Conference attendance and speaking opportunities',
         'Internal mentorship and coaching programs',
         'Career advancement and promotion pathways'
@@ -493,7 +493,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 mx-auto mb-4">
                 <DollarSign className="h-6 w-6 text-white" />
               </div>
-              <div className="text-2xl md:text-3xl font-bold mb-2">$50M</div>
+              <div className="text-2xl md:text-3xl font-bold mb-2">Rs50M</div>
               <div className="font-medium text-foreground mb-1 text-sm md:text-base">Series B</div>
               <div className="text-xs md:text-sm text-muted-foreground">Latest funding round</div>
             </div>
@@ -510,7 +510,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       </section>
 
       {/* Job Listings */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Open Positions</h2>
@@ -520,13 +520,13 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
           </div>
 
           {/* Filters */}
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
-            <div className="flex-1">
+          <div className="flex flex-col md:flex-row gap-4 mb-8 px-20">
+            <div className="flex-1 ">
               <label className="block text-sm font-medium mb-2">Department</label>
               <select 
                 value={selectedDepartment} 
                 onChange={(e) => setSelectedDepartment(e.target.value)}
-                className="w-full p-2 border border-border rounded-lg bg-background"
+                className="w-full p-2 border border-border rounded-lg bg-background "
               >
                 {departments.map(dept => (
                   <option key={dept.id} value={dept.id}>
@@ -552,7 +552,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
           </div>
 
           {/* Job Cards */}
-          <div className="space-y-6">
+          <div className="space-y-6 px-20">
             {filteredJobs.map((job) => (
               <Card key={job.id} className="hover:shadow-lg transition-all duration-300">
                 <CardHeader>
@@ -688,7 +688,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-20">
             {companyValues.map((value, index) => {
               const IconComponent = value.icon
               return (
@@ -712,7 +712,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Benefits & Perks</h2>
@@ -721,7 +721,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-20">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon
               return (
@@ -759,7 +759,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-20">
             {teamMembers.map((member, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
                 <CardHeader>
@@ -786,7 +786,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Our Team Says</h2>
@@ -795,7 +795,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 px-20">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
@@ -849,7 +849,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+                className="!bg-white text-black hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
                 <MessageSquare className="h-4 w-4 mr-2" />

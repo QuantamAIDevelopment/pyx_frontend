@@ -134,7 +134,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
         description: 'Generates detailed, authentic product reviews with SEO optimization and sentiment analysis',
         capabilities: ['Product Analysis', 'Review Generation', 'SEO Optimization', 'Sentiment Analysis'],
         category: 'Content Generation',
-        estimatedCost: '$0.02/review'
+        estimatedCost: 'Rs0.02/review'
       }
     } else if (lowercasePrompt.includes('support') || lowercasePrompt.includes('customer')) {
       return {
@@ -142,7 +142,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
         description: 'Handles customer inquiries, ticket routing, and provides intelligent responses 24/7',
         capabilities: ['Ticket Management', 'Auto-Response', 'Sentiment Detection', 'Escalation Logic'],
         category: 'Customer Support',
-        estimatedCost: '$0.05/interaction'
+        estimatedCost: 'Rs0.05/interaction'
       }
     } else if (lowercasePrompt.includes('social') || lowercasePrompt.includes('sentiment')) {
       return {
@@ -150,7 +150,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
         description: 'Monitors social media mentions and analyzes sentiment across multiple platforms',
         capabilities: ['Social Monitoring', 'Sentiment Analysis', 'Trend Detection', 'Report Generation'],
         category: 'Analytics',
-        estimatedCost: '$0.01/mention'
+        estimatedCost: 'Rs0.01/mention'
       }
     } else {
       return {
@@ -158,7 +158,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
         description: 'A versatile AI agent tailored to your specific workflow requirements',
         capabilities: ['Custom Logic', 'Data Processing', 'API Integration', 'Workflow Automation'],
         category: 'General Purpose',
-        estimatedCost: '$0.03/operation'
+        estimatedCost: 'Rs0.03/operation'
       }
     }
   }

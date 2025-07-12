@@ -335,9 +335,9 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
       {/* Main Content */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full px-20">
             {/* Category Tabs */}
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-12">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-12 ">
               <TabsTrigger value="discussions">Discussions</TabsTrigger>
               <TabsTrigger value="showcase">Showcase</TabsTrigger>
               <TabsTrigger value="events">Events</TabsTrigger>
@@ -364,7 +364,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
                   </Button>
                   <Button 
                     size="sm" 
-                    className="bg-gradient-to-r from-blue-600 to-purple-600"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 border-none text-white"
                     onClick={handleStartDiscussion}
                   >
                     <Plus className="h-4 w-4 mr-2" />
@@ -729,7 +729,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+                className="border-white text-black hover:bg-white hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('community-forum')}
               >
                 <MessageCircle className="h-4 w-4 mr-2" />

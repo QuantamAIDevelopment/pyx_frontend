@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Badge } from '../common/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { Separator } from '../common/ui/separator'
-import { 
+import {
   Code,
   BookOpen,
   Key,
@@ -213,8 +213,8 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
       {/* Back button for agent-specific docs */}
       {agentId && onBack && (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             onClick={onBack}
             className="hover:bg-muted/50"
           >
@@ -256,10 +256,10 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 'Integrate AI agents into your applications with our powerful REST API. Create, deploy, and manage intelligent automation workflows programmatically.'
               )}
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto"
                 onClick={handleGetStarted}
               >
@@ -267,8 +267,8 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 Get API Key
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="lg"
                 className="w-full sm:w-auto"
                 onClick={() => window.open('https://github.com/qaid-ai/examples', '_blank')}
@@ -282,10 +282,10 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
       </section>
 
       {/* Quick Stats */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8  ">
+            <div className="text-center ">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
                 <Zap className="h-6 w-6 text-white" />
               </div>
@@ -322,9 +322,9 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
       </section>
 
       {/* Main Documentation */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs defaultValue="getting-started" className="w-full">
+          <Tabs defaultValue="getting-started" className="w-full px-20">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-12">
               <TabsTrigger value="getting-started">Getting Started</TabsTrigger>
               <TabsTrigger value="authentication">Authentication</TabsTrigger>
@@ -356,8 +356,8 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                     <p className="text-muted-foreground mb-4">
                       Sign up for a free QAID account to get access to your API keys and dashboard.
                     </p>
-                    <Button 
-                      className="w-full"
+                    <Button
+                      className="w-full !bg-black border-none text-white hover:bg-gray-800"
                       onClick={handleGetStarted}
                     >
                       Sign Up Free
@@ -416,7 +416,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                     <p className="text-muted-foreground mb-4">
                       Explore our endpoints and start integrating AI agents into your application.
                     </p>
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="w-full shadow-md ">
                       <BookOpen className="h-4 w-4 mr-2" />
                       View Documentation
                     </Button>
@@ -465,7 +465,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                       <h4 className="font-medium mb-2">Example Request:</h4>
                       <div className="bg-muted p-4 rounded-lg relative">
                         <pre className="text-sm overflow-x-auto">
-{`curl -X GET "https://api.qaid.ai/v1/agents" \\
+                          {`curl -X GET "https://api.qaid.ai/v1/agents" \\
   -H "Authorization: Bearer qaid_sk_1234567890abcdef" \\
   -H "Content-Type: application/json"`}
                         </pre>
@@ -516,12 +516,14 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                       <Button
                         key={endpoint.id}
                         variant={activeEndpoint === endpoint.id ? "default" : "ghost"}
-                        className="w-full justify-start"
+                        className={`w-full justify-start ${activeEndpoint === endpoint.id ? "!bg-black text-white hover:bg-black" : ""
+                          }`}
                         onClick={() => setActiveEndpoint(endpoint.id)}
                       >
                         <Terminal className="h-4 w-4 mr-2" />
                         {endpoint.title}
                       </Button>
+
                     ))}
                   </div>
                 )}
@@ -529,7 +531,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 <div className={agentId ? "lg:col-span-4" : "lg:col-span-3"}>
                   <Card>
                     <CardHeader>
-                      <CardTitle className="flex items-center justify-between">
+                      <CardTitle className="flex items-center justify-between ">
                         {agentId ? `${agentName} Endpoints` : endpoints.find(e => e.id === activeEndpoint)?.title}
                         {!agentId && (
                           <div className="flex gap-1">
@@ -562,7 +564,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                                     Execute {agentName} with your input data
                                   </p>
                                 </div>
-                                
+
                                 <div className="border rounded-lg p-4">
                                   <div className="flex items-center justify-between mb-2">
                                     <code className="text-sm font-mono">GET /v1/agents/{agentId}</code>
@@ -605,7 +607,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                                     Retrieve a list of {activeEndpoint}
                                   </p>
                                 </div>
-                                
+
                                 <div className="border rounded-lg p-4">
                                   <div className="flex items-center justify-between mb-2">
                                     <code className="text-sm font-mono">POST /v1/{activeEndpoint}</code>
@@ -636,7 +638,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                           <h4 className="font-medium mb-3">Response Format</h4>
                           <div className="bg-muted p-4 rounded-lg">
                             <pre className="text-sm overflow-x-auto">
-{`{
+                              {`{
   "data": [...],
   "pagination": {
     "page": 1,
@@ -804,8 +806,8 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
 
       {/* Rate Limits & Support */}
       <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
+          <div className="grid md:grid-cols-2 gap-8 px-20">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -851,32 +853,32 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full justify-start"
                     onClick={() => onViewChange('documentation')}
                   >
                     <BookOpen className="h-4 w-4 mr-2" />
                     Documentation
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full justify-start"
                     onClick={() => onViewChange('community-forum')}
                   >
                     <MessageSquare className="h-4 w-4 mr-2" />
                     Community Forum
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full justify-start"
                     onClick={() => onViewChange('github-issues')}
                   >
                     <Github className="h-4 w-4 mr-2" />
                     GitHub Issues
                   </Button>
-                  <Button 
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600"
+                  <Button
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 border-none"
                     onClick={() => onViewChange('premium-support')}
                   >
                     <Star className="h-4 w-4 mr-2" />
@@ -897,12 +899,12 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
               Ready to Start Building?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Join thousands of developers using QAID API to power their AI applications. 
+              Join thousands of developers using QAID API to power their AI applications.
               Get started with our free tier today.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="secondary"
                 className="w-full sm:w-auto"
                 onClick={handleGetStarted}
@@ -911,13 +913,13 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 Get Started Free
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+              <Button
+                size="lg"
+                variant="outline"
+                className="!bg-white hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
-                <MessageSquare className="h-4 w-4 mr-2" />
+                <MessageSquare className="h-4 w-4 mr-2 " />
                 Contact Sales
               </Button>
             </div>

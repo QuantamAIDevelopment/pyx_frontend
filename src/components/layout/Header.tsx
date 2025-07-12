@@ -109,7 +109,7 @@ export function Header({
             {isLoggedIn ? (
               <>
                 {/* Mode Toggle */}
-                <div className="flex items-center space-x-2 px-2 py-1.5 bg-muted/50 rounded-lg">
+                <div className="flex items-center space-x-2 px-2 py-1.5 bg-gray-100 rounded-lg">
                   <div className="flex items-center space-x-1">
                     <User className="h-3 w-3 text-muted-foreground" />
                     <Label className="text-xs">User</Label>
@@ -117,9 +117,10 @@ export function Header({
                   <Switch
                     checked={currentMode === 'developer'}
                     onCheckedChange={(checked) => onModeToggle(checked ? 'developer' : 'user')}
+                    className=" bg-gray-300"
                   />
-                  <div className="flex items-center space-x-1">
-                    <Code2 className="h-3 w-3 text-muted-foreground" />
+                  <div className="flex items-center space-x-1 ">
+                    <Code2 className="h-3 w-3 text-muted-foreground " />
                     <Label className="text-xs">Dev</Label>
                   </div>
                   {currentMode === 'developer' && (
@@ -136,10 +137,10 @@ export function Header({
                     <Button
                       variant="outline"
                       size="sm"
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 hover:from-blue-700 hover:to-purple-700"
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 hover:from-blue-700 hover:to-purple-700 border-none"
                     >
                       <Plus className="h-3 w-3 mr-1" />
-                      <span className="hidden lg:inline">
+                      <span className="hidden lg:inline ">
                         {currentMode === 'developer' ? 'Dev Mode' : 'Create'}
                       </span>
                     </Button>
@@ -154,7 +155,7 @@ export function Header({
                         className="flex items-center space-x-1"
                       >
                         <Wallet className="h-3 w-3" />
-                        <span className="text-xs">${userWallet.balance.toFixed(2)}</span>
+                        <span className="text-xs">Rs{userWallet.balance.toFixed(2)}</span>
                       </Button>
                     </Link>
                   )}
@@ -188,11 +189,11 @@ export function Header({
                     <DropdownMenuContent className="w-56" align="end" forceMount>
                       <DropdownMenuLabel className="font-normal">
                         <div className="flex flex-col space-y-1">
-                          <p className="text-sm font-medium leading-none">John Doe</p>
+                          <p className="text-sm font-medium leading-none">PYX</p>
                           <p className="text-xs leading-none text-muted-foreground">
-                            john.doe@example.com
+                            pyx@pyxnetwork.com
                           </p>
-                          <Badge className={`mt-1 w-fit text-xs ${
+                          <Badge className={`mt-1 w-fit text-xs  ${
                             currentMode === 'developer' 
                               ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
                               : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'

@@ -30,7 +30,7 @@ const stats = [
   { icon: Users, label: 'Active Users', value: '50,000+', description: 'Businesses worldwide' },
   { icon: Zap, label: 'AI Agents Deployed', value: '2.5M+', description: 'Automating workflows' },
   { icon: Globe, label: 'Countries', value: '120+', description: 'Global reach' },
-  { icon: TrendingUp, label: 'Cost Savings', value: '$1.2B+', description: 'For our customers' }
+  { icon: TrendingUp, label: 'Cost Savings', value: 'Rs1.2B+', description: 'For our customers' }
 ]
 
 const values = [
@@ -70,7 +70,7 @@ const timeline = [
   {
     year: '2023',
     title: 'Series A Funding',
-    description: 'Raised $25M Series A to accelerate product development and global expansion.'
+    description: 'Raised Rs25M Series A to accelerate product development and global expansion.'
   },
   {
     year: '2024',

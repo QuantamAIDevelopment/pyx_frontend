@@ -342,7 +342,7 @@ export function PressKitPage({ onViewChange }: PressKitPageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 px-20">
             <div className="text-center">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
                 <Calendar className="h-6 w-6 text-white" />
@@ -378,7 +378,7 @@ export function PressKitPage({ onViewChange }: PressKitPageProps) {
           </div>
 
           {/* Additional Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mt-8 px-20">
             <div className="text-center">
               <div className="text-lg font-bold text-blue-600">{companyFacts.workflows}</div>
               <div className="text-sm text-muted-foreground">Workflows Executed</div>
@@ -400,7 +400,7 @@ export function PressKitPage({ onViewChange }: PressKitPageProps) {
       </section>
 
       {/* Main Content */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs defaultValue="assets" className="w-full">
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-6 mb-12">
@@ -414,18 +414,18 @@ export function PressKitPage({ onViewChange }: PressKitPageProps) {
 
             {/* Brand Assets */}
             <TabsContent value="assets">
-              <div className="space-y-8">
+              <div className="space-y-8 px-20">
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold mb-4">Brand Assets</h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     Download high-quality logos, screenshots, and brand materials
                   </p>
                 </div>
-
+             
                 {brandAssets.map((category, index) => (
                   <Card key={index}>
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
+                      <CardTitle className="flex items-center gap-2 ">
                         <ImageIcon className="h-5 w-5" />
                         {category.category}
                       </CardTitle>
@@ -855,7 +855,7 @@ export function PressKitPage({ onViewChange }: PressKitPageProps) {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+                className="border-white text-black hover:bg-white hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
                 <Mail className="h-4 w-4 mr-2" />

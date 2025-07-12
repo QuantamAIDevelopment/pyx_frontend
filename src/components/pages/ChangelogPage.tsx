@@ -504,9 +504,9 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background px-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 ">
             <div className="text-center">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
                 <Tag className="h-6 w-6 text-white" />
@@ -544,9 +544,9 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
       </section>
 
       {/* Main Content */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8 px-20">
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <Card className="sticky top-6">
@@ -564,7 +564,9 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
                         <Button
                           key={category.id}
                           variant={selectedCategory === category.id ? "default" : "ghost"}
-                          className="w-full justify-start"
+                           className={`w-full justify-start ${
+                            selectedCategory === category.id ? "!bg-black text-white hover:bg-black border-none" : ""
+                         }`}
                           onClick={() => setSelectedCategory(category.id)}
                         >
                           <IconComponent className="h-4 w-4 mr-2" />

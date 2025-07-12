@@ -100,7 +100,7 @@ const faqData = [
   },
   {
     question: 'How does pricing work?',
-    answer: 'We offer flexible pricing with free agents, monthly subscriptions starting at $14/month, and custom enterprise packages. You only pay for the agents you use, and you can upgrade, downgrade, or cancel anytime.'
+    answer: 'We offer flexible pricing with free agents, monthly subscriptions starting at Rs14000/month, and custom enterprise packages. You only pay for the agents you use, and you can upgrade, downgrade, or cancel anytime.'
   },
   {
     question: 'Do you offer refunds?',

@@ -91,7 +91,7 @@ const mockNotifications: Notification[] = [
     id: '2',
     type: 'warning',
     title: 'Low Wallet Balance',
-    message: 'Your wallet balance is running low ($12.50 remaining). Consider adding funds.',
+    message: 'Your wallet balance is running low (Rs1250 remaining). Consider adding funds.',
     date: '1 day ago',
     read: false
   },
@@ -117,9 +117,9 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
   const [apiKeys, setApiKeys] = useState<APIKey[]>(mockAPIKeys)
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications)
   const [profile, setProfile] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    company: 'TechCorp Inc.',
+    name: 'PYX',
+    email: 'pyx@pyxnetwork.com',
+    company: 'AI Automation .',
     bio: 'AI enthusiast and developer building the future of automation.'
   })
   const [notificationSettings, setNotificationSettings] = useState({
@@ -167,7 +167,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
   const unreadCount = notifications.filter(n => !n.read).length
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8 px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center mb-8">
@@ -230,7 +230,8 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                       <AvatarFallback>{profile.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <Button>Change Photo</Button>
+                      <Button
+                      className="mb-0 !bg-black border-none hover:bg-transparent">Change Photo</Button>
                       <p className="text-sm text-muted-foreground mt-1">
                         JPG, PNG or GIF. Max size 2MB.
                       </p>
@@ -238,12 +239,13 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
+                    <div className="space-y-2 ">
                       <Label htmlFor="name">Full Name</Label>
                       <Input
                         id="name"
                         value={profile.name}
                         onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                        className='shadow-md '
                       />
                     </div>
                     <div className="space-y-2">
@@ -276,7 +278,8 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                     />
                   </div>
 
-                  <Button>Save Changes</Button>
+                  <Button
+                  className='!bg-black border-none hover:bg-transparent'>Save Changes</Button>
                 </CardContent>
               </Card>
 
