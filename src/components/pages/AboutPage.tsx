@@ -325,7 +325,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Whether you're looking to automate your business or explore career opportunities, 
-              we'd love to hear from you.
+              we'd love to hear from you..!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
