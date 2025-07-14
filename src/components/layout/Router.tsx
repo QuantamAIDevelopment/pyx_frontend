@@ -21,7 +21,6 @@ import { AboutPage } from '../pages/AboutPage'
 import { PricingPage } from '../pages/PricingPage'
 import { IntegrationsPage } from '../pages/IntegrationsPage'
 import { APIDocsPage } from '../pages/APIDocsPage'
-import { DocumentationPage } from '../pages/DocumentationPage'
 import { CommunityForumPage } from '../pages/CommunityForumPage'
 import { GitHubIssuesPage } from '../pages/GitHubIssuesPage'
 import { PremiumSupportPage } from '../pages/PremiumSupportPage'
@@ -31,9 +30,9 @@ import { JobApplicationPage } from '../pages/JobApplicationPage'
 import { PressKitPage } from '../pages/PressKitPage'
 import { HelpCenterPage } from '../pages/HelpCenterPage'
 import { CommunityPage } from '../pages/CommunityPage'
-import { TutorialsPage } from '../pages/TutorialsPage'
-import { CaseStudiesPage } from '../pages/CaseStudiesPage'
-import { WebinarsPage } from '../pages/WebinarsPage'
+// import { TutorialsPage } from '../pages/TutorialsPage'
+// import { CaseStudiesPage } from '../pages/CaseStudiesPage'
+// import { WebinarsPage } from '../pages/WebinarsPage'
 import { PrivacyPolicyPage } from '../pages/PrivacyPolicyPage'
 import { TermsOfServicePage } from '../pages/TermsOfServicePage'
 import { CookiePolicyPage } from '../pages/CookiePolicyPage'
@@ -60,6 +59,15 @@ import { TestDebugInterface } from '../common/TestDebugInterface'
 import { CustomNodeDevelopment } from '../agents/CustomNodeDevelopment'
 import { VisualAgentBuilder } from '../agents/VisualAgentBuilder'
 import { DeveloperDashboard } from '../layout/DeveloperDashboard'
+
+import { Suspense } from 'react';
+import React from 'react';
+
+// Dynamic imports for large pages
+const DocumentationPage = React.lazy(() => import('../pages/DocumentationPage').then(m => ({ default: m.DocumentationPage })));
+const TutorialsPage = React.lazy(() => import('../pages/TutorialsPage').then(m => ({ default: m.TutorialsPage })));
+const CaseStudiesPage = React.lazy(() => import('../pages/CaseStudiesPage').then(m => ({ default: m.CaseStudiesPage })));
+const WebinarsPage = React.lazy(() => import('../pages/WebinarsPage').then(m => ({ default: m.WebinarsPage })));
 
 export type Mode = 'user' | 'developer'
 
@@ -589,11 +597,13 @@ function AppRoutes() {
 
         {/* Documentation and Support */}
         <Route path="/docs" element={
-          <DocumentationPage 
-            onViewChange={handleViewChange}
-            isLoggedIn={isLoggedIn}
-            onShowAuth={showAuth}
-          />
+          <Suspense fallback={<div>Loading Documentation...</div>}>
+            <DocumentationPage 
+              onViewChange={handleViewChange}
+              isLoggedIn={isLoggedIn}
+              onShowAuth={showAuth}
+            />
+          </Suspense>
         } />
 
         <Route path="/help" element={
@@ -639,27 +649,33 @@ function AppRoutes() {
 
         {/* Content and Learning */}
         <Route path="/tutorials" element={
-          <TutorialsPage 
-            onViewChange={handleViewChange}
-            isLoggedIn={isLoggedIn}
-            onShowAuth={showAuth}
-          />
+          <Suspense fallback={<div>Loading Tutorials...</div>}>
+            <TutorialsPage 
+              onViewChange={handleViewChange}
+              isLoggedIn={isLoggedIn}
+              onShowAuth={showAuth}
+            />
+          </Suspense>
         } />
 
         <Route path="/case-studies" element={
-          <CaseStudiesPage 
-            onViewChange={handleViewChange}
-            isLoggedIn={isLoggedIn}
-            onShowAuth={showAuth}
-          />
+          <Suspense fallback={<div>Loading Case Studies...</div>}>
+            <CaseStudiesPage 
+              onViewChange={handleViewChange}
+              isLoggedIn={isLoggedIn}
+              onShowAuth={showAuth}
+            />
+          </Suspense>
         } />
 
         <Route path="/webinars" element={
-          <WebinarsPage 
-            onViewChange={handleViewChange}
-            isLoggedIn={isLoggedIn}
-            onShowAuth={showAuth}
-          />
+          <Suspense fallback={<div>Loading Webinars...</div>}>
+            <WebinarsPage 
+              onViewChange={handleViewChange}
+              isLoggedIn={isLoggedIn}
+              onShowAuth={showAuth}
+            />
+          </Suspense>
         } />
 
         <Route path="/changelog" element={
