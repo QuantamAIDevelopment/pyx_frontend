@@ -205,7 +205,7 @@ export function TestDebugInterface() {
           <Button 
             onClick={runTest}
             disabled={isRunning}
-            className="flex-1"
+            className="flex-1 !bg-black border-none"
           >
             {isRunning ? (
               <>

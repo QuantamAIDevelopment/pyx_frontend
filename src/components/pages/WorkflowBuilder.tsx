@@ -148,7 +148,7 @@ export function WorkflowBuilder({ onBack}: WorkflowBuilderProps) {
               <Share2 className="h-4 w-4 mr-2" />
               Share
             </Button>
-            <Button onClick={runWorkflow} disabled={isRunning}>
+            <Button onClick={runWorkflow} disabled={isRunning} className='!text-black'>
               {isRunning ? (
                 <>
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
@@ -156,7 +156,7 @@ export function WorkflowBuilder({ onBack}: WorkflowBuilderProps) {
                 </>
               ) : (
                 <>
-                  <Play className="h-4 w-4 mr-2" />
+                  <Play className="h-4 w-4 mr-2 " />
                   Test Run
                 </>
               )}

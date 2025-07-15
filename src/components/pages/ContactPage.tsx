@@ -48,21 +48,21 @@ const supportOptions = [
     description: 'Questions about PYX, pricing, or general information',
     icon: Mail,
     responseTime: '24 hours',
-    contact: 'admin@pyx.co.in'
+    contact: 'admin@pyxnetwork.com'
   },
   {
     title: 'Technical Support',
     description: 'Help with AI agents, integrations, or technical issues',
     icon: HelpCircle,
     responseTime: '4 hours',
-    contact: 'admin@pyx.co.in'
+    contact: 'admin@pyxnetwork.com'
   },
   {
     title: 'Sales & Partnerships',
     description: 'Enterprise solutions, custom integrations, or partnerships',
     icon: Users,
     responseTime: '2 hours',
-    contact: 'admin@pyx.co.in'
+    contact: 'admin@pyxnetwork.com'
   },
   {
     title: 'Live Chat',
@@ -349,16 +349,16 @@ export function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex space-x-3 ">
-                    <Button variant="outline" size="icon">
-                      <Twitter className="h-4 w-4 !hover:bg-gray-600" />
+                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md '>
+                      <Twitter className="h-4 w-4 " />
                     </Button>
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md'>
                       <Linkedin className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md'>
                       <Github className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="icon">
+                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md'>
                       <Globe className="h-4 w-4" />
                     </Button>
                   </div>

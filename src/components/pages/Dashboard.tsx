@@ -126,28 +126,28 @@ const recentTransactions = [
     id: '1',
     type: 'usage',
     description: 'SmartSummarizer API calls',
-    amount: -4.50,
+    amount: -450,
     date: '2 hours ago'
   },
   {
     id: '2',
     type: 'topup',
     description: 'Wallet top-up',
-    amount: 50.00,
+    amount: 500,
     date: '1 day ago'
   },
   {
     id: '3',
     type: 'usage',
     description: 'SupportGenie interactions',
-    amount: -2.20,
+    amount: -220,
     date: '1 day ago'
   },
   {
     id: '4',
     type: 'usage',
     description: 'StockSense forecasting',
-    amount: -1.80,
+    amount: -180,
     date: '2 days ago'
   }
 ]
@@ -388,11 +388,11 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-3xl font-bold">${userWallet.balance}</div>
+                    <div className="text-3xl font-bold">Rs {userWallet.balance}</div>
                     <p className="text-sm text-muted-foreground">Available balance</p>
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm">
+                    <Button size="sm" className='text-black'>
                       <CreditCard className="h-4 w-4 mr-2" />
                       Top Up
                     </Button>
@@ -584,7 +584,7 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                         <div className={`font-medium ${
                           transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
                         }`}>
-                          {transaction.amount > 0 ? '+' : ''}${Math.abs(transaction.amount).toFixed(2)}
+                          {transaction.amount > 0 ? '+' : ''}Rs {Math.abs(transaction.amount)}
                         </div>
                       </div>
                     ))}
@@ -599,17 +599,17 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
                     <span>Current Balance</span>
-                    <span className="font-medium">${userWallet.balance}</span>
+                    <span className="font-medium">Rs {userWallet.balance}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>This Month</span>
-                    <span className="font-medium">$26.50</span>
+                    <span className="font-medium">Rs 2650</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Projected</span>
-                    <span className="font-medium">$35.20</span>
+                    <span className="font-medium">Rs 3520</span>
                   </div>
-                  <Button className="w-full">
+                  <Button className="w-ful text-black">
                     <CreditCard className="h-4 w-4 mr-2" />
                     Add Funds
                   </Button>

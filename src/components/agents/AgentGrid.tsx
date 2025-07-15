@@ -220,9 +220,9 @@ export function AgentGrid({ onAgentSelect }: AgentGridProps) {
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
-                    <Badge variant={agent.price === 'Free' ? 'secondary' : 'default'}>
+                    {/* <Badge variant={agent.price === 'Free' ? 'secondary' : 'default'}>
                       {agent.price}
-                    </Badge>
+                    </Badge> */}
                   </div>
                   <CardTitle className="group-hover:text-primary transition-colors">
                     {agent.name}

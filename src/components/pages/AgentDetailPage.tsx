@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../common/ui/button'
 import { Badge } from '../common/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
@@ -48,16 +48,19 @@ import {
   TestTube,
   // Link2,
   // Bookmark,
-  Bot
+  // Bot,
+  ShoppingCart
 } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '../common/ui/avatar'
+import { useParams } from 'react-router-dom';
+import { fetchAgentDetailById } from '../apiservices/api';
 
 interface Agent {
   id: string
   name: string
   description: string
   category: string
-  icon: React.ComponentType<any>
+  icon: React.ComponentType<any> | string
   price: string
   rating: number
   reviews: number
@@ -70,6 +73,8 @@ interface Agent {
   activeUsers?: number
   security?: string
   triggerTypes?: string[]
+  howitWorks?: { id: number; title: string; description: string }[]
+  
 }
 
 interface AgentDetailPageProps {
@@ -116,13 +121,28 @@ const integrations = [
   { name: 'HubSpot', logo: '🎯', status: 'Available' }
 ]
 
-export function AgentDetailPage({ agent, onBack, onActivate, isLoggedIn, onShowAuth }: AgentDetailPageProps) {
+export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLoggedIn, onShowAuth }: AgentDetailPageProps) {
+  const { id } = useParams();
+  const [agent, setAgent] = useState(initialAgent);
+  const [loading, setLoading] = useState(!initialAgent);
   const [isSaved, setIsSaved] = useState(false)
   const [showShareModal, setShowShareModal] = useState(false)
   const [showDemoModal, setShowDemoModal] = useState(false)
   const [demoInput, setDemoInput] = useState('')
   const [demoOutput, setDemoOutput] = useState('')
   const [isRunningDemo, setIsRunningDemo] = useState(false)
+
+  useEffect(() => {
+    if (id) {
+      setLoading(true);
+      fetchAgentDetailById(id)
+        .then(data => {
+          setAgent(data);
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
+    }
+  }, [id]);
 
   const handleSaveAgent = () => {
     if (!isLoggedIn) {
@@ -209,33 +229,32 @@ export function AgentDetailPage({ agent, onBack, onActivate, isLoggedIn, onShowA
     }
   }
 
-  if (!agent) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Agent not found</h2>
-          <Button onClick={onBack}>Go Back</Button>
-        </div>
+  if (loading) return <div>Loading...</div>;
+  if (!agent) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold mb-4">Agent not found</h2>
+        <Button onClick={onBack}>Go Back</Button>
       </div>
-    )
-  }
+    </div>
+  );
 
-  const IconComponent = agent.icon || Bot
+  const IconComponent = typeof agent.icon === 'function' ? agent.icon : ShoppingCart;
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8 !px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back button */}
         <Button 
           variant="ghost" 
           onClick={onBack}
-          className="mb-6 hover:bg-muted/50"
+          className="mb-6 hover:bg-muted/50 "
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Agents
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Agent Header */}
@@ -246,9 +265,9 @@ export function AgentDetailPage({ agent, onBack, onActivate, isLoggedIn, onShowA
               <div className="flex-1">
                 <div className="flex items-center space-x-3 mb-2">
                   <h1 className="text-3xl font-bold">{agent.name}</h1>
-                  <Badge variant={agent.price === 'Free' ? 'secondary' : 'default'}>
+                  {/* <Badge variant={agent.price === 'Free' ? 'secondary' : 'default'}>
                     {agent.price}
-                  </Badge>
+                  </Badge> */}
                 </div>
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1">
@@ -261,6 +280,15 @@ export function AgentDetailPage({ agent, onBack, onActivate, isLoggedIn, onShowA
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {agent.description}
                 </p>
+                {agent.tags && agent.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {agent.tags.map((tag, idx) => (
+                      <Badge key={idx} variant="outline" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -269,10 +297,10 @@ export function AgentDetailPage({ agent, onBack, onActivate, isLoggedIn, onShowA
               <Button 
                 onClick={onActivate}
                 size="lg" 
-                className="px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                className="px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 border-none"
               >
                 <Play className="h-4 w-4 mr-2" />
-                Activate Agent
+                Run Agent
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
               <Button variant="outline" size="lg" onClick={handleTryDemo}>
@@ -330,27 +358,15 @@ export function AgentDetailPage({ agent, onBack, onActivate, isLoggedIn, onShowA
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium">1</div>
-                        <div>
-                          <h4 className="font-medium">Connect Your Data</h4>
-                          <p className="text-sm text-muted-foreground">Integrate with your existing ecommerce platform or upload product data</p>
+                      {agent?.howitWorks?.map((step) => (
+                        <div key={step.id} className="flex items-start space-x-3">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium">{step.id}</div>
+                          <div>
+                            <h4 className="font-medium">{step.title}</h4>
+                            <p className="text-sm text-muted-foreground">{step.description}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium">2</div>
-                        <div>
-                          <h4 className="font-medium">AI Processing</h4>
-                          <p className="text-sm text-muted-foreground">Advanced AI analyzes your products and generates optimized content</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium">3</div>
-                        <div>
-                          <h4 className="font-medium">Automated Results</h4>
-                          <p className="text-sm text-muted-foreground">Watch as the agent continuously improves your product listings</p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
@@ -366,12 +382,12 @@ export function AgentDetailPage({ agent, onBack, onActivate, isLoggedIn, onShowA
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {(agent?.features || [
-                        'SEO Optimization',
-                        'Multi-language Support',
-                        'Bulk Processing',
-                        'Real-time Updates',
-                        'Custom Templates',
-                        'Performance Analytics'
+                        // 'SEO Optimization',
+                        // 'Multi-language Support',
+                        // 'Bulk Processing',
+                        // 'Real-time Updates',
+                        // 'Custom Templates',
+                        // 'Performance Analytics'
                       ]).map((feature, index) => (
                         <div key={index} className="flex items-center space-x-2">
                           <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />

@@ -432,11 +432,11 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold">${userWallet.balance}</div>
+                    <div className="text-3xl font-bold">Rs{userWallet.balance}</div>
                     <p className="text-sm text-muted-foreground">Available balance</p>
                   </div>
                   <div className="flex space-x-2">
-                    <Button className="flex-1">Add Funds</Button>
+                    <Button className="flex-1 bg-white text-black ">Add Funds</Button>
                     <Button variant="outline" className="flex-1">Auto-reload</Button>
                   </div>
                 </CardContent>

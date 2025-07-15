@@ -175,6 +175,7 @@ export function UploadAgentPage({ onBack }: UploadAgentPageProps) {
         {/* Navigation Tabs */}
         <div className="flex space-x-1 mb-8 bg-muted p-1 rounded-lg w-fit">
           <Button
+          className='text-black'
             variant={currentView === 'upload' ? 'default' : 'ghost'}
             onClick={() => setCurrentView('upload')}
             size="sm"
@@ -316,7 +317,7 @@ export function UploadAgentPage({ onBack }: UploadAgentPageProps) {
 
                       <Button 
                         type="submit" 
-                        className="w-full" 
+                        className="w-full text-black bg-white" 
                         disabled={!formData.name || !formData.description || !formData.category || !formData.file}
                       >
                         <Upload className="h-4 w-4 mr-2" />

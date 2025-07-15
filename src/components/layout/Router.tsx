@@ -89,8 +89,8 @@ function AppRoutes() {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login')
   const [userWallet, setUserWallet] = useState({
-    balance: 156.42,
-    currency: 'USD'
+    balance: 15642,
+    currency: 'INR'
   })
 
   useEffect(() => {
@@ -255,7 +255,7 @@ function AppRoutes() {
         
         <Route path="/agents/:id" element={
           <AgentDetailWrapper 
-            onBack={() => navigate(-1)}
+            onBack={() => navigate('/agents')}
             onActivate={() => {
               if (isLoggedIn) {
                 navigate('/agents/active')

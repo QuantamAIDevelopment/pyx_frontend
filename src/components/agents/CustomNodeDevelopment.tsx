@@ -196,8 +196,8 @@ function processInput(input) {
       <div className="p-4">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-medium">Custom Nodes</h3>
-          <Button size="sm" onClick={() => setActiveTab('new-node')}>
-            <Plus className="h-4 w-4 mr-1" />
+          <Button size="sm" className='!bg-black border-none' onClick={() => setActiveTab('new-node')}>
+            <Plus className="h-4 w-4 mr-1 " />
             New
           </Button>
         </div>
@@ -246,7 +246,7 @@ function processInput(input) {
               <Save className="h-4 w-4 mr-1" />
               Save
             </Button>
-            <Button size="sm">
+            <Button size="sm" className='!bg-black border-none'>
               <Upload className="h-4 w-4 mr-1" />
               Publish
             </Button>
