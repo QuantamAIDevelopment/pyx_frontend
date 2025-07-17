@@ -412,7 +412,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
                     type="submit" 
                     size="lg" 
                     disabled={!prompt.trim() || isGenerating}
-                    className="px-6"
+                    className="px-6 !bg-gray-900 border-none "
                   >
                     <Send className="h-4 w-4" />
                   </Button>
@@ -505,7 +505,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
                       Try Demo
                     </Button>
                     <Button 
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" 
+                      className="w-full bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-[#993B06] hover:to-[#FF620A]" 
                       onClick={handleDeploy}
                     >
                       <Rocket className="h-4 w-4 mr-2" />
@@ -525,7 +525,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
             ) : (
               <Card className="h-[600px] flex items-center justify-center">
                 <div className="text-center space-y-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto">
                     <Zap className="h-8 w-8 text-white" />
                   </div>
                   <div>
@@ -569,7 +569,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
               <Button
                 onClick={handleSubmitRefinement}
                 disabled={!refinementPrompt.trim()}
-                className="flex-1"
+                className="flex-1 !bg-black text-white border-none"
               >
                 <Sparkles className="h-4 w-4 mr-2" />
                 Apply Refinements
@@ -694,7 +694,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
           {isDeploying ? (
             <div className="space-y-6 py-6">
               <div className="text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
                   <Rocket className="h-8 w-8 text-white animate-pulse" />
                 </div>
                 <h3 className="font-medium mb-2">Deploying Your Agent</h3>
@@ -747,7 +747,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
               <div className="flex space-x-3">
                 <Button
                   onClick={handleStartDeployment}
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  className="flex-1 bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-blue-700 hover:to-purple-700"
                 >
                   <Rocket className="h-4 w-4 mr-2" />
                   Start Deployment
@@ -815,7 +815,7 @@ export function CreateAgentPage({ onBack, onDeploy, onViewAPIDocs, isLoggedIn, o
                   <li className="flex items-center"><CheckCircle className="h-4 w-4 text-green-600 mr-2" />Advanced analytics</li>
                   <li className="flex items-center"><CheckCircle className="h-4 w-4 text-green-600 mr-2" />Custom integrations</li>
                 </ul>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                <Button className=" bg-blue-600 hover:bg-blue-700 !text-blue-600 mr-2" >
                   <CreditCard className="h-4 w-4 mr-2" />
                   Choose Pro
                 </Button>

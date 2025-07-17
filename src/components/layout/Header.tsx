@@ -1,7 +1,7 @@
 'use client'
 
 import { Link, useLocation } from 'react-router-dom'
-import { Moon, Sun, Menu, X, Zap, LayoutDashboard, Store, BookOpen, Phone, Plus, Bell, Wallet, TestTube, User, Code2, Info } from 'lucide-react'
+import {  Menu, X, LayoutDashboard, Store, BookOpen, Phone, Plus, Bell, Wallet, TestTube, User, Code2, Info } from 'lucide-react'
 import { Button } from '../common/ui/button'
 import { Badge } from '../common/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '../common/ui/avatar'
@@ -11,13 +11,11 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { useState } from 'react'
 
 
-export type ViewType = 'landing' | 'home' | 'agents' | 'agent-detail' | 'active-agents' | 'agent-builder' | 'agent-api-access' | 'dashboard' | 'blog' | 'blog-post' | 'contact' | 'about' | 'create-agent' | 'workflow-builder' | 'upload-agent' | 'profile' | 'testing-lab' | 'developer-mode' | 'pricing' | 'integrations' | 'api-docs' | 'documentation' | 'community-forum' | 'github-issues' | 'premium-support' | 'changelog' | 'careers' | 'apply' | 'press' | 'help' | 'community' | 'tutorials' | 'case-studies' | 'webinars' | 'privacy' | 'terms' | 'cookies' | 'gdpr' | 'security'
+export type ViewType = 'landing' | 'home' | 'agents' | 'agent-detail' | 'active-agents' | '' | 'agent-api-access' | 'dashboard' | 'blog' | 'blog-post' | 'contact' | 'about' | 'create-agent' | 'workflow-builder' | 'upload-agent' | 'profile' | 'testing-lab' | 'developer-mode' | 'pricing' | 'integrations' | 'api-docs' | 'documentation' | 'community-forum' | 'github-issues' | 'premium-support' | 'changelog' | 'careers' | 'apply' | 'press' | 'help' | 'community' | 'tutorials' | 'case-studies' | 'webinars' | 'privacy' | 'terms' | 'cookies' | 'gdpr' | 'security'
 
 export type Mode = 'user' | 'developer'
 
 interface HeaderProps {
-  isDark: boolean
-  onThemeToggle: () => void
   // currentView: ViewType
   // onViewChange: (view: ViewType) => void
   currentMode: Mode
@@ -32,8 +30,6 @@ interface HeaderProps {
 }
 
 export function Header({ 
-  isDark, 
-  onThemeToggle, 
   // currentView, 
   // onViewChange, 
   currentMode,
@@ -72,14 +68,16 @@ export function Header({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+          <Link to="/" className="flex items-center space-x-2 ml-0 ">
+            {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
               <Zap className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            </div> */}
+            {/* <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
               PYX
-            </span>
+            </span> */}
+            <img src='./assets/logo.png' width={60} height={50} alt='' className='ml-0 ' />
           </Link>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
@@ -124,7 +122,9 @@ export function Header({
                     <Label className="text-xs">Dev</Label>
                   </div>
                   {currentMode === 'developer' && (
-                    <Badge className="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs px-1 py-0">
+                    <Badge className="
+bg-gradient-to-r from-[#FF620A] to-[#993B06]
+ text-white text-xs px-1 py-0">
                       BETA
                     </Badge>
                   )}
@@ -137,7 +137,7 @@ export function Header({
                     <Button
                       variant="outline"
                       size="sm"
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 hover:from-blue-700 hover:to-purple-700 border-none"
+                      className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white border-0 hover:from-[#FF620A]-700 hover:to-[#993B06]-700 border-none"
                     >
                       <Plus className="h-3 w-3 mr-1" />
                       <span className="hidden lg:inline ">
@@ -195,8 +195,8 @@ export function Header({
                           </p>
                           <Badge className={`mt-1 w-fit text-xs  ${
                             currentMode === 'developer' 
-                              ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                              : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                              ? 'bg-gradient-to-r from-[#FF620A] to-[#993B06]text-white'
+                              : 'bg-gradient-to-r from-[#993B06] to-[#FF620A] text-white'
                           }`}>
                             {currentMode === 'developer' ? 'Developer Mode' : 'User Mode'}
                           </Badge>
@@ -247,34 +247,11 @@ export function Header({
                 </div>
 
                 {/* Theme Toggle */}
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={onThemeToggle}
-                  className="h-8 w-8"
-                >
-                  {isDark ? (
-                    <Sun className="h-4 w-4" />
-                  ) : (
-                    <Moon className="h-4 w-4" />
-                  )}
-                </Button>
+                {/* Removed theme toggle */}
               </>
             ) : (
               <>
-                {/* Theme Toggle for non-logged users */}
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={onThemeToggle}
-                  className="h-8 w-8 "
-                >
-                  {isDark ? (
-                    <Sun className="h-4 w-4" />
-                  ) : (
-                    <Moon className="h-4 w-4" />
-                  )}
-                </Button>
+                {/* Removed theme toggle for non-logged users */}
                 
                 {/* Sign In Button */}
                 <Button onClick={onLogin} className='!bg-black border-none'>
@@ -374,7 +351,7 @@ export function Header({
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <Button 
-                      className="flex items-center justify-start space-x-2 w-full bg-gradient-to-r from-blue-600 to-purple-600"
+                      className="flex items-center justify-start space-x-2 w-full bg-gradient-to-r from-[#FF620A] to-[#993B06]"
                     >
                       <Plus className="h-4 w-4" />
                       <span>{currentMode === 'developer' ? 'Developer Mode' : 'Create Agent'}</span>
@@ -396,23 +373,7 @@ export function Header({
               )}
               
               <div className="flex items-center justify-between pt-4 border-t">
-                <Button
-                  variant="ghost"
-                  onClick={onThemeToggle}
-                  className="flex items-center space-x-2"
-                >
-                  {isDark ? (
-                    <>
-                      <Sun className="h-4 w-4" />
-                      <span>Light Mode</span>
-                    </>
-                  ) : (
-                    <>
-                      <Moon className="h-4 w-4" />
-                      <span>Dark Mode</span>
-                    </>
-                  )}
-                </Button>
+                {/* Removed theme toggle */}
                 
                 {isLoggedIn ? (
                   <Button variant="outline" onClick={() => {

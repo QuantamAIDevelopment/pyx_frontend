@@ -108,16 +108,18 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+
+ dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
               <Sparkles className="h-3 w-3 mr-1" />
               About PYX
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Empowering Businesses with{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                 Intelligent AI
               </span>
             </h1>
@@ -128,7 +130,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600"
+                className="bg-gradient-to-r from-[#FF620A] to-[#993B06]"
                 onClick={() => scrollToSection('mission')}
               >
                 <Target className="h-4 w-4 mr-2" />
@@ -155,7 +157,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
               const IconComponent = stat.icon
               return (
                 <div key={index} className="text-center ">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
                     <IconComponent className="h-6 w-6 text-white" />
                   </div>
                   <div className="text-3xl font-bold mb-2">{stat.value}</div>
@@ -173,7 +175,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-24">
             <div>
-              <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+              <Badge className="mb-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
                 Our Story
               </Badge>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -200,7 +202,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
               <div className="mt-8">
                 <Button 
                   onClick={() => onViewChange('agents')}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600"
+                  className="bg-gradient-to-r from-[#FF620A] to-[#993B06]"
                 >
                   <Store className="h-4 w-4 mr-2" />
                   Explore Our Agents
@@ -209,7 +211,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 p-8 text-white">
+              <div className="aspect-square rounded-2xl bg-gradient-to-r from-[#FF620A] to-[#993B06] p-8 text-white">
                 <div className="h-full flex flex-col justify-center items-center text-center">
                   <Lightbulb className="h-16 w-16 mb-6" />
                   <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
@@ -228,7 +230,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
       <section id="values" className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <Badge className="mb-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
               Our Values
             </Badge>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -245,7 +247,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                   <CardHeader>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
                     <CardTitle className="text-lg">{value.title}</CardTitle>
@@ -266,7 +268,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
       <section className="py-20 bg-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <Badge className="mb-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
               Our Journey
             </Badge>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -280,13 +282,13 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#FF620A] to-[#993B06]"></div>
               
               <div className="space-y-12">
                 {timeline.map((item, index) => (
                   <div key={index} className="relative flex items-start">
                     {/* Timeline dot */}
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold text-lg">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white font-bold text-lg">
                       {item.year.slice(-2)}
                     </div>
                     
@@ -317,7 +319,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
 
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">

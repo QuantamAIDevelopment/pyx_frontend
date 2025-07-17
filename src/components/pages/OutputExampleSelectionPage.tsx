@@ -88,7 +88,10 @@ export function OutputExampleSelectionPage({ onNext, onBack }: OutputExampleSele
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ bg-clip-text text-transparent">
               Choose the format you want the agent to output
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -101,56 +104,55 @@ export function OutputExampleSelectionPage({ onNext, onBack }: OutputExampleSele
             <RadioGroup value={selectedOutput} onValueChange={setSelectedOutput}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {outputOptions.map((option) => (
-                  <div key={option.id} className="relative">
-                    <Label htmlFor={option.id} className="cursor-pointer">
-                      <Card 
-                        className={`transition-all duration-300 hover:shadow-lg h-full ${
-                          selectedOutput === option.id 
-                            ? 'ring-2 ring-purple-500 border-purple-500 shadow-lg' 
-                            : 'hover:border-purple-500/50'
-                        }`}
-                      >
-                        <CardHeader className="pb-3">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center space-x-3">
-                              <div className={`p-3 rounded-lg bg-gradient-to-r ${option.color} text-white`}>
-                                {option.icon}
-                              </div>
-                              <div>
-                                <CardTitle className="text-lg">{option.title}</CardTitle>
-                                <Badge className={getBadgeColor(option.badge)}>
-                                  {option.badge}
-                                </Badge>
-                              </div>
-                            </div>
-                            <RadioGroupItem value={option.id} id={option.id} />
-                          </div>
-                        </CardHeader>
-                        
-                        <CardContent className="pt-0 space-y-4">
-                          <p className="text-muted-foreground">
-                            {option.description}
-                          </p>
-                          
-                          <div className="bg-muted/30 p-4 rounded-lg border-l-4 border-purple-500">
-                            <div className="flex items-center space-x-2 mb-2">
-                              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                              <span className="text-sm font-medium text-muted-foreground">Preview</span>
-                            </div>
-                            <pre className="text-sm text-foreground whitespace-pre-wrap font-mono">
-                              {option.preview}
-                            </pre>
-                          </div>
-                        </CardContent>
+                  <div key={option.id} className="relative h-full">
+  <Label htmlFor={option.id} className="cursor-pointer block h-full">
+    <Card
+      className={`transition-all duration-300 hover:shadow-lg h-full w-full flex flex-col ${
+        selectedOutput === option.id
+          ? 'ring-2 ring-purple-500 border-purple-500 shadow-lg'
+          : 'hover:border-purple-500/50'
+      }`}
+    >
+      <CardHeader className="pb-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className={`p-3 rounded-lg bg-gradient-to-r ${option.color} text-white`}>
+              {option.icon}
+            </div>
+            <div>
+              <CardTitle className="text-lg">{option.title}</CardTitle>
+              <Badge className={getBadgeColor(option.badge)}>{option.badge}</Badge>
+            </div>
+          </div>
+          <RadioGroupItem value={option.id} id={option.id} />
+        </div>
+      </CardHeader>
 
-                        {selectedOutput === option.id && (
-                          <div className="absolute -top-2 -right-2 bg-purple-500 text-white rounded-full p-1">
-                            <CheckCircle className="h-4 w-4" />
-                          </div>
-                        )}
-                      </Card>
-                    </Label>
-                  </div>
+      <CardContent className="pt-0 space-y-4 flex-grow">
+        <p className="text-muted-foreground">
+          {option.description}
+        </p>
+
+        <div className="bg-muted/30 p-4 rounded-lg border-l-4 border-purple-500">
+          <div className="flex items-center space-x-2 mb-2">
+            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+            <span className="text-sm font-medium text-muted-foreground">Preview</span>
+          </div>
+          <pre className="text-sm text-foreground whitespace-pre-wrap font-mono">
+            {option.preview}
+          </pre>
+        </div>
+      </CardContent>
+
+      {selectedOutput === option.id && (
+        <div className="absolute -top-2 -right-2 bg-purple-500 text-white rounded-full p-1">
+          <CheckCircle className="h-4 w-4" />
+        </div>
+      )}
+    </Card>
+  </Label>
+</div>
+
                 ))}
               </div>
             </RadioGroup>
@@ -188,7 +190,10 @@ export function OutputExampleSelectionPage({ onNext, onBack }: OutputExampleSele
             <Button 
               onClick={handleNext}
               disabled={!selectedOutput}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+              className="bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ hover:from-purple-700 hover:to-pink-700 text-white"
             >
               Continue to Configuration
               <ArrowRight className="h-4 w-4 ml-2" />

@@ -25,7 +25,8 @@ export function CallToAction({ onGetStarted }: CallToActionProps) {
   }
 
   return (
-    <section className="py-20 sm:py-32 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950/20 dark:via-indigo-950/20 dark:to-purple-950/20">
+    <section className="py-20 sm:py-32 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+ dark:from-blue-950/20 dark:via-indigo-950/20 dark:to-purple-950/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8">
@@ -39,7 +40,7 @@ export function CallToAction({ onGetStarted }: CallToActionProps) {
             <Button 
               onClick={onGetStarted}
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 text-xl font-medium rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="!bg-[#FF620A] border-none hover:bg-[#993B06] text-white px-12 py-6 text-xl font-medium rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Start Free Trial
               <ArrowRight className="ml-3 h-6 w-6" />

@@ -58,7 +58,7 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
         <div className="relative w-full h-full overflow-hidden">
           {/* Custom cosmic nebula background - optimized for both light and dark modes */}
           <img
-            src="/assets/nebula.png"
+            src="/assets/2.png"
             alt="Spectacular cosmic nebula with vibrant red, orange, and blue stellar formations representing the infinite possibilities of AI automation"
             className="w-full h-full object-cover "
          
@@ -70,42 +70,42 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
           {/* <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/15 to-white/10 dark:from-slate-900/10 dark:via-slate-900/15 dark:to-slate-900/10" /> */}
           
           {/* Premium vignette effect with enhanced focus for vibrant background */}
-          {/* <div className="absolute inset-0" style={{
+          <div className="absolute inset-0" style={{
             background: 'radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0.25) 100%)'
-          }} /> */}
+          }} />
           
           {/* Cosmic color harmony overlay to blend with the vibrant nebula */}
           {/* <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/20 via-blue-50/25 to-purple-50/20 dark:from-cyan-900/10 dark:via-blue-900/12 dark:to-purple-900/10" /> */}
           
           {/* Additional contrast overlay for text clarity */}
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/10 dark:from-slate-900/15 dark:via-transparent dark:to-slate-900/10" /> */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-white/10 dark:from-slate-900/15 dark:via-transparent dark:to-slate-900/10" />
         </div>
       </div>
 
       {/* Enhanced Background Layer - Light/Dark Mode */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-indigo-50/40 to-purple-50/40 dark:from-slate-900/40 dark:via-purple-900/40 dark:to-indigo-900/40 z-1" />
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD] dark:from-slate-900/40 dark:via-purple-900/40 dark:to-indigo-900/40 z-1" /> */}
       
       {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-15 dark:opacity-10 z-2">
+      {/* <div className="absolute inset-0 opacity-15 dark:opacity-10 z-2">
         <div 
           className="absolute inset-0 animate-pulse"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`
           }}
         />
-      </div>
+      </div> */}
       
       {/* Interactive Hover Highlight - Adaptive colors */}
       <div 
         className={`absolute pointer-events-none transition-all duration-300 ease-out ${
-          isHovering ? 'opacity-40 dark:opacity-60' : 'opacity-0'
+          isHovering ? 'opacity-60' : 'opacity-0'
         }`}
         style={{
           left: mousePosition.x - 200,
           top: mousePosition.y - 200,
           width: 400,
           height: 400,
-          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(168, 85, 247, 0.25) 30%, rgba(236, 72, 153, 0.15) 50%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(148, 74, 5, 0.79) 0%, rgba(247, 169, 85, 0.25) 30%, rgba(236, 72, 153, 0.15) 50%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
           transform: isHovering ? 'scale(1.2)' : 'scale(1)',
@@ -122,7 +122,7 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
           top: mousePosition.y - 300,
           width: 600,
           height: 600,
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.15) 40%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(223, 102, 3, 0.2) 0%, rgba(234, 221, 247, 0.15) 40%, transparent 60%)',
           borderRadius: '50%',
           filter: 'blur(80px)',
           transform: isHovering ? 'scale(1.1)' : 'scale(0.9)',
@@ -169,18 +169,18 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
         <div className="text-center max-w-5xl mx-auto">
       
           {/* Enhanced Badge with cosmic styling - Light/Dark Mode */}
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-100/90 to-purple-100/90 dark:from-blue-600/30 dark:to-purple-600/30 backdrop-blur-md px-6 py-3 rounded-full mb-8 border border-blue-200/80 dark:border-blue-400/40 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400 animate-spin" style={{ animationDuration: '3s' }} />
-            <span className="text-sm font-semibold text-blue-800 dark:text-blue-100 tracking-wide">
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-600/30 dark:to-purple-600/30 backdrop-blur-md px-6 py-3 rounded-full mb-8 border border-blue-200/80 dark:border-blue-400/40 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <Sparkles className="h-4 w-4 text-white dark:text-blue-400 animate-spin" style={{ animationDuration: '3s' }} />
+            <span className="text-sm font-semibold text-white dark:text-blue-100 tracking-wide">
               Next-Generation AI Automation Platform
             </span>
             <div className="w-2 h-2 bg-green-400 rounded-full animate-ping opacity-75"></div>
           </div>
 
           {/* Enhanced headline with cosmic styling - Light/Dark Mode */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-8 leading-tight">
+          <h1 className="text-12xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold tracking-tight mb-8 leading-tight">
             <span className="block mb-3 text-gray-900 dark:text-white drop-shadow-lg">Shape Your</span>
-            <span className="block bg-gradient-to-r from-cyan-500 via-blue-600 via-purple-600 to-pink-500 dark:from-cyan-400 dark:via-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent mb-3 drop-shadow-2xl" style={{ backgroundSize: '200% 100%' }}>
+            <span className="block !bg-white bg-clip-text text-transparent mb-3 drop-shadow-2xl" style={{ backgroundSize: '200% 100%' }}>
               AI Ecosystem
             </span>
             <span className="block text-gray-900 dark:text-white drop-shadow-lg">for the Future</span>
@@ -196,10 +196,8 @@ export function Hero({ onExploreAgents, onGetStarted }: HeroProps) {
             <Button 
               onClick={onExploreAgents}
               size="lg" 
-              className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:via-blue-500 hover:to-purple-500 text-white px-12 py-7 text-lg font-semibold rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-3xl transform hover:scale-110 border-0 relative overflow-hidden border-none"
+              className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white px-12 py-7 text-lg font-semibold rounded-2xl transition-all duration-500 shadow-2xl hover:shadow-3xl transform hover:scale-110 border-0 relative overflow-hidden border-none"
             >
-              {/* Animated background shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000"></div>
               <span className="relative flex items-center">
                 <Sparkles className="mr-2 h-5 w-5 animate-spin" style={{ animationDuration: '2s' }} />
                 Explore Agents

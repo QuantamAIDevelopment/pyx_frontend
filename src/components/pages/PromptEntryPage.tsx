@@ -44,11 +44,14 @@ export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
-              <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full">
+              <div className="bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06] p-3 rounded-full">
                 <Bot className="h-8 w-8 text-white" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ bg-clip-text text-transparent">
               What do you want your AI agent to do?
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -82,7 +85,10 @@ export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
                   <Button
                     onClick={handleSubmit}
                     disabled={!prompt.trim() || isGenerating}
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 text-lg"
+                    className="bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 text-lg"
                   >
                     {isGenerating ? (
                       <>

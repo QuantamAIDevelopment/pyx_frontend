@@ -56,7 +56,7 @@ export function AgentDetailModal({ agent, onClose, onActivate }: AgentDetailModa
             <DialogHeader className="mb-6">
               <div className="flex items-start justify-between">
                 <div className="flex items-center space-x-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-600">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-r from-[#FF620A] to-[#993B06]">
                     <IconComponent className="h-8 w-8 text-white" />
                   </div>
                   <div>
@@ -192,17 +192,17 @@ export function AgentDetailModal({ agent, onClose, onActivate }: AgentDetailModa
                     Activate Agent
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full ">
                     Try Demo
                   </Button>
                 </div>
 
                 {/* Pricing Info */}
                 {agent.price !== 'Free' && (
-                  <div className="text-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg border">
-                    <p className="text-sm text-muted-foreground mb-1">Starting at</p>
+                  <div className="text-center p-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg border">
+                    <p className="text-sm text-black mb-1">Starting at</p>
                     <p className="text-2xl font-bold">{agent.price}</p>
-                    <p className="text-xs text-muted-foreground">7-day free trial included</p>
+                    <p className="text-xs text-black">7-day free trial included</p>
                   </div>
                 )}
               </div>

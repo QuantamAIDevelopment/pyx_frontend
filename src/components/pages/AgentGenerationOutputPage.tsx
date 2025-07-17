@@ -140,7 +140,10 @@ export function AgentGenerationOutputPage({
                 <CheckCircle className="h-8 w-8 text-white" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ bg-clip-text text-transparent">
               Your Agent is Ready
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -309,7 +312,10 @@ export function AgentGenerationOutputPage({
               
               <Button 
                 onClick={onDeploy}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white flex items-center space-x-2"
+                className="bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ hover:from-purple-700 hover:to-pink-700 text-white flex items-center space-x-2"
               >
                 <Play className="h-4 w-4" />
                 <span>Deploy Now</span>

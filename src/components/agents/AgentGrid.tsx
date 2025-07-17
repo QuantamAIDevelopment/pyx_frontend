@@ -217,7 +217,7 @@ export function AgentGrid({ onAgentSelect }: AgentGridProps) {
               >
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 group-hover:scale-110 transition-transform duration-300">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
                     {/* <Badge variant={agent.price === 'Free' ? 'secondary' : 'default'}>

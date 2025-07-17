@@ -59,6 +59,7 @@ interface DashboardProps {
   onManageAPI: (apiData: any) => void
   onAnalytics: (apiData: any) => void
   onViewAgentDetail: (agentData: any) => void
+  onRunAgent: (agentData: any) => void
 }
 
 const usageData = [
@@ -191,7 +192,7 @@ const myAPIs = [
   }
 ]
 
-export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWorkflows, onUploadAgent, onViewProfile, onTestingLab, onManageAPI, onAnalytics, onViewAgentDetail }: DashboardProps) {
+export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWorkflows, onUploadAgent, onViewProfile, onTestingLab, onManageAPI, onAnalytics, onViewAgentDetail, onRunAgent }: DashboardProps) {
   const [activeTab, setActiveTab] = useState('overview')
 
 
@@ -234,7 +235,7 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
   }
 
   return (
-    <div className="min-h-screen py-8">
+    <div className="min-h-screen py-8 px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
@@ -244,7 +245,10 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
           </div>
           
           <div className="flex flex-wrap gap-3 mt-4 md:mt-0">
-            <Button onClick={onAgentBuilder} className="bg-gradient-to-r from-purple-600 to-pink-600">
+            <Button onClick={onAgentBuilder} className="bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ border-none">
               <Zap className="h-4 w-4 mr-2" />
               Build Agent
             </Button>
@@ -336,7 +340,10 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                   <Button 
                     onClick={onAgentBuilder}
-                    className="h-auto flex-col space-y-2 p-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                    className="h-auto flex-col space-y-2 p-4 bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ hover:from-[#993B06] hover:to-[#FF620A] text-white"
                   >
                     <Zap className="h-6 w-6" />
                     <span>Build Agent</span>
@@ -392,7 +399,7 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                     <p className="text-sm text-muted-foreground">Available balance</p>
                   </div>
                   <div className="flex space-x-2">
-                    <Button size="sm" className='text-black'>
+                    <Button size="sm" className='!bg-black text-white hover:bg-gray-800 border-none'>
                       <CreditCard className="h-4 w-4 mr-2" />
                       Top Up
                     </Button>
@@ -493,7 +500,7 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                   <CardContent>
                     {/* Click to run indicator */}
                     <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                      <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white text-xs px-2 py-1 rounded-full flex items-center">
                         <Play className="h-3 w-3 mr-1" />
                         Click to run
                       </div>
@@ -524,11 +531,11 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                       
                       <div className="flex space-x-2 pt-2">
                         <Button 
-                          className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                          className="flex-1 bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-[#993B06] hover:to-[#FF620A] border-none"
                           size="sm" 
                           onClick={(e) => {
                             e.stopPropagation()
-                            handleViewAgentDetail(agent)
+                            onRunAgent(agent)
                           }}
                         >
                           <Play className="h-3 w-3 mr-1" />

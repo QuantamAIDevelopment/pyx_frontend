@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Quncry';
+  src: url('../assets/fonts/Quncry.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,43 +51,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
 }
 
 @theme inline {
@@ -385,29 +356,6 @@ html {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Dark mode specific overrides */
-  .dark button[data-slot="button"][class*="outline"] {
-    background-color: rgba(15, 23, 42, 0.5);
-    backdrop-filter: blur(10px);
-  }
-  
-  .dark button[data-slot="button"][class*="outline"]:hover {
-    background-color: rgba(30, 41, 59, 0.8);
-  }
-  
-  .dark button[data-slot="button"][class*="ghost"]:hover {
-    background-color: rgba(51, 65, 85, 0.5);
-  }
-  
-  .dark button[data-slot="button"][class*="secondary"] {
-    background-color: rgba(51, 65, 85, 1);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .dark button[data-slot="button"][class*="secondary"]:hover {
-    background-color: rgba(71, 85, 105, 1);
-  }
-  
   /* Input field improvements for light mode */
   input[data-slot="input"] {
     border-width: 1px;
@@ -418,34 +366,16 @@ html {
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
   }
   
-  .dark input[data-slot="input"] {
-    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05);
-  }
-  
-  .dark input[data-slot="input"]:focus {
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 1px 2px rgba(255, 255, 255, 0.05);
-  }
-  
   /* Card improvements for light mode */
   .card {
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
   
-  .dark .card {
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  }
-  
   /* Badge improvements for light mode */
   .badge {
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  }
-  
-  .dark .badge {
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
   
   /* Card hover effects */
@@ -460,45 +390,39 @@ html {
     transform: translateY(-2px);
   }
   
-  .dark .card-hover:hover {
-    border-color: rgba(139, 92, 246, 0.3);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.1);
+  /* Scrollbar styling for better UX */
+  @layer base {
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .dark ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .dark ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
   }
-}
-
-/* Scrollbar styling for better UX */
-@layer base {
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
-  }
-  
-  .dark ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-  }
-  
-  .dark ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .dark ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-}
 
 /* PyX Chatbot Animations */
 @layer utilities {
@@ -661,4 +585,5 @@ html {
       transform: translateY(0);
     }
   }
+}
 }

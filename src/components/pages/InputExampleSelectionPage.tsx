@@ -103,7 +103,10 @@ export function InputExampleSelectionPage({ prompt, onNext, onBack }: InputExamp
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ bg-clip-text text-transparent">
               Choose the input that matches your intent
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -197,7 +200,10 @@ export function InputExampleSelectionPage({ prompt, onNext, onBack }: InputExamp
             <Button 
               onClick={handleNext}
               disabled={!selectedInput}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+              className="bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ hover:from-purple-700 hover:to-pink-700 text-white"
             >
               Continue to Output Format
               <ArrowRight className="h-4 w-4 ml-2" />

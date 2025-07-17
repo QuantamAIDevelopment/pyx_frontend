@@ -64,9 +64,9 @@ export function PyXDemo() {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="text-center mb-8">
-        <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 px-4 py-2 rounded-full mb-4">
-          <MessageCircle className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-semibold text-blue-800 dark:text-blue-200">
+        <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-900/30 dark:to-purple-900/30 px-4 py-2 rounded-full mb-4">
+          <MessageCircle className="h-4 w-4 text-white dark:text-blue-400" />
+          <span className="text-sm font-semibold text-white dark:text-blue-200">
             PyX Assistant Demo
           </span>
         </div>
@@ -89,7 +89,7 @@ export function PyXDemo() {
             onClick={scenario.action}
           >
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-[#FF620A] to-[#993B06] rounded-lg flex items-center justify-center">
                 <scenario.icon className="h-6 w-6 text-white" />
               </div>
               
@@ -114,10 +114,10 @@ export function PyXDemo() {
       </div>
 
       <div className="text-center">
-        <Card className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-blue-200 dark:border-blue-700">
+        <Card className="p-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-900/20 dark:to-purple-900/20 border-blue-200 dark:border-blue-700">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Sparkles className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-            <h3 className="font-semibold text-blue-800 dark:text-blue-200">
+            <Sparkles className="h-5 w-5 text-white dark:text-blue-400" />
+            <h3 className="font-semibold text-white dark:text-blue-200">
               Features Overview
             </h3>
           </div>
@@ -156,7 +156,7 @@ export function PyXDemo() {
       <div className="mt-8 text-center">
         <Button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 text-white px-8 py-3"
+          className="!bg-[#FF620A] hover:bg-[#993B06] !text-white px-8 py-3 border-none"
         >
           <MessageCircle className="h-4 w-4 mr-2" />
           Start Chatting with PyX

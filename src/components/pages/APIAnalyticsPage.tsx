@@ -161,7 +161,7 @@ export function APIAnalyticsPage({ apiData, onBack }: APIAnalyticsPageProps) {
         </div>
 
         {/* API Info */}
-        <Card className="mb-6 bg-gradient-to-r from-blue-50/50 to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20">
+        <Card className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>

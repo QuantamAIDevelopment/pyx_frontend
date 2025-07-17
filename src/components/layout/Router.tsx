@@ -27,7 +27,7 @@ import { PremiumSupportPage } from '../pages/PremiumSupportPage'
 import { ChangelogPage } from '../pages/ChangelogPage'
 import { CareersPage } from '../pages/CareersPage'
 import { JobApplicationPage } from '../pages/JobApplicationPage'
-import { PressKitPage } from '../pages/PressKitPage'
+// import { PressKitPage } from '../pages/PressKitPage'
 import { HelpCenterPage } from '../pages/HelpCenterPage'
 import { CommunityPage } from '../pages/CommunityPage'
 // import { TutorialsPage } from '../pages/TutorialsPage'
@@ -59,6 +59,7 @@ import { TestDebugInterface } from '../common/TestDebugInterface'
 import { CustomNodeDevelopment } from '../agents/CustomNodeDevelopment'
 import { VisualAgentBuilder } from '../agents/VisualAgentBuilder'
 import { DeveloperDashboard } from '../layout/DeveloperDashboard'
+import { RunAgentPage } from '../pages/RunAgentPage';
 
 import { Suspense } from 'react';
 import React from 'react';
@@ -77,7 +78,6 @@ function AppRoutes() {
   const location = useLocation()
   
   // Global state
-  const [isDark, setIsDark] = useState(false)
   const [currentMode, setCurrentMode] = useState<Mode>('user')
   const [selectedAgent, setSelectedAgent] = useState<any>(null)
   const [selectedAPIAgent, setSelectedAPIAgent] = useState<any>(null)
@@ -94,30 +94,12 @@ function AppRoutes() {
   })
 
   useEffect(() => {
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setIsDark(true)
-      document.documentElement.classList.add('dark')
-    }
-
     // Check for saved mode preference
     const savedMode = localStorage.getItem('pyx-mode') as Mode
     if (savedMode && (savedMode === 'user' || savedMode === 'developer')) {
       setCurrentMode(savedMode)
     }
   }, [])
-
-  const toggleTheme = () => {
-    setIsDark(!isDark)
-    if (!isDark) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
-  }
 
   const toggleMode = (mode: Mode) => {
     setCurrentMode(mode)
@@ -178,6 +160,10 @@ function AppRoutes() {
     navigate(`/agents/${agentData.id}`)
   }
 
+  const handleRunAgent = (agentData: any) => {
+    navigate(`/agents/${agentData.id}/run`)
+  }
+
   const handleViewAPIDocs = (agentId: string, agentName: string) => {
     setApiDocsAgent({ id: agentId, name: agentName })
     navigate('/api/docs')
@@ -205,12 +191,14 @@ function AppRoutes() {
       '/developer-mode',
       '/api/manage',
       '/api/analytics',
-      '/api/docs'
+      '/api/docs',
+      '/agents/:id/run' // Add this line to exclude RunAgentPage
     ]
     
     return !noFooterRoutes.some(route => 
       location.pathname === route || 
       location.pathname.startsWith(route + '/') ||
+      (route === '/agents/:id/run' && /^\/agents\/[^/]+\/run$/.test(location.pathname)) ||
       location.pathname.startsWith('/api/access/')
     )
   }
@@ -219,10 +207,6 @@ function AppRoutes() {
     <div className="min-h-screen bg-background text-foreground">
       <PyXPageDetector currentPath={location.pathname} />
       <Header 
-        isDark={isDark}
-        onThemeToggle={toggleTheme}
-        // currentView={getCurrentView() as any}
-        // onViewChange={handleViewChange}
         currentMode={currentMode}
         onModeToggle={toggleMode}
         isLoggedIn={isLoggedIn}
@@ -253,6 +237,16 @@ function AppRoutes() {
           />
         } />
         
+        {/* This must come FIRST */}
+        <Route path="/agents/:id/run" element={
+          isLoggedIn ? (
+            <RunAgentPage />
+          ) : (
+            <Navigate to="/" replace />
+          )
+        } />
+
+        {/* This must come AFTER */}
         <Route path="/agents/:id" element={
           <AgentDetailWrapper 
             onBack={() => navigate('/agents')}
@@ -419,6 +413,7 @@ function AppRoutes() {
               onManageAPI={handleManageAPI}
               onAnalytics={handleAnalytics}
               onViewAgentDetail={handleViewAgentDetail}
+              onRunAgent={handleRunAgent}
             />
           ) : (
             <Navigate to="/" replace />
@@ -702,13 +697,13 @@ function AppRoutes() {
           />
         } />
 
-        <Route path="/press-kit" element={
+        {/* <Route path="/press-kit" element={
           <PressKitPage 
             onViewChange={handleViewChange}
             isLoggedIn={isLoggedIn}
             onShowAuth={showAuth}
           />
-        } />
+        } /> */}
 
         {/* Legal Pages */}
         <Route path="/privacy" element={

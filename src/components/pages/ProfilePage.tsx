@@ -319,7 +319,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                       Manage your API keys for programmatic access
                     </CardDescription>
                   </div>
-                  <Button>
+                  <Button className='text-black'>
                     <Plus className="h-4 w-4 mr-2" />
                     Generate New Key
                   </Button>
@@ -477,6 +477,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                     <p className="text-sm text-muted-foreground">Receive notifications via email</p>
                   </div>
                   <Switch
+                   className='bg-gray-300'
                     checked={notificationSettings.email}
                     onCheckedChange={(checked) => 
                       setNotificationSettings({ ...notificationSettings, email: checked })
@@ -492,6 +493,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                     <p className="text-sm text-muted-foreground">Get notified when agents are approved or rejected</p>
                   </div>
                   <Switch
+                  className='bg-gray-300'
                     checked={notificationSettings.agentUpdates}
                     onCheckedChange={(checked) => 
                       setNotificationSettings({ ...notificationSettings, agentUpdates: checked })
@@ -507,6 +509,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                     <p className="text-sm text-muted-foreground">Receive low balance warnings</p>
                   </div>
                   <Switch
+                  className='bg-gray-300'
                     checked={notificationSettings.walletAlerts}
                     onCheckedChange={(checked) => 
                       setNotificationSettings({ ...notificationSettings, walletAlerts: checked })
@@ -516,12 +519,13 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
 
                 <Separator />
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between ">
                   <div>
                     <p className="font-medium">Marketing Emails</p>
                     <p className="text-sm text-muted-foreground">Receive product updates and tips</p>
                   </div>
                   <Switch
+                  className='bg-gray-300'
                     checked={notificationSettings.marketingEmails}
                     onCheckedChange={(checked) => 
                       setNotificationSettings({ ...notificationSettings, marketingEmails: checked })

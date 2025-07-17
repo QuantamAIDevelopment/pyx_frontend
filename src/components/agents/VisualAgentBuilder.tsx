@@ -278,6 +278,7 @@ export function VisualAgentBuilder({ selectedWorkflow }: VisualAgentBuilderProps
               size="sm" 
               onClick={runWorkflow}
               disabled={isRunning || nodes.length === 0}
+              className='!bg-gray-800 hover:bg-gray-700 text-white border-none'
             >
               {isRunning ? (
                 <>
@@ -286,7 +287,7 @@ export function VisualAgentBuilder({ selectedWorkflow }: VisualAgentBuilderProps
                 </>
               ) : (
                 <>
-                  <Play className="h-4 w-4 mr-2" />
+                  <Play className="h-4 w-4 mr-2 " />
                   Run
                 </>
               )}

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { AgentCard } from './AgentCard'
 import { fetchAgentCards } from '../apiservices/api';
+import { Skeleton } from '../common/ui/skeleton'
 
 interface Agent {
   id: string
@@ -51,7 +52,25 @@ export function FeaturedAgents({ onAgentSelect, onExploreAgents }: FeaturedAgent
       });
   }, []);
 
-  if (loading) return <div className="text-center py-10">Loading featured agents...</div>;
+  if (loading) return (
+    <section className="py-20 sm:py-32 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+            Featured AI Agents
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Discover our most popular AI agents that are transforming businesses worldwide.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 px-20">
+          {[...Array(4)].map((_, i) => (
+            <Skeleton key={i} className="h-64 w-full rounded-xl" />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
   if (error) return <div className="text-center py-10 text-red-500">{error}</div>;
 
   return (

@@ -18,7 +18,7 @@ export function Footer() {
       { label: 'About Us', path: '/about' },
       { label: 'Careers', path: '/careers' },
       { label: 'Blog', path: '/blog' },
-      { label: 'Press Kit', path: '/press-kit' },
+      // { label: 'Press Kit', path: '/press-kit' },
       { label: 'Contact', path: '/contact' }
     ],
     resources: [
@@ -52,12 +52,13 @@ export function Footer() {
             {/* Brand section */}
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center space-x-2 mb-4 w-fit">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+                {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
                   <Zap className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                   PYX
-                </span>
+                </span> */}
+                 <img src='./assets/logo.png' width={100} height={60} alt='' className='ml-2' />
               </Link>
               <p className="text-muted-foreground mb-6 max-w-md">
                 Empowering businesses with intelligent AI agents that automate workflows, 

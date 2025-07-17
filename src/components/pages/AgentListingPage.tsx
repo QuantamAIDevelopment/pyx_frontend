@@ -27,6 +27,7 @@ import {
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../common/ui/tooltip'
 import { AgentCard } from '../agents/AgentCard'
 import { fetchAgentsPaginated } from '../apiservices/api';
+import { Skeleton } from '../common/ui/skeleton'
 
 interface Agent {
   id: string
@@ -72,26 +73,46 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
 
   useEffect(() => {
     setLoading(true);
-    fetchAgentsPaginated({ page: 0, size: 60 })
-      .then(data => {
-        // Map API agent structure to frontend Agent type
-        setAgents(
-          (data.content || []).map((agent: any) => ({
-            ...agent,
-            tags: agent.tags ? agent.tags.map((t: any) => t.value) : [],
-            features: agent.features ? agent.features.map((f: any) => f.value) : [],
-            integrations: agent.integrations ? agent.integrations.map((i: any) => i.value) : [],
-            isActive: agent.active,
-            isNew: agent.new,
-            isPremium: agent.premium,
-          }))
-        );
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
+
+    // Try to get agents from sessionStorage
+    const cached = sessionStorage.getItem('agents');
+    if (cached) {
+      const data = JSON.parse(cached);
+      setAgents(
+        (data.content || []).map((agent: any) => ({
+          ...agent,
+          tags: agent.tags ? agent.tags.map((t: any) => t.value) : [],
+          features: agent.features ? agent.features.map((f: any) => f.value) : [],
+          integrations: agent.integrations ? agent.integrations.map((i: any) => i.value) : [],
+          isActive: agent.active,
+          isNew: agent.new,
+          isPremium: agent.premium,
+        }))
+      );
+      setLoading(false);
+    } else {
+      // If not cached, fetch from API and cache it
+      fetchAgentsPaginated({ page: 0, size: 60 })
+        .then(data => {
+          sessionStorage.setItem('agents', JSON.stringify(data));
+          setAgents(
+            (data.content || []).map((agent: any) => ({
+              ...agent,
+              tags: agent.tags ? agent.tags.map((t: any) => t.value) : [],
+              features: agent.features ? agent.features.map((f: any) => f.value) : [],
+              integrations: agent.integrations ? agent.integrations.map((i: any) => i.value) : [],
+              isActive: agent.active,
+              isNew: agent.new,
+              isPremium: agent.premium,
+            }))
+          );
+          setLoading(false);
+        })
+        .catch(err => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }
   }, []);
 
   const categories = ['all', ...new Set(agents.map(agent => agent.category))]
@@ -125,7 +146,27 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
       }
     })
 
-  if (loading) return <div className="text-center py-10">Loading agents...</div>
+  if (loading) return (
+    <div className="min-h-screen">
+      <div className="py-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 px-4">
+              AI Agent Marketplace
+            </h1>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
+              Discover and deploy specialized AI agents to automate your business workflows.
+            </p>
+          </div>
+          <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 !px-20' : 'space-y-4'}>
+            {[...Array(viewMode === 'grid' ? 8 : 6)].map((_, i) => (
+              <Skeleton key={i} className={viewMode === 'grid' ? 'h-64 w-full rounded-xl' : 'h-32 w-full rounded-xl'} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
   if (error) return <div className="text-center py-10 text-red-500">{error}</div>
 
   return (
@@ -149,7 +190,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
                     <div className="w-full sm:w-auto relative">
                       <Button
                         onClick={isLoggedIn ? onViewActiveAgents : () => onShowAuth('login')}
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto min-w-0 border-none"
+                        className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto min-w-0 border-none"
                         size="default"
                       >
                         <Activity className="h-4 w-4 mr-2 flex-shrink-0 " />

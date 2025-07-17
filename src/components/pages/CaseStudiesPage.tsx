@@ -390,16 +390,18 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+
+ dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
               <Trophy className="h-3 w-3 mr-1" />
               Success Stories
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Real Results from{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                 Real Businesses
               </span>
             </h1>
@@ -411,7 +413,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto"
+                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
                 onClick={handleGetStarted}
               >
                 <Rocket className="h-4 w-4 mr-2" />
@@ -421,10 +423,10 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
               <Button 
                 variant="outline" 
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto !bg-white"
                 onClick={() => onViewChange('contact')}
               >
-                <Phone className="h-4 w-4 mr-2" />
+                <Phone className="h-4 w-4 mr-2 " />
                 Talk to Sales
               </Button>
             </div>
@@ -486,7 +488,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
                   </div>
                   <CardHeader className="pb-4">
                     <div className="flex items-center space-x-3 mb-3">
-                      <div className="h-10 w-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                      <div className="h-10 w-10 bg-gradient-to-r from-[#FF620A] to-[#993B06] rounded-full flex items-center justify-center">
                         <Building2 className="h-5 w-5 text-white" />
                       </div>
                       <div>
@@ -618,7 +620,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
                     </div>
                     <CardHeader className="pb-4">
                       <div className="flex items-center space-x-3 mb-3">
-                        <div className="h-8 w-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                        <div className="h-8 w-8 bg-gradient-to-r from-[#FF620A] to-[#993B06] rounded-full flex items-center justify-center">
                           <Building2 className="h-4 w-4 text-white" />
                         </div>
                         <div>
@@ -667,7 +669,8 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
+ text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -718,7 +721,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
             <div className="space-y-6">
               {/* Company Info */}
               <div className="flex items-center space-x-4 p-4 bg-muted rounded-lg">
-                <div className="h-12 w-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                <div className="h-12 w-12 bg-gradient-to-r from-[#FF620A] to-[#993B06]rounded-full flex items-center justify-center">
                   <Building2 className="h-6 w-6 text-white" />
                 </div>
                 <div className="flex-1">
@@ -799,7 +802,7 @@ export function CaseStudiesPage({ onViewChange, isLoggedIn, onShowAuth }: CaseSt
                     "{selectedCaseStudy?.testimonial?.quote}"
                   </blockquote>
                   <div className="flex items-center space-x-3">
-                    <div className="h-10 w-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                    <div className="h-10 w-10 bg-gradient-to-r from-[#FF620A] to-[#993B06] rounded-full flex items-center justify-center">
                       <Users className="h-5 w-5 text-white" />
                     </div>
                     <div>

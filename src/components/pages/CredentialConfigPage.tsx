@@ -185,7 +185,10 @@ export function CredentialConfigPage({ inputOption, outputOption, onNext, onBack
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ bg-clip-text text-transparent">
               Connect Your Tools
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -267,7 +270,10 @@ export function CredentialConfigPage({ inputOption, outputOption, onNext, onBack
             </Button>
             <Button
               onClick={handleNext}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+              className="bg-gradient-to-r 
+bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
+
+ hover:from-[#D94B05] hover:to-[#FF620A] text-white"
             >
               Continue to Generate Agent
               <ArrowRight className="h-4 w-4 ml-2" />

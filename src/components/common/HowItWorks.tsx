@@ -43,8 +43,9 @@ export function HowItWorks() {
               <div key={index} className="relative text-center group">
                 {/* Connection line */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-16 left-1/2 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 from-current to-transparent text-muted-foreground/20 z-0 " />
+                 <div className="hidden md:block absolute top-16 left-[100%] -translate-x-1/2 w-full h-0.5 bg-gradient-to-r from-[#FF620A] via-[#FF620A]/30 to-transparent z-0"/>
                 )}
+                {/* "hidden md:block absolute top-16 left-1/2 w-full h-0.5 bg-gradient-to-r from-[#FF620A] to-[#993B06] from-current to-transparent text-muted-foreground/20 z-0 " */}
                 
                 <div className="relative z-10">
                   {/* Step number */}

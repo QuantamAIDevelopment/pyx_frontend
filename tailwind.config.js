@@ -27,6 +27,9 @@ export default {
         input: "var(--input)",
         ring: "var(--ring)",
       },
+      fontFamily: {
+        quncry: ['Quncry', 'sans-serif'],
+      },
     },
   },
   plugins: [],

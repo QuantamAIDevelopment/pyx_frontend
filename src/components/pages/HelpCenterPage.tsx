@@ -260,16 +260,18 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+
+ dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
               <HelpCircle className="h-3 w-3 mr-1" />
               Help Center
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               How can we{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                 help you?
               </span>
             </h1>
@@ -293,7 +295,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto"
+                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
                 onClick={handleGetStarted}
               >
                 <Rocket className="h-4 w-4 mr-2" />
@@ -330,7 +332,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 cursor-pointer" onClick={option.action}>
                   <CardHeader className="pb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
                     <CardTitle className="text-lg">{option.title}</CardTitle>
@@ -505,7 +507,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
                   return (
                     <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 cursor-pointer group" onClick={link.action}>
                       <CardContent className="p-6">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4 group-hover:scale-110 transition-transform">
                           <IconComponent className="h-6 w-6 text-white" />
                         </div>
                         <h3 className="font-medium mb-2 group-hover:text-primary transition-colors">
@@ -525,7 +527,8 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
       </section>
 
       {/* Still Need Help CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
+ text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">

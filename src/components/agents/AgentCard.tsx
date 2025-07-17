@@ -62,7 +62,7 @@ export function AgentCard({ agent, onClick, showFooter = true, showBadges = true
     >
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between mb-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 group-hover:scale-110 transition-transform duration-300">
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#FF620A] group-hover:scale-110 transition-transform duration-300">
             <IconComponent className="h-6 w-6 text-white" />
           </div>
           {showBadges && agent.isPopular && (

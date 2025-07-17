@@ -12,11 +12,11 @@ import { CustomNodeDevelopment } from '../agents/CustomNodeDevelopment'
 import { DeploymentSettings } from '../pages/DeploymentSettings'
 import { TestDebugInterface } from '../common/TestDebugInterface'
 import { DeveloperDashboard } from '../layout/DeveloperDashboard'
-import { 
-  Code2, 
-  Settings, 
-  TestTube, 
-  FileCode, 
+import {
+  Code2,
+  Settings,
+  TestTube,
+  FileCode,
   GitBranch,
   // Zap,
   Wallet,
@@ -110,7 +110,8 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
               </Button>
               <Separator orientation="vertical" className="h-6" />
               <div className="flex items-center space-x-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-blue-600">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] via-[#FF8A3D] to-[#993B06]
+">
                   <Code2 className="h-4 w-4 text-white" />
                 </div>
                 <div>
@@ -118,7 +119,9 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
                   <p className="text-xs text-muted-foreground">Advanced AI Agent Development</p>
                 </div>
               </div>
-              <Badge className="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+              <Badge className="
+bg-gradient-to-r from-[#FF620A] to-[#993B06]
+ text-white">
                 Beta
               </Badge>
             </div>
@@ -144,9 +147,9 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
       <div className="flex-1 overflow-hidden">
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Sidebar */}
-          <ResizablePanel 
-            defaultSize={sidebarCollapsed ? 5 : 20} 
-            minSize={5} 
+          <ResizablePanel
+            defaultSize={sidebarCollapsed ? 5 : 20}
+            minSize={5}
             maxSize={30}
             className="border-r bg-sidebar"
           >
@@ -182,11 +185,10 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
                         key={item.id}
                         variant={currentView === item.id ? 'default' : 'ghost'}
                         onClick={() => setCurrentView(item.id)}
-                        className={`w-full justify-start h-auto p-3 ${
-                          currentView === item.id 
-                            ? 'bg-sidebar-primary text-sidebar-primary-foreground' 
+                        className={`w-full justify-start h-auto p-3 ${currentView === item.id
+                            ? '!bg-black text-white border-none'
                             : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center w-full">
                           <IconComponent className="h-4 w-4 flex-shrink-0" />
@@ -198,6 +200,7 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
                           )}
                         </div>
                       </Button>
+
                     )
                   })}
                 </div>

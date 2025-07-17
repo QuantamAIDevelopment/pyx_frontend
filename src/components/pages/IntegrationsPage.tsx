@@ -29,6 +29,7 @@ import {
   Lock,
   Timer
 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom';
 
 interface IntegrationsPageProps {
   onViewChange: (view: string) => void
@@ -37,6 +38,7 @@ interface IntegrationsPageProps {
 }
 
 export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: IntegrationsPageProps) {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
 
@@ -290,16 +292,18 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20 ">
+      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+
+ dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20 ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="text-center max-w-4xl mx-auto ">
-            <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
               <Zap className="h-3 w-3 mr-1" />
               50+ Integrations
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Connect Everything with{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                 Powerful Integrations
               </span>
             </h1>
@@ -323,7 +327,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto ">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto"
+                className="bg-[#FF620A] hover:bg-[#993B06] w-full sm:w-auto border-none text-white"
                 onClick={handleGetStarted}
               >
                 <Settings className="h-4 w-4 mr-2" />
@@ -334,7 +338,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                 variant="outline" 
                 size="lg"
                 className="w-full sm:w-auto"
-                onClick={() => onViewChange('contact')}
+                onClick={() => navigate('/contact')}
               >
                 <Code className="h-4 w-4 mr-2" />
                 Request Integration
@@ -349,7 +353,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 px-20">
             <div className="text-center ">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
                 <Globe className="h-6 w-6 text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold mb-2">50+</div>
@@ -420,7 +424,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                           <CardTitle className="flex items-center gap-2 flex-wrap text-base">
                             <span className="truncate">{integration.name}</span>
                             {integration.popular && (
-                              <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs flex-shrink-0">
+                              <Badge className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white text-xs flex-shrink-0">
                                 Popular
                               </Badge>
                             )}
@@ -514,7 +518,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 border-dashed border-muted-foreground/30 hover:border-blue-500/50 transition-colors">
               <CardContent className="p-12 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-6">
+                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-6">
                   <Code className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Don't See Your Tool?</h3>
@@ -525,8 +529,8 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
                   <Button 
                     size="lg"
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 w-full sm:w-auto"
-                    onClick={() => onViewChange('contact')}
+                    className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                    onClick={() => navigate('/contact')}
                   >
                     <Webhook className="h-4 w-4 mr-2" />
                     Request Integration
@@ -535,7 +539,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                     variant="outline" 
                     size="lg"
                     className="w-full sm:w-auto"
-                    onClick={() => onViewChange('api-docs')}
+                    onClick={() => navigate('/api/docs')}
                   >
                     <Database className="h-4 w-4 mr-2" />
                     View API Docs
@@ -548,7 +552,8 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
+ text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -572,10 +577,10 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
-                onClick={() => onViewChange('contact')}
+                className="border-white text-black hover:bg-white hover:text-primary w-full sm:w-auto border-none"
+                onClick={() => navigate('/contact')}
               >
-                <MessageSquare className="h-4 w-4 mr-2" />
+                <MessageSquare className="h-4 w-4 mr-2 " />
                 Get Help
               </Button>
             </div>

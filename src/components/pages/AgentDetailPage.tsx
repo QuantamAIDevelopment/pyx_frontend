@@ -53,7 +53,9 @@ import {
 } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '../common/ui/avatar'
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchAgentDetailById } from '../apiservices/api';
+import { Skeleton } from '../common/ui/skeleton';
 
 interface Agent {
   id: string
@@ -123,6 +125,7 @@ const integrations = [
 
 export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLoggedIn, onShowAuth }: AgentDetailPageProps) {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [agent, setAgent] = useState(initialAgent);
   const [loading, setLoading] = useState(!initialAgent);
   const [isSaved, setIsSaved] = useState(false)
@@ -229,7 +232,36 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
     }
   }
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="w-full max-w-4xl mx-auto">
+        <div className="flex items-start space-x-6 mb-8">
+          <Skeleton className="h-20 w-20 rounded-xl" />
+          <div className="flex-1 space-y-4">
+            <Skeleton className="h-8 w-1/2 rounded" />
+            <Skeleton className="h-5 w-1/3 rounded" />
+            <Skeleton className="h-4 w-3/4 rounded" />
+            <div className="flex gap-2 mt-2">
+              <Skeleton className="h-6 w-16 rounded" />
+              <Skeleton className="h-6 w-16 rounded" />
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-8">
+            <Skeleton className="h-32 w-full rounded-xl mb-4" />
+            <Skeleton className="h-32 w-full rounded-xl mb-4" />
+            <Skeleton className="h-32 w-full rounded-xl mb-4" />
+          </div>
+          <div className="space-y-6">
+            <Skeleton className="h-32 w-full rounded-xl mb-4" />
+            <Skeleton className="h-32 w-full rounded-xl mb-4" />
+            <Skeleton className="h-32 w-full rounded-xl mb-4" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
   if (!agent) return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
@@ -259,7 +291,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
           <div className="lg:col-span-2 space-y-8">
             {/* Agent Header */}
             <div className="flex items-start space-x-6">
-              <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex-shrink-0">
+              <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-r from-[#FF620A] to-[#993B06] flex-shrink-0">
                 <IconComponent className="h-10 w-10 text-white" />
               </div>
               <div className="flex-1">
@@ -295,9 +327,9 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-3">
               <Button 
-                onClick={onActivate}
+                onClick={() => navigate(`/agents/${agent?.id}/run`)}
                 size="lg" 
-                className="px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 border-none"
+                className="px-8 bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-[#993B06] hover:to-[#FF620A] border-none"
               >
                 <Play className="h-4 w-4 mr-2" />
                 Run Agent
@@ -414,7 +446,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
                       <p className="text-sm text-muted-foreground mb-4">
                         Test this agent with your own data
                       </p>
-                      <Button onClick={handleTryDemo}>
+                      <Button onClick={handleTryDemo} className='!bg-black text-white border-none hover:bg-gray-700'>
                         <TestTube className="h-4 w-4 mr-2" />
                         Launch Demo
                       </Button>
@@ -518,11 +550,11 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
                 <CardTitle>Pricing</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg border">
-                  <p className="text-sm text-muted-foreground mb-1">Starting at</p>
+                <div className="text-center p-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg border">
+                  <p className="text-sm text-black mb-1">Starting at</p>
                   <p className="text-3xl font-bold">{agent.price}</p>
                   {agent.price !== 'Free' && (
-                    <p className="text-xs text-muted-foreground">7-day free trial included</p>
+                    <p className="text-xs text-black">7-day free trial included</p>
                   )}
                 </div>
               </CardContent>
@@ -551,7 +583,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
       <Dialog open={showShareModal} onOpenChange={setShowShareModal}>
         <DialogContent className="w-[95vw] max-w-md">
           <DialogHeader>
-            <DialogTitle className="flex items-center">
+            <DialogTitle className="flex items-center ">
               <Share className="h-5 w-5 mr-2" />
               Share Agent
             </DialogTitle>
@@ -569,7 +601,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
               <Button
                 size="sm"
                 onClick={() => copyToClipboard(agent ? `${window.location.origin}/agents/${agent.id}` : '')}
-                className="flex-shrink-0"
+                className="flex-shrink-0 !bg-black border-none"
               >
                 <Copy className="h-4 w-4" />
               </Button>
@@ -657,7 +689,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLog
                 <Button 
                   onClick={handleRunDemo} 
                   disabled={isRunningDemo || !demoInput.trim()}
-                  className="flex-1"
+                  className="flex-1 !bg-gray-600 hover:bg-gray-700 text-white"
                 >
                   {isRunningDemo ? (
                     <>

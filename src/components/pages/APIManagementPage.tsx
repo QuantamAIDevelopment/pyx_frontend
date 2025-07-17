@@ -96,7 +96,7 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
             </Button>
             <div>
               <h1 className="text-3xl font-bold flex items-center space-x-3">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-lg text-white">
+                <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06]p-2 rounded-lg text-white">
                   <Settings className="h-6 w-6" />
                 </div>
                 <span>API Management</span>
@@ -113,7 +113,7 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
         </div>
 
         {/* API Info Card */}
-        <Card className="mb-6 bg-gradient-to-r from-blue-50/50 to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20">
+        <Card className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -409,13 +409,13 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
                         <Label htmlFor={event.id} className="cursor-pointer">
                           {event.label}
                         </Label>
-                        <Switch id={event.id} defaultChecked={event.enabled} />
+                        <Switch id={event.id} defaultChecked={event.enabled} className='bg-gray-300'/>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <Button className="w-full">
+                <Button className="w-full !bg-black text-white border-none">
                   Test Webhook
                 </Button>
               </CardContent>
@@ -445,9 +445,9 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
                     <Button 
                       variant="destructive" 
                       onClick={deleteAPI}
-                      className="ml-4"
+                      className="ml-4 !bg-red-500 text-white border-none rounded"
                     >
-                      <Trash2 className="h-4 w-4 mr-2" />
+                      <Trash2 className="h-4 w-4 mr-2 " />
                       Delete API
                     </Button>
                   </div>

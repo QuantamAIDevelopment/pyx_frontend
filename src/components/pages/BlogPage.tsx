@@ -195,7 +195,7 @@ export function BlogPage({ onPostSelect }: BlogPageProps) {
                   />
                 </div>
                 <div className="p-6 lg:p-8 flex flex-col justify-center">
-                  <Badge className="w-fit mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                  <Badge className="w-fit mb-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
                     Featured
                   </Badge>
                   <h2 className="text-2xl lg:text-3xl font-bold mb-4 hover:text-primary transition-colors">

@@ -384,7 +384,7 @@ export function ContactPage() {
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
                     <CardHeader className="pb-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
                         <IconComponent className="h-6 w-6 text-white" />
                       </div>
                       <CardTitle className="text-lg">{option.title}</CardTitle>
@@ -437,10 +437,10 @@ export function ContactPage() {
           {/* CTA Section */}
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg p-10 text-center mb-16 ">
             <div className="flex items-center justify-center space-x-2 mb-4 ">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
                 <Zap className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                 PYX
               </span>
             </div>

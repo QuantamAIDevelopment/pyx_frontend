@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
@@ -202,6 +203,7 @@ export function ActiveAgentsPage({ onViewChange }: ActiveAgentsPageProps) {
   
   // Remove the selectedAgent and setSelectedAgent state
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const navigate = useNavigate();
 
   const filteredAgents = activeAgents.filter(agent => {
     const matchesSearch = agent.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -248,7 +250,7 @@ export function ActiveAgentsPage({ onViewChange }: ActiveAgentsPageProps) {
   const runningAgents = activeAgents.filter(agent => agent.status === 'running').length
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background px-20">
       <div className="py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -257,7 +259,7 @@ export function ActiveAgentsPage({ onViewChange }: ActiveAgentsPageProps) {
               <Button 
                 variant="ghost" 
                 size="sm"
-                onClick={() => onViewChange('agents')}
+                onClick={() => navigate('/agents')}
                 className="flex items-center"
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
@@ -394,11 +396,13 @@ export function ActiveAgentsPage({ onViewChange }: ActiveAgentsPageProps) {
                     ))}
                   </SelectContent>
                 </Select>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 ">
                   <Button
                     variant={viewMode === 'grid' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setViewMode('grid')}
+                      className={`flex-1 sm:flex-none ${viewMode === 'grid' ? '!bg-black text-white border-none' : ''}`}
+                    
                   >
                     Grid
                   </Button>
@@ -406,6 +410,7 @@ export function ActiveAgentsPage({ onViewChange }: ActiveAgentsPageProps) {
                     variant={viewMode === 'list' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setViewMode('list')}
+                       className={`flex-1 sm:flex-none ${viewMode === 'list' ? '!bg-black text-white border-none' : ''}`}
                   >
                     List
                   </Button>

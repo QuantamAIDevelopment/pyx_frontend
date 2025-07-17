@@ -277,11 +277,11 @@ export function DeveloperDashboard({ onSelectWorkflow, onNewAgent }: DeveloperDa
               <span className="font-medium">{agent.lastModified}</span>
             </div>
             
-            <div className="flex space-x-2 pt-2">
+            <div className="flex space-x-2 pt-2 ">
               <Button 
                 size="sm" 
                 onClick={() => handleAgentAction('edit', agent)}
-                className="flex-1"
+                className="flex-1 !bg-black border-none"
               >
                 <Edit className="h-3 w-3 mr-1" />
                 Edit
@@ -377,7 +377,9 @@ export function DeveloperDashboard({ onSelectWorkflow, onNewAgent }: DeveloperDa
             <p className="text-muted-foreground">Manage and monitor your AI agent workflows</p>
           </div>
           <Button 
-            className="bg-gradient-to-r from-purple-600 to-blue-600"
+            className="
+bg-gradient-to-r from-[#FF620A] to-[#993B06]
+"
             onClick={onNewAgent}
           >
             <Plus className="h-4 w-4 mr-2" />

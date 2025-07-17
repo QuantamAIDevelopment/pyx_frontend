@@ -1,4 +1,4 @@
-const BASE_URL = 'http://192.168.0.22:8080/api/agents';
+const BASE_URL = 'https://pyx-masterdata-serivce-gedha7bja3awbbey.canadacentral-01.azurewebsites.net/api/agents';
 
 const handleResponse = async (res: Response) => {
   if (!res.ok) throw new Error('Request failed');

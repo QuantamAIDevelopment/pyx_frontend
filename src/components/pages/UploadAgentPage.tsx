@@ -174,24 +174,32 @@ export function UploadAgentPage({ onBack }: UploadAgentPageProps) {
 
         {/* Navigation Tabs */}
         <div className="flex space-x-1 mb-8 bg-muted p-1 rounded-lg w-fit">
-          <Button
-          className='text-black'
-            variant={currentView === 'upload' ? 'default' : 'ghost'}
-            onClick={() => setCurrentView('upload')}
-            size="sm"
-          >
-            <Upload className="h-4 w-4 mr-2" />
-            Upload New
-          </Button>
-          <Button
-            variant={currentView === 'status' ? 'default' : 'ghost'}
-            onClick={() => setCurrentView('status')}
-            size="sm"
-          >
-            <FileText className="h-4 w-4 mr-2" />
-            Status Tracker
-          </Button>
-        </div>
+  <Button
+    onClick={() => setCurrentView('upload')}
+    size="sm"
+    className={`${
+      currentView === 'upload'
+        ? '!bg-black text-white hover:bg-black border-none'
+        : 'bg-transparent text-black hover:bg-muted'
+    }`}
+  >
+    <Upload className="h-4 w-4 mr-2" />
+    Upload New
+  </Button>
+  <Button
+    onClick={() => setCurrentView('status')}
+    size="sm"
+    className={`${
+      currentView === 'status'
+        ? '!bg-black text-white hover:bg-black border-none'
+        : 'bg-transparent text-black hover:bg-muted'
+    }`}
+  >
+    <FileText className="h-4 w-4 mr-2" />
+    Status Tracker
+  </Button>
+</div>
+
 
         {currentView === 'upload' ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -317,7 +325,7 @@ export function UploadAgentPage({ onBack }: UploadAgentPageProps) {
 
                       <Button 
                         type="submit" 
-                        className="w-full text-black bg-white" 
+                        className="w-full text-white !bg-gray-700 hover:bg-gray-800 border-none" 
                         disabled={!formData.name || !formData.description || !formData.category || !formData.file}
                       >
                         <Upload className="h-4 w-4 mr-2" />

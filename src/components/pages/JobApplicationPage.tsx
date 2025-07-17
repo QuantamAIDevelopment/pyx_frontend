@@ -328,7 +328,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
                   Back to Careers
                 </Button>
                 <Button 
-                  className="bg-gradient-to-r from-blue-600 to-purple-600"
+                  className="bg-gradient-to-r from-[#FF620A] to-[#993B06]"
                   onClick={() => onViewChange('dashboard')}
                 >
                   <Sparkles className="h-4 w-4 mr-2" />
@@ -1071,7 +1071,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
               <Button
                 onClick={nextStep}
                 disabled={!canProceedToNext()}
-                className="bg-gradient-to-r from-blue-600 to-purple-600"
+                className="bg-gradient-to-r from-[#FF620A] to-[#993B06]"
               >
                 Next
                 <ArrowRight className="h-4 w-4 ml-2" />

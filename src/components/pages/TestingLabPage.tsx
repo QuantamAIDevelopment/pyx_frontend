@@ -369,7 +369,7 @@ export function TestingLabPage({ onBack, selectedAgent, onSelectAgent }: Testing
                   
                   <div className="mt-6 space-y-2">
                     <Button 
-                      className="w-full" 
+                      className="w-full !text-white !bg-gray-700 border-none" 
                       onClick={() => selectedTestSuite && runTestSuite()}
                       disabled={!selectedTestSuite || isRunningTests}
                     >
@@ -516,7 +516,7 @@ export function TestingLabPage({ onBack, selectedAgent, onSelectAgent }: Testing
                     <Button 
                       onClick={runQuickTest}
                       disabled={!testInput.trim() || isQuickTesting}
-                      className="flex-1"
+                      className="flex-1 !bg-gray-700 text-white !hover:bg-gray-800 !border-none"
                     >
                       {isQuickTesting ? (
                         <>

@@ -301,6 +301,7 @@ function processInput(input) {
               size="sm" 
               onClick={runTests}
               disabled={isRunningTest || !selectedNode?.tests.length}
+              className='!bg-black border-none'
             >
               {isRunningTest ? (
                 <>

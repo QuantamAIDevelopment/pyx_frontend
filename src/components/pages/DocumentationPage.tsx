@@ -268,16 +268,18 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+
+ dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
               <BookOpen className="h-3 w-3 mr-1" />
               Developer Documentation
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Everything You Need to{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                 Build with QAID
               </span>
             </h1>
@@ -356,7 +358,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
                         {doc.title}
                       </CardTitle>
                       {doc.popular && (
-                        <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs flex-shrink-0">
+                        <Badge className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white text-xs flex-shrink-0">
                           Popular
                         </Badge>
                       )}
@@ -601,7 +603,8 @@ result = client.workflows.execute(
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
+ text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
