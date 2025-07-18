@@ -69,12 +69,7 @@ export function Header({
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 ml-0 ">
-            {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
-              <Zap className="h-5 w-5 text-white" />
-            </div> */}
-            {/* <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
-              PYX
-            </span> */}
+           
             <img src='./assets/logo.png' width={60} height={50} alt='' className='ml-0 ' />
           </Link>
 

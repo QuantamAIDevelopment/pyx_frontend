@@ -73,12 +73,13 @@ export function AuthModal({
       <DialogContent className="sm:max-w-md">
         <DialogHeader className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
+            {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
               <Zap className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+            </div> */}
+            {/* <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
               PYX
-            </span>
+            </span> */}
+             <img src='./assets/logo.png' width={70} height={50} alt='' className='ml-0 ' />
           </div>
           <DialogTitle>
             {mode === 'login' ? 'Welcome Back' : 'Create Your Account'}
