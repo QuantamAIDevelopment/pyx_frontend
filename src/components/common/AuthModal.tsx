@@ -18,7 +18,7 @@ import {
   TabsList,
   TabsTrigger
 } from '../common/ui/tabs'
-import { Github, Mail, Eye, EyeOff, Zap } from 'lucide-react'
+import { Github, Mail, Eye, EyeOff } from 'lucide-react'
 
 interface AuthModalProps {
   isOpen: boolean
