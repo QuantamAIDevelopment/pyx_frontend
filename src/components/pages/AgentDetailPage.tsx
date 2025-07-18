@@ -123,7 +123,7 @@ const integrations = [
   { name: 'HubSpot', logo: '🎯', status: 'Available' }
 ]
 
-export function AgentDetailPage({ agent: initialAgent, onBack, onActivate, isLoggedIn, onShowAuth }: AgentDetailPageProps) {
+export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onShowAuth }: AgentDetailPageProps) {
   const { id } = useParams();
   const navigate = useNavigate();
   const [agent, setAgent] = useState(initialAgent);

@@ -1,21 +1,35 @@
-import React, { useState, useRef, ChangeEvent, FormEvent, MouseEvent, RefObject } from 'react';
-import { FaFileUpload, FaCheckCircle, FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
- 
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/invoice%20summary';
- 
+import React, {
+  useState,
+  useRef,
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  RefObject,
+} from 'react';
+import {
+  FaCheckCircle,
+  FaExclamationCircle,
+  FaCopy,
+  FaDownload,
+} from 'react-icons/fa';
+import { motion } from 'framer-motion';
+
+const API_URL =
+  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/invoice%20summary';
+
 interface ErrorMessageProps {
   error: string;
 }
- 
+
 function ErrorMessage({ error }: ErrorMessageProps) {
   if (!error) return null;
   return (
-    <div className="text-red-500 mt-4 flex items-center">
-      <FaExclamationCircle className="mr-2" />{error}
+    <div className="text-red-600 mt-4 flex items-center text-sm font-medium">
+      <FaExclamationCircle className="mr-2" /> {error}
     </div>
   );
 }
- 
+
 interface InvoiceResultProps {
   result: string;
   showMenu: boolean;
@@ -24,70 +38,107 @@ interface InvoiceResultProps {
   onDownload: () => void;
   menuRef: RefObject<HTMLDivElement>;
 }
- 
-function InvoiceResult({ result, showMenu, onContextMenu, onCopy, onDownload, menuRef }: InvoiceResultProps) {
+
+function InvoiceResult({
+  result,
+  showMenu,
+  onContextMenu,
+  onCopy,
+  onDownload,
+  menuRef,
+}: InvoiceResultProps) {
   if (!result) return null;
+
   return (
-    <div
-      className="mt-6 p-6 rounded-lg relative cursor-pointer group shadow-md"
-      style={{ background: '#f3f4f6' }}
-      onContextMenu={onContextMenu}
-      tabIndex={0}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
     >
-      <div className="flex items-center mb-2 text-green-700 font-semibold">
-        <FaCheckCircle className="mr-2" /> Invoice Processed Successfully
-      </div>
-      <pre className="whitespace-pre-wrap text-gray-800 text-lg" style={{ fontFamily: 'sans-serif' }}>{result}</pre>
-      {showMenu && (
-        <div ref={menuRef} className="absolute right-2 top-2 bg-white border rounded shadow z-10">
-          <button onClick={onCopy} className="flex items-center px-4 py-2 hover:bg-gray-100 w-full" style={{ fontFamily: 'sans-serif', fontSize: '15.75px' }}><FaCopy className="mr-2" />Copy</button>
-          <button onClick={onDownload} className="flex items-center px-4 py-2 hover:bg-gray-100 w-full" style={{ fontFamily: 'sans-serif', fontSize: '15.75px' }}><FaDownload className="mr-2" />Download as TXT</button>
+      <div
+        className="mt-6 p-6 rounded-xl relative cursor-pointer group shadow-md bg-gray-50 border border-gray-200 font-sans"
+        onContextMenu={onContextMenu}
+        tabIndex={0}
+      >
+        <div className="flex items-center mb-2 text-green-700 font-semibold">
+          <FaCheckCircle className="mr-2 text-green-600" />
+          Invoice Processed Successfully
         </div>
-      )}
-      <div className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-400">Right-click for options</div>
-    </div>
+        <pre className="whitespace-pre-wrap text-gray-800 text-[15px] leading-relaxed font-mono max-h-[400px] overflow-auto">
+          {result}
+        </pre>
+        {showMenu && (
+          <div
+            ref={menuRef}
+            className="absolute right-2 top-2 bg-white border rounded shadow z-10"
+          >
+            <button
+              onClick={onCopy}
+              className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-sm"
+            >
+              <FaCopy className="mr-2" /> Copy
+            </button>
+            <button
+              onClick={onDownload}
+              className="flex items-center px-4 py-2 hover:bg-gray-100 w-full text-sm"
+            >
+              <FaDownload className="mr-2" /> Download as TXT
+            </button>
+          </div>
+        )}
+        <div className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-400">
+          Right-click for options
+        </div>
+      </div>
+    </motion.div>
   );
 }
- 
+
 interface FileUploadFormProps {
   loading: boolean;
   file: File | null;
   onFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
- 
-function FileUploadForm({ loading, file, onFileChange, onSubmit }: FileUploadFormProps) {
+
+function FileUploadForm({
+  loading,
+  onFileChange,
+  onSubmit,
+}: FileUploadFormProps) {
   return (
-    <form onSubmit={onSubmit} className="flex flex-col space-y-4">
-      <label className="font-semibold" style={{ fontFamily: 'sans-serif', fontSize: '20px' }}>Upload Invoice (PDF/Image/Doc):</label>
+    <form onSubmit={onSubmit} className="flex flex-col space-y-6">
+      <label
+        className="font-semibold text-[18px] text-gray-800"
+        style={{ fontFamily: 'Poppins' }}
+      >
+        Upload Invoice (PDF/Image/Doc):
+      </label>
       <input
         type="file"
         accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
         onChange={onFileChange}
-        className="border p-6 rounded text-base placeholder-gray-400"
-        style={{ fontFamily: 'sans-serif', fontSize: '20px' }}
+        className="border border-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-orange-500 file:to-red-600 file:text-white hover:file:opacity-90 rounded-md p-2 transition-all cursor-pointer text-sm"
         disabled={loading}
-        placeholder="Choose a file..."
       />
+
       <button
-  type="submit"
-  disabled={loading || !file}
-  className={`
-    flex items-center justify-center w-full
-    px-6 py-3 rounded shadow-md
-    text-white text-[15.75px] font-sans font-semibold
-    bg-gradient-to-r from-[#155DFC] to-[#9810FA]
-    transition-opacity
-    ${loading || !file ? 'opacity-60 cursor-not-allowed' : 'opacity-100 cursor-pointer'}
-  `}
->
-  <FaFileUpload className="mr-2" /> {loading ? 'Processing...' : 'Upload & Analyze'}
-</button>
- 
+        type="submit"
+        disabled={loading}
+        className={`
+          w-full sm:w-1/2 mx-auto py-3 px-6
+          text-white font-semibold text-lg rounded-lg
+          bg-gradient-to-r from-orange-500 to-red-600
+          shadow-md hover:brightness-110 transition-all
+          disabled:opacity-60 disabled:cursor-not-allowed
+        `}
+      >
+        {loading ? 'Processing...' : 'Upload & Analyze'}
+      </button>
     </form>
   );
 }
- 
+
 const SmartInvoiceAI: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -95,7 +146,7 @@ const SmartInvoiceAI: React.FC = () => {
   const [result, setResult] = useState<string>('');
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
- 
+
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
@@ -105,7 +156,7 @@ const SmartInvoiceAI: React.FC = () => {
     setResult('');
     setError('');
   };
- 
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!file) {
@@ -131,21 +182,22 @@ const SmartInvoiceAI: React.FC = () => {
       setLoading(false);
     }
   };
- 
+
   const handleContextMenu = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setShowMenu(true);
     const clickHandler = () => setShowMenu(false);
     document.addEventListener('click', clickHandler, { once: true });
   };
- 
+
   const handleCopy = () => {
     if (result) {
       navigator.clipboard.writeText(result);
+      alert('Copied to clipboard');
     }
     setShowMenu(false);
   };
- 
+
   const handleDownload = () => {
     if (!result) return;
     const blob = new Blob([result], { type: 'text/plain' });
@@ -157,20 +209,31 @@ const SmartInvoiceAI: React.FC = () => {
     URL.revokeObjectURL(url);
     setShowMenu(false);
   };
- 
+
   return (
-    <div className="max-w-xl mx-auto p-6 rounded-xl shadow-md space-y-8" style={{ background: '#f3f4f6' }}>
-      <div className="flex items-center space-x-3 mb-4">
-        <div className="bg-blue-500 p-3 rounded-full shadow">
-          <FaFileUpload className="w-6 h-6 text-white" />
-        </div>
-        <h2 className="text-[42px] font-sans text-black m-0 p-0 font-bold">
-  SmartInvoice AI
-</h2>
- 
+    <div className="max-w-3xl mx-auto mt-12 px-6 sm:px-10 py-12 rounded-[2rem] bg-gray-50 backdrop-blur-xl shadow-md border border-gray-200 space-y-10 transition-all">
+      {/* Heading */}
+      <div className="text-center">
+        <h2 className="text-[32px] sm:text-[48px] font-bold leading-tight text-gray-900 tracking-tight font-sans">
+          Smart<span className="text-orange-600">Invoice</span> AI
+        </h2>
+        <p className="mt-2 text-lg text-gray-500 font-medium">
+          Upload your invoice and get an instant summary powered by AI.
+        </p>
       </div>
-      <FileUploadForm loading={loading} file={file} onFileChange={handleFileChange} onSubmit={handleSubmit} />
+
+      {/* File Upload */}
+      <FileUploadForm
+        loading={loading}
+        file={file}
+        onFileChange={handleFileChange}
+        onSubmit={handleSubmit}
+      />
+
+      {/* Error message */}
       <ErrorMessage error={error} />
+
+      {/* Output result */}
       <InvoiceResult
         result={result}
         showMenu={showMenu}
@@ -182,5 +245,5 @@ const SmartInvoiceAI: React.FC = () => {
     </div>
   );
 };
- 
+
 export default SmartInvoiceAI;

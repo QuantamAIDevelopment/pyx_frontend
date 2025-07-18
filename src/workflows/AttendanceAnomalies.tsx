@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
-import { FaFileCsv, FaPaperPlane, FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
+import { FaFileCsv,  FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
 import PageRevealWrapper from './PageRevealWrapper';
  
 interface ErrorMessageProps {
@@ -34,7 +34,7 @@ function ResponseResult({ result, showMenu, onContextMenu, onCopy, onDownload }:
       <div className="flex items-center mb-2 text-green-700 font-semibold">
         <FaFileCsv className="mr-2" /> Attendance Anomalies Result
       </div>
-      <pre className="whitespace-pre-wrap text-gray-800 text-sm">{result}</pre>
+      <pre className="whitespace-pre-wrap text-gray-800 text-sm" style={{ fontFamily: 'Poppins, sans-serif', fontSize: '15.75px' }}>{result}</pre>
       {showMenu && (
         <div className="absolute right-2 top-2 bg-white border rounded shadow z-10">
           <button onClick={onCopy} className="flex items-center px-4 py-2 hover:bg-gray-100 w-full"><FaCopy className="mr-2" />Copy</button>
@@ -53,7 +53,6 @@ const AttendanceAnomalies: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [result, setResult] = useState<string>('');
-  const [showMenu, setShowMenu] = useState<boolean>(false);
  
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -96,8 +95,10 @@ const AttendanceAnomalies: React.FC = () => {
  
   const handleContextMenu = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setShowMenu(true);
-    const clickHandler = () => setShowMenu(false);
+    // setShowMenu(true); // This line was removed as per the edit hint
+    const clickHandler = () => {
+      // setShowMenu(false); // This line was removed as per the edit hint
+    };
     document.addEventListener('click', clickHandler, { once: true });
   };
  
@@ -105,7 +106,7 @@ const AttendanceAnomalies: React.FC = () => {
     if (result) {
       navigator.clipboard.writeText(result);
     }
-    setShowMenu(false);
+    // setShowMenu(false); // This line was removed as per the edit hint
   };
  
   const handleDownload = () => {
@@ -118,7 +119,7 @@ const AttendanceAnomalies: React.FC = () => {
       a.click();
       URL.revokeObjectURL(url);
     }
-    setShowMenu(false);
+    // setShowMenu(false); // This line was removed as per the edit hint
   };
  
   return (
@@ -128,46 +129,47 @@ const AttendanceAnomalies: React.FC = () => {
       details=""
       coverImage=""
     >
-      <div className="max-w-xl mx-auto p-6 bg-gray-200 rounded-xl shadow-md space-y-8">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="bg-blue-500 p-3 rounded-full shadow">
-            <FaFileCsv className="w-6 h-6 text-white" />
-          </div>
-          <h2 className="text-[42px] font-sans font-bold text-black m-0 p-0">
+      <div className="max-w-2xl mx-auto p-10 bg-gray-200 mt-8 rounded-3xl shadow-md space-y-8">
+        <div className="flex items-center space-x-3 mb-4 justify-center">
+          <h2 className="text-[42px] font-sans font-bold text-black m-0 p-0 text-center">
   Attendance Anomalies
 </h2>
  
         </div>
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-          <label className="font-semibold" style={{ fontFamily: 'sans-serif', fontSize: '18px' }}>Upload Attendance CSV:</label>
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 items-center">
+          <label className="font-semibold" style={{ fontSize: '20px' }}>Upload Attendance CSV:</label>
           <input
             type="file"
             accept=".csv"
             onChange={handleFileChange}
-            className="border p-4 rounded text-lg bg-white"
-            style={{ fontFamily: 'sans-serif', fontSize: '18px' }}
+            className="border p-2 rounded text-lg bg-white"
+            style={{ fontSize: '18px' }}
             required
           />
-         <button
+   <button
   type="submit"
   disabled={loading}
   className={`
-    flex items-center px-6 py-3 rounded shadow-md text-white
-    font-sans text-[15.75px]
-    bg-gradient-to-r from-[#155dfc] to-[#9810fa]
-    transition-colors duration-200
-    border-none
-    ${loading ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}
+    flex items-center justify-center
+    text-white font-bold font-[poppins] text-[16.41px]
+    h-[31.5px] px-[14px] py-[21px]
+    rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
+    transition-opacity duration-200 ease-in-out
+    ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
   `}
+  style={{
+    background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
+  }}
 >
-  <FaPaperPlane className="mr-2" /> {loading ? 'Submitting...' : 'Run Workflow'}
+  {loading ? 'Submitting...' : 'Run Workflow'}
 </button>
+ 
  
         </form>
         <ErrorMessage error={error} />
         <ResponseResult
           result={result}
-          showMenu={showMenu}
+          showMenu={false} // This prop is now hardcoded to false as per the edit hint
           onContextMenu={handleContextMenu}
           onCopy={handleCopy}
           onDownload={handleDownload}
@@ -178,3 +180,4 @@ const AttendanceAnomalies: React.FC = () => {
 };
  
 export default AttendanceAnomalies;
+ 

@@ -324,36 +324,36 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
     }
   ]
 
-  const teamMembers = [
-    {
-      name: 'Sarah Chen',
-      role: 'VP of Engineering',
-      avatar: '/api/placeholder/80/80',
-      bio: 'Former Senior Engineer at Google, leading our AI and automation efforts.',
-      location: 'San Francisco, CA'
-    },
-    {
-      name: 'Marcus Rodriguez',
-      role: 'Head of Product',
-      avatar: '/api/placeholder/80/80',
-      bio: 'Product leader with 10+ years experience at Stripe and Slack.',
-      location: 'New York, NY'
-    },
-    {
-      name: 'Emma Thompson',
-      role: 'Design Director',
-      avatar: '/api/placeholder/80/80',
-      bio: 'Award-winning designer previously at Airbnb and Figma.',
-      location: 'Remote, UK'
-    },
-    {
-      name: 'Alex Kumar',
-      role: 'Head of Developer Relations',
-      avatar: '/api/placeholder/80/80',
-      bio: 'Developer advocate and community builder, former GitHub.',
-      location: 'San Francisco, CA'
-    }
-  ]
+  // const teamMembers = [
+  //   {
+  //     name: 'Sarah Chen',
+  //     role: 'VP of Engineering',
+  //     avatar: '/api/placeholder/80/80',
+  //     bio: 'Former Senior Engineer at Google, leading our AI and automation efforts.',
+  //     location: 'San Francisco, CA'
+  //   },
+  //   {
+  //     name: 'Marcus Rodriguez',
+  //     role: 'Head of Product',
+  //     avatar: '/api/placeholder/80/80',
+  //     bio: 'Product leader with 10+ years experience at Stripe and Slack.',
+  //     location: 'New York, NY'
+  //   },
+  //   {
+  //     name: 'Emma Thompson',
+  //     role: 'Design Director',
+  //     avatar: '/api/placeholder/80/80',
+  //     bio: 'Award-winning designer previously at Airbnb and Figma.',
+  //     location: 'Remote, UK'
+  //   },
+  //   {
+  //     name: 'Alex Kumar',
+  //     role: 'Head of Developer Relations',
+  //     avatar: '/api/placeholder/80/80',
+  //     bio: 'Developer advocate and community builder, former GitHub.',
+  //     location: 'San Francisco, CA'
+  //   }
+  // ]
 
   const testimonials = [
     {

@@ -181,7 +181,7 @@ const EmailAttachmentProcessing: React.FC<EmailAttachmentProcessingProps> = ({ c
         ))}
       </div>
       {response && (
-        <div className="mt-6 bg-gray-100 rounded-2xl p-4 shadow-md border border-gray-200">
+        <div className="mt-6 bg-gray-50 rounded-2xl p-4 shadow-md border border-gray-200 font-sans">
           <h4 className="font-bold mb-2">Processing Result</h4>
           <div className="mb-2"><b>Name:</b> {response.Name}</div>
           <div className="mb-2"><b>Subject:</b> {response.Subject}</div>

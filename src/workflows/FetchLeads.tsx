@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
-import { FaUserTie, FaPaperPlane, FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
+import { FaUserTie, FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
 import PageRevealWrapper from './PageRevealWrapper';
  
 const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/fetch-data';
@@ -37,7 +37,7 @@ function ResponseResult({ result, showMenu, onContextMenu, onCopy, onDownload }:
       <div className="flex items-center mb-2 text-green-700 font-semibold" style={{ fontFamily: 'sans-serif' }}>
         <FaUserTie className="mr-2" /> Fetch Leads Result
       </div>
-      <pre className="whitespace-pre-wrap text-gray-800 text-sm" style={{ fontFamily: 'sans-serif' }}>{result}</pre>
+      <pre className="whitespace-pre-wrap text-gray-800 text-sm" style={{ fontFamily: 'poppins' }}>{result}</pre>
       {showMenu && (
         <div className="absolute right-2 top-2 bg-white border rounded shadow z-10">
           <button onClick={onCopy} className="flex items-center px-4 py-2 hover:bg-gray-100 w-full" style={{ fontFamily: 'sans-serif' }}><FaCopy className="mr-2" />Copy</button>
@@ -124,15 +124,11 @@ const FetchLeads: React.FC = () => {
       details=""
       coverImage=""
     >
-      <div className="max-w-xl mx-auto p-6 rounded-xl shadow-md space-y-8" style={{ background: '#f3f4f6' }}>
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="bg-blue-500 p-3 rounded-full shadow">
-            <FaUserTie className="w-6 h-6 text-white" />
-          </div>
-         <h2 className="text-[42px] font-sans font-bold text-black">
-  Fetch Leads
-</h2>
- 
+      <div className="max-w-3xl mx-auto p-14 rounded-2xl mt-8 shadow-md space-y-8" style={{ background: '#f3f4f6' }}>
+        <div className="flex items-center space-x-3 mb-4 justify-center">
+          <h2 className="text-[42px] font-sans font-bold text-black text-center">
+            Fetch Leads
+          </h2>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <label className="font-semibold">Triggered By:</label>
@@ -142,7 +138,7 @@ const FetchLeads: React.FC = () => {
             value={input.triggeredBy}
             onChange={handleChange}
             className="border p-2 rounded placeholder-gray-400"
-            style={{ fontSize: 20, fontFamily: 'sans-serif' }}
+            style={{ fontSize: 15.75, fontFamily: 'poppins' }}
             placeholder="e.g. postman-test"
             required
           />
@@ -152,25 +148,30 @@ const FetchLeads: React.FC = () => {
             value={input.message}
             onChange={handleChange}
             className="border p-2 rounded placeholder-gray-400"
-            style={{ fontSize: 20, fontFamily: 'sans-serif' }}
+            style={{ fontSize: 15.75, fontFamily: 'poppins' }}
             placeholder="Enter your message"
             required
           />
-         <button
-  type="submit"
-  disabled={loading}
-  className={`
-    flex items-center px-4 py-2 rounded
-    font-sans text-[15.75px] text-white
-    bg-gradient-to-r from-[#155dfc] to-[#9810fa]
-    shadow-[0_2px_8px_rgba(152,16,250,0.15)]
-    hover:opacity-90
-    disabled:bg-blue-300 disabled:cursor-not-allowed
-    border-none outline-none
-  `}
->
-  <FaPaperPlane className="mr-2" /> {loading ? 'Submitting...' : 'Run Workflow'}
-</button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            disabled={loading}
+            className={`
+              flex items-center justify-center
+              text-white font-bold font-[poppins] text-[16.41px]
+              h-[31.5px] px-[14px] py-[21px]
+              rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
+              transition-opacity duration-200 ease-in-out
+              ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
+            `}
+            style={{
+              background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
+            }}
+          >
+            {loading ? 'Submitting...' : 'Run Workflow'}
+          </button>
+        </div>
+ 
  
         </form>
         <ErrorMessage error={error} />
@@ -187,4 +188,3 @@ const FetchLeads: React.FC = () => {
 };
  
 export default FetchLeads;
- 

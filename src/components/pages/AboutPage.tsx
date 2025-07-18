@@ -108,7 +108,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+      <section className="py-20 bg-[#fff6ed]
 
  dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

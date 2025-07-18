@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { FaSearch, FaBook, FaHistory } from 'react-icons/fa';
+import { FaSearch, FaHistory } from 'react-icons/fa';
 import axios from 'axios';
  
 // Updated API URL to match working endpoint
@@ -13,7 +13,13 @@ interface BookPriceResult {
   producturl: string;
 }
  
-const TrackPriceTab: React.FC = () => {
+
+/**
+ * A React component that displays a form to input a message to trigger the book price tracking workflow.
+ * The form will post to the API URL with the message, and display the result if the API call is successful.
+ * @returns {JSX.Element} The rendered component.
+ */
+/*******  ada00fed-fdb4-4f0f-9e25-85ee072d68ef  *******/const TrackPriceTab: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState<BookPriceResult | null>(null);
@@ -46,36 +52,41 @@ const TrackPriceTab: React.FC = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-        <label className="font-semibold" style={{ fontFamily: 'sans-serif' }}>Message (optional):</label>
+        <label className="font-semibold" style={{ fontFamily: 'poppins' }}>Message (optional):</label>
         <div className="flex items-center space-x-2">
           <input
             type="text"
             value={message}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
             placeholder="Enter a message to trigger the workflow"
-            className="border p-2 rounded flex-1"
-            style={{ fontSize: 18, fontFamily: 'sans-serif' }}
+            className="border p-1 rounded flex-1 placeholder:text-lg placeholder:font-medium"
+            style={{ fontSize: 20, fontFamily: 'poppins' }}
             disabled={loading}
           />
-         <button
+  <button
   type="submit"
   disabled={loading}
   className={`
-    flex items-center px-4 py-2 rounded shadow-md
-    hover:opacity-90 disabled:opacity-60
-    text-white font-sans text-[15.75px]
-    min-w-[140px] border-none
-    bg-gradient-to-r from-[#155dfc] to-[#9810fa]
+    flex items-center justify-center
+    h-[31.5px]
+    px-[14px] py-[21px]
+    text-[16.41px] font-[poppins] font-medium text-white
+    rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
+    transition-opacity duration-200 ease-in-out
+    bg-gradient-to-r from-[#FF620A] to-[#993B06]
+    ml-auto
+    ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
   `}
 >
-  <FaSearch className="mr-2" /> {loading ? 'Fetching...' : 'Track Price'}
+  {loading ? 'Fetching...' : 'Track Price'}
 </button>
+ 
  
         </div>
       </form>
       {error && <div className="text-red-500 mt-4">{error}</div>}
       {result && (
-        <div className="mt-6 p-4 rounded-lg bg-gray-100 shadow-md flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+        <div className="mt-6 p-4 rounded-xl bg-gray-50 shadow-md border border-gray-200 font-sans flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <img
             src={result.imageurl}
             alt={result.Title}
@@ -116,12 +127,9 @@ const AIPoweredBookPriceTracker: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'track' | 'history'>('track');
  
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow space-y-8">
+    <div className="max-w-2xl mx-auto p-9 bg-gray-200 rounded-2xl mt-8 shadow-md space-y-8">
       <div className="flex items-center space-x-3 mb-4">
-        <div className="bg-blue-500 p-3 rounded-full shadow">
-          <FaBook className="w-6 h-6 text-white" />
-        </div>
-        <h2 className="text-[42px] font-sans font-bold text-black m-0">
+        <h2 className="text-[42px] font-sans text-center font-bold text-black m-0">
   AI-Powered Book Price Tracker
 </h2>
  
@@ -130,14 +138,14 @@ const AIPoweredBookPriceTracker: React.FC = () => {
         <button
           onClick={() => setActiveTab('track')}
           className={`flex items-center space-x-2 px-6 py-3 font-semibold ${activeTab === 'track' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
-          style={{ fontFamily: 'sans-serif', fontSize: 15.75 }}
+          style={{ fontFamily: 'poppins', fontSize: 16.75 }}
         >
           <FaSearch /> <span>Track Price</span>
         </button>
         <button
           onClick={() => setActiveTab('history')}
           className={`flex items-center space-x-2 px-6 py-3 font-semibold ${activeTab === 'history' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'}`}
-          style={{ fontFamily: 'sans-serif', fontSize: 15.75 }}
+          style={{ fontFamily: 'poppins', fontSize: 16.75 }}
         >
           <FaHistory /> <span>Price History</span>
         </button>

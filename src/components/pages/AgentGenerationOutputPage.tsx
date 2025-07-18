@@ -79,7 +79,7 @@ export function AgentGenerationOutputPage({
     input: inputOption.title,
     output: outputOption.title,
     frequency: credentials.updateFrequency || 'daily',
-    estimatedCost: '$12.50/month',
+    estimatedCost: 'Rs 1250/month',
     expectedAccuracy: '94%'
   }
 

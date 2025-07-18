@@ -25,7 +25,7 @@ export function CallToAction({ onGetStarted }: CallToActionProps) {
   }
 
   return (
-    <section className="py-20 sm:py-32 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
+    <section className="py-20 sm:py-32 bg-[#fff6ed]
  dark:from-blue-950/20 dark:via-indigo-950/20 dark:to-purple-950/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">

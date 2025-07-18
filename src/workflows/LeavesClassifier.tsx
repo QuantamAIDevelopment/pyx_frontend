@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaUserAlt, FaClock, FaExclamationTriangle } from 'react-icons/fa';
+import { FaCalendarAlt, FaUserAlt, FaClock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
  
 interface LeavesClassifierProps {

@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { Card, CardHeader, CardTitle, CardContent } from '../common/ui/card';
 import { Button } from '../common/ui/button';
 import {ArrowLeft} from  'lucide-react'
 import ResumeToProfileExtractor from '../../workflows/ResumeToProfileExtractor';
@@ -27,14 +26,14 @@ import AppointmentScheduler from '../../workflows/AppointmentScheduler';
 // import MCQGeneratorAndTrainer from '../../workflows/MCQGeneratorAndTrainer';
 // import ComplaintHandlerAgent from '../../workflows/ComplaintHandlerAgent';
 import SmartInvoiceAI from '../../workflows/SmartInvoiceAI';
-// import AIPoweredBookPriceTracker from '../../workflows/AIPoweredBookPriceTracker';
+import AIPoweredBookPriceTracker from '../../workflows/AIPoweredBookPriceTracker';
 // import AutomateCandidateAcceptance from '../../workflows/AutomateCandidateAcceptance';
 // import AttendanceAnomalies from '../../workflows/AttendanceAnomalies';
 // import FetchLeads from '../../workflows/FetchLeads';
 // import AITestmonialExtractor from '../../workflows/AITestmonialExtractor';
 // import DynamicModelSelector from '../../workflows/DynamicModelSelector';
 // import AIBackgroundVerification from '../../workflows/AIBackgroundVerification';
-// import NotionKnowledgeBaseAIAssistant from '../../workflows/NotionKnowledgeBaseAIAssistant';
+import NotionKnowledgeBaseAIAssistant from '../../workflows/NotionKnowledgeBaseAIAssistant';
 // import DatabaseMigrationAIAgent from '../../workflows/DatabaseMigrationAIAgent';
 // import ATSToHRMSCandidateStatusSync from '../../workflows/ATSToHRMSCandidateStatusSync';
 // import TestCaseGenerator from '../../workflows/TestCaseGenerator';
@@ -55,6 +54,7 @@ import SmartInvoiceAI from '../../workflows/SmartInvoiceAI';
 // import BookPriceHistory from '../../workflows/BookPriceHistory';
 // import Cosmic3DWorkflowDashboard from '../../workflows/Cosmic3DWorkflowDashboard';
 import SentimentAgent from '../../workflows/sentimentagent';
+// import { Card, CardHeader, CardTitle } from '../common/ui/card';
 
 const workflowComponents: { [key: string]: React.ComponentType<any> } = {
     agent_001: AICustomerSupport,
@@ -78,14 +78,14 @@ const workflowComponents: { [key: string]: React.ComponentType<any> } = {
     // agent_019: MCQGeneratorAndTrainer,
     // agent_020: ComplaintHandlerAgent,
     agent_021: SmartInvoiceAI,
-    // agent_022: AIPoweredBookPriceTracker,
+    agent_022: AIPoweredBookPriceTracker,
     // agent_023: AutomateCandidateAcceptance,
     // agent_024: AttendanceAnomalies,
     // agent_025: FetchLeads,
     // agent_026: AITestmonialExtractor,
     // agent_027: DynamicModelSelector,
     // agent_028: AIBackgroundVerification,
-    // agent_029: NotionKnowledgeBaseAIAssistant,
+    agent_029: NotionKnowledgeBaseAIAssistant,
     // agent_030: DatabaseMigrationAIAgent,
     // agent_031: ATSToHRMSCandidateStatusSync,
     // agent_032: TestCaseGenerator,
@@ -114,33 +114,55 @@ const workflowComponents: { [key: string]: React.ComponentType<any> } = {
 export function RunAgentPage() {
   const { id } = useParams();
   const WorkflowComponent = id ? workflowComponents[id as string] : undefined;
+  // Optionally, you can map agent IDs to display names for CardTitle
+  const agentNames: { [key: string]: string } = {
+    agent_001: 'AI Customer Support',
+    agent_002: 'Leaves Classifier',
+    agent_006: 'Email Attachment Processing',
+    agent_008: 'Resume to Profile Extractor',
+    agent_009: 'Contract Red Flag Detector',
+    agent_017: 'Inventory Management',
+    agent_018: 'Appointment Scheduler',
+    agent_021: 'SmartInvoice AI',
+    agent_029: 'Notion Knowledge Base AI Assistant',
+    agent_034: 'Resume Analyzer',
+    agent_035: 'Sentiment Agent',
+    agent_036: 'Customer Support Agent',
+  };
+  const agentName = id && agentNames[id as string] ? agentNames[id as string] : id;
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD] px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#fff6ed] px-4 font-sans">
+      <div className="w-full max-w-3xl my-10">
       <Button
-        variant="ghost"
-        onClick={() => window.history.back()}
-        className="mb-6 mt-8 self-start hover:bg-muted/50"
-      >
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Agents
-      </Button>
-      <Card className="w-full max-w-3xl shadow-2xl border border-gray-200 rounded-2xl overflow-hidden">
-        <CardHeader className="bg-white px-6 py-5 border-b border-gray-100">
-          {/* <CardTitle className="text-2xl font-semibold text-gray-800">Run Agent</CardTitle> */}
-        </CardHeader>
-        <CardContent className="bg-white px-6 py-8 space-y-6">
-          <div className="bg-gradient-to-r from-white via-[#FFF7F2] to-white p-6 rounded-xl border border-gray-100 shadow-inner">
-            {WorkflowComponent ? (
+              variant="ghost"
+              onClick={() => window.history.back()}
+              className="hover:bg-muted/50"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Agents
+            </Button>
+        {/* <Card className="mb-8 shadow-lg"> */}
+          {/* <CardHeader className="flex flex-row items-center gap-4 border-b pb-4">
+            
+            <CardTitle className="text-2xl font-bold ml-2">
+              {agentName ? agentName : 'Run Agent'}
+            </CardTitle>
+          </CardHeader> */}
+        {/* </Card> */}
+        <div className="w-full">
+          {WorkflowComponent ? (
+            <>
+              <h2 className="text-2xl font-bold mb-6 text-center">{agentName}</h2>
               <WorkflowComponent />
-            ) : (
-              <p className="text-sm text-gray-600">
-                No workflow UI found for agent ID:{" "}
-                <span className="font-mono font-semibold text-gray-800">{id}</span>
-              </p>
-            )}
-          </div>
-        </CardContent>
-      </Card>
+            </>
+          ) : (
+            <div className="text-center text-muted-foreground">
+              No workflow UI found for agent ID: <span className="font-mono font-semibold text-gray-800">{id}</span>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 } 

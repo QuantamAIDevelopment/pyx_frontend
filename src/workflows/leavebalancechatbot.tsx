@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaEnvelope, FaUser, FaClock } from 'react-icons/fa';
+import { FaCalendarAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
  
 interface LeaveBalanceChatbotProps {

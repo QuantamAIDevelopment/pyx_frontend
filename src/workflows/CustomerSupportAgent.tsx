@@ -75,7 +75,7 @@ const CustomerSupportAgent: React.FC = () => {
       </form>
       {error && <div className="text-red-500 mt-4">{error}</div>}
       {response && (
-        <div className="mt-6 bg-gray-50 border rounded p-4 whitespace-pre-wrap text-sm">
+        <div className="mt-6 bg-gray-50 rounded-xl shadow-md border border-gray-200 p-6 font-sans whitespace-pre-wrap text-sm">
           {response}
         </div>
       )}

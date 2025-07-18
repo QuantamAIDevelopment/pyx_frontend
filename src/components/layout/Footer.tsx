@@ -1,7 +1,7 @@
 'use client'
 
 import { Link } from 'react-router-dom'
-import { Zap, Github, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import { Github, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
 import { Button } from '../common/ui/button'
 import { Separator } from '../common/ui/separator'
 

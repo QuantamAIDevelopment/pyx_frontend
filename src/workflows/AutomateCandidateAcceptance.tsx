@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
-import { FaUserCheck, FaPaperPlane } from 'react-icons/fa';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+// import { FaUserCheck, FaPaperPlane } from 'react-icons/fa';
 import PageRevealWrapper from './PageRevealWrapper';
  
 const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/candidate-accepted';
@@ -21,7 +21,6 @@ const AutomateCandidateAcceptance: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [result, setResult] = useState<string>('');
-  const [showMenu, setShowMenu] = useState<boolean>(false);
  
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -50,18 +49,6 @@ const AutomateCandidateAcceptance: React.FC = () => {
     }
   };
  
-  const handleContextMenu = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setShowMenu(true);
-    const clickHandler = () => setShowMenu(false);
-    document.addEventListener('click', clickHandler, { once: true });
-  };
- 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(result);
-    setShowMenu(false);
-  };
- 
   const handleDownload = () => {
     const blob = new Blob([result], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -70,7 +57,6 @@ const AutomateCandidateAcceptance: React.FC = () => {
     a.download = 'candidate-acceptance.txt';
     a.click();
     URL.revokeObjectURL(url);
-    setShowMenu(false);
   };
  
   return (
@@ -80,14 +66,11 @@ const AutomateCandidateAcceptance: React.FC = () => {
       details=""
       coverImage=""
     >
-      <div className="max-w-xl mx-auto p-6 rounded-xl shadow-md space-y-8" style={{ background: '#f3f4f6' }}>
+      <div className="max-w-xl mx-auto p-6 rounded-3xl mt-8 shadow-md space-y-8" style={{ background: '#f3f4f6' }}>
         <div className="flex items-center space-x-3 mb-4">
-          <div className="bg-green-500 p-3 rounded-full shadow">
-            <FaUserCheck className="w-6 h-6 text-white" />
-          </div>
-          <h2 className="text-[42px] font-sans text-black m-0">
-  Automate Candidate Acceptance
-</h2>
+          <h2 className="text-[42px] font-sans text-black m-0 text-center">
+            Automate Candidate Acceptance
+          </h2>
  
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
@@ -97,10 +80,10 @@ const AutomateCandidateAcceptance: React.FC = () => {
             name="Candidate ID"
             value={form['Candidate ID']}
             onChange={handleChange}
-            className="border p-3 rounded text-base"
+            className="border p-2 rounded text-base"
             required
             placeholder="Enter Candidate ID"
-            style={{ fontSize: '18px', fontFamily: 'sans-serif' }}
+            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
           <label className="font-semibold">Name:</label>
           <input
@@ -108,10 +91,10 @@ const AutomateCandidateAcceptance: React.FC = () => {
             name="Name"
             value={form.Name}
             onChange={handleChange}
-            className="border p-3 rounded text-base"
+            className="border p-2 rounded text-base"
             required
             placeholder="Enter Name"
-            style={{ fontSize: '18px', fontFamily: 'sans-serif' }}
+            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
           <label className="font-semibold">Email:</label>
           <input
@@ -119,10 +102,10 @@ const AutomateCandidateAcceptance: React.FC = () => {
             name="Email"
             value={form.Email}
             onChange={handleChange}
-            className="border p-3 rounded text-base"
+            className="border p-2 rounded text-base"
             required
             placeholder="Enter Email"
-            style={{ fontSize: '18px', fontFamily: 'sans-serif' }}
+            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
           <label className="font-semibold">Status:</label>
           <input
@@ -130,10 +113,10 @@ const AutomateCandidateAcceptance: React.FC = () => {
             name="STATUS"
             value={form.STATUS}
             onChange={handleChange}
-            className="border p-3 rounded text-base"
+            className="border p-2 rounded text-base"
             required
             placeholder="Enter Status"
-            style={{ fontSize: '18px', fontFamily: 'sans-serif' }}
+            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
           <label className="font-semibold">Updated Date:</label>
           <input
@@ -141,28 +124,40 @@ const AutomateCandidateAcceptance: React.FC = () => {
             name="UPDATED DATE"
             value={form['UPDATED DATE']}
             onChange={handleChange}
-            className="border p-3 rounded text-base"
+            className="border p-2 rounded text-base"
             required
             placeholder="Select Date"
-            style={{ fontSize: '18px', fontFamily: 'sans-serif' }}
+            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
-         <button
+  <button
   type="submit"
   disabled={loading}
   className={`
-    flex items-center px-4 py-2 rounded
-    text-white font-sans text-[15.75px] font-semibold
-    border-none shadow-md transition-opacity duration-300
-    ${loading ? 'cursor-not-allowed opacity-70' : 'cursor-pointer'}
-    bg-gradient-to-r from-[#155dfc] to-[#9810fa]
+    flex items-center justify-center
+    text-white font-bold font-[poppins] text-[16.41px]
+    h-[31.5px] w-auto
+    px-[14px] py-[21px]
+    rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
+    transition-opacity duration-200 ease-in-out
+    ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
+    mx-auto
   `}
+  style={{
+    background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
+  }}
 >
-  <FaPaperPlane className="mr-2" /> {loading ? 'Submitting...' : 'Run Workflow'}
+  {loading ? 'Submitting...' : 'Run Workflow'}
 </button>
+ 
  
         </form>
         {error && <div style={{color: 'red', margin: '1em 0'}}>Error: {error}</div>}
         {result && <div style={{margin: '1em 0', padding: '1em', background: '#f0f0f0'}}>Result: {JSON.stringify(result)}</div>}
+        {result && (
+    <button onClick={handleDownload} className="mt-2 px-4 py-2 bg-blue-600 text-white rounded">
+      Download Result
+    </button>
+  )}
       </div>
     </PageRevealWrapper>
   );

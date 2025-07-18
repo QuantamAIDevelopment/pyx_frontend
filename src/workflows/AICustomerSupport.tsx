@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaRobot, FaComments, FaChartLine, FaClock } from 'react-icons/fa';
 import { IconBaseProps } from 'react-icons';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
  
 interface AICustomerSupportProps {
   compact?: boolean;
@@ -16,7 +16,7 @@ interface Stat {
 }
  
 const AICustomerSupport: React.FC<AICustomerSupportProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [stats] = React.useState({
     totalQueries: 156,
     resolvedQueries: 142,
@@ -61,25 +61,7 @@ const AICustomerSupport: React.FC<AICustomerSupportProps> = ({ compact = false }
       </div>
       <div className={compact ? "flex gap-2 w-full overflow-x-auto" : "grid grid-cols-2 gap-4 w-full"}>
         {statList.map((stat, idx) => (
-          <motion.div
-          key={idx}
-          className={
-            compact
-              ? "bg-gray-200 border border-gray-200 rounded-xl p-3 shadow-[0_2px_16px_0_white] flex flex-col gap-2 min-w-[120px]"
-              : "bg-gray-200 border border-gray-200 rounded-2xl p-6 shadow-[0_8px_32px_0_white] flex flex-col gap-2 min-w-[160px] w-full max-w-xs mx-auto"
-          }
-          whileHover={{ scale: compact ? 1.03 : 1.05 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        >
-            <div className="flex items-center gap-3 mb-2">
-              <div className={compact ? `p-2 rounded-lg ${stat.color}` : `p-3 rounded-lg ${stat.color}`}>
-                <stat.icon className={compact ? "w-5 h-5 text-white" : "w-6 h-6 text-white"} />
-              </div>
-              <div className={compact ? "font-bold text-base text-anthropic-dark truncate" : "font-bold text-lg text-anthropic-dark truncate"}>{stat.title}</div>
-            </div>
-            <div className={compact ? "text-lg font-bold text-anthropic-dark" : "text-2xl font-bold text-anthropic-dark"}>{stat.value}</div>
-          </motion.div>
+          <StatCard key={idx} {...stat} />
         ))}
       </div>
       <div className="flex justify-center mt-6">

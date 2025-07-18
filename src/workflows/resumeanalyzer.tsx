@@ -106,7 +106,7 @@ export default function ResumeAnalyzer() {
  
       {/* Result Display */}
       {result && (
-        <div className="bg-gray-50 border rounded p-6 mt-6 whitespace-pre-line text-[20px]">
+        <div className="bg-gray-50 rounded-xl shadow-md border border-gray-200 p-6 font-sans mt-6 whitespace-pre-line text-[20px]">
           {result}
         </div>
       )}
