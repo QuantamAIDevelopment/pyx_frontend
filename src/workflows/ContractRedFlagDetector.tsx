@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { FaExclamationTriangle } from 'react-icons/fa';
+
 
 interface ContractRedFlagDetectorCardProps {
   compact?: boolean;
 }
 
-const ContractRedFlagDetectorCard: React.FC<ContractRedFlagDetectorCardProps> = ({ compact = false }) => {
+const ContractRedFlagDetectorCard: React.FC<ContractRedFlagDetectorCardProps> = () => {
   const [documentName, setDocumentName] = useState('');
   const [email, setEmail] = useState('');
   const [file, setFile] = useState<File | null>(null);

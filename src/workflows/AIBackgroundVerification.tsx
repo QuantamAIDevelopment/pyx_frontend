@@ -1,6 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { FaUserShield } from 'react-icons/fa';
+
 import axios from 'axios';
 
 // --- Merged API logic ---
@@ -47,7 +46,7 @@ interface AIBackroundVerificationCardProps {
   compact?: boolean;
 }
 
-const AIBackroundVerificationCard: React.FC<AIBackroundVerificationCardProps> = ({ compact = false }) => {
+const AIBackroundVerificationCard: React.FC<AIBackroundVerificationCardProps> = () => {
   const [file, setFile] = useState<File | null>(null);
   const [results, setResults] = useState<Result[]>([]);
   const [loading, setLoading] = useState<boolean>(false);

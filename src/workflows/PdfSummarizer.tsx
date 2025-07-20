@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { FaFilePdf, FaSpinner } from 'react-icons/fa';
+// import { FaFilePdf, FaSpinner } from 'react-icons/fa';
 import axios from 'axios';
 
 interface PdfSummaryResult {

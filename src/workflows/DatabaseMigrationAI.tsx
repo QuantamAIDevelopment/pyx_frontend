@@ -1,6 +1,5 @@
 import React, { useState, FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { FaDatabase, FaExchangeAlt } from 'react-icons/fa';
+
 
 const API_URL = 'http://localhost:5678/webhook/migrate_table';
 

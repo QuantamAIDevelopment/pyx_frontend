@@ -1,7 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { FaCommentDots } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+
+
 
 interface ComplaintHandlerAgentProps {
   compact?: boolean;
@@ -14,8 +13,8 @@ interface FormState {
   complaint: string;
 }
 
-const ComplaintHandlerAgent: React.FC<ComplaintHandlerAgentProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
+const ComplaintHandlerAgent: React.FC<ComplaintHandlerAgentProps> = () => {
+  // const navigate = useNavigate();
   const [form, setForm] = useState<FormState>({ name: '', email: '', phone: '', complaint: '' });
   const [submitted, setSubmitted] = useState<FormState | null>(null);
 

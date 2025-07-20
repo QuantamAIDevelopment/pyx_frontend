@@ -46,7 +46,7 @@ import PRReviewerAIAgent from '../../workflows/PRRevieweragent';
 // import ProjectCostReports from '../../workflows/ProjectCostReports';
 import FraudDetectionSystem from '../../workflows/FraudDetectionSystem';
 import AmazonProductScraper from '../../workflows/AmazonProductScraper';
-import AIPoweredRestaurantOrderChatbot from '../../workflows/AIPoweredRestaurantorderchatbot';
+import AIPoweredRestaurantOrderChatbot from '../../workflows/AIPoweredRestaurantOrderChatbot';
 import LeaveApprovalReminder from '../../workflows/LeaveApprovalReminder';
 import InterviewPanelAutoAssignment from '../../workflows/InterviewPanelAutoAssignment';
 import PerformanceReviewSummary from '../../workflows/PerformanceReviewSummary';

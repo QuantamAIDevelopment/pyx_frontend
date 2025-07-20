@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   FaCalendarAlt, FaUser, FaEnvelope, FaPhone, FaClock, FaClipboardList
 } from 'react-icons/fa';

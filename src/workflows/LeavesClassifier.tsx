@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaUserAlt, FaClock } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { BUTTON_CLASSES } from '../utils/colors';
 
 const API_URL =
   "https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook-test/leaves-classifier";
@@ -52,7 +53,7 @@ interface LeavesClassifierProps {
 }
 
 export default function LeavesClassifier({ compact = false }: LeavesClassifierProps) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -158,7 +159,7 @@ export default function LeavesClassifier({ compact = false }: LeavesClassifierPr
           type="submit"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
           disabled={loading}
         >
           {loading ? "Loading..." : "Classify"}

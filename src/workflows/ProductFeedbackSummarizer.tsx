@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaCommentDots, FaChartBar, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { FaCommentDots,  FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { BUTTON_CLASSES } from '../utils/colors';
 
 interface Product {
   productid: string;
@@ -45,49 +45,12 @@ const initialDummyStats: DummyStats = {
   ],
 };
 
-interface Stat {
-  title: string;
-  value: string | number;
-  icon: React.ComponentType<{ className?: string }>;
-  color: string;
-}
-
-const getStatList = (dummyStats: DummyStats): Stat[] => [
-  { title: 'Products Analyzed', value: dummyStats.totalProducts, icon: FaCommentDots, color: 'bg-green-500' },
-  { title: 'Avg Sentiment', value: `${dummyStats.averageSentiment}%`, icon: FaChartBar, color: 'bg-blue-500' },
-];
-
-interface StatCardProps {
-  title: string;
-  value: string | number;
-  icon: React.ComponentType<{ className?: string }>;
-  color: string;
-  compact: boolean;
-}
-
-const StatCard: React.FC<StatCardProps> = ({ title, value, icon: Icon, color, compact }) => (
-  <motion.div
-    className={compact ? "bg-gray-100 border border-gray-200 rounded-xl p-3 shadow-md flex flex-col gap-2 min-w-[120px]" : "bg-gray-100 border border-gray-200 rounded-2xl p-6 shadow-md flex flex-col gap-2 min-w-[160px] w-full max-w-xs mx-auto"}
-    whileHover={compact ? { scale: 1.03, boxShadow: '0 2px 8px 0 #61868d22' } : { scale: 1.05, boxShadow: '0 8px 32px 0 #61868d33' }}
-    whileTap={{ scale: 0.97 }}
-    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-  >
-    <div className="flex items-center gap-3 mb-2">
-      <div className={compact ? `p-2 rounded-lg ${color}` : `p-3 rounded-lg ${color}`}>
-        <Icon className={compact ? "w-5 h-5 text-white" : "w-6 h-6 text-white"} />
-      </div>
-      <div className={compact ? "font-bold text-base text-anthropic-dark truncate" : "font-bold text-lg text-anthropic-dark truncate"}>{title}</div>
-    </div>
-    <div className={compact ? "text-lg font-bold text-anthropic-dark" : "text-2xl font-bold text-anthropic-dark"}>{value}</div>
-  </motion.div>
-);
-
 interface ProductFeedbackSummarizerProps {
   compact?: boolean;
 }
 
-const ProductFeedbackSummarizer: React.FC<ProductFeedbackSummarizerProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
+const ProductFeedbackSummarizer: React.FC<ProductFeedbackSummarizerProps> = () => {
+ 
   const [dummyStats, setDummyStats] = useState<DummyStats>(initialDummyStats);
 
   const [date, setDate] = useState("");
@@ -190,7 +153,7 @@ const ProductFeedbackSummarizer: React.FC<ProductFeedbackSummarizerProps> = ({ c
         </div>
         <button
           type="submit"
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
         >
           Summarize Feedback
         </button>

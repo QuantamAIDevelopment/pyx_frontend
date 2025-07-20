@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import { motion } from 'framer-motion';
 import { FaFileInvoiceDollar, FaLock, FaClock } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+
 
 const API_URL = 'http://localhost:5678/webhook/payslip-upload';
 
@@ -23,8 +23,8 @@ interface RecentActivityItem {
   fileSize: string;
 }
 
-const PayslipAutoEncrypted: React.FC<PayslipAutoEncryptedProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
+const PayslipAutoEncrypted: React.FC<PayslipAutoEncryptedProps> = () => {
+ 
   const [stats, setStats] = useState<Stats>({ encryptedPayslips: 0, pendingEncryption: 0, totalPayslips: 0 });
   const [recentActivity, setRecentActivity] = useState<RecentActivityItem[]>([]);
   const [loading, setLoading] = useState<boolean>(false);

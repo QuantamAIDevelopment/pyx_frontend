@@ -1,7 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaCalendarAlt, FaEnvelope, FaUser, FaClock, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
+// import { motion } from 'framer-motion';
+// import { FaEnvelope, FaUser, FaClock, FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
+import { BUTTON_CLASSES } from '../utils/colors';
 
 const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
@@ -89,31 +90,6 @@ const LeaveBalanceChatbotPage: React.FC = () => {
     }
   };
 
-  const renderResult = () => {
-    if (!result) return null;
-    return (
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white p-6 rounded-lg shadow-lg border border-green-200">
-        <div className="flex items-center space-x-2 mb-4">
-          <FaCheckCircle className="text-green-500 text-xl" />
-          <h3 className="text-xl font-bold text-gray-800">Leave Balance Information</h3>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-3">
-            <p><FaUser className="inline mr-2 text-blue-500" /> <strong>Employee ID:</strong> {result.Employee_id}</p>
-            <p><FaEnvelope className="inline mr-2 text-blue-500" /> <strong>Email:</strong> {result['Email ']}</p>
-            <p><FaClock className="inline mr-2 text-blue-500" /> <strong>Last Updated:</strong> {result.timestamp}</p>
-          </div>
-          <div className="space-y-3">
-            <p className="text-green-800 font-semibold">Casual: <span className="text-2xl font-bold text-green-600">{result['Remaining Causal leaves']}</span></p>
-            <p className="text-yellow-800 font-semibold">Sick: <span className="text-2xl font-bold text-yellow-600">{result['Remaining Sick Leaves']}</span></p>
-            <p className="text-blue-800 font-semibold">Used: <span className="text-2xl font-bold text-blue-600">{result['Total leaves used']}</span></p>
-            <p className="text-purple-800 font-semibold">Remaining: <span className="text-2xl font-bold text-purple-600">{result['Remaining Leaves']}</span></p>
-          </div>
-        </div>
-      </motion.div>
-    );
-  };
-
   return (
     <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
       <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row md:flex-wrap gap-4 mb-8">
@@ -135,7 +111,7 @@ const LeaveBalanceChatbotPage: React.FC = () => {
         </div>
         <button
           type="submit"
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
           disabled={loading}
         >
           {loading ? 'Fetching...' : 'Get Leave Balance'}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 interface MetricsBusinessAnalyticsProps {
@@ -29,7 +29,7 @@ const triggerMetricsBusinessAnalyticsWorkflow = async (files: File[]): Promise<a
 };
 
 const MetricsBusinessAnalytics: React.FC<MetricsBusinessAnalyticsProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

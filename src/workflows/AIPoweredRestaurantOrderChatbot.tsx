@@ -1,11 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  FaRobot,
-  FaPaperPlane,
-  FaCheckCircle,
-  FaExclamationTriangle
-} from 'react-icons/fa';
+
 import axios from 'axios';
 
 const API_URL =

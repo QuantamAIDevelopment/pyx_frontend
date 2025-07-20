@@ -1,27 +1,13 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaUserAlt, FaCheckCircle, FaSpinner, FaFileAlt } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { BUTTON_CLASSES } from '../utils/colors';
 
 interface ResumeToProfileExtractorProps {
   compact?: boolean;
 }
 
-interface Stat {
-  title: string;
-  value: number;
-  icon: React.ComponentType<{ className?: string }>;
-  color: string;
-}
-
-const ResumeToProfileExtractor: React.FC<ResumeToProfileExtractorProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
-  const [stats] = React.useState({
-    extractedProfiles: 28,
-    processingResumes: 2,
-    failedExtractions: 1,
-  });
-
+const ResumeToProfileExtractor: React.FC<ResumeToProfileExtractorProps> = () => {
+  
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
   const [uploadMessage, setUploadMessage] = React.useState<string>("");
 
@@ -54,7 +40,7 @@ const ResumeToProfileExtractor: React.FC<ResumeToProfileExtractorProps> = ({ com
         <button
           type="button"
           onClick={handleExtractProfile}
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
         >
           Extract Profile
         </button>

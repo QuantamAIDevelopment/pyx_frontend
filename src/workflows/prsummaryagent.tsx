@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaGithub,
-  FaExclamationTriangle,
   FaExternalLinkAlt,
   FaUserCircle,
 } from 'react-icons/fa';

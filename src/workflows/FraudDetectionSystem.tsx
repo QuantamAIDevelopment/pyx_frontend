@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { FaFileUpload, FaExclamationTriangle } from 'react-icons/fa';
+// import { FaFileUpload, FaExclamationTriangle } from 'react-icons/fa';
 import axios from 'axios';
 
 const RISK_COLORS: Record<string, string> = {

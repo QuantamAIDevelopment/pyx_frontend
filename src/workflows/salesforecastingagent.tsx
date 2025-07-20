@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import { FaChartLine, FaCalendarAlt, FaExclamationTriangle, FaBullseye, FaPercent } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
@@ -35,8 +35,8 @@ interface SalesForecastingProps {
   compact?: boolean;
 }
 
-const SalesForecasting: React.FC<SalesForecastingProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
+const SalesForecasting: React.FC<SalesForecastingProps> = () => {
+  // const navigate = useNavigate();
   const [pipelineFile, setPipelineFile] = useState<File | null>(null);
   const [historicalFile, setHistoricalFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);

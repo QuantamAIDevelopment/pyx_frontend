@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { FaFileUpload, FaPaperPlane } from 'react-icons/fa';
+
 
 interface OnBoardingQProps {}
 

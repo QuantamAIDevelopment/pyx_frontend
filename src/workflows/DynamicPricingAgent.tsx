@@ -1,6 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { FaChartLine, FaUpload } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+
 import axios from 'axios';
 
 interface PricingResult {

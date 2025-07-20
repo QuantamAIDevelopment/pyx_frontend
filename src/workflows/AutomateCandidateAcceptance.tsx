@@ -1,6 +1,6 @@
-import React, { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-
+import { BUTTON_CLASSES } from '../utils/colors';
 
 const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/candidate-accepted';
 
@@ -21,7 +21,6 @@ const AutomateCandidateAcceptance: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [result, setResult] = useState<string>('');
-  const [showMenu, setShowMenu] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -48,29 +47,6 @@ const AutomateCandidateAcceptance: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleContextMenu = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setShowMenu(true);
-    const clickHandler = () => setShowMenu(false);
-    document.addEventListener('click', clickHandler, { once: true });
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(result);
-    setShowMenu(false);
-  };
-
-  const handleDownload = () => {
-    const blob = new Blob([result], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'candidate-acceptance.txt';
-    a.click();
-    URL.revokeObjectURL(url);
-    setShowMenu(false);
   };
 
   return (
@@ -140,7 +116,7 @@ const AutomateCandidateAcceptance: React.FC = () => {
           type="submit"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
           disabled={loading}
         >
           {loading ? "Loading..." : "Run Workflow"}

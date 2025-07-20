@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaRobot } from 'react-icons/fa';
+// import { FaRobot } from 'react-icons/fa';
 
 const AICustomerSupport: React.FC = () => {
   const [input, setInput] = useState('');

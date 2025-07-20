@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaTruckLoading, FaClipboardList, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { BUTTON_CLASSES } from '../utils/colors';
 
 interface ProductEffected {
   ProductName?: string;
@@ -30,12 +29,6 @@ const parseProductEffected = (str: string): ProductEffected => {
 
 const INVENTORY_API_URL =
   'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/inventory-check';
-
-const workflowSteps = [
-  { icon: FaClipboardList, label: 'Input Data', color: 'bg-blue-500' },
-  { icon: FaTruckLoading, label: 'Processing', color: 'bg-yellow-500' },
-  { icon: FaCheckCircle, label: 'Complete', color: 'bg-green-500' },
-];
 
 const triggerInventoryManagementWorkflow = async (formData: {
   SKU?: string;
@@ -67,21 +60,8 @@ const InventoryManagementPage: React.FC = () => {
     Returnstock: '',
   });
   const [isExecuting, setIsExecuting] = useState(false);
-  const [currentStep, setCurrentStep] = useState(0);
   const [response, setResponse] = useState<InventoryResponseItem[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout | undefined;
-    if (isExecuting) {
-      interval = setInterval(() => {
-        setCurrentStep((prev) => (prev + 1) % workflowSteps.length);
-      }, 900);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isExecuting]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -91,7 +71,6 @@ const InventoryManagementPage: React.FC = () => {
     e.preventDefault();
     setError(null);
     setIsExecuting(true);
-    setCurrentStep(0);
     setResponse(null);
 
     try {
@@ -104,7 +83,6 @@ const InventoryManagementPage: React.FC = () => {
       setError('Failed to run workflow. Check the console for more details.');
     } finally {
       setIsExecuting(false);
-      setCurrentStep(0);
     }
   };
 
@@ -130,7 +108,7 @@ const InventoryManagementPage: React.FC = () => {
         <button
           type="submit"
           disabled={isExecuting}
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
         >
           {isExecuting ? "Loading..." : "Run Workflow"}
         </button>

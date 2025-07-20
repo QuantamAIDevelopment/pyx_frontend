@@ -73,7 +73,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
         yearly: 39
       },
       badge: 'Most Popular',
-      badgeColor: 'bg-gradient-to-r from-[#FF620A] to-[#993B06]',
+      badgeColor: 'bg-[#FF620A] ',
       features: [
         { name: 'Unlimited AI Agents', included: true },
         { name: '25,000 monthly executions', included: true },
@@ -97,7 +97,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
         yearly: 159
       },
       badge: 'Advanced',
-      badgeColor: 'bg-gradient-to-r from-purple-600 to-pink-600',
+      badgeColor: 'bg-gradient-to-r from-bg-[#FF620A] to-pink-600',
       features: [
         { name: 'Unlimited AI Agents', included: true },
         { name: 'Unlimited executions', included: true },
@@ -187,7 +187,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
  dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-[#FF620A]  text-white">
               <Crown className="h-3 w-3 mr-1" />
               Pricing Plans
             </Badge>
@@ -244,7 +244,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                   } transition-all duration-300`}
                 >
                   {plan.popular && (
-                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white text-center py-2 text-sm font-medium">
+                    <div className="absolute top-0 left-0 right-0 bg-[#FF620A]  text-white text-center py-2 text-sm font-medium">
                       {plan.badge}
                     </div>
                   )}
@@ -285,7 +285,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                       onClick={() => handleGetStarted(plan.name)}
                       className={
                         plan.popular 
-                          ? 'w-full bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:shadow-lg' 
+                          ? 'w-full !bg-[#FF620A]  hover:shadow-lg border-none' 
                           : 'w-full'
                       }
                       variant={plan.popular ? 'default' : 'outline'}
@@ -433,7 +433,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+      <section className="py-20 bg-[#FF620A] text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">

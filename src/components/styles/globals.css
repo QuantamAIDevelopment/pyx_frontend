@@ -13,6 +13,66 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Brand Colors */
+  --brand-primary: #FF620A;
+  --brand-secondary: #993B06;
+  --brand-accent: #D94B05;
+  
+  /* Brand Gradients */
+  --brand-gradient: linear-gradient(90deg, #FF620A 0%, #993B06 100%);
+  --brand-gradient-hover: linear-gradient(90deg, #993B06 0%, #FF620A 100%);
+  --brand-gradient-via: linear-gradient(90deg, #FF620A 0%, #D94B05 50%, #993B06 100%);
+  
+  /* UI Colors */
+  --ui-success: #10b981;
+  --ui-warning: #f59e0b;
+  --ui-error: #ef4444;
+  --ui-info: #3b82f6;
+  --ui-purple: #8b5cf6;
+  --ui-cyan: #06b6d4;
+  --ui-lime: #84cc16;
+  --ui-orange: #f97316;
+  
+  /* Status Colors */
+  --status-active: #10b981;
+  --status-pending: #f59e0b;
+  --status-inactive: #6b7280;
+  --status-error: #ef4444;
+  
+  /* Text Colors */
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-white: #ffffff;
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-muted: #f1f2f4;
+  --bg-card: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* Border Colors */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-medium: rgba(0, 0, 0, 0.15);
+  --border-dark: rgba(0, 0, 0, 0.2);
+  
+  /* Shadow Colors */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+  
+  /* Chart Colors */
+  --chart-1: #3b82f6;
+  --chart-2: #10b981;
+  --chart-3: #f59e0b;
+  --chart-4: #ef4444;
+  --chart-5: #8b5cf6;
+  --chart-6: #06b6d4;
+  --chart-7: #84cc16;
+  --chart-8: #f97316;
+  
+  /* Existing CSS Variables */
   --font-size: 14px;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
@@ -389,40 +449,41 @@ html {
     box-shadow: 0 8px 25px rgba(59, 130, 246, 0.1);
     transform: translateY(-2px);
   }
-  
-  /* Scrollbar styling for better UX */
-  @layer base {
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(0, 0, 0, 0.3);
-    }
-    
-    .dark ::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.05);
-    }
-    
-    .dark ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .dark ::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
+}
+
+/* Scrollbar styling for better UX */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
 
 /* PyX Chatbot Animations */
 @layer utilities {
@@ -585,5 +646,4 @@ html {
       transform: translateY(0);
     }
   }
-}
 }

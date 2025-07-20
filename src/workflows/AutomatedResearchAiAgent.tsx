@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaSearch, FaDownload, FaFilePdf, FaClock, FaCheckCircle } from 'react-icons/fa';
+import {  FaDownload, FaFilePdf, FaClock, FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
 
 // --- PageRevealWrapper (converted to TSX) ---

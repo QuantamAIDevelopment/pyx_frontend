@@ -1,10 +1,9 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {  FaBook, FaBrain } from 'react-icons/fa';
+import { FaBook, FaBrain } from 'react-icons/fa';
 import CoverScreen from './CoverScreen';
 import axios from 'axios';
-
-
+import { BUTTON_CLASSES } from '../utils/colors';
 
 type PageRevealWrapperProps = {
   children: ReactNode;
@@ -55,28 +54,6 @@ const PageRevealWrapper = ({ children, heading, description, details, coverImage
 
 // API logic from mcqGenerator.js, converted to TypeScript
 const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
-
-type MCQ = {
-    question: string;
-    options: string[] | { option: string }[];
-    answer?: string;
-    explanation?: string;
-    tag?: string;
-    scrapedQuestion?: any;
-    [key: string]: any;
-};
-
-type QuizQuestion = {
-    id: string;
-    question: string;
-    options: Record<string, string>;
-};
-
-type QuizResult = {
-    user_answer: string;
-    is_correct: boolean;
-    explanation: string;
-};
 
 const handleRequest = async (endpoint: string, formData: FormData) => {
     try {
@@ -171,27 +148,34 @@ const MCQGenerator = ({ topics }: { topics: string[] }) => {
             setLoading(false);
         }
     };
-    
-    const renderMCQ = (mcq: any, index: number) => {
-        const questionData = mcq.scrapedQuestion || mcq;
-        return (
-            <motion.div key={index} className="bg-white p-4 rounded-lg shadow border"
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
-                <p className="font-bold">{index + 1}. {questionData.question}</p>
-                <div className="mt-2 space-y-1">
-                    {questionData.options?.map((opt: any, i: number) => (
-                        <div key={i} className="text-sm">{typeof opt === 'string' ? opt : opt.option}</div>
-                    ))}
-                </div>
-                {questionData.answer && <p className="text-sm mt-2 text-green-600"><b>Answer:</b> {questionData.answer}</p>}
-                {questionData.explanation && <p className="text-sm mt-1 text-gray-600"><b>Explanation:</b> {questionData.explanation}</p>}
-                {questionData.tag && <p className="text-sm mt-2"><span className="font-semibold">Tag:</span> <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">{questionData.tag}</span></p>}
-            </motion.div>
-        );
-    }
 
     return (
         <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+            {/* Mode Selection */}
+            <div className="flex justify-center mb-6 gap-2">
+                <button
+                    type="button"
+                    onClick={() => setMode('file')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        mode === 'file' 
+                            ? 'bg-blue-600 text-white' 
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                >
+                    File Upload Mode
+                </button>
+                <button
+                    type="button"
+                    onClick={() => setMode('web')}
+                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        mode === 'web' 
+                            ? 'bg-blue-600 text-white' 
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                >
+                    Web Topic Mode
+                </button>
+            </div>
             <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
                 <div className="flex flex-col w-full md:w-2/3">
                     <label className="block text-sm font-medium mb-1 text-black">Topic</label>
@@ -213,7 +197,7 @@ const MCQGenerator = ({ topics }: { topics: string[] }) => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+                    className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
                 >
                     {loading ? 'Generating...' : 'Generate MCQs'}
                 </button>
@@ -372,15 +356,6 @@ const MCQGeneratorPageContent = () => {
 
     return (
         <div className="w-full max-w-2xl mx-auto mt-8 bg-gray-50 shadow-md rounded-2xl p-8"> {/* Card wrapper */}
-            {/* <motion.h2
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                style={{ fontSize: 42, fontFamily: 'sans-serif', color: 'black', fontWeight: 700 }}
-                className="text-center mb-6"
-            >
-                MCQ Agent
-            </motion.h2> */}
-
             <div className="flex justify-center border-b mb-6">
                 <button
                     onClick={() => setActiveTab('generator')}
@@ -414,55 +389,56 @@ const MCQGeneratorPageContent = () => {
     );
 };
 
-
-const MCQGeneratorPage = () => (
-    // <PageRevealWrapper
-    //     heading="Smart Study Assistant: MCQ Generator & Revision Trainer"
-    //     description="Transform textbooks and topics into exam-ready questions—automatically and intelligently. This AI-powered Study Assistant ingests uploaded PDFs or user-specified topics, understands the content using LLMs and vector search, and outputs structured MCQs with correct answers, explanations, and predicted future questions. Built for students, educators, and edtech platforms, this system reduces manual effort in quiz creation, improves retention through revision modes, and adapts to curriculum changes dynamically. It's not just a generator—it's your always-on learning coach."
-    //     details={
-    //         <div className="space-y-6">
-    //             <div>
-    //                 <h2 className="font-semibold text-blue-700 mb-2">Features</h2>
-    //                 <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
-    //                     <li>Multi-source Input: Accepts both uploaded files and typed topics via webhooks.</li>
-    //                     <li>LLM-Powered Understanding: Uses Pinecone + Cohere/Groq/OpenRouter to extract deep context.</li>
-    //                     <li>Auto MCQ Generation: Outputs 5 semantically correct, non-duplicate questions per topic.</li>
-    //                     <li>Web Scraping Integration: Finds past questions from Byjus, Unacademy, Quora using SerpAPI.</li>
-    //                     <li>PostgreSQL Storage: Saves and fetches all question data for later tracking and filtering.</li>
-    //                     <li>PDF + Email Reporting: Converts results into downloadable PDFs and sends via Gmail.</li>
-    //                     <li>Quiz Mode & Feedback Loop: Tracks quiz attempts, checks correctness, and stores analytics.</li>
-    //                     <li>Future Prediction Engine: Suggests 3 likely questions for upcoming exams using trend analysis.</li>
-    //                 </ul>
-    //             </div>
-    //             <div>
-    //                 <h2 className="font-semibold text-purple-700 mb-2">Example Use Cases</h2>
-    //                 <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
-    //                     <li>EdTech Platforms: Auto-generate quizzes and revision material from course PDFs or live web content.</li>
-    //                     <li>Teachers & Trainers: Instantly convert syllabus topics into ready-to-use question sets.</li>
-    //                     <li>Students: Self-quiz on specific chapters with instant feedback and future prediction questions.</li>
-    //                     <li>Academic Publishers: Enhance eBooks with interactive MCQ layers and smart assessments.</li>
-    //                     <li>Coaching Centers: Automate generation of practice sets and track student performance.</li>
-    //                 </ul>
-    //             </div>
-    //             <div>
-    //                 <h2 className="font-semibold text-blue-700 mb-2">⚡ Why This Stands Out</h2>
-    //                 <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
-    //                     <li>Multi-source Input: Accepts both uploaded files and typed topics via webhooks.</li>
-    //                     <li>LLM-Powered Understanding: Uses Pinecone + Cohere/Groq/OpenRouter to extract deep context.</li>
-    //                     <li>Auto MCQ Generation: Outputs 5 semantically correct, non-duplicate questions per topic.</li>
-    //                     <li>Web Scraping Integration: Finds past questions from Byjus, Unacademy, Quora using SerpAPI.</li>
-    //                     <li>PostgreSQL Storage: Saves and fetches all question data for later tracking and filtering.</li>
-    //                     <li>PDF + Email Reporting: Converts results into downloadable PDFs and sends via Gmail.</li>
-    //                     <li>Quiz Mode & Feedback Loop: Tracks quiz attempts, checks correctness, and stores analytics.</li>
-    //                     <li>Future Prediction Engine: Suggests 3 likely questions for upcoming exams using trend analysis.</li>
-    //                 </ul>
-    //             </div>
-    //         </div>
-    //     }
-    //     coverImage="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80"
-    // >
-        <MCQGeneratorPageContent />
-    // {/* </PageRevealWrapper> */}
-);
+const MCQGeneratorPage = () => {
+    return (
+        <PageRevealWrapper
+            heading="Smart Study Assistant: MCQ Generator & Revision Trainer"
+            description="Transform textbooks and topics into exam-ready questions—automatically and intelligently. This AI-powered Study Assistant ingests uploaded PDFs or user-specified topics, understands the content using LLMs and vector search, and outputs structured MCQs with correct answers, explanations, and predicted future questions. Built for students, educators, and edtech platforms, this system reduces manual effort in quiz creation, improves retention through revision modes, and adapts to curriculum changes dynamically. It's not just a generator—it's your always-on learning coach."
+            details={
+                <div className="space-y-6">
+                    <div>
+                        <h2 className="font-semibold text-blue-700 mb-2">Features</h2>
+                        <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
+                            <li>Multi-source Input: Accepts both uploaded files and typed topics via webhooks.</li>
+                            <li>LLM-Powered Understanding: Uses Pinecone + Cohere/Groq/OpenRouter to extract deep context.</li>
+                            <li>Auto MCQ Generation: Outputs 5 semantically correct, non-duplicate questions per topic.</li>
+                            <li>Web Scraping Integration: Finds past questions from Byjus, Unacademy, Quora using SerpAPI.</li>
+                            <li>PostgreSQL Storage: Saves and fetches all question data for later tracking and filtering.</li>
+                            <li>PDF + Email Reporting: Converts results into downloadable PDFs and sends via Gmail.</li>
+                            <li>Quiz Mode & Feedback Loop: Tracks quiz attempts, checks correctness, and stores analytics.</li>
+                            <li>Future Prediction Engine: Suggests 3 likely questions for upcoming exams using trend analysis.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 className="font-semibold text-purple-700 mb-2">Example Use Cases</h2>
+                        <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
+                            <li>EdTech Platforms: Auto-generate quizzes and revision material from course PDFs or live web content.</li>
+                            <li>Teachers & Trainers: Instantly convert syllabus topics into ready-to-use question sets.</li>
+                            <li>Students: Self-quiz on specific chapters with instant feedback and future prediction questions.</li>
+                            <li>Academic Publishers: Enhance eBooks with interactive MCQ layers and smart assessments.</li>
+                            <li>Coaching Centers: Automate generation of practice sets and track student performance.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 className="font-semibold text-blue-700 mb-2">⚡ Why This Stands Out</h2>
+                        <ul className="list-disc list-inside text-gray-700 text-sm space-y-1">
+                            <li>Multi-source Input: Accepts both uploaded files and typed topics via webhooks.</li>
+                            <li>LLM-Powered Understanding: Uses Pinecone + Cohere/Groq/OpenRouter to extract deep context.</li>
+                            <li>Auto MCQ Generation: Outputs 5 semantically correct, non-duplicate questions per topic.</li>
+                            <li>Web Scraping Integration: Finds past questions from Byjus, Unacademy, Quora using SerpAPI.</li>
+                            <li>PostgreSQL Storage: Saves and fetches all question data for later tracking and filtering.</li>
+                            <li>PDF + Email Reporting: Converts results into downloadable PDFs and sends via Gmail.</li>
+                            <li>Quiz Mode & Feedback Loop: Tracks quiz attempts, checks correctness, and stores analytics.</li>
+                            <li>Future Prediction Engine: Suggests 3 likely questions for upcoming exams using trend analysis.</li>
+                        </ul>
+                    </div>
+                </div>
+            }
+            coverImage="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80"
+        >
+            <MCQGeneratorPageContent />
+        </PageRevealWrapper>
+    );
+};
 
 export default MCQGeneratorPage;

@@ -1,19 +1,12 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { FaEnvelope, FaPaperclip, FaCheckCircle, FaExclamationCircle, FaFileAlt } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+// import { motion } from 'framer-motion';
+// import { FaPaperclip, FaCheckCircle, FaExclamationCircle, FaFileAlt } from 'react-icons/fa';
+import { BUTTON_CLASSES } from '../utils/colors';
 
 const EMAIL_ATTACHMENT_API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/upload-files';
 
 interface EmailAttachmentProcessingProps {
   compact?: boolean;
-}
-
-interface Stats {
-  processedAttachments: number;
-  processingAttachments: number;
-  failedAttachments: number;
-  totalDocuments: number;
 }
 
 interface ProcessingStatusItem {
@@ -50,14 +43,7 @@ interface FormState {
   files: File[];
 }
 
-const EmailAttachmentProcessing: React.FC<EmailAttachmentProcessingProps> = ({ compact = false }) => {
-  const navigate = useNavigate();
-  const [stats, setStats] = useState<Stats>({
-    processedAttachments: 0,
-    processingAttachments: 0,
-    failedAttachments: 0,
-    totalDocuments: 0,
-  });
+const EmailAttachmentProcessing: React.FC<EmailAttachmentProcessingProps> = ({ }) => {
   const [response, setResponse] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState<FormState>({
@@ -69,13 +55,6 @@ const EmailAttachmentProcessing: React.FC<EmailAttachmentProcessingProps> = ({ c
     files: []
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const statList = [
-    { title: 'Processed Attachments', value: stats.processedAttachments, icon: FaCheckCircle, color: 'bg-green-500' },
-    { title: 'Processing', value: stats.processingAttachments, icon: FaPaperclip, color: 'bg-yellow-500' },
-    { title: 'Failed', value: stats.failedAttachments, icon: FaExclamationCircle, color: 'bg-red-500' },
-    { title: 'Total Documents', value: stats.totalDocuments, icon: FaFileAlt, color: 'bg-blue-500' },
-  ];
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -114,42 +93,12 @@ const EmailAttachmentProcessing: React.FC<EmailAttachmentProcessingProps> = ({ c
         return;
       }
       setResponse(data);
-      setStats({
-        processedAttachments: data.stats?.processedAttachments || 0,
-        processingAttachments: data.stats?.processingAttachments || 0,
-        failedAttachments: data.stats?.failedAttachments || 0,
-        totalDocuments: (data.stats?.processedAttachments || 0) + (data.stats?.processingAttachments || 0) + (data.stats?.failedAttachments || 0),
-      });
     } catch (err: any) {
       setError(err.message || 'Unknown error');
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  interface StatCardProps {
-    title: string;
-    value: number;
-    icon: React.ComponentType<{ className?: string }>;
-    color: string;
-  }
-
-  const StatCard: React.FC<StatCardProps> = ({ title, value, icon: Icon, color }) => (
-    <motion.div
-      className={compact ? "bg-white border border-gray-200 rounded-xl p-3 shadow flex flex-col gap-2 min-w-[120px]" : "bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl flex flex-col gap-2 min-w-[160px] w-full max-w-xs mx-auto"}
-      whileHover={compact ? { scale: 1.03, boxShadow: '0 2px 8px 0 #61868d22' } : { scale: 1.05, boxShadow: '0 8px 32px 0 #61868d33' }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-    >
-      <div className="flex items-center gap-3 mb-2">
-        <div className={compact ? `p-2 rounded-lg ${color}` : `p-3 rounded-lg ${color}`}>
-          <Icon className={compact ? "w-5 h-5 text-white" : "w-6 h-6 text-white"} />
-        </div>
-        <div className={compact ? "font-bold text-base text-anthropic-dark truncate" : "font-bold text-lg text-anthropic-dark truncate"}>{title}</div>
-      </div>
-      <div className={compact ? "text-lg font-bold text-anthropic-dark" : "text-2xl font-bold text-anthropic-dark"}>{value}</div>
-    </motion.div>
-  );
 
   return (
     <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
@@ -180,7 +129,7 @@ const EmailAttachmentProcessing: React.FC<EmailAttachmentProcessingProps> = ({ c
         </div>
         <button
           type="submit"
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Processing...' : 'Submit'}

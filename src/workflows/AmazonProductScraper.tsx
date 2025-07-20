@@ -1,5 +1,5 @@
  import React, { useState, FormEvent, ChangeEvent } from 'react';
-import { motion } from 'framer-motion';
+
 
 const API_URL =
   'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/amazon';
@@ -17,7 +17,7 @@ interface ResultData {
   [key: string]: string | undefined;
 }
 
-const AmazonWebScrape: React.FC<AmazonWebScrapeProps> = ({ compact = false }) => {
+const AmazonWebScrape: React.FC<AmazonWebScrapeProps> = () => {
   const [url, setUrl] = useState<string>('');
   const [result, setResult] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);

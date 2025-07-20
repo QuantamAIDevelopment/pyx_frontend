@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import {
-  FaUserCheck, FaPlus, FaTrash, FaStar, FaChartLine,
+   FaPlus, FaTrash, FaStar,
   FaBuilding, FaUser, FaClipboardList
 } from 'react-icons/fa';
 
@@ -62,7 +62,7 @@ const PerformanceReviewSummaryPageContent: React.FC = () => {
   const [results, setResults] = useState<PerformanceReviewSummary[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+  // const formRef = useRef<HTMLDivElement>(null);
 
   const handleRowChange = (idx: number, field: keyof PerformanceReviewRow, value: string) => {
     setRows(prev => prev.map((row, i) => i === idx ? { ...row, [field]: value } : row));

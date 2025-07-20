@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaUsers, FaCalendarAlt, FaUserTie, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { motion} from 'framer-motion';
+import {  FaUserTie, FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
 
 const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
@@ -52,7 +52,7 @@ const InterviewPanelAssignmentPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
-  const formRef = useRef<HTMLFormElement>(null);
+  // const formRef = useRef<HTMLFormElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
