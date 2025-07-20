@@ -3,7 +3,7 @@ import { Button } from '../common/ui/button';
 import {ArrowLeft} from  'lucide-react'
 import ResumeToProfileExtractor from '../../workflows/ResumeToProfileExtractor';
 import ResumeAnalyzer from '../../workflows/resumeanalyzer';
-import PdfSummarizer from '../../workflows/PDFsummarizer';
+import PdfSummarizer from '../../workflows/PDFSummarizer';
 import CustomerSupportAgent from '../../workflows/CustomerSupportAgent';
 
 import AICustomerSupport from '../../workflows/AICustomerSupport';
@@ -42,7 +42,7 @@ import GmailCategorization from '../../workflows/GmailCategorization';
 import SalesForecastingAgent from '../../workflows/SalesForecastingAgent';
 import LeaveBalanceChatbot from '../../workflows/LeaveBalanceChatbot';
 import PRSummaryAgent from '../../workflows/PRSummaryAgent';
-import PRReviewerAIAgent from '../../workflows/PRReviewerAgent';
+import PRReviewerAgent from '../../workflows/PRReviewerAgent';
 // import ProjectCostReports from '../../workflows/ProjectCostReports';
 import FraudDetectionSystem from '../../workflows/FraudDetectionSystem';
 import AmazonProductScraper from '../../workflows/AmazonProductScraper';
@@ -99,7 +99,7 @@ const workflowComponents: { [key: string]: React.ComponentType<any> } = {
     agent_038: SalesForecastingAgent,
     agent_039: LeaveBalanceChatbot,
     agent_040: PRSummaryAgent,
-    agent_041: PRReviewerAIAgent,
+    agent_041: PRReviewerAgent,
     // agent_042: ProjectCostReports,
     agent_043: FraudDetectionSystem,
     agent_044: AmazonProductScraper,
