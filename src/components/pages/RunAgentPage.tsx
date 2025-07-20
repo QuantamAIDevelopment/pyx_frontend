@@ -38,11 +38,11 @@ import DatabaseMigrationAIAgent from '../../workflows/DatabaseMigrationAI';
 import ATSToHRMSCandidateStatusSync from '../../workflows/ATSToHRMSCandidateStatusSync';
 import TestCaseGenerator from '../../workflows/TestGenerator';
 import GmailCategorization from '../../workflows/GmailCategorization';
-// import PDFSummarizer from '../../workflows/PDFSummarizer';
+
 import SalesForecastingAgent from '../../workflows/SalesForecastingAgent';
 import LeaveBalanceChatbot from '../../workflows/LeaveBalanceChatbot';
-import PRSummaryAgent from '../../workflows/PRSummaryagent';
-import PRReviewerAIAgent from '../../workflows/PRRevieweragent';
+import PRSummaryAgent from '../../workflows/PRSummaryAgent';
+import PRReviewerAIAgent from '../../workflows/PRReviewerAgent';
 // import ProjectCostReports from '../../workflows/ProjectCostReports';
 import FraudDetectionSystem from '../../workflows/FraudDetectionSystem';
 import AmazonProductScraper from '../../workflows/AmazonProductScraper';
