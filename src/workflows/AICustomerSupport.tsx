@@ -1,86 +1,105 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaRobot, FaComments, FaChartLine, FaClock } from 'react-icons/fa';
-import { IconBaseProps } from 'react-icons';
-// import { useNavigate } from 'react-router-dom';
- 
-interface AICustomerSupportProps {
-  compact?: boolean;
-}
- 
-interface Stat {
-  title: string;
-  value: number | string;
-  icon: React.ComponentType<IconBaseProps>;
-  color: string;
-}
- 
-const AICustomerSupport: React.FC<AICustomerSupportProps> = ({ compact = false }) => {
-  // const navigate = useNavigate();
-  const [stats] = React.useState({
-    totalQueries: 156,
-    resolvedQueries: 142,
-    averageResponseTime: '2.5s',
-    activeUsers: 23
-  });
- 
-  const statList: Stat[] = [
-    { title: 'Total Queries', value: stats.totalQueries, icon: FaComments, color: 'bg-blue-500' },
-    { title: 'Resolved', value: stats.resolvedQueries, icon: FaRobot, color: 'bg-green-500' },
-    { title: 'Avg Response Time', value: stats.averageResponseTime, icon: FaClock, color: 'bg-yellow-500' },
-    { title: 'Active Users', value: stats.activeUsers, icon: FaChartLine, color: 'bg-purple-500' },
-  ];
- 
-  const StatCard: React.FC<Stat> = ({ title, value, icon: Icon, color }) => (
-    <motion.div
-      className={compact ? "bg-white border border-gray-200 rounded-xl p-3 shadow flex flex-col gap-2 min-w-[120px]" : "bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl flex flex-col gap-2 min-w-[160px] w-full max-w-xs mx-auto"}
-      whileHover={compact ? { scale: 1.03, boxShadow: '0 2px 8px 0 #61868d22' } : { scale: 1.05, boxShadow: '0 8px 32px 0 #61868d33' }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-    >
-      <div className="flex items-center gap-3 mb-2">
-        <div className={compact ? `p-2 rounded-lg ${color}` : `p-3 rounded-lg ${color}`}>
-          <Icon className={compact ? "w-5 h-5 text-white" : "w-6 h-6 text-white"} />
-        </div>
-        <div className={compact ? "font-bold text-base text-anthropic-dark truncate" : "font-bold text-lg text-anthropic-dark truncate"}>{title}</div>
-      </div>
-      <div className={compact ? "text-lg font-bold text-anthropic-dark" : "text-2xl font-bold text-anthropic-dark"}>{value}</div>
-    </motion.div>
-  );
- 
+import React, { useState } from 'react';
+import { FaRobot } from 'react-icons/fa';
+
+const AICustomerSupport: React.FC = () => {
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([
+    { sender: 'ai', text: 'Start chatting with your AI support agent...' }
+  ]);
+  const [loading, setLoading] = useState(false);
+
+  // Replace handleSend with async API call
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    const userMsg = { sender: 'user', text: input };
+    setMessages(prev => [...prev, userMsg]);
+    setInput('');
+    setLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('chat', input);
+
+      const response = await fetch('https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/chat', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      setMessages(prev => [
+        ...prev,
+        { sender: 'ai', text: data.output || data.reply || JSON.stringify(data) }
+      ]);
+    } catch (error) {
+      setMessages(prev => [
+        ...prev,
+        { sender: 'ai', text: "Sorry, there was an error contacting the support agent." }
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') handleSend();
+  };
+
   return (
-    <div className='bg-white shadow-lg rounded-lg p-4'>
-    <div className={compact ? "space-y-4 w-full overflow-hidden" : "space-y-8 w-full"} style={{ fontFamily: 'ui-sans-serif', fontSize: '15.75px' }}>
-      <div className={compact ? "flex items-center space-x-2 mb-1" : "flex items-center space-x-4 mb-2"}>
-        <div className={compact ? "bg-blue-500 p-2 rounded-lg shadow" : "bg-blue-500 p-3 rounded-lg shadow-lg"}>
-          <FaRobot className={compact ? "w-5 h-5 text-white" : "w-6 h-6 text-white"} />
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      {/* Info Section */}
+      <div className="mb-6">
+        <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white font-poppins text-center rounded-lg py-2 px-4 font-semibold text-sm">
+          Launch your own AI support agent & elevate your support for audiences any size, any time.
         </div>
-        <h2 className="text-[42px] text-black font-sans font-bold">
-          AI Customer Support
-        </h2>
       </div>
-      <div className={compact ? "flex gap-2 w-full overflow-x-auto" : "grid grid-cols-2 gap-4 w-full"}>
-        {statList.map((stat, idx) => (
-          <StatCard key={idx} {...stat} />
-        ))}
+      {/* Chat Section */}
+      <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center justify-center min-h-[180px] mb-8">
+        <div className="w-full max-h-48 overflow-y-auto mb-4 flex flex-col gap-2">
+          {messages.map((msg, idx) => (
+            <div
+              key={idx}
+              className={msg.sender === 'user' ? 'text-right' : 'text-left'}
+            >
+              <span
+                className={
+                  msg.sender === 'user'
+                    ? 'inline-block bg-gray-100 text-black rounded-xl px-4 py-2 shadow text-base font-poppins font-medium'
+                    : 'inline-block bg-blue-50 text-black rounded-xl px-4 py-2 shadow text-base font-poppins font-medium'
+                }
+              >
+                {msg.text}
+              </span>
+            </div>
+          ))}
+          {loading && (
+            <div className="text-left">
+              <span className="inline-block bg-gray-50 text-base font-poppins rounded-xl px-4 py-2 shadow font-medium opacity-70 animate-pulse">
+                AI is typing...
+              </span>
+            </div>
+          )}
+        </div>
+        <div className="flex w-full gap-2">
+          <input
+            type="text"
+            placeholder="Type your message..."
+            className="flex-1 text-base font-poppins px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white shadow-sm"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={handleInputKeyDown}
+            disabled={loading}
+          />
+          <button
+            className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+            onClick={handleSend}
+            disabled={loading || !input.trim()}
+          >
+            Send
+          </button>
+        </div>
       </div>
-      <div className="flex justify-center mt-6">
-        <input
-          type="text"
-          placeholder="Type your message..."
-          className="text-[18px] font-sans px-6 py-4 rounded-xl border border-gray-300 mr-4 flex-1"
-        />
-        <button
-         className="bg-gradient-to-r from-[#9810FA] to-[#155DFC] text-white font-sans text-[18px] font-bold
-         rounded-[12px] px-8 py-4 shadow-[0_4px_16px_0_rgba(0,0,0,0.10)] border-none
-         cursor-pointer transition-shadow"
-        >
-          Send
-        </button>
-      </div>
-    </div>
     </div>
   );
 };
- 
-export default AICustomerSupport;
+
+export default AICustomerSupport; 

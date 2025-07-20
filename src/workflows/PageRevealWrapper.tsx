@@ -6,7 +6,7 @@ interface PageRevealWrapperProps {
   children: ReactNode;
   heading: string;
   description?: string;
-  details?: string;
+  details?: ReactNode;  // Change from string to ReactNode
   coverImage?: string;
 }
 

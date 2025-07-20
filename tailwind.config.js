@@ -29,6 +29,7 @@ export default {
       },
       fontFamily: {
         quncry: ['Quncry', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
     },
   },

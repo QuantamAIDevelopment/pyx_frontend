@@ -291,7 +291,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
           <div className="lg:col-span-2 space-y-8">
             {/* Agent Header */}
             <div className="flex items-start space-x-6">
-              <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-r from-[#FF620A] to-[#993B06] flex-shrink-0">
+              <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-[#FF620A] flex-shrink-0">
                 <IconComponent className="h-10 w-10 text-white" />
               </div>
               <div className="flex-1">
@@ -329,7 +329,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
               <Button 
                 onClick={() => navigate(`/agents/${agent?.id}/run`)}
                 size="lg" 
-                className="px-8 bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-[#993B06] hover:to-[#FF620A] border-none"
+                className="px-8 !bg-[#FF620A] hover:!shadow-lg border-none"
               >
                 <Play className="h-4 w-4 mr-2" />
                 Run Agent
@@ -550,7 +550,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                 <CardTitle>Pricing</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center p-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg border">
+                <div className="text-center p-4 bg-[#FFF6ED] rounded-lg border">
                   <p className="text-sm text-black mb-1">Starting at</p>
                   <p className="text-3xl font-bold">{agent.price}</p>
                   {agent.price !== 'Free' && (

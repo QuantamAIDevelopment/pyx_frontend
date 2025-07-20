@@ -56,53 +56,41 @@ const NotionKnowledgeBaseAIAssistant: React.FC = () => {
     };
  
     return (
-        <div className="bg-gray-200 rounded-2xl shadow-md p-12 w-full max-w-3xl mx-auto mt-8">
-            <motion.h2 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-                className="text-[42px] font-bold text-center mb-6 flex items-center justify-center gap-2"
-                style={{ fontFamily: 'sans-serif', color: 'black' }}>
-                Notion Knowledge Base AI Assistant
-            </motion.h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                    type="text"
-                    value={question}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => setQuestion(e.target.value)}
-                    placeholder="Ask a question about your Notion workspace..."
-                    className="w-full p-4 border rounded text-lg placeholder:text-lg placeholder-gray-500"
-                    required
-                    style={{ fontFamily: 'poppins' }}
-                />
-                <div className="flex justify-center w-full">
-                    <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        type="submit"
-                        className={`
-                            min-h-[31.5px] h-[31.5px]
-                            px-[14px] py-[21px]
-                            text-[16.41px] text-white font-bold font-poppins
-                            flex items-center justify-center gap-2
-                            rounded shadow-[0_2px_8px_rgba(0,0,0,0.12)]
-                            transition-opacity duration-200
-                            ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
-                        `}
-                        style={{
-                            background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-                        }}
-                    >
-                        {loading ? 'Asking...' : 'Run Workflow'}
-                    </motion.button>
+        <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+                <div className="flex flex-col w-full md:w-2/3">
+                    <input
+                        type="text"
+                        value={question}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setQuestion(e.target.value)}
+                        placeholder="Ask a question about your Notion workspace..."
+                        className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+                        required
+                    />
                 </div>
- 
- 
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    type="submit"
+                    className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+                    disabled={loading}
+                >
+                    {loading ? 'Loading...' : 'Run Workflow'}
+                </motion.button>
             </form>
-            {error && <div className="text-red-500 mt-4">{error}</div>}
             {answer && (
-                <div className="mt-6 bg-gray-100 p-4 rounded shadow-inner border">
-                    <div className="text-gray-800 text-base leading-relaxed">
-                        {parseMarkdownLink(answer)}
+                <div>
+                    <h2 className="text-xl font-bold text-black mb-6">Notion Knowledge Base Result</h2>
+                    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8">
+                        <div className="text-black text-base leading-relaxed">{parseMarkdownLink(answer)}</div>
                     </div>
                 </div>
+            )}
+            {!answer && !loading && (
+                <p className="text-center text-gray-700">No answer to display.</p>
+            )}
+            {error && (
+                <div className="mt-4 text-red-600 text-center font-medium">{error}</div>
             )}
         </div>
     );

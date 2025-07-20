@@ -1,4 +1,4 @@
-'use client'
+ 'use client'
 
 import { BrowserRouter, Routes, Route, Navigate, useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -100,6 +100,11 @@ function AppRoutes() {
       setCurrentMode(savedMode)
     }
   }, [])
+
+  // Scroll to top on route change
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   const toggleMode = (mode: Mode) => {
     setCurrentMode(mode)

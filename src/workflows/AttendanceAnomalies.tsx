@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
 import { FaFileCsv,  FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
-import PageRevealWrapper from './PageRevealWrapper';
+// import PageRevealWrapper from './PageRevealWrapper';
  
 interface ErrorMessageProps {
   error: string;
@@ -123,59 +123,44 @@ const AttendanceAnomalies: React.FC = () => {
   };
  
   return (
-    <PageRevealWrapper
-      heading="Attendance Anomalies Detection"
-      description="Upload your attendance CSV to detect anomalies and escalate feedback to HR."
-      details=""
-      coverImage=""
-    >
-      <div className="max-w-2xl mx-auto p-10 bg-gray-200 mt-8 rounded-3xl shadow-md space-y-8">
-        <div className="flex items-center space-x-3 mb-4 justify-center">
-          <h2 className="text-[42px] font-sans font-bold text-black m-0 p-0 text-center">
-  Attendance Anomalies
-</h2>
- 
-        </div>
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 items-center">
-          <label className="font-semibold" style={{ fontSize: '20px' }}>Upload Attendance CSV:</label>
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-2/3">
+          <label className="block text-sm font-medium mb-1 text-black">Upload Attendance CSV:</label>
           <input
             type="file"
             accept=".csv"
             onChange={handleFileChange}
-            className="border p-2 rounded text-lg bg-white"
-            style={{ fontSize: '18px' }}
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             required
           />
-   <button
-  type="submit"
-  disabled={loading}
-  className={`
-    flex items-center justify-center
-    text-white font-bold font-[poppins] text-[16.41px]
-    h-[31.5px] px-[14px] py-[21px]
-    rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
-    transition-opacity duration-200 ease-in-out
-    ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
-  `}
-  style={{
-    background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-  }}
->
-  {loading ? 'Submitting...' : 'Run Workflow'}
-</button>
- 
- 
-        </form>
-        <ErrorMessage error={error} />
-        <ResponseResult
-          result={result}
-          showMenu={false} // This prop is now hardcoded to false as per the edit hint
-          onContextMenu={handleContextMenu}
-          onCopy={handleCopy}
-          onDownload={handleDownload}
-        />
-      </div>
-    </PageRevealWrapper>
+        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+        >
+          {loading ? "Loading..." : "Run Workflow"}
+        </button>
+      </form>
+
+      {result && (
+        <div>
+          <h2 className="text-xl font-bold text-black mb-6">Attendance Anomalies Result</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8">
+            <div className="text-black text-base whitespace-pre-line">{result}</div>
+          </div>
+        </div>
+      )}
+
+      {!result && !loading && (
+        <p className="text-center text-gray-700">No attendance anomalies data to display.</p>
+      )}
+
+      {error && (
+        <div className="mt-4 text-red-600 text-center font-medium">{error}</div>
+      )}
+    </div>
   );
 };
  

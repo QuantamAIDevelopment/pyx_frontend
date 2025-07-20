@@ -190,7 +190,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
                     <div className="w-full sm:w-auto relative">
                       <Button
                         onClick={isLoggedIn ? onViewActiveAgents : () => onShowAuth('login')}
-                        className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto min-w-0 border-none"
+                        className="!bg-[#FF620A] w-full sm:w-auto min-w-0 border-none"
                         size="default"
                       >
                         <Activity className="h-4 w-4 mr-2 flex-shrink-0 " />

@@ -38,54 +38,39 @@ const GmailCategorization: React.FC = () => {
   };
  
   return (
-    <div
-      className="bg-gray-200 rounded-2xl shadow-md p-10 w-full max-w-2xl mx-auto mt-8"
-      style={{ fontFamily: 'Poppins, sans-serif' }}
-    >
-     <h2 className="text-center mb-6 flex items-center justify-center gap-2 text-[42px] font-sans text-black font-bold">
-  Gmail Categorization
-</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="category"
-          value={form.category}
-          onChange={handleChange}
-          placeholder="Category"
-          className="w-full p-3 border rounded"
-          required
-          style={{ fontSize: 18, fontFamily: 'poppins' }}
-        />
-        <input
-          name="description"
-          value={form.description}
-          onChange={handleChange}
-          placeholder="Description"
-          className="w-full p-3 border rounded"
-          required
-          style={{ fontSize: 18, fontFamily: 'poppins' }}
-        />
-        <div className="flex justify-center">
- <button
-  type="submit"
-  disabled={loading}
-  className={`h-[31.5px] px-[14px] py-[21px] text-[16.41px] font-medium text-white rounded-[8px] shadow-md flex items-center justify-center transition-opacity duration-200 ${
-    loading ? 'opacity-60 cursor-not-allowed' : 'opacity-100 cursor-pointer'
-  }`}
-  style={{
-    background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-    fontFamily: 'poppins',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-  }}
->
-  {loading ? 'Categorizing...' : 'Categorize Email'}
-</button>
-</div>
- 
- 
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-1/2">
+          <input
+            name="category"
+            value={form.category}
+            onChange={handleChange}
+            placeholder="Category"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+        <div className="flex flex-col w-full md:w-1/2">
+          <input
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            placeholder="Description"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          disabled={loading}
+        >
+          {loading ? 'Categorizing...' : 'Categorize Email'}
+        </button>
       </form>
-      {error && <div className="text-red-500 mt-4">{error}</div>}
+      {error && <div className="mt-4 text-red-600 text-center font-medium">{error}</div>}
       {result && (
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded whitespace-pre-line text-gray-800">
+        <div className="bg-white border border-blue-200 rounded-2xl p-6 shadow-2xl mb-8 whitespace-pre-line text-gray-800">
           {result}
         </div>
       )}

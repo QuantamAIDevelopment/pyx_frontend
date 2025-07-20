@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
 import { FaUserTie, FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
-import PageRevealWrapper from './PageRevealWrapper';
+// import PageRevealWrapper from './PageRevealWrapper';
  
 const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/fetch-data';
  
@@ -118,72 +118,57 @@ const FetchLeads: React.FC = () => {
   };
  
   return (
-    <PageRevealWrapper
-      heading="Fetch Leads Workflow"
-      description="Trigger the fetch leads workflow and get a personalized response."
-      details=""
-      coverImage=""
-    >
-      <div className="max-w-3xl mx-auto p-14 rounded-2xl mt-8 shadow-md space-y-8" style={{ background: '#f3f4f6' }}>
-        <div className="flex items-center space-x-3 mb-4 justify-center">
-          <h2 className="text-[42px] font-sans font-bold text-black text-center">
-            Fetch Leads
-          </h2>
-        </div>
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-          <label className="font-semibold">Triggered By:</label>
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-1/2">
+          <label className="block text-sm font-medium mb-1 text-black">Triggered By</label>
           <input
             type="text"
             name="triggeredBy"
             value={input.triggeredBy}
             onChange={handleChange}
-            className="border p-2 rounded placeholder-gray-400"
-            style={{ fontSize: 15.75, fontFamily: 'poppins' }}
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             placeholder="e.g. postman-test"
             required
           />
-          <label className="font-semibold">Message:</label>
+        </div>
+        <div className="flex flex-col w-full md:w-1/2">
+          <label className="block text-sm font-medium mb-1 text-black">Message</label>
           <textarea
             name="message"
             value={input.message}
             onChange={handleChange}
-            className="border p-2 rounded placeholder-gray-400"
-            style={{ fontSize: 15.75, fontFamily: 'poppins' }}
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             placeholder="Enter your message"
             required
           />
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            disabled={loading}
-            className={`
-              flex items-center justify-center
-              text-white font-bold font-[poppins] text-[16.41px]
-              h-[31.5px] px-[14px] py-[21px]
-              rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
-              transition-opacity duration-200 ease-in-out
-              ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
-            `}
-            style={{
-              background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-            }}
-          >
-            {loading ? 'Submitting...' : 'Run Workflow'}
-          </button>
         </div>
- 
- 
-        </form>
-        <ErrorMessage error={error} />
-        <ResponseResult
-          result={result}
-          showMenu={showMenu}
-          onContextMenu={handleContextMenu}
-          onCopy={handleCopy}
-          onDownload={handleDownload}
-        />
-      </div>
-    </PageRevealWrapper>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+        >
+          {loading ? "Loading..." : "Run Workflow"}
+        </button>
+      </form>
+
+      {result && (
+        <div>
+          <h2 className="text-xl font-bold text-black mb-6">Fetch Leads Result</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8">
+            <div className="text-black text-base whitespace-pre-line">{result}</div>
+          </div>
+        </div>
+      )}
+
+      {!result && !loading && (
+        <p className="text-center text-gray-700">No leads data to display.</p>
+      )}
+
+      {error && (
+        <div className="mt-4 text-red-600 text-center font-medium">{error}</div>
+      )}
+    </div>
   );
 };
  

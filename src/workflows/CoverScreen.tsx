@@ -4,7 +4,7 @@ interface CoverScreenProps {
   onStart: () => void;
   heading?: string;
   description?: string;
-  details?: ReactElement;
+  details?: React.ReactNode;  // Change from ReactElement to ReactNode
   coverImage?: string;
   workflowSVG?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
@@ -56,7 +56,7 @@ const CoverScreen: React.FC<CoverScreenProps> = ({
       </div>
 
       {/* Details Section for rich content */}
-      {details && (
+      {details && React.isValidElement(details) && (
         <div className="w-full max-w-4xl mx-auto px-4 md:px-0 mb-12">
           <div className="space-y-12">
 {React.Children.map(details.props.children, (section) => {

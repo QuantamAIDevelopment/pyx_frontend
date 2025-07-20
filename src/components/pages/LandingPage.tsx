@@ -6,7 +6,7 @@ import { FeaturedAgents } from '../agents/FeaturedAgents'
 import { Categories } from '../common/Categories'
 import { Testimonials } from '../common/Testimonials'
 import { CallToAction } from '../common/CallToAction'
-import { PyXDemo } from '../common/PyXDemo'
+// import { PyXDemo } from '../common/PyXDemo'
 
 interface LandingPageProps {
   onExploreAgents: () => void
@@ -31,9 +31,9 @@ export function LandingPage({ onExploreAgents, onGetStarted, onAgentSelect }: La
       <Categories />
       
       {/* PyX Assistant Demo - Showcase the AI assistant */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900/50">
+      {/* <section className="py-20 bg-gray-50 dark:bg-gray-900/50">
         <PyXDemo />
-      </section>
+      </section> */}
       
       {/* Testimonials - White background for readability */}
       <Testimonials />

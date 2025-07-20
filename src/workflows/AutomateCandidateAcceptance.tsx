@@ -1,9 +1,9 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-// import { FaUserCheck, FaPaperPlane } from 'react-icons/fa';
-import PageRevealWrapper from './PageRevealWrapper';
- 
+import React, { useState, ChangeEvent, FormEvent, MouseEvent } from 'react';
+import { motion } from 'framer-motion';
+
+
 const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/candidate-accepted';
- 
+
 const AutomateCandidateAcceptance: React.FC = () => {
   const [form, setForm] = useState<{
     'Candidate ID': string;
@@ -21,13 +21,14 @@ const AutomateCandidateAcceptance: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [result, setResult] = useState<string>('');
- 
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setResult('');
     setError('');
   };
- 
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -48,7 +49,19 @@ const AutomateCandidateAcceptance: React.FC = () => {
       setLoading(false);
     }
   };
- 
+
+  const handleContextMenu = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setShowMenu(true);
+    const clickHandler = () => setShowMenu(false);
+    document.addEventListener('click', clickHandler, { once: true });
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(result);
+    setShowMenu(false);
+  };
+
   const handleDownload = () => {
     const blob = new Blob([result], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -57,110 +70,101 @@ const AutomateCandidateAcceptance: React.FC = () => {
     a.download = 'candidate-acceptance.txt';
     a.click();
     URL.revokeObjectURL(url);
+    setShowMenu(false);
   };
- 
+
   return (
-    <PageRevealWrapper
-      heading="Automate Candidate Acceptance"
-      description="Automate candidate acceptance and onboarding notifications. Fill the form to notify the team and update the tracker."
-      details=""
-      coverImage=""
-    >
-      <div className="max-w-xl mx-auto p-6 rounded-3xl mt-8 shadow-md space-y-8" style={{ background: '#f3f4f6' }}>
-        <div className="flex items-center space-x-3 mb-4">
-          <h2 className="text-[42px] font-sans text-black m-0 text-center">
-            Automate Candidate Acceptance
-          </h2>
- 
-        </div>
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-          <label className="font-semibold">Candidate ID:</label>
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row md:flex-wrap gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-[30%]">
+          <label className="block text-sm font-medium mb-1 text-black">Candidate ID</label>
           <input
             type="text"
             name="Candidate ID"
             value={form['Candidate ID']}
             onChange={handleChange}
-            className="border p-2 rounded text-base"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             required
             placeholder="Enter Candidate ID"
-            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
-          <label className="font-semibold">Name:</label>
+        </div>
+        <div className="flex flex-col w-full md:w-[30%]">
+          <label className="block text-sm font-medium mb-1 text-black">Name</label>
           <input
             type="text"
             name="Name"
             value={form.Name}
             onChange={handleChange}
-            className="border p-2 rounded text-base"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             required
             placeholder="Enter Name"
-            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
-          <label className="font-semibold">Email:</label>
+        </div>
+        <div className="flex flex-col w-full md:w-[30%]">
+          <label className="block text-sm font-medium mb-1 text-black">Email</label>
           <input
             type="email"
             name="Email"
             value={form.Email}
             onChange={handleChange}
-            className="border p-2 rounded text-base"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             required
             placeholder="Enter Email"
-            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
-          <label className="font-semibold">Status:</label>
+        </div>
+        <div className="flex flex-col w-full md:w-[30%]">
+          <label className="block text-sm font-medium mb-1 text-black">Status</label>
           <input
             type="text"
             name="STATUS"
             value={form.STATUS}
             onChange={handleChange}
-            className="border p-2 rounded text-base"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             required
             placeholder="Enter Status"
-            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
-          <label className="font-semibold">Updated Date:</label>
+        </div>
+        <div className="flex flex-col w-full md:w-[30%]">
+          <label className="block text-sm font-medium mb-1 text-black">Updated Date</label>
           <input
             type="date"
             name="UPDATED DATE"
             value={form['UPDATED DATE']}
             onChange={handleChange}
-            className="border p-2 rounded text-base"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             required
             placeholder="Select Date"
-            style={{ fontSize: '15.75px', fontFamily: 'poppins' }}
           />
-  <button
-  type="submit"
-  disabled={loading}
-  className={`
-    flex items-center justify-center
-    text-white font-bold font-[poppins] text-[16.41px]
-    h-[31.5px] w-auto
-    px-[14px] py-[21px]
-    rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
-    transition-opacity duration-200 ease-in-out
-    ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
-    mx-auto
-  `}
-  style={{
-    background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-  }}
->
-  {loading ? 'Submitting...' : 'Run Workflow'}
-</button>
- 
- 
-        </form>
-        {error && <div style={{color: 'red', margin: '1em 0'}}>Error: {error}</div>}
-        {result && <div style={{margin: '1em 0', padding: '1em', background: '#f0f0f0'}}>Result: {JSON.stringify(result)}</div>}
-        {result && (
-    <button onClick={handleDownload} className="mt-2 px-4 py-2 bg-blue-600 text-white rounded">
-      Download Result
-    </button>
-  )}
-      </div>
-    </PageRevealWrapper>
+        </div>
+        <motion.button
+          type="submit"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Run Workflow"}
+        </motion.button>
+      </form>
+
+      {result && (
+        <div>
+          <h2 className="text-xl font-bold text-black mb-6">Candidate Acceptance Result</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8">
+            <div className="text-black text-base whitespace-pre-line">{result}</div>
+          </div>
+        </div>
+      )}
+
+      {!result && !loading && (
+        <p className="text-center text-gray-700">No candidate acceptance data to display.</p>
+      )}
+
+      {error && (
+        <div className="mt-4 text-red-600 text-center font-medium">{error}</div>
+      )}
+    </div>
   );
 };
- 
+
 export default AutomateCandidateAcceptance;

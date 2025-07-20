@@ -66,52 +66,29 @@ const DynamicModelSelector: React.FC = () => {
   };
  
   return (
-    <div className="bg-gray-200 rounded-2xl shadow-md p-14 w-full max-w-3xl mx-auto mt-8" style={{ fontFamily: 'Poppins' }}>
-     <motion.h2
-  initial={{ opacity: 0, y: -20 }}
-  animate={{ opacity: 1, y: 0 }}
-  className="text-[42px] font-sans font-bold text-black text-center mb-4 flex items-center justify-center gap-2"
-  style={{ fontFamily: 'sans-serif' }}
->
-  Dynamic Model Selector for Optimal AI Responses
-</motion.h2>
- 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4" style={{ fontFamily: 'Poppins' }}>
-        <input
-          type="text"
-          value={question}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setQuestion(e.target.value)}
-          placeholder="Ask your question (e.g. What’s the latest news about AI regulation in the EU?)"
-          className="p-3 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400 text-medium placeholder:text-medium placeholder:font-semibold placeholder:opacity-80"
-          style={{ fontSize: '15.5px', fontFamily: 'Poppins' }}
-          required
-        />
-        <div className="flex justify-center">
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            type="submit"
-            className={`
-              h-[31.5px] min-h-[31.5px]
-              px-[14px] py-[21px]
-              text-[16.41px] text-white font-bold font-[poppins]
-              flex items-center justify-center
-              rounded shadow-[0_2px_8px_rgba(0,0,0,0.10)]
-              transition-opacity duration-200 ease-in-out
-              ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
-            `}
-            style={{
-              background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-              fontFamily: 'Poppins',
-            }}
-          >
-            {loading ? 'Selecting...' : 'Run Workflow'}
-          </motion.button>
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-2/3">
+          <input
+            type="text"
+            value={question}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setQuestion(e.target.value)}
+            placeholder="Ask your question (e.g. What’s the latest news about AI regulation in the EU?)"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+            required
+          />
         </div>
+        <button
+          type="submit"
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          disabled={loading}
+        >
+          {loading ? 'Selecting...' : 'Run Workflow'}
+        </button>
       </form>
-      {error && <div className="text-red-500 mt-4 text-center font-semibold" style={{ fontFamily: 'Poppins' }}>{error}</div>}
+      {error && <div className="mt-4 text-red-600 text-center font-medium">{error}</div>}
       {result && (
-        <div className="mt-6 p-4 bg-gray-100 border rounded-lg shadow-inner" style={{ fontFamily: 'Poppins' }}>
+        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8">
           {result.model && (
             <>
               <div className="font-semibold mb-2 text-gray-700">Model Selection Result:</div>
@@ -130,7 +107,7 @@ const DynamicModelSelector: React.FC = () => {
           {result.answer && (
             <div className="mt-4">
               <div className="font-semibold mb-2 text-gray-700">AI Response:</div>
-              <div className="whitespace-pre-line text-gray-900 text-base bg-white p-3 rounded border" style={{ fontFamily: 'Poppins' }}>
+              <div className="whitespace-pre-line text-gray-900 text-base bg-gray-50 p-3 rounded border">
                 {result.answer}
               </div>
             </div>

@@ -1,15 +1,15 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { motion } from 'framer-motion';
 import { FaRobot } from 'react-icons/fa';
- 
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/Customer support';
- 
+
+const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/Customer%20support';
+
 const CustomerSupportAgent: React.FC = () => {
   const [input, setInput] = useState<string>('');
   const [response, setResponse] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
- 
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -18,69 +18,55 @@ const CustomerSupportAgent: React.FC = () => {
     try {
       const res = await fetch(API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {
+          'Content-Type': 'text/plain',
+        },
         body: input,
       });
-      if (!res.ok) throw new Error('Failed to get response');
-      const text = await res.text();
+
+      if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+
+      const contentType = res.headers.get('Content-Type') || '';
+      const text = contentType.includes('application/json')
+        ? JSON.stringify(await res.json(), null, 2)
+        : await res.text();
+
       setResponse(text);
     } catch (err: any) {
-      setError(err.message);
+      setError(err.message || 'Unexpected error');
     } finally {
       setLoading(false);
     }
   };
- 
+
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white rounded shadow mt-8">
-      <div className="flex items-center space-x-3 mb-4">
-        <div className="bg-blue-500 p-3 rounded-lg">
-          <FaRobot className="w-6 h-6 text-white" />
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-2/3">
+          <textarea
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400 min-h-[80px]"
+            placeholder="Enter your name, order ID, and query (e.g. order tracking)"
+            value={input}
+            onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value)}
+            required
+          />
         </div>
-        <h2
-          className="font-bold"
-          style={{
-            fontSize: '15.75px',
-            fontFamily: 'ui-sans-serif, sans-serif',
-            color: 'black',
-            margin: 0
-          }}
-        >
-          Customer Support Agent
-        </h2>
-      </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <textarea
-          className="w-full border rounded p-2 min-h-[80px]"
-          placeholder="Enter your name, order ID, and query (e.g. order tracking)"
-          value={input}
-          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value)}
-          required
-          style={{ fontFamily: 'ui-sans-serif, sans-serif', fontSize: '15.75px' }}
-        />
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
+        <button
           type="submit"
-          className="w-full text-white py-2 rounded-xl font-bold text-base shadow-lg transition-colors"
-          style={{
-            background: 'linear-gradient(90deg, rgb(21,93,252) 0%, rgb(152,16,250) 100%)',
-            fontFamily: 'ui-sans-serif, sans-serif',
-            fontSize: '15.75px'
-          }}
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
           disabled={loading}
         >
           {loading ? 'Processing...' : 'Ask Support Agent'}
-        </motion.button>
+        </button>
       </form>
-      {error && <div className="text-red-500 mt-4">{error}</div>}
+      {error && <div className="mt-4 text-red-600 text-center font-medium">{error}</div>}
       {response && (
-        <div className="mt-6 bg-gray-50 rounded-xl shadow-md border border-gray-200 p-6 font-sans whitespace-pre-wrap text-sm">
+        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8 whitespace-pre-wrap text-base text-black">
           {response}
         </div>
       )}
     </div>
   );
 };
- 
-export default CustomerSupportAgent;
+
+export default CustomerSupportAgent; 

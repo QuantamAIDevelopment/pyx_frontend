@@ -1,20 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUserAlt, FaCheckCircle, FaSpinner } from 'react-icons/fa';
-import { IconBaseProps } from 'react-icons';
+import { FaUserAlt, FaCheckCircle, FaSpinner, FaFileAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
- 
+
 interface ResumeToProfileExtractorProps {
   compact?: boolean;
 }
- 
+
 interface Stat {
   title: string;
   value: number;
-  icon: React.ComponentType<IconBaseProps>;
+  icon: React.ComponentType<{ className?: string }>;
   color: string;
 }
- 
+
 const ResumeToProfileExtractor: React.FC<ResumeToProfileExtractorProps> = ({ compact = false }) => {
   const navigate = useNavigate();
   const [stats] = React.useState({
@@ -22,82 +21,67 @@ const ResumeToProfileExtractor: React.FC<ResumeToProfileExtractorProps> = ({ com
     processingResumes: 2,
     failedExtractions: 1,
   });
- 
-  const statList: Stat[] = [
-    { title: 'Extracted Profiles', value: stats.extractedProfiles, icon: FaCheckCircle, color: 'bg-green-500' },
-    { title: 'Processing', value: stats.processingResumes, icon: FaSpinner, color: 'bg-yellow-500' },
-    { title: 'Failed Extractions', value: stats.failedExtractions, icon: FaUserAlt, color: 'bg-red-500' },
-  ];
- 
 
- 
+  const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+  const [uploadMessage, setUploadMessage] = React.useState<string>("");
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedFile(e.target.files[0]);
+      setUploadMessage("");
+    }
+  };
+
+  const handleExtractProfile = () => {
+    if (!selectedFile) {
+      setUploadMessage("Please select a file to upload.");
+      return;
+    }
+    setUploadMessage(`"${selectedFile.name}" uploaded successfully!`);
+  };
+
   return (
-    <div className='bg-white shadow-lg rounded-lg p-4'>
-    <div className={compact ? "space-y-4 w-full overflow-hidden font-ui-sans text-[15.75px]" : "space-y-8 w-full font-ui-sans text-[15.75px]"}>
-      <div className={compact ? "flex items-center space-x-2 mb-1" : "flex items-center space-x-4 mb-2"}>
-        <div className={compact ? "bg-[#155DFC] p-2 rounded-lg shadow-md" : "bg-[#155DFC] p-3 rounded-lg shadow-md"}>
-          <FaUserAlt className={compact ? "w-5 h-5 text-white" : "w-6 h-6 text-white"} />
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-2/3">
+          <label className="block text-sm font-medium mb-1 text-black">Upload Resume</label>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+          />
         </div>
-        <h2 className={compact ? "text-[32px] font-bold text-black font-ui-sans" : "text-[42px] font-bold text-black font-ui-sans"} style={{ fontFamily: 'ui-sans-serif', fontSize: compact ? '32px' : '42px', color: '#000' }}>Resume to Profile Auto Extractor</h2>
+        <button
+          type="button"
+          onClick={handleExtractProfile}
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+        >
+          Extract Profile
+        </button>
+      </form>
+      {uploadMessage && (
+        <div className={`mt-4 text-sm text-center ${uploadMessage.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>{uploadMessage}</div>
+      )}
+      <div className="mt-8">
+        <h3 className="text-xl font-bold text-black mb-6">Workflow Steps</h3>
+        <div className="grid grid-cols-2 gap-6">
+          {[
+            { icon: FaFileAlt, label: "Upload Resume", color: "bg-blue-500" },
+            { icon: FaSpinner, label: "Extract Data", color: "bg-yellow-500" },
+            { icon: FaCheckCircle, label: "Create Profile", color: "bg-green-500" },
+            { icon: FaUserAlt, label: "Store Data", color: "bg-purple-500" },
+          ].map(({ icon: Icon, label, color }, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <div className={`${color} rounded-full p-4 mb-2`}>
+                <Icon className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-sm font-semibold text-center text-gray-700">{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className={compact ? "flex gap-2 w-full overflow-x-auto" : "grid grid-cols-2 gap-4 w-full"}>
-        {statList.map((stat, idx) => (
-        <motion.div
-        key={idx}
-        className={
-          compact
-            ? "bg-gray-100 border border-gray-200 rounded-xl p-4 shadow-md flex flex-col gap-2 min-w-[140px] font-sans"
-            : "bg-gray-100 border border-gray-200 rounded-2xl p-8 shadow-md flex flex-col gap-2 min-w-[180px] w-full max-w-xs mx-auto font-sans"
-        }
-        whileHover={
-          compact
-            ? { scale: 1.03, boxShadow: '0 2px 8px 0 #61868d22' }
-            : { scale: 1.05, boxShadow: '0 8px 32px 0 #61868d33' }
-        }
-        whileTap={{ scale: 0.97 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      >
-        <div className="flex items-center gap-3 mb-2">
-          <div
-            className={`${
-              compact ? 'p-3 rounded-lg' : 'p-4 rounded-lg'
-            } ${idx === 0 ? 'bg-[#155DFC]' : idx === statList.length - 1 ? 'bg-[#9810FA]' : stat.color}`}
-          >
-            <stat.icon className={compact ? "w-6 h-6 text-white" : "w-8 h-8 text-white"} />
-          </div>
-     
-          <div className={compact
-            ? "font-bold text-base text-black truncate font-sans"
-            : "font-bold text-lg text-black truncate font-sans"
-          }>
-            {stat.title}
-          </div>
-        </div>
-     
-        <div className={compact
-          ? "text-lg font-bold text-black font-sans"
-          : "text-2xl font-bold text-black font-sans"
-        }>
-          {stat.value}
-        </div>
-      </motion.div>
-        ))}
-      </div>
-      <motion.button
-        whileHover={{ scale: 1.05, boxShadow: '0 8px 32px 0 #61868d33' }}
-        whileTap={{ scale: 0.97 }}
-        onClick={() => navigate('/workflows/resume-extractor')}
-        className={
-          compact
-            ? "w-full bg-gradient-to-r from-[#155DFC] to-[#9810FA] text-white py-3 rounded-lg font-bold text-[15.75px] shadow-md font-sans"
-            : "w-full bg-gradient-to-r from-[#155DFC] to-[#9810FA] text-white py-4 rounded-xl font-bold text-[17px] shadow-md font-sans"
-        }
-      >
-        View Details
-      </motion.button>
-    </div>
     </div>
   );
 };
- 
+
 export default ResumeToProfileExtractor;

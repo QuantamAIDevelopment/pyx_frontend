@@ -50,62 +50,71 @@ interface BookPriceResult {
   };
  
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-        <label className="font-semibold" style={{ fontFamily: 'poppins' }}>Message (optional):</label>
-        <div className="flex items-center space-x-2">
-          <input
-            type="text"
-            value={message}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
-            placeholder="Enter a message to trigger the workflow"
-            className="border p-1 rounded flex-1 placeholder:text-lg placeholder:font-medium"
-            style={{ fontSize: 20, fontFamily: 'poppins' }}
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <div className="flex justify-center border-b mb-6 gap-2">
+        <button
+          onClick={() => setActiveTab('track')}
+          className={`w-full md:w-[160px] h-[42px] flex items-center justify-center gap-2 rounded-lg font-bold font-poppins text-base transition-colors ${activeTab === 'track' ? 'bg-[#FF620A] text-white' : 'bg-[#993B06] text-white hover:bg-[#FF620A]'}`}
+        >
+          <FaSearch /> <span>Track Price</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('history')}
+          className={`w-full md:w-[160px] h-[42px] flex items-center justify-center gap-2 rounded-lg font-bold font-poppins text-base transition-colors ${activeTab === 'history' ? 'bg-[#FF620A] text-white' : 'bg-[#993B06] text-white hover:bg-[#FF620A]'}`}
+        >
+          <FaHistory /> <span>Price History</span>
+        </button>
+      </div>
+      {activeTab === 'track' && (
+        <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+          <div className="flex flex-col w-full md:w-2/3">
+            <label className="block text-sm font-medium mb-1 text-black">Message (optional):</label>
+            <input
+              type="text"
+              value={message}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
+              placeholder="Enter a message to trigger the workflow"
+              className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+              disabled={loading}
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
             disabled={loading}
-          />
-  <button
-  type="submit"
-  disabled={loading}
-  className={`
-    flex items-center justify-center
-    h-[31.5px]
-    px-[14px] py-[21px]
-    text-[16.41px] font-[poppins] font-medium text-white
-    rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.10)]
-    transition-opacity duration-200 ease-in-out
-    bg-gradient-to-r from-[#FF620A] to-[#993B06]
-    ml-auto
-    ${loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}
-  `}
->
-  {loading ? 'Fetching...' : 'Track Price'}
-</button>
- 
- 
-        </div>
-      </form>
-      {error && <div className="text-red-500 mt-4">{error}</div>}
-      {result && (
-        <div className="mt-6 p-4 rounded-xl bg-gray-50 shadow-md border border-gray-200 font-sans flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+          >
+            {loading ? 'Fetching...' : 'Track Price'}
+          </button>
+        </form>
+      )}
+      {activeTab === 'track' && error && <div className="mt-4 text-red-600 text-center font-medium">{error}</div>}
+      {activeTab === 'track' && result && (
+        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8 flex flex-col md:flex-row items-center gap-6">
           <img
             src={result.imageurl}
             alt={result.Title}
             className="w-24 h-32 object-cover rounded shadow border"
           />
           <div className="flex-1 space-y-2">
-            <div className="font-bold text-lg" style={{ fontFamily: 'sans-serif' }}>{result.Title}</div>
-            <div className="text-blue-700 font-semibold" style={{ fontFamily: 'sans-serif' }}>{result.Price}</div>
-            <div className="text-green-700" style={{ fontFamily: 'sans-serif' }}>{result.avaliabilty}</div>
+            <div className="font-bold text-lg text-black">{result.Title}</div>
+            <div className="text-blue-700 font-semibold">{result.Price}</div>
+            <div className="text-green-700">{result.avaliabilty}</div>
             <a
               href={result.producturl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 underline text-sm"
-              style={{ fontFamily: 'sans-serif' }}
             >
               View Product
             </a>
           </div>
+        </div>
+      )}
+      {activeTab === 'history' && (
+        <div className="flex flex-col items-center justify-center min-h-[200px] text-gray-500">
+          <FaHistory className="w-10 h-10 mb-2" />
+          <div className="text-lg font-semibold">Price History & Analytics coming soon!</div>
+          <div className="text-sm">Track price changes, view trends, and compare books in future updates.</div>
         </div>
       )}
     </div>
@@ -127,11 +136,11 @@ const AIPoweredBookPriceTracker: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'track' | 'history'>('track');
  
   return (
-    <div className="max-w-2xl mx-auto p-9 bg-gray-200 rounded-2xl mt-8 shadow-md space-y-8">
+    <div className="max-w-2xl mx-auto p-9 bg-gray-50 rounded-2xl mt-8 shadow-md space-y-8">
       <div className="flex items-center space-x-3 mb-4">
-        <h2 className="text-[42px] font-sans text-center font-bold text-black m-0">
+        {/* <h2 className="text-[42px] font-sans text-center font-bold text-black m-0">
   AI-Powered Book Price Tracker
-</h2>
+</h2> */}
  
       </div>
       <div className="flex justify-center border-b mb-6">

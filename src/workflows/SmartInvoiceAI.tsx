@@ -211,37 +211,45 @@ const SmartInvoiceAI: React.FC = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-12 px-6 sm:px-10 py-12 rounded-[2rem] bg-gray-50 backdrop-blur-xl shadow-md border border-gray-200 space-y-10 transition-all">
-      {/* Heading */}
-      <div className="text-center">
-        <h2 className="text-[32px] sm:text-[48px] font-bold leading-tight text-gray-900 tracking-tight font-sans">
-          Smart<span className="text-orange-600">Invoice</span> AI
-        </h2>
-        <p className="mt-2 text-lg text-gray-500 font-medium">
-          Upload your invoice and get an instant summary powered by AI.
-        </p>
-      </div>
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-2/3">
+          <label className="block text-sm font-medium mb-1 text-black">Upload Invoice (PDF/Image/Doc):</label>
+          <input
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+            onChange={handleFileChange}
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+            disabled={loading}
+          />
+        </div>
+        <motion.button
+          type="submit"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Upload & Analyze"}
+        </motion.button>
+      </form>
 
-      {/* File Upload */}
-      <FileUploadForm
-        loading={loading}
-        file={file}
-        onFileChange={handleFileChange}
-        onSubmit={handleSubmit}
-      />
+      {result && (
+        <div>
+          <h2 className="text-xl font-bold text-black mb-6">Invoice Result</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl mb-8">
+            <div className="text-black text-base whitespace-pre-line">{result}</div>
+          </div>
+        </div>
+      )}
 
-      {/* Error message */}
-      <ErrorMessage error={error} />
+      {!result && !loading && (
+        <p className="text-center text-gray-700">No invoice data to display.</p>
+      )}
 
-      {/* Output result */}
-      <InvoiceResult
-        result={result}
-        showMenu={showMenu}
-        onContextMenu={handleContextMenu}
-        onCopy={handleCopy}
-        onDownload={handleDownload}
-        menuRef={menuRef}
-      />
+      {error && (
+        <div className="mt-4 text-red-600 text-center font-medium">{error}</div>
+      )}
     </div>
   );
 };

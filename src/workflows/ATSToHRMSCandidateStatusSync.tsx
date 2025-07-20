@@ -129,38 +129,25 @@ const ATS_TO_HRMS_CANDIDATE_StatusSync: React.FC = () => {
   };
  
   return (
-    <div className="bg-gray-200 rounded-2xl shadow-md p-6 max-w-2xl mt-8 mx-auto">
-      <h2 className="text-[2.5rem] font-bold text-center mb-2 font-sans text-black">ATS to HRMS Candidate Status Sync</h2>
-      <p className="mb-6 text-gray-600 font-poppins text-center text-lg">Upload a CSV file with candidate data and sync ATS status to HRMS. Download results after processing.</p>
-      <form onSubmit={e => { e.preventDefault(); handleSync(); }} className="flex flex-col gap-5 items-center justify-center mb-7 w-full">
-        <div className="w-full">
-          <label className="block text-base font-medium mb-2 font-poppins">Candidate Data (CSV)</label>
+    <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
+      <form onSubmit={e => { e.preventDefault(); handleSync(); }} className="w-full flex flex-col md:flex-row items-end gap-4 mb-8">
+        <div className="flex flex-col w-full md:w-2/3">
+          <label className="block text-sm font-medium mb-1 text-black">Candidate Data (CSV)</label>
           <input
             type="file"
             accept=".csv"
             onChange={e => setSelectedFile(e.target.files ? e.target.files[0] : null)}
-            className="border rounded-lg px-4 py-3 w-full text-lg bg-gray-50 placeholder:text-xl placeholder:py-4 placeholder:px-6"
+            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
             required
-            style={{ fontSize: '20px', fontFamily: 'poppins' }}
           />
         </div>
-        <div className="flex justify-center w-full">
         <button
-  type="submit"
-  disabled={loading}
-  className={`h-[31.5px] px-[14px] py-[21px] text-[16.41px] font-medium text-white rounded-[8px] shadow-md flex items-center justify-center transition-opacity duration-200 ${
-    loading ? 'opacity-60 cursor-not-allowed' : 'opacity-100 cursor-pointer'
-  }`}
-  style={{
-    background: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-    fontFamily: 'Poppins, sans-serif',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-  }}
->
-  {loading ? 'Syncing...' : 'Run Sync'}
-</button>
-</div>
- 
+          type="submit"
+          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+          disabled={loading}
+        >
+          {loading ? 'Syncing...' : 'Run Sync'}
+        </button>
       </form>
       {showLoader && (
         <div className="absolute inset-0 bg-white bg-opacity-70 flex flex-col items-center justify-center z-10">
@@ -170,16 +157,16 @@ const ATS_TO_HRMS_CANDIDATE_StatusSync: React.FC = () => {
       )}
       {(mainResult && mainResult.stats) || summaryCounts ? (
         <div className="flex gap-4 mb-6 flex-wrap justify-center">
-          <button className="font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md" style={{ background: '#9810fa', color: '#fff', fontFamily: 'sans-serif', fontSize: '15.75px', border: 'none' }}>
+          <button className="bg-purple-600 text-white font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md">
             <FaCheckCircle /> Synced: {(mainResult && mainResult.stats ? mainResult.stats.syncedProfiles : summaryCounts?.synced) || 0}
           </button>
-          <button className="font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md" style={{ background: '#9810fa', color: '#fff', fontFamily: 'sans-serif', fontSize: '15.75px', border: 'none' }}>
+          <button className="bg-purple-600 text-white font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md">
             Skipped: {(mainResult && mainResult.stats ? mainResult.stats.skippedRecords : summaryCounts?.skipped) || 0}
           </button>
-          <button className="font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md" style={{ background: '#9810fa', color: '#fff', fontFamily: 'sans-serif', fontSize: '15.75px', border: 'none' }}>
+          <button className="bg-purple-600 text-white font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md">
             <FaClock /> Review: {(mainResult && mainResult.stats ? mainResult.stats.pendingSync : summaryCounts?.review || summaryCounts?.pending) || 0}
           </button>
-          <button className="font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md" style={{ background: '#9810fa', color: '#fff', fontFamily: 'sans-serif', fontSize: '15.75px', border: 'none' }}>
+          <button className="bg-purple-600 text-white font-bold px-4 py-2 rounded flex items-center gap-2 shadow-md">
             <FaExclamationTriangle /> Error: {(mainResult && mainResult.stats ? mainResult.stats.failedSync : summaryCounts?.error) || 0}
           </button>
         </div>
@@ -197,36 +184,30 @@ const ATS_TO_HRMS_CANDIDATE_StatusSync: React.FC = () => {
           <h2 className="text-lg font-semibold mb-2">Sync Stats</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600" style={{ fontFamily: 'sans-serif' }}>{mainResult.stats.syncedProfiles}</div>
-              <div className="text-sm text-gray-600" style={{ fontFamily: 'sans-serif' }}>Synced</div>
+              <div className="text-2xl font-bold text-green-600">{mainResult.stats.syncedProfiles}</div>
+              <div className="text-sm text-gray-600">Synced</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-yellow-600" style={{ fontFamily: 'sans-serif' }}>{mainResult.stats.pendingSync}</div>
-              <div className="text-sm text-gray-600" style={{ fontFamily: 'sans-serif' }}>Pending</div>
+              <div className="text-2xl font-bold text-yellow-600">{mainResult.stats.pendingSync}</div>
+              <div className="text-sm text-gray-600">Pending</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-red-600" style={{ fontFamily: 'sans-serif' }}>{mainResult.stats.failedSync}</div>
-              <div className="text-sm text-gray-600" style={{ fontFamily: 'sans-serif' }}>Failed</div>
+              <div className="text-2xl font-bold text-red-600">{mainResult.stats.failedSync}</div>
+              <div className="text-sm text-gray-600">Failed</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-600" style={{ fontFamily: 'sans-serif' }}>{mainResult.stats.skippedRecords}</div>
-              <div className="text-sm text-gray-600" style={{ fontFamily: 'sans-serif' }}>Skipped</div>
+              <div className="text-2xl font-bold text-gray-600">{mainResult.stats.skippedRecords}</div>
+              <div className="text-sm text-gray-600">Skipped</div>
             </div>
           </div>
           <div className="flex justify-end mb-2">
-          <button
-  onClick={handleDownload}
-  disabled={!candidates.length}
-  className={`
-    flex items-center gap-2 px-4 py-2 rounded shadow-md
-    bg-[#9810fa] text-white
-    font-inherit font-[600] text-[15.75px]
-    disabled:cursor-not-allowed disabled:opacity-60
-  `}
->
-  <FaDownload /> Download Results
-</button>
- 
+            <button
+              onClick={handleDownload}
+              disabled={!candidates.length}
+              className="flex items-center gap-2 px-4 py-2 rounded shadow-md bg-purple-600 text-white font-bold text-base disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <FaDownload /> Download Results
+            </button>
           </div>
         </div>
       )}
