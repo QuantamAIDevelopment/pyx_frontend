@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-// import { motion } from 'framer-motion';
-// import { FaPaperclip, FaCheckCircle, FaExclamationCircle, FaFileAlt } from 'react-icons/fa';
+
+
 import { BUTTON_CLASSES } from '../utils/colors';
 
 const EMAIL_ATTACHMENT_API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/upload-files';
@@ -102,40 +102,85 @@ const EmailAttachmentProcessing: React.FC<EmailAttachmentProcessingProps> = ({ }
 
   return (
     <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
-      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row md:flex-wrap gap-4 mb-8">
-        <div className="flex flex-col w-full md:w-1/3">
-          <label className="block text-sm font-medium mb-1 text-black">Email</label>
-          <input type="email" name="email" value={form.email} onChange={handleInputChange} className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400" required />
-        </div>
-        <div className="flex flex-col w-full md:w-1/3">
-          <label className="block text-sm font-medium mb-1 text-black">Name</label>
-          <input type="text" name="Name" value={form.Name} onChange={handleInputChange} className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400" required />
-        </div>
-        <div className="flex flex-col w-full md:w-1/3">
-          <label className="block text-sm font-medium mb-1 text-black">Subject</label>
-          <input type="text" name="Subject" value={form.Subject} onChange={handleInputChange} className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400" required />
-        </div>
-        <div className="flex flex-col w-full md:w-1/3">
-          <label className="block text-sm font-medium mb-1 text-black">Message ID</label>
-          <input type="text" name="messageId" value={form.messageId} onChange={handleInputChange} className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div className="flex flex-col w-full md:w-1/3">
-          <label className="block text-sm font-medium mb-1 text-black">ID (Optional)</label>
-          <input type="text" name="id" value={form.id} onChange={handleInputChange} className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400" />
-        </div>
-        <div className="flex flex-col w-full md:w-1/3">
-          <label className="block text-sm font-medium mb-1 text-black">Files</label>
-          <input type="file" name="files" multiple onChange={handleFileChange} className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400" required />
-        </div>
-        <button
-          type="submit"
-          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Processing...' : 'Submit'}
-        </button>
-        {error && <div className="mt-4 text-red-600 text-center font-medium w-full">{error}</div>}
-      </form>
+     <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Email</label>
+    <input
+      type="email"
+      name="email"
+      value={form.email}
+      onChange={handleInputChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+      required
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Name</label>
+    <input
+      type="text"
+      name="Name"
+      value={form.Name}
+      onChange={handleInputChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+      required
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Subject</label>
+    <input
+      type="text"
+      name="Subject"
+      value={form.Subject}
+      onChange={handleInputChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+      required
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Message ID</label>
+    <input
+      type="text"
+      name="messageId"
+      value={form.messageId}
+      onChange={handleInputChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">ID (Optional)</label>
+    <input
+      type="text"
+      name="id"
+      value={form.id}
+      onChange={handleInputChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Files</label>
+    <input
+      type="file"
+      name="files"
+      multiple
+      onChange={handleFileChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+      required
+    />
+  </div>
+  <div className="md:col-span-2 flex justify-end">
+    <button
+      type="submit"
+      className={`w-full md:w-[200px] h-[44px] ${BUTTON_CLASSES.PRIMARY}`}
+      disabled={isSubmitting}
+    >
+      {isSubmitting ? 'Processing...' : 'Submit'}
+    </button>
+  </div>
+  {error && (
+    <div className="md:col-span-2 text-red-600 text-center font-medium">{error}</div>
+  )}
+</form>
+
       {response && (
         <div className="bg-white rounded-2xl shadow-xl p-8 mt-8">
           <h2 className="text-xl font-bold text-center mb-8 tracking-tight">Processing Results</h2>

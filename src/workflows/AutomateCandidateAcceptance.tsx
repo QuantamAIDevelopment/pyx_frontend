@@ -116,7 +116,7 @@ const AutomateCandidateAcceptance: React.FC = () => {
           type="submit"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
-          className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
+          className={`w-full mt-6 md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
           disabled={loading}
         >
           {loading ? "Loading..." : "Run Workflow"}

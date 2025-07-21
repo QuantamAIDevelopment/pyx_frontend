@@ -49,7 +49,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
         yearly: 0
       },
       badge: 'Free Forever',
-      badgeColor: 'bg-green-500',
+      badgeColor: 'bg-ui-success',
       features: [
         { name: '3 AI Agents', included: true },
         { name: '1,000 monthly executions', included: true },
@@ -73,7 +73,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
         yearly: 39
       },
       badge: 'Most Popular',
-      badgeColor: 'bg-[#FF620A] ',
+      badgeColor: 'bg-brand-primary ',
       features: [
         { name: 'Unlimited AI Agents', included: true },
         { name: '25,000 monthly executions', included: true },
@@ -97,7 +97,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
         yearly: 159
       },
       badge: 'Advanced',
-      badgeColor: 'bg-gradient-to-r from-bg-[#FF620A] to-pink-600',
+      badgeColor: 'bg-brand-gradient',
       features: [
         { name: 'Unlimited AI Agents', included: true },
         { name: 'Unlimited executions', included: true },
@@ -182,18 +182,16 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-bg-secondary via-bg-muted to-bg-secondary dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-[#FF620A]  text-white">
+            <Badge className="mb-6 bg-brand-primary  text-white">
               <Crown className="h-3 w-3 mr-1" />
               Pricing Plans
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Choose Your{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-gradient bg-clip-text text-transparent">
                 AI Automation
               </span>{' '}
               Plan
@@ -211,13 +209,13 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
               <Switch 
                 checked={isYearly} 
                 onCheckedChange={setIsYearly}
-                className=" bg-gray-300 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-600 data-[state=checked]:to-purple-600 "
+                className=" bg-bg-muted data-[state=checked]:bg-brand-gradient "
               />
               <span className={`text-sm ${isYearly ? 'font-medium' : 'text-muted-foreground'}`}>
                 Yearly
               </span>
               {isYearly && (
-                <Badge className="bg-green-500 text-white ml-2">
+                <Badge className="bg-ui-success text-white ml-2">
                   Save 20%
                 </Badge>
               )}
@@ -239,18 +237,18 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                   key={index} 
                   className={`relative overflow-hidden ${
                     plan.popular 
-                      ? 'border-2 border-orange-500 shadow-xl scale-105' 
+                      ? 'border-2 border-brand-accent shadow-xl scale-105' 
                       : 'hover:shadow-lg'
                   } transition-all duration-300`}
                 >
                   {plan.popular && (
-                    <div className="absolute top-0 left-0 right-0 bg-[#FF620A]  text-white text-center py-2 text-sm font-medium">
+                    <div className="absolute top-0 left-0 right-0 bg-brand-primary  text-white text-center py-2 text-sm font-medium">
                       {plan.badge}
                     </div>
                   )}
                   
                   <CardHeader className={`text-center ${plan.popular ? 'pt-14' : 'pt-6'}`}>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-gradient mx-auto mb-4">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
                     
@@ -268,7 +266,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                     <div className="mb-6 ">
                       <div className="flex items-baseline justify-center">
                         <span className="text-4xl font-bold">
-                          Rs {currentPrice}
+                        ₹ {currentPrice}
                         </span>
                         <span className="text-muted-foreground ml-1">
                           {currentPrice > 0 ? (isYearly ? '/month' : '/month') : ''}
@@ -276,7 +274,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                       </div>
                       {currentPrice > 0 && isYearly && (
                         <p className="text-sm text-muted-foreground mt-1">
-                          Billed annually (Rs{plan.price.yearly * 12}/year)
+                          Billed annually (₹{plan.price.yearly * 12}/year)
                         </p>
                       )}
                     </div>
@@ -285,7 +283,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                       onClick={() => handleGetStarted(plan.name)}
                       className={
                         plan.popular 
-                          ? 'w-full !bg-[#FF620A]  hover:shadow-lg border-none' 
+                          ? 'w-full !bg-brand-primary  hover:shadow-lg border-none' 
                           : 'w-full'
                       }
                       variant={plan.popular ? 'default' : 'outline'}
@@ -300,7 +298,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center">
                           {feature.included ? (
-                            <Check className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
+                            <Check className="h-4 w-4 text-ui-success mr-3 flex-shrink-0" />
                           ) : (
                             <X className="h-4 w-4 text-muted-foreground mr-3 flex-shrink-0" />
                           )}
@@ -319,10 +317,10 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
       </section>
 
       {/* Feature Comparison */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-bg-muted dark:bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-4 bg-brand-gradient text-white">
               Detailed Comparison
             </Badge>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -356,7 +354,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                               <td className="p-4 text-center">
                                 {typeof feature.starter === 'boolean' ? (
                                   feature.starter ? (
-                                    <Check className="h-4 w-4 text-green-500 mx-auto" />
+                                    <Check className="h-4 w-4 text-ui-success mx-auto" />
                                   ) : (
                                     <X className="h-4 w-4 text-muted-foreground mx-auto" />
                                   )
@@ -367,7 +365,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                               <td className="p-4 text-center">
                                 {typeof feature.pro === 'boolean' ? (
                                   feature.pro ? (
-                                    <Check className="h-4 w-4 text-green-500 mx-auto" />
+                                    <Check className="h-4 w-4 text-ui-success mx-auto" />
                                   ) : (
                                     <X className="h-4 w-4 text-muted-foreground mx-auto" />
                                   )
@@ -378,7 +376,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                               <td className="p-4 text-center">
                                 {typeof feature.enterprise === 'boolean' ? (
                                   feature.enterprise ? (
-                                    <Check className="h-4 w-4 text-green-500 mx-auto" />
+                                    <Check className="h-4 w-4 text-ui-success mx-auto" />
                                   ) : (
                                     <X className="h-4 w-4 text-muted-foreground mx-auto" />
                                   )
@@ -403,7 +401,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-4 bg-brand-gradient text-white">
               FAQ
             </Badge>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
@@ -433,7 +431,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#FF620A] text-white">
+      <section className="py-20 bg-brand-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">

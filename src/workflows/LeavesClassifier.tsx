@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaUserAlt, FaClock } from 'react-icons/fa';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BUTTON_CLASSES } from '../utils/colors';
 
 const API_URL =
-  "https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook-test/leaves-classifier";
+  "https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/leaves-classifier";
 
 interface LeaveRecord {
   id: string;
@@ -53,7 +53,7 @@ interface LeavesClassifierProps {
 }
 
 export default function LeavesClassifier({ compact = false }: LeavesClassifierProps) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -82,12 +82,12 @@ export default function LeavesClassifier({ compact = false }: LeavesClassifierPr
 
     try {
       const response = await fetch(API_URL, {
-        method: "POST",
+        method: "GET",
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ start_date: startDate, end_date: endDate }),
+        // body: JSON.stringify({ start_date: startDate, end_date: endDate }),
       });
 
       if (!response.ok) {
@@ -120,14 +120,14 @@ export default function LeavesClassifier({ compact = false }: LeavesClassifierPr
         <div className="flex gap-2 w-full overflow-x-auto">
           {statList.map((stat, idx) => <StatCard key={idx} {...stat} compact={true} />)}
         </div>
-        {/* <motion.button
+        <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => navigate('/leaves-classifier')}
           className="w-full bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 text-white py-2 rounded-lg font-bold text-base shadow hover:from-blue-600 hover:to-purple-600 transition-colors"
         >
           View Details
-        </motion.button> */}
+        </motion.button>
       </div>
     );
   }
@@ -167,31 +167,46 @@ export default function LeavesClassifier({ compact = false }: LeavesClassifierPr
       </form>
 
       {summary && (
-        <div>
-          <h2 className="text-xl font-bold text-black mb-6">Leave Classification Results</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {statList.map((stat, idx) => <StatCard key={idx} {...stat} />)}
-          </div>
-          <div>
-            <h3 className="font-semibold mb-3 text-black">Recent Activity</h3>
-            {summary.recentActivity.map((item, idx) => (
-              <motion.div 
-                key={idx} 
-                className="flex flex-col sm:flex-row sm:items-center justify-between bg-white rounded-lg shadow p-4 mb-3"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-              >
-                <div className="text-black font-medium">{item.employeeName}</div>
-                <div className="text-black text-sm">{item.leaveType}</div>
-                <div className={`font-semibold ${item.status === 'APPROVED' ? 'text-green-600' : item.status === 'REJECTED' ? 'text-red-600' : 'text-yellow-600'}`}>
-                  {item.status}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+        >
+          <h2 className="text-2xl font-bold text-black mb-6 flex items-center gap-2">
+            <FaCalendarAlt className="text-blue-600 w-6 h-6" /> Leave Classification Results
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            {statList.map((stat, idx) => (
+              <div key={idx} className="bg-gray-50 rounded-xl p-4 flex flex-col gap-2 shadow items-center">
+                <div className="flex items-center gap-2 font-bold text-black text-lg mb-2">
+                  <stat.icon className={`w-6 h-6 ${stat.color.replace('bg-', 'text-')}`} /> {stat.title}
                 </div>
-                <div className="text-sm text-gray-600">{new Date(item.timestamp).toLocaleDateString()}</div>
-              </motion.div>
+                <div className="text-2xl font-bold text-black">{stat.value}</div>
+              </div>
             ))}
           </div>
-        </div>
+          <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h3 className="font-semibold mb-4 text-black text-xl flex items-center gap-2"><FaUserAlt className="text-purple-600 w-5 h-5" /> Recent Activity</h3>
+            <div className="grid grid-cols-1 gap-4">
+              {summary.recentActivity.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  className="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 rounded-lg shadow p-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                >
+                  <div className="flex items-center gap-2 text-black font-medium mb-2 sm:mb-0"><FaUserAlt className="text-blue-500" /> {item.employeeName}</div>
+                  <div className="flex items-center gap-2 text-black text-sm mb-2 sm:mb-0"><FaCalendarAlt className="text-green-500" /> {item.leaveType}</div>
+                  <div className={`font-semibold flex items-center gap-2 ${item.status === 'APPROVED' ? 'text-green-600' : item.status === 'REJECTED' ? 'text-red-600' : 'text-yellow-600'}`}>
+                    <FaClock /> {item.status}
+                  </div>
+                  <div className="text-sm text-gray-600 flex items-center gap-2"><FaClock className="text-yellow-500" /> {new Date(item.timestamp).toLocaleDateString()}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       )}
 
       {!summary && !loading && (

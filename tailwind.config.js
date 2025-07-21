@@ -102,9 +102,10 @@ export default {
         poppins: ['Poppins', 'sans-serif'],
       },
       backgroundImage: {
-        'brand-gradient': 'var(--brand-gradient)',
-        'brand-gradient-hover': 'var(--brand-gradient-hover)',
-        'brand-gradient-via': 'var(--brand-gradient-via)',
+        'brand-gradient': 'var(--brand-primary)',
+        'brand-gradient-hover': 'var(--brand-accent)',
+        'brand-gradient-via': 'var(--brand-primary)',
+        'brand-orange-gradient': 'linear-gradient(to right, #FF620A, #FF8A3D)',
       },
     },
   },

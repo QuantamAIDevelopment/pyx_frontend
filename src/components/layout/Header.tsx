@@ -70,7 +70,7 @@ export function Header({
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 ml-0 ">
            
-            <img src='./assets/logo.png' width={60} height={50} alt='' className='ml-0 ' />
+            <img src="/assets/logo.png" width={60} height={50} alt='' className='ml-0 ' />
           </Link>
 
 
@@ -118,8 +118,7 @@ export function Header({
                   </div>
                   {currentMode === 'developer' && (
                     <Badge className="
-bg-gradient-to-r from-[#FF620A] to-[#993B06]
- text-white text-xs px-1 py-0">
+bg-brand-primary  text-white text-xs px-1 py-0">
                       BETA
                     </Badge>
                   )}
@@ -132,7 +131,7 @@ bg-gradient-to-r from-[#FF620A] to-[#993B06]
                     <Button
                       variant="outline"
                       size="sm"
-                      className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white border-0 hover:from-[#FF620A]-700 hover:to-[#993B06]-700 border-none"
+                      className="!bg-brand-primary  text-white border-0 hover:from-[#FF620A]-700 hover:to-[#993B06]-700 border-none"
                     >
                       <Plus className="h-3 w-3 mr-1" />
                       <span className="hidden lg:inline ">
@@ -150,7 +149,7 @@ bg-gradient-to-r from-[#FF620A] to-[#993B06]
                         className="flex items-center space-x-1"
                       >
                         <Wallet className="h-3 w-3" />
-                        <span className="text-xs">Rs{userWallet.balance.toFixed(2)}</span>
+                        <span className="text-xs">₹ {userWallet.balance.toFixed(2)}</span>
                       </Button>
                     </Link>
                   )}

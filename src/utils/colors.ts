@@ -29,7 +29,7 @@ export const COLORS = {
   
   // Background Colors
   BG_PRIMARY: '#ffffff',
-  BG_SECONDARY: '#f9fafb',
+  BG_SECONDARY: '#fff6ed',
   BG_MUTED: '#f1f2f4',
   BG_CARD: '#ffffff',
   BG_OVERLAY: 'rgba(0, 0, 0, 0.5)',
@@ -57,9 +57,10 @@ export const COLORS = {
 
 // Gradient Utilities
 export const GRADIENTS = {
-  BRAND: 'linear-gradient(90deg, #FF620A 0%, #993B06 100%)',
-  BRAND_HOVER: 'linear-gradient(90deg, #993B06 0%, #FF620A 100%)',
-  BRAND_VIA: 'linear-gradient(90deg, #FF620A 0%, #D94B05 50%, #993B06 100%)',
+  BRAND: '#FF620A',
+  BRAND_HOVER: '#D94B05',
+  BRAND_VIA: '#FF620A',
+  BRAND_ORANGE: 'linear-gradient(to right, #FF620A, #FF8A3D)',
 } as const;
 
 // Tailwind Class Utilities
@@ -108,6 +109,7 @@ export const TAILWIND_CLASSES = {
   BRAND_GRADIENT: 'bg-brand-gradient',
   BRAND_GRADIENT_HOVER: 'bg-brand-gradient-hover',
   BRAND_GRADIENT_VIA: 'bg-brand-gradient-via',
+  BRAND_ORANGE_GRADIENT: 'bg-brand-orange-gradient',
 } as const;
 
 // Common Button Classes
@@ -117,7 +119,7 @@ export const BUTTON_CLASSES = {
   SUCCESS: 'bg-ui-success hover:bg-green-600 text-white font-bold rounded-lg shadow hover:shadow-md transition-all',
   WARNING: 'bg-ui-warning hover:bg-yellow-600 text-white font-bold rounded-lg shadow hover:shadow-md transition-all',
   ERROR: 'bg-ui-error hover:bg-red-600 text-white font-bold rounded-lg shadow hover:shadow-md transition-all',
-  GRADIENT: 'bg-brand-gradient hover:bg-brand-gradient-hover text-white font-bold rounded-lg shadow hover:shadow-md transition-all',
+  GRADIENT: 'bg-brand-primary hover:bg-brand-secondary text-white font-bold rounded-lg shadow hover:shadow-md transition-all',
 } as const;
 
 // Common Card Classes

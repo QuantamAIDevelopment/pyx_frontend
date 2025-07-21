@@ -394,10 +394,10 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
 
   const getExperienceColor = (experience: string) => {
     switch (experience) {
-      case 'Senior': return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
-      case 'Mid-level': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-      case 'Junior': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+      case 'Senior': return 'bg-ui-purple/20 text-ui-purple dark:bg-ui-purple/30 dark:text-purple-200'
+      case 'Mid-level': return 'bg-ui-info/20 text-ui-info dark:bg-ui-info/30 dark:text-blue-200'
+      case 'Junior': return 'bg-ui-success/20 text-ui-success dark:bg-ui-success/30 dark:text-green-200'
+      default: return 'bg-bg-muted text-text-muted-foreground dark:bg-gray-900 dark:text-gray-200'
     }
   }
 
@@ -415,18 +415,16 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-bg-secondary via-bg-muted to-bg-secondary dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-brand-gradient text-text-white">
               <Briefcase className="h-3 w-3 mr-1" />
               Join Our Team
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Build the Future of{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-gradient bg-clip-text text-transparent">
                 AI Automation
               </span>
             </h1>
@@ -450,7 +448,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                className="bg-brand-gradient w-full sm:w-auto"
                 onClick={handleGetStarted}
               >
                 <Rocket className="h-4 w-4 mr-2" />
@@ -476,32 +474,32 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
-                <Users className="h-6 w-6 text-white" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-gradient mx-auto mb-4">
+                <Users className="h-6 w-6 text-text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold mb-2">120+</div>
               <div className="font-medium text-foreground mb-1 text-sm md:text-base">Team Members</div>
               <div className="text-xs md:text-sm text-muted-foreground">Across 3 continents</div>
             </div>
             <div className="text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-blue-600 mx-auto mb-4">
-                <TrendingUp className="h-6 w-6 text-white" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-ui-success to-ui-info mx-auto mb-4">
+                <TrendingUp className="h-6 w-6 text-text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold mb-2">300%</div>
               <div className="font-medium text-foreground mb-1 text-sm md:text-base">Growth Rate</div>
               <div className="text-xs md:text-sm text-muted-foreground">Year over year</div>
             </div>
             <div className="text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 mx-auto mb-4">
-                <DollarSign className="h-6 w-6 text-white" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-ui-purple to-pink-600 mx-auto mb-4">
+                <DollarSign className="h-6 w-6 text-text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold mb-2">Rs50M</div>
               <div className="font-medium text-foreground mb-1 text-sm md:text-base">Series B</div>
               <div className="text-xs md:text-sm text-muted-foreground">Latest funding round</div>
             </div>
             <div className="text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-red-600 mx-auto mb-4">
-                <Award className="h-6 w-6 text-white" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-ui-orange to-ui-error mx-auto mb-4">
+                <Award className="h-6 w-6 text-text-white" />
               </div>
               <div className="text-2xl md:text-3xl font-bold mb-2">4.8/5</div>
               <div className="font-medium text-foreground mb-1 text-sm md:text-base">Glassdoor</div>
@@ -512,7 +510,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       </section>
 
       {/* Job Listings */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-bg-muted dark:bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Open Positions</h2>
@@ -564,7 +562,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
                         {getDepartmentIcon(job.department)}
                         <CardTitle className="text-xl">{job.title}</CardTitle>
                         {job.urgent && (
-                          <Badge className="bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
+                          <Badge className="bg-ui-error/20 text-ui-error dark:bg-ui-error/30 dark:text-red-200">
                             Urgent
                           </Badge>
                         )}
@@ -603,7 +601,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
                         <ul className="space-y-1 text-sm text-muted-foreground">
                           {job.requirements.slice(0, 3).map((req, index) => (
                             <li key={index} className="flex items-start gap-2">
-                              <CheckCircle className="h-3 w-3 text-green-500 mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="h-3 w-3 text-ui-success mt-0.5 flex-shrink-0" />
                               <span>{req}</span>
                             </li>
                           ))}
@@ -620,7 +618,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
                         <ul className="space-y-1 text-sm text-muted-foreground">
                           {job.responsibilities.slice(0, 3).map((resp, index) => (
                             <li key={index} className="flex items-start gap-2">
-                              <Target className="h-3 w-3 text-blue-500 mt-0.5 flex-shrink-0" />
+                              <Target className="h-3 w-3 text-ui-info mt-0.5 flex-shrink-0" />
                               <span>{resp}</span>
                             </li>
                           ))}
@@ -645,7 +643,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
                         </div>
                       </div>
                       <Button 
-                        className="bg-gradient-to-r from-[#FF620A] to-[#993B06]"
+                        className="bg-brand-gradient"
                         onClick={() => onViewChange('apply')}
                       >
                         <Send className="h-4 w-4 mr-2" />
@@ -714,7 +712,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-bg-muted dark:bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Benefits & Perks</h2>
@@ -738,7 +736,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
                     <ul className="space-y-2">
                       {benefit.items.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-start gap-2 text-sm">
-                          <CheckCircle className="h-3 w-3 text-green-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="h-3 w-3 text-ui-success mt-0.5 flex-shrink-0" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -788,7 +786,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       </section> */}
 
       {/* Testimonials */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-bg-muted dark:bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Our Team Says</h2>
@@ -803,7 +801,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-yellow-500 fill-current" />
+                      <Star key={i} className="h-4 w-4 text-ui-warning fill-current" />
                     ))}
                   </div>
                   <p className="text-muted-foreground mb-4 italic">
@@ -827,8 +825,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
- text-white">
+      <section className="py-20 bg-brand-gradient text-text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -852,7 +849,7 @@ export function CareersPage({ onViewChange, isLoggedIn, onShowAuth }: CareersPag
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="!bg-white text-black hover:text-primary w-full sm:w-auto"
+                className="!bg-text-white text-text-primary hover:text-primary w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
                 <MessageSquare className="h-4 w-4 mr-2" />

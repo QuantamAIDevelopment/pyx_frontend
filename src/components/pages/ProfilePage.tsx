@@ -432,7 +432,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold">Rs{userWallet.balance}</div>
+                    <div className="text-3xl font-bold">₹ {userWallet.balance}</div>
                     <p className="text-sm text-muted-foreground">Available balance</p>
                   </div>
                   <div className="flex space-x-2">

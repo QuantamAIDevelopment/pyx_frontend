@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { FaCommentDots,  FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import { BUTTON_CLASSES } from '../utils/colors';
 
+const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/product-feedback-trigger';
+
 interface Product {
   productid: string;
   praises: string[];
@@ -12,98 +14,70 @@ interface Product {
     neutral: number;
     negative: number;
   };
+  keywords?: string[];
+  timestamp?: string;
 }
-
-interface DummyStats {
-  totalProducts: number;
-  averageSentiment: number;
-  recent: Product[];
-}
-
-const initialDummyStats: DummyStats = {
-  totalProducts: 4,
-  averageSentiment: 58.5,
-  recent: [
-    {
-      productid: 'ZX100',
-      praises: ['Easy to use', 'Sleek design'],
-      complaints: ['Short lifespan', 'Breaks easily'],
-      sentimentBreakdown: { positive: 50, neutral: 0, negative: 50 }
-    },
-    {
-      productid: 'ZX200',
-      praises: ['Good connectivity'],
-      complaints: ['Weak battery life'],
-      sentimentBreakdown: { positive: 50, neutral: 0, negative: 50 }
-    },
-    {
-      productid: 'ZX300',
-      praises: ['Easy to use', 'Great price'],
-      complaints: ['Not intuitive'],
-      sentimentBreakdown: { positive: 66.67, neutral: 0, negative: 33.33 }
-    }
-  ],
-};
 
 interface ProductFeedbackSummarizerProps {
   compact?: boolean;
 }
 
 const ProductFeedbackSummarizer: React.FC<ProductFeedbackSummarizerProps> = () => {
- 
-  const [dummyStats, setDummyStats] = useState<DummyStats>(initialDummyStats);
-
   const [date, setDate] = useState("");
   const [productId, setProductId] = useState("");
   const [feedback, setFeedback] = useState("");
   const [rating, setRating] = useState("");
   const [showSummary, setShowSummary] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const extractPraisesAndComplaints = (feedback: string): { praises: string[]; complaints: string[] } => {
-    const praiseKeywords = ["good", "great", "easy", "love", "excellent", "amazing", "best"];
-    const complaintKeywords = ["bad", "poor", "not", "hate", "difficult", "worst", "problem"];
-    const sentences = feedback.split(/[.!?]/).map(s => s.trim()).filter(Boolean);
-    const praises: string[] = [];
-    const complaints: string[] = [];
-    sentences.forEach(sentence => {
-      const lower = sentence.toLowerCase();
-      if (praiseKeywords.some(k => lower.includes(k))) praises.push(sentence);
-      if (complaintKeywords.some(k => lower.includes(k))) complaints.push(sentence);
-    });
-    return { praises, complaints };
-  };
-
-  const getSentimentBreakdown = (rating: string): { positive: number; neutral: number; negative: number } => {
-    const r = parseInt(rating, 10);
-    if (r >= 4) return { positive: 100, neutral: 0, negative: 0 };
-    if (r === 3) return { positive: 0, neutral: 100, negative: 0 };
-    return { positive: 0, neutral: 0, negative: 100 };
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { praises, complaints } = extractPraisesAndComplaints(feedback);
-    const sentimentBreakdown = getSentimentBreakdown(rating);
-    const newProduct: Product = {
-      productid: productId,
-      praises: praises.length ? praises : ["No praises detected"],
-      complaints: complaints.length ? complaints : ["No complaints detected"],
-      sentimentBreakdown,
-    };
-    const updatedRecent = [newProduct, ...dummyStats.recent];
-    const updatedTotal = dummyStats.totalProducts + 1;
-    const avgSentiment =
-      updatedRecent.reduce((sum, p) => sum + p.sentimentBreakdown.positive, 0) / updatedRecent.length;
-    setDummyStats({
-      totalProducts: updatedTotal,
-      averageSentiment: Math.round(avgSentiment * 100) / 100,
-      recent: updatedRecent,
-    });
-    setDate("");
-    setProductId("");
-    setFeedback("");
-    setRating("");
-    setShowSummary(true);
+    setLoading(true);
+    setError("");
+    setShowSummary(false);
+    setProducts([]);
+    try {
+      const payload = [
+        {
+          "Timestamp (Date)": date,
+          "Product ID": productId,
+          "Feedback": feedback,
+          "Rating": Number(rating),
+        },
+      ];
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+      const data = await response.json();
+      // Parse JSON string fields
+      const parsedProducts: Product[] = data.map((item: any) => ({
+        productid: item.productid,
+        praises: typeof item.praises === 'string' ? JSON.parse(item.praises) : item.praises,
+        complaints: typeof item.complaints === 'string' ? JSON.parse(item.complaints) : item.complaints,
+        sentimentBreakdown: typeof item.sentimentBreakdown === 'string' ? JSON.parse(item.sentimentBreakdown) : item.sentimentBreakdown,
+        keywords: item.keywords ? (typeof item.keywords === 'string' ? JSON.parse(item.keywords) : item.keywords) : [],
+        timestamp: item.timestamp,
+      }));
+      setProducts(parsedProducts);
+      setShowSummary(true);
+      setDate("");
+      setProductId("");
+      setFeedback("");
+      setRating("");
+    } catch (err: any) {
+      setError(err.message || "Failed to summarize feedback. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -154,13 +128,15 @@ const ProductFeedbackSummarizer: React.FC<ProductFeedbackSummarizerProps> = () =
         <button
           type="submit"
           className={`w-full md:w-[160px] h-[42px] ${BUTTON_CLASSES.PRIMARY}`}
+          disabled={loading}
         >
-          Summarize Feedback
+          {loading ? "Summarizing..." : "Summarize Feedback"}
         </button>
       </form>
-      {showSummary && (
+      {error && <div className="text-red-600 text-center mb-4 font-medium">{error}</div>}
+      {showSummary && products.length > 0 && (
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {dummyStats.recent.map((product, idx) => (
+          {products.map((product, idx) => (
             <motion.div
               key={idx}
               className="bg-white border border-gray-200 rounded-2xl p-6 shadow-2xl"
@@ -174,12 +150,22 @@ const ProductFeedbackSummarizer: React.FC<ProductFeedbackSummarizerProps> = () =
               <div className="text-gray-700 text-sm mb-2">
                 <FaThumbsUp className="inline w-4 h-4 text-green-500 mr-1" />
                 {product.praises.length} praises
+                <ul className="ml-6 list-disc text-xs text-gray-600 mt-1">
+                  {product.praises.map((praise, i) => <li key={i}>{praise}</li>)}
+                </ul>
               </div>
               <div className="text-gray-700 text-sm mb-2">
                 <FaThumbsDown className="inline w-4 h-4 text-red-500 mr-1" />
                 {product.complaints.length} complaints
+                <ul className="ml-6 list-disc text-xs text-gray-600 mt-1">
+                  {product.complaints.map((complaint, i) => <li key={i}>{complaint}</li>)}
+                </ul>
               </div>
-              <div className="text-sm text-gray-600">Sentiment: <b>{product.sentimentBreakdown.positive}% positive</b></div>
+              <div className="text-sm text-gray-600 mb-1">Sentiment: <b>{product.sentimentBreakdown.positive}% positive</b></div>
+              {product.timestamp && <div className="text-xs text-gray-400">{new Date(product.timestamp).toLocaleString()}</div>}
+              {product.keywords && product.keywords.length > 0 && (
+                <div className="text-xs text-gray-500 mt-2">Keywords: {product.keywords.join(', ')}</div>
+              )}
             </motion.div>
           ))}
         </div>

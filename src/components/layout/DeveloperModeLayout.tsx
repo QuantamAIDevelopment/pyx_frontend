@@ -110,8 +110,7 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
               </Button>
               <Separator orientation="vertical" className="h-6" />
               <div className="flex items-center space-x-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] via-[#FF8A3D] to-[#993B06]
-">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-orange-gradient ">
                   <Code2 className="h-4 w-4 text-white" />
                 </div>
                 <div>
@@ -119,9 +118,7 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
                   <p className="text-xs text-muted-foreground">Advanced AI Agent Development</p>
                 </div>
               </div>
-              <Badge className="
-bg-gradient-to-r from-[#FF620A] to-[#993B06]
- text-white">
+              <Badge className="bg-brand-orange-gradient text-white">
                 Beta
               </Badge>
             </div>

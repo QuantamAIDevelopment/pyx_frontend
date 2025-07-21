@@ -85,7 +85,7 @@ const myAgents = [
     name: 'SmartSummarizer',
     status: 'active',
     usage: 89,
-    cost: 'Rs1250',
+    cost: '₹1250',
     category: 'Content',
     lastUsed: '2 hours ago',
     performance: 94
@@ -95,7 +95,7 @@ const myAgents = [
     name: 'SupportGenie',
     status: 'active',
     usage: 67,
-    cost: 'Rs830',
+    cost: '₹830',
     category: 'Support',
     lastUsed: '1 hour ago',
     performance: 91
@@ -105,7 +105,7 @@ const myAgents = [
     name: 'PriceOptimizer',
     status: 'paused',
     usage: 0,
-    cost: 'Rs0.00',
+    cost: '₹0.00',
     category: 'Sales',
     lastUsed: '3 days ago',
     performance: 87
@@ -115,7 +115,7 @@ const myAgents = [
     name: 'StockSense',
     status: 'active',
     usage: 45,
-    cost: 'Rs520',
+    cost: '₹520',
     category: 'Inventory',
     lastUsed: '30 minutes ago',
     performance: 96
@@ -245,10 +245,7 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
           </div>
           
           <div className="flex flex-wrap gap-3 mt-4 md:mt-0">
-            <Button onClick={onAgentBuilder} className="bg-gradient-to-r 
-bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
-
- border-none">
+            <Button onClick={onAgentBuilder} className="!bg-brand-primary border-none">
               <Zap className="h-4 w-4 mr-2" />
               Build Agent
             </Button>
@@ -300,7 +297,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">Rs{userWallet.balance.toFixed(2)}</div>
+                  <div className="text-2xl font-bold">₹ {userWallet.balance.toFixed(2)}</div>
                   <p className="text-xs text-muted-foreground">-12% from last month</p>
                 </CardContent>
               </Card>
@@ -329,7 +326,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
             </div>
 
             {/* Quick Actions */}
-            <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20">
+            <Card className="bg-gradient-to-r from-orange-50 to-white  ">
               <CardHeader>
                 <CardTitle>Quick Actions</CardTitle>
                 <CardDescription>
@@ -340,10 +337,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                   <Button 
                     onClick={onAgentBuilder}
-                    className="h-auto flex-col space-y-2 p-4 bg-gradient-to-r 
-bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
-
- hover:from-[#993B06] hover:to-[#FF620A] text-white"
+                    className="h-auto flex-col space-y-2 p-4 !bg-brand-primary text-white"
                   >
                     <Zap className="h-6 w-6" />
                     <span>Build Agent</span>
@@ -385,7 +379,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
             </Card>
 
             {/* Wallet Widget */}
-            <Card className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20">
+            <Card className="bg-gradient-to-r from-orange-50 to-white ">
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Wallet className="h-5 w-5 mr-2 text-blue-600" />
@@ -395,7 +389,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-3xl font-bold">Rs {userWallet.balance}</div>
+                    <div className="text-3xl font-bold">₹ {userWallet.balance}</div>
                     <p className="text-sm text-muted-foreground">Available balance</p>
                   </div>
                   <div className="flex space-x-2">
@@ -500,7 +494,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
                   <CardContent>
                     {/* Click to run indicator */}
                     <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white text-xs px-2 py-1 rounded-full flex items-center">
+                      <div className="!bg-brand-primary hover:shadow-md text-white text-xs px-2 py-1 rounded-full flex items-center">
                         <Play className="h-3 w-3 mr-1" />
                         Click to run
                       </div>
@@ -531,7 +525,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
                       
                       <div className="flex space-x-2 pt-2">
                         <Button 
-                          className="flex-1 bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-[#993B06] hover:to-[#FF620A] border-none"
+                          className="flex-1 !bg-brand-primary  border-none"
                           size="sm" 
                           onClick={(e) => {
                             e.stopPropagation()
@@ -644,7 +638,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-lg text-white">
+                        <div className="bg-[#fff6ad] p-2 rounded-lg text-white">
                           <Globe className="h-5 w-5" />
                         </div>
                         <div>

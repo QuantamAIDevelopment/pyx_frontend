@@ -58,7 +58,7 @@ export function Footer() {
                 <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
                   PYX
                 </span> */}
-                 <img src='./assets/logo.png' width={100} height={60} alt='' className='ml-2' />
+                 <img src="/assets/logo.png" width={100} height={60} alt='' className='ml-2' />
               </Link>
               <p className="text-muted-foreground mb-6 max-w-md">
                 Empowering businesses with intelligent AI agents that automate workflows, 

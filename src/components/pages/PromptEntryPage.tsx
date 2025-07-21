@@ -48,10 +48,7 @@ export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
                 <Bot className="h-8 w-8 text-white" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r 
-bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
-
- bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-brand-primary bg-clip-text text-transparent">
               What do you want your AI agent to do?
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -60,7 +57,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
           </div>
 
           {/* Main Input Card */}
-          <Card className="mb-8 border-2 border-dashed border-muted-foreground/20 hover:border-purple-500/50 transition-all duration-300">
+          <Card className="mb-8 border-2 border-dashed border-muted-foreground/20 hover:border-orange-500/50 transition-all duration-300">
             <CardContent className="p-8">
               <div className="space-y-6">
                 <div className="flex items-center space-x-2 text-muted-foreground">
@@ -85,10 +82,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
                   <Button
                     onClick={handleSubmit}
                     disabled={!prompt.trim() || isGenerating}
-                    className="bg-gradient-to-r 
-bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
-
- hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 text-lg"
+                    className="!bg-brand-primary border-none text-white px-8 py-3 text-lg"
                   >
                     {isGenerating ? (
                       <>
@@ -118,16 +112,16 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
               {examplePrompts.map((example, index) => (
                 <Card 
                   key={index}
-                  className="cursor-pointer hover:shadow-lg hover:border-purple-500/50 transition-all duration-300 group"
+                  className="cursor-pointer hover:shadow-lg hover:border-orange-500/50 transition-all duration-300 group"
                   onClick={() => useExamplePrompt(example)}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-2 rounded-lg group-hover:from-purple-500/30 group-hover:to-pink-500/30 transition-colors">
-                        <Zap className="h-4 w-4 text-purple-600" />
+                      <div className="bg-gradient-to-r from-orange-500/20 to-pink-500/20 p-2 rounded-lg  group-hover:to-orange-500/30 transition-colors">
+                        <Zap className="h-4 w-4 text-orange-600" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-medium group-hover:text-purple-600 transition-colors">
+                        <p className="text-sm font-medium group-hover:text-orange-600 transition-colors">
                           {example}
                         </p>
                         <p className="text-xs text-muted-foreground mt-1">
@@ -144,7 +138,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
           {/* Features Preview */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center space-y-2">
-              <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-3 rounded-full w-fit mx-auto">
+              <div className="bg-gradient-to-r from-orange-500/20  p-3 rounded-full w-fit mx-auto">
                 <Bot className="h-6 w-6 text-blue-600" />
               </div>
               <h3 className="font-semibold">AI-Powered</h3>

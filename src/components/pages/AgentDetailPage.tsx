@@ -12,13 +12,13 @@ import { Textarea } from '../common/ui/textarea'
 import { Label } from '../common/ui/label'
 import { ScrollArea } from '../common/ui/scroll-area'
 import { toast } from 'sonner'
-import { 
-  Star, 
-  Zap, 
-  CheckCircle, 
-  ArrowRight, 
-  Clock, 
-  Users, 
+import {
+  Star,
+  Zap,
+  CheckCircle,
+  ArrowRight,
+  Clock,
+  Users,
   Shield,
   ArrowLeft,
   Play,
@@ -76,7 +76,7 @@ interface Agent {
   security?: string
   triggerTypes?: string[]
   howitWorks?: { id: number; title: string; description: string }[]
-  
+
 }
 
 interface AgentDetailPageProps {
@@ -179,7 +179,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
     try {
       // Simulate AI processing
       await new Promise(resolve => setTimeout(resolve, 3000))
-      
+
       // Generate sample output based on agent type
       let output = ''
       if (agent?.name?.includes('Smart') || agent?.category === 'Content Generation') {
@@ -189,7 +189,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
       } else {
         output = `AI analysis complete: Your input "${demoInput}" has been processed successfully. The agent has identified key optimization opportunities and generated actionable insights to improve performance by an estimated 34%.`
       }
-      
+
       setDemoOutput(output)
       toast.success('Demo completed successfully!')
     } catch (error) {
@@ -206,10 +206,10 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
 
   const shareOnSocial = (platform: string) => {
     if (!agent) return
-    
+
     const url = `${window.location.origin}/agents/${agent.id}`
     const text = `Check out ${agent.name} - ${agent.description.substring(0, 100)}...`
-    
+
     let shareUrl = ''
     switch (platform) {
       case 'twitter':
@@ -225,7 +225,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
         shareUrl = `mailto:?subject=${encodeURIComponent(`Check out ${agent.name}`)}&body=${encodeURIComponent(`${text}\n\n${url}`)}`
         break
     }
-    
+
     if (shareUrl) {
       window.open(shareUrl, '_blank', 'width=600,height=400')
       toast.success('Share dialog opened!')
@@ -273,12 +273,33 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
 
   const IconComponent = typeof agent.icon === 'function' ? agent.icon : ShoppingCart;
 
+  const formatJSONToText = (json: string) => {
+    try {
+      const parsed = JSON.parse(json);
+
+      // If parsed is an array (like the example you gave), format it into readable text
+      if (Array.isArray(parsed)) {
+        return parsed
+          .map((item: any) => {
+            return `Product: ${item.product}\nOld Price: $${item.old_price}\nNew Price: $${item.new_price}\nReason: ${item.reason}\n\n`;
+          })
+          .join('');
+      }
+
+      // If the format is something else, return JSON as pretty string
+      return JSON.stringify(parsed, null, 2);
+    } catch (e) {
+      // If it's not JSON, return it as plain text
+      return json;
+    }
+  };
+
   return (
     <div className="min-h-screen py-8 !px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back button */}
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           onClick={onBack}
           className="mb-6 hover:bg-muted/50 "
         >
@@ -291,7 +312,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
           <div className="lg:col-span-2 space-y-8">
             {/* Agent Header */}
             <div className="flex items-start space-x-6">
-              <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-[#FF620A] flex-shrink-0">
+              <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-brand-primary flex-shrink-0">
                 <IconComponent className="h-10 w-10 text-white" />
               </div>
               <div className="flex-1">
@@ -303,7 +324,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                 </div>
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1">
-                    <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    <Star className="h-5 w-5 fill-ui-warning text-ui-warning" />
                     <span className="font-medium">{agent.rating}</span>
                     <span className="text-muted-foreground">({agent.reviews} reviews)</span>
                   </div>
@@ -326,10 +347,10 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-3">
-              <Button 
+              <Button
                 onClick={() => navigate(`/agents/${agent?.id}/run`)}
-                size="lg" 
-                className="px-8 !bg-[#FF620A] hover:!shadow-lg border-none"
+                size="lg"
+                className="px-8 !bg-brand-primary hover:!shadow-lg border-none"
               >
                 <Play className="h-4 w-4 mr-2" />
                 Run Agent
@@ -343,11 +364,11 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                 <Share className="h-4 w-4 mr-2" />
                 Share
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 onClick={handleSaveAgent}
-                className={isSaved ? 'border-red-500 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20' : ''}
+                className={isSaved ? 'border-ui-error text-ui-error hover:bg-ui-error/10 dark:hover:bg-ui-error/20' : ''}
               >
                 <Heart className={`h-4 w-4 mr-2 ${isSaved ? 'fill-current' : ''}`} />
                 {isSaved ? 'Saved' : 'Save'}
@@ -370,15 +391,22 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
-                      <Zap className="h-5 w-5 mr-2 text-blue-600" />
+                      <Zap className="h-5 w-5 mr-2 text-ui-info" />
                       Sample Output
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-muted/50 rounded-lg p-4 border-l-4 border-blue-500">
-                      <p className="italic text-foreground">
-                        {agent?.sampleOutput || "These sleek Wireless Earbuds ZX100 deliver crystal-clear 8 hours of immersive, noise-canceling audio with premium comfort design, perfect for both workouts and daily commutes."}
-                      </p>
+                    <div className="bg-muted/50 rounded-lg p-4 border-l-4 border-ui-info">
+                      {/* We use <pre> to preserve line breaks and spacing */}
+                      <pre className="text-sm text-foreground whitespace-pre-wrap font-mono leading-relaxed">
+                        {(() => {
+                          const output = agent?.sampleOutput;
+                          if (!output) return "No sample output available.";  // Fallback if no output
+
+                          // Call the function to convert JSON into readable text
+                          return formatJSONToText(output);
+                        })()}
+                      </pre>
                     </div>
                   </CardContent>
                 </Card>
@@ -392,7 +420,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                     <div className="space-y-4">
                       {agent?.howitWorks?.map((step) => (
                         <div key={step.id} className="flex items-start space-x-3">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium">{step.id}</div>
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-ui-info/10 dark:bg-ui-info/20 text-ui-info dark:text-ui-info text-sm font-medium">{step.id}</div>
                           <div>
                             <h4 className="font-medium">{step.title}</h4>
                             <p className="text-sm text-muted-foreground">{step.description}</p>
@@ -407,7 +435,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
-                      <CheckCircle className="h-5 w-5 mr-2 text-green-600" />
+                      <CheckCircle className="h-5 w-5 mr-2 text-ui-success" />
                       Key Features
                     </CardTitle>
                   </CardHeader>
@@ -422,7 +450,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                         // 'Performance Analytics'
                       ]).map((feature, index) => (
                         <div key={index} className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                          <CheckCircle className="h-4 w-4 text-ui-success flex-shrink-0" />
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -446,7 +474,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                       <p className="text-sm text-muted-foreground mb-4">
                         Test this agent with your own data
                       </p>
-                      <Button onClick={handleTryDemo} className='!bg-black text-white border-none hover:bg-gray-700'>
+                      <Button onClick={handleTryDemo} className='!bg-text-primary text-white border-none hover:bg-gray-700'>
                         <TestTube className="h-4 w-4 mr-2" />
                         Launch Demo
                       </Button>
@@ -496,7 +524,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                               <span className="font-medium">{review.name}</span>
                               <div className="flex items-center space-x-1">
                                 {[...Array(review.rating)].map((_, i) => (
-                                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                                  <Star key={i} className="h-4 w-4 fill-ui-warning text-ui-warning" />
                                 ))}
                               </div>
                               <span className="text-sm text-muted-foreground">{review.date}</span>
@@ -550,11 +578,11 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                 <CardTitle>Pricing</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center p-4 bg-[#FFF6ED] rounded-lg border">
-                  <p className="text-sm text-black mb-1">Starting at</p>
-                  <p className="text-3xl font-bold">{agent.price}</p>
+                <div className="text-center p-4 bg-bg-secondary rounded-lg border">
+                  <p className="text-sm text-text-primary mb-1">Starting at</p>
+                  <p className="text-3xl font-bold">₹ {agent.price}</p>
                   {agent.price !== 'Free' && (
-                    <p className="text-xs text-black">7-day free trial included</p>
+                    <p className="text-xs text-text-primary">7-day free trial included</p>
                   )}
                 </div>
               </CardContent>
@@ -601,7 +629,7 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
               <Button
                 size="sm"
                 onClick={() => copyToClipboard(agent ? `${window.location.origin}/agents/${agent.id}` : '')}
-                className="flex-shrink-0 !bg-black border-none"
+                className="flex-shrink-0 !bg-text-primary border-none"
               >
                 <Copy className="h-4 w-4" />
               </Button>
@@ -674,8 +702,8 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                     agent?.name?.includes('Smart') || agent?.category === 'Content Generation'
                       ? 'Enter product details to generate optimized description...'
                       : agent?.name?.includes('Price') || agent?.category === 'Sales Optimization'
-                      ? 'Enter product price and competitor prices...'
-                      : 'Enter your test data here...'
+                        ? 'Enter product price and competitor prices...'
+                        : 'Enter your test data here...'
                   }
                   value={demoInput}
                   onChange={(e) => setDemoInput(e.target.value)}
@@ -686,8 +714,8 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
 
               {/* Demo Controls */}
               <div className="flex items-center space-x-3">
-                <Button 
-                  onClick={handleRunDemo} 
+                <Button
+                  onClick={handleRunDemo}
                   disabled={isRunningDemo || !demoInput.trim()}
                   className="flex-1 !bg-gray-600 hover:bg-gray-700 text-white"
                 >
@@ -703,8 +731,8 @@ export function AgentDetailPage({ agent: initialAgent, onBack, isLoggedIn, onSho
                     </>
                   )}
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => {
                     setDemoInput('')
                     setDemoOutput('')

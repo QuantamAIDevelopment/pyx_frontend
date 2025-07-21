@@ -19,7 +19,7 @@ import {
   HelpCircle,
   CheckCircle,
   Users,
-  Zap,
+  
   Twitter,
   Linkedin,
   Github,
@@ -169,7 +169,7 @@ export function ContactPage() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center">
-                    <Send className="h-5 w-5 mr-2 text-blue-600" />
+                    <Send className="h-5 w-5 mr-2 text-brand-primary" />
                     Send us a Message
                   </CardTitle>
                   <CardDescription>
@@ -179,7 +179,7 @@ export function ContactPage() {
                 <CardContent>
                   {isSubmitted ? (
                     <div className="text-center py-8">
-                      <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                      <CheckCircle className="h-12 w-12 text-ui-success mx-auto mb-4" />
                       <h3 className="font-medium mb-2">Message Sent Successfully!</h3>
                       <p className="text-sm text-muted-foreground">
                         Thank you for contacting us. We'll get back to you within 24 hours.
@@ -274,13 +274,13 @@ export function ContactPage() {
                           value={formData.message}
                           onChange={(e) => handleInputChange('message', e.target.value)}
                           required
-                          className='!shadow-md rounded bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100'
+                          className='!shadow-md rounded bg-bg-muted dark:bg-bg-card text-text-primary dark:text-text-white'
                         />
                       </div>
 
                       <Button 
                         type="submit" 
-                        className="w-full shadow-md rounded !bg-black border-none hover:!bg-black/90 text-white" 
+                        className="w-full shadow-md rounded !bg-text-primary border-none hover:!bg-text-primary/90 text-white" 
                         size="lg"
                         disabled={isSubmitting}
                        
@@ -304,36 +304,36 @@ export function ContactPage() {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-6">
+            <div className="space-y-6 ">
               {/* Quick Contact */}
-              <Card>
+              <Card className='w-full'>
                 <CardHeader>
                   <CardTitle>Contact Information</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <Mail className="h-5 w-5 text-blue-600 mt-0.5" />
+                    <Mail className="h-5 w-5 text-ui-info mt-0.5" />
                     <div>
                       <p className="font-medium">Email</p>
                       <p className="text-sm text-muted-foreground">{contactInfo.email}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Phone className="h-5 w-5 text-green-600 mt-0.5" />
+                    <Phone className="h-5 w-5 text-ui-success mt-0.5" />
                     <div>
                       <p className="font-medium">Phone</p>
                       <p className="text-sm text-muted-foreground">{contactInfo.phone}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <MapPin className="h-5 w-5 text-red-600 mt-0.5" />
+                    <MapPin className="h-5 w-12 text-ui-error mt-0.5" />
                     <div>
                       <p className="font-medium">Address</p>
                       <p className="text-sm text-muted-foreground">{contactInfo.address}</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Clock className="h-5 w-5 text-purple-600 mt-0.5" />
+                    <Clock className="h-5 w-5 text-ui-purple mt-0.5" />
                     <div>
                       <p className="font-medium">Business Hours</p>
                       <p className="text-sm text-muted-foreground">{contactInfo.hours}</p>
@@ -349,16 +349,16 @@ export function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex space-x-3 ">
-                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md '>
+                    <Button variant="outline" size="icon" className='hover:!bg-bg-secondary !shadow-md '>
                       <Twitter className="h-4 w-4 " />
                     </Button>
-                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md'>
+                    <Button variant="outline" size="icon" className='hover:!bg-bg-secondary !shadow-md'>
                       <Linkedin className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md'>
+                    <Button variant="outline" size="icon" className='hover:!bg-bg-secondary !shadow-md'>
                       <Github className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="icon" className='hover:!bg-gray-100 !shadow-md'>
+                    <Button variant="outline" size="icon" className='hover:!bg-bg-secondary !shadow-md'>
                       <Globe className="h-4 w-4" />
                     </Button>
                   </div>
@@ -384,7 +384,7 @@ export function ContactPage() {
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
                     <CardHeader className="pb-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-gradient mx-auto mb-4">
                         <IconComponent className="h-6 w-6 text-white" />
                       </div>
                       <CardTitle className="text-lg">{option.title}</CardTitle>
@@ -435,13 +435,11 @@ export function ContactPage() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg p-10 text-center mb-16 ">
+          <div className="bg-bg-secondary rounded-lg p-10 text-center mb-16 ">
             <div className="flex items-center justify-center space-x-2 mb-4 ">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
-                <Zap className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
-                PYX
+              
+              <span className="text-xl font-bold bg-brand-primary bg-clip-text text-transparent">
+              <img src='./assets/logo.png' width={80} height={50} alt='' className='ml-0 ' />
               </span>
             </div>
             <h3 className="text-xl font-bold mb-2">Ready to Get Started?</h3>
@@ -449,7 +447,7 @@ export function ContactPage() {
               Join thousands of businesses already using PYX AI agents to automate their operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="!bg-black !border-0 text-white shadow-md rounded-lg hover:!bg-black/90">
+              <Button size="lg" className="!bg-text-primary !border-0 text-white shadow-md rounded-lg hover:!bg-text-primary/90">
                 Start Free Trial
               </Button>
               <Button variant="outline" size="lg">

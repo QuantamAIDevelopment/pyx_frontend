@@ -140,57 +140,60 @@ const ContractRedFlagDetectorCard: React.FC<ContractRedFlagDetectorCardProps> = 
 
   return (
     <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
-      <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row md:flex-wrap gap-4 mb-8">
-        <div className="flex flex-col w-full md:w-[30%]">
-          <label className="block text-sm font-medium mb-1 text-black">Document Title</label>
-          <input
-            type="text"
-            placeholder="Document Title (e.g., Professional Services Agreement)"
-            value={documentName}
-            onChange={e => setDocumentName(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
-            required
-          />
-        </div>
-        <div className="flex flex-col w-full md:w-[30%]">
-          <label className="block text-sm font-medium mb-1 text-black">Your Email</label>
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
-            required
-          />
-        </div>
-        <div className="flex flex-col w-full md:w-[30%]">
-          <label className="block text-sm font-medium mb-1 text-black">Upload File</label>
-          <input
-            type="file"
-            accept=".pdf,.doc,.docx,.txt"
-            onChange={e => setFile(e.target.files ? e.target.files[0] : null)}
-            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
-            required
-          />
-        </div>
-        <div className="flex flex-col w-full md:w-[30%]">
-          <label className="block text-sm font-medium mb-1 text-black">Document Type</label>
-          <input
-            type="text"
-            placeholder="Document Type (e.g., pdf, doc, docx)"
-            value={notes}
-            onChange={e => setNotes(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full md:w-[160px] h-[42px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
-        >
-          {isLoading ? 'Analyzing...' : 'Analyze Contract'}
-        </button>
-      </form>
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Document Title</label>
+    <input
+      type="text"
+      placeholder="e.g., Professional Services Agreement"
+      value={documentName}
+      onChange={e => setDocumentName(e.target.value)}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+      required
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Your Email</label>
+    <input
+      type="email"
+      placeholder="e.g., your@email.com"
+      value={email}
+      onChange={e => setEmail(e.target.value)}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+      required
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Upload File</label>
+    <input
+      type="file"
+      accept=".pdf,.doc,.docx,.txt"
+      onChange={e => setFile(e.target.files ? e.target.files[0] : null)}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+      required
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium mb-1 text-black">Document Type</label>
+    <input
+      type="text"
+      placeholder="e.g., pdf, doc"
+      value={notes}
+      onChange={e => setNotes(e.target.value)}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-black focus:ring-2 focus:ring-blue-400"
+    />
+  </div>
+  <div className="md:col-span-2 flex justify-end">
+    <button
+      type="submit"
+      disabled={isLoading}
+      className="w-full md:w-[200px] h-[44px] text-white font-bold rounded-lg bg-[#FF620A] shadow hover:shadow-md transition-all"
+    >
+      {isLoading ? 'Analyzing...' : 'Analyze Contract'}
+    </button>
+  </div>
+</form>
+
       {result && (
         <div>
           <h2 className="text-xl font-bold text-black mb-6">Analysis Result</h2>

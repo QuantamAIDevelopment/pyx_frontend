@@ -20,7 +20,7 @@ const AICustomerSupport: React.FC = () => {
       const formData = new FormData();
       formData.append('chat', input);
 
-      const response = await fetch('https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/chat', {
+      const response = await fetch('https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/AI customer', {
         method: 'POST',
         body: formData,
       });
@@ -48,7 +48,7 @@ const AICustomerSupport: React.FC = () => {
     <div className="bg-gray-50 shadow-md max-w-4xl mx-auto mt-8 rounded-2xl p-8">
       {/* Info Section */}
       <div className="mb-6">
-        <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white font-poppins text-center rounded-lg py-2 px-4 font-semibold text-sm">
+        <div className="bg-[#FF620A] text-white font-poppins text-center rounded-lg py-2 px-4 font-semibold text-sm">
           Launch your own AI support agent & elevate your support for audiences any size, any time.
         </div>
       </div>

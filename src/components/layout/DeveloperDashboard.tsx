@@ -377,9 +377,7 @@ export function DeveloperDashboard({ onSelectWorkflow, onNewAgent }: DeveloperDa
             <p className="text-muted-foreground">Manage and monitor your AI agent workflows</p>
           </div>
           <Button 
-            className="
-bg-gradient-to-r from-[#FF620A] to-[#993B06]
-"
+            className="!bg-brand-primary border-none"
             onClick={onNewAgent}
           >
             <Plus className="h-4 w-4 mr-2" />

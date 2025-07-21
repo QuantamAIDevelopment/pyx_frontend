@@ -79,7 +79,7 @@ export function AgentGenerationOutputPage({
     input: inputOption.title,
     output: outputOption.title,
     frequency: credentials.updateFrequency || 'daily',
-    estimatedCost: 'Rs 1250/month',
+    estimatedCost: '₹ 1250/month',
     expectedAccuracy: '94%'
   }
 
@@ -109,10 +109,10 @@ export function AgentGenerationOutputPage({
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="max-w-lg mx-auto text-center space-y-6">
           <div className="relative">
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-6 rounded-full w-24 h-24 mx-auto flex items-center justify-center">
-              <Sparkles className="h-12 w-12 text-white animate-pulse" />
+            <div className="bg-brand-gradient p-6 rounded-full w-24 h-24 mx-auto flex items-center justify-center">
+              <Sparkles className="h-12 w-12 text-text-white animate-pulse" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full animate-ping"></div>
+            <div className="absolute inset-0 bg-brand-gradient/20 rounded-full animate-ping"></div>
           </div>
           
           <div className="space-y-4">
@@ -136,14 +136,11 @@ export function AgentGenerationOutputPage({
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
-              <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-4 rounded-full">
-                <CheckCircle className="h-8 w-8 text-white" />
+              <div className="bg-gradient-to-r from-ui-success to-emerald-500 p-4 rounded-full">
+                <CheckCircle className="h-8 w-8 text-text-white" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r 
-bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
-
- bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-brand-gradient-via bg-clip-text text-transparent">
               Your Agent is Ready
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -152,12 +149,12 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
           </div>
 
           {/* Agent Summary */}
-          <Card className="mb-8 border-2 border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-900/10">
+          <Card className="mb-8 border-2 border-ui-success/50 bg-ui-success/10 dark:border-ui-success/70 dark:bg-ui-success/10">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <Bot className="h-6 w-6 text-green-600" />
+                <Bot className="h-6 w-6 text-ui-success" />
                 <span>{agentSummary.name}</span>
-                <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                <Badge className="bg-ui-success/20 text-ui-success dark:bg-ui-success/30 dark:text-green-200">
                   Ready
                 </Badge>
               </CardTitle>
@@ -165,19 +162,19 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">{agentSummary.expectedAccuracy}</div>
+                  <div className="text-2xl font-bold text-ui-success">{agentSummary.expectedAccuracy}</div>
                   <div className="text-sm text-muted-foreground">Expected Accuracy</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">{agentSummary.estimatedCost}</div>
+                  <div className="text-2xl font-bold text-ui-info">{agentSummary.estimatedCost}</div>
                   <div className="text-sm text-muted-foreground">Monthly Cost</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 capitalize">{agentSummary.frequency}</div>
+                  <div className="text-2xl font-bold text-ui-purple capitalize">{agentSummary.frequency}</div>
                   <div className="text-sm text-muted-foreground">Update Frequency</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600">&lt;5s</div>
+                  <div className="text-2xl font-bold text-ui-orange">&lt;5s</div>
                   <div className="text-sm text-muted-foreground">Avg Response Time</div>
                 </div>
               </div>
@@ -196,12 +193,12 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
               <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
                 {flowSteps.map((step, index) => (
                   <div key={index} className="flex flex-col items-center text-center space-y-2 flex-1">
-                    <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white">
+                    <div className="bg-brand-gradient p-3 rounded-full text-text-white">
                       {step.icon}
                     </div>
                     <h3 className="font-semibold">{step.title}</h3>
                     <p className="text-sm text-muted-foreground">{step.description}</p>
-                    <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                    <Badge className="bg-ui-success/20 text-ui-success dark:bg-ui-success/30 dark:text-green-200">
                       <CheckCircle className="h-3 w-3 mr-1" />
                       Configured
                     </Badge>
@@ -225,7 +222,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-blue-100 p-2 rounded-lg dark:bg-blue-900">
+                  <div className="bg-ui-info/10 p-2 rounded-lg dark:bg-ui-info/20">
                     {inputOption.icon}
                   </div>
                   <div>
@@ -253,7 +250,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center space-x-3">
-                  <div className="bg-purple-100 p-2 rounded-lg dark:bg-purple-900">
+                  <div className="bg-ui-purple/10 p-2 rounded-lg dark:bg-ui-purple/20">
                     {outputOption.icon}
                   </div>
                   <div>
@@ -296,7 +293,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
               <Button 
                 variant="outline"
                 onClick={onUseAPI}
-                className="flex items-center space-x-2 border-blue-500 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/20"
+                className="flex items-center space-x-2 border-ui-info text-ui-info hover:bg-ui-info/10 dark:hover:bg-ui-info/20"
               >
                 <Globe className="h-4 w-4" />
                 <span>Use via API</span>
@@ -312,10 +309,7 @@ bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
               
               <Button 
                 onClick={onDeploy}
-                className="bg-gradient-to-r 
-bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06]
-
- hover:from-purple-700 hover:to-pink-700 text-white flex items-center space-x-2"
+                className="bg-brand-gradient-via hover:from-purple-700 hover:to-pink-700 text-text-white flex items-center space-x-2"
               >
                 <Play className="h-4 w-4" />
                 <span>Deploy Now</span>

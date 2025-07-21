@@ -167,7 +167,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
       </div>
     </div>
   );
-  if (error) return <div className="text-center py-10 text-red-500">{error}</div>
+  if (error) return <div className="text-center py-10 text-ui-error">{error}</div>
 
   return (
     <div className="min-h-screen">
@@ -190,7 +190,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
                     <div className="w-full sm:w-auto relative">
                       <Button
                         onClick={isLoggedIn ? onViewActiveAgents : () => onShowAuth('login')}
-                        className="!bg-[#FF620A] w-full sm:w-auto min-w-0 border-none"
+                        className="!bg-brand-primary w-full sm:w-auto min-w-0 border-none"
                         size="default"
                       >
                         <Activity className="h-4 w-4 mr-2 flex-shrink-0 " />
@@ -283,13 +283,13 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 ">
                   {/* Category Filter */}
                   <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-  <SelectTrigger className="w-full bg-gray-100">
+  <SelectTrigger className="w-full bg-bg-muted">
     <Filter className="h-4 w-4 mr-2 flex-shrink-0" />
     <SelectValue placeholder="Category" />
   </SelectTrigger>
 
   <SelectContent 
-    className="max-h-[300px] overflow-y-auto z-50 mt-1 border border-gray-200 rounded-md shadow-lg bg-white"
+    className="max-h-[300px] overflow-y-auto z-50 mt-1 border border-border-light rounded-md shadow-lg bg-background"
     side="bottom" // ensure dropdown opens downward
     align="start" // aligns it to left instead of going behind anything
   >
@@ -304,7 +304,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
 
                   {/* Industry Filter */}
                   <Select value={selectedIndustry} onValueChange={setSelectedIndustry}>
-                    <SelectTrigger className="w-full bg-gray-100">
+                    <SelectTrigger className="w-full bg-bg-muted">
                       <SelectValue placeholder="Industry" />
                     </SelectTrigger>
                     <SelectContent>
@@ -318,7 +318,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
 
                   {/* Price Filter */}
                   <Select value={priceFilter} onValueChange={setPriceFilter}>
-                    <SelectTrigger className="w-full bg-gray-100">
+                    <SelectTrigger className="w-full bg-bg-muted">
                       <SelectValue placeholder="Price" />
                     </SelectTrigger>
                     <SelectContent>
@@ -330,7 +330,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
 
                   {/* Sort */}
                   <Select value={sortBy} onValueChange={setSortBy}>
-                    <SelectTrigger className="w-full bg-gray-100">
+                    <SelectTrigger className="w-full bg-bg-muted">
                       <SortAsc className="h-4 w-4 mr-2 flex-shrink-0" />
                       <SelectValue placeholder="Sort by" />
                     </SelectTrigger>
@@ -357,7 +357,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
                 variant={viewMode === 'grid' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setViewMode('grid')}
-                className={`flex-1 sm:flex-none ${viewMode === 'grid' ? '!bg-black text-white border-none' : ''}`}
+                className={`flex-1 sm:flex-none ${viewMode === 'grid' ? '!bg-text-primary text-white border-none' : ''}`}
               >
                 Grid
               </Button>
@@ -366,7 +366,7 @@ export function AgentListingPage({ onAgentSelect, isLoggedIn, onCreateWorkflow, 
                 variant={viewMode === 'list' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setViewMode('list')}
-                className={`flex-1 sm:flex-none ${viewMode === 'list' ? '!bg-black text-white border-none' : ''}`}
+                className={`flex-1 sm:flex-none ${viewMode === 'list' ? '!bg-text-primary text-white border-none' : ''}`}
               >
                 List
               </Button>

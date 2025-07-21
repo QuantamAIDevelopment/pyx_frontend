@@ -11,10 +11,10 @@ import LeavesClassifier from '../../workflows/LeavesClassifier';
 import ContractRedFlagDetectorCard from '../../workflows/ContractRedFlagDetector';
 import DocumentUploadReminder from '../../workflows/DocumentUploadReminder';
 // import CandidateHiringStatus from '../../workflows/CandidateHiringStatus';
-import PayslipAutoEncrypted from '../../workflows/PayslipAutoEncrypted';
+// import PayslipAutoEncrypted from '../../workflows/PayslipAutoEncrypted';
 import EmailAttachmentProcessing from '../../workflows/EmailAttachmentProcessing';
 import PolicyChangeNotification from '../../workflows/PolicyChangeNotification';
-// import ProductRecommendationAgent from '../../workflows/ProductRecommendationAgent';
+import ProductRecommendationAgent from '../../workflows/ProductRecommendation';
 import BusinessIntelligenceExplainerBot from '../../workflows/BusinessIntelligenceExplainerBot';
 import ProductFeedbackSummarizer from '../../workflows/ProductFeedbackSummarizer';
 import DynamicPricingAgent from '../../workflows/DynamicPricingAgent';
@@ -43,7 +43,7 @@ import SalesForecastingAgent from '../../workflows/SalesForecastingAgent';
 import LeaveBalanceChatbot from '../../workflows/LeaveBalanceChatbot';
 import PRSummaryAgent from '../../workflows/PRSummaryAgent';
 import PRReviewerAgent from '../../workflows/PRReviewerAgent';
-// import ProjectCostReports from '../../workflows/ProjectCostReports';
+import ProjectCostReports from '../../workflows/ProjectCostReports';
 import FraudDetectionSystem from '../../workflows/FraudDetectionSystem';
 import AmazonProductScraper from '../../workflows/AmazonProductScraper';
 import AIPoweredRestaurantOrderChatbot from '../../workflows/AIPoweredRestaurantOrderChatbot';
@@ -63,12 +63,12 @@ const workflowComponents: { [key: string]: React.ComponentType<any> } = {
     agent_002: LeavesClassifier,
     agent_003: DocumentUploadReminder,
     // agent_004: CandidateHiringStatus,
-    agent_005: PayslipAutoEncrypted,
+    // agent_005: PayslipAutoEncrypted,
     agent_006: EmailAttachmentProcessing,
     agent_007: PolicyChangeNotification,
     agent_008: ResumeToProfileExtractor,
     agent_009: ContractRedFlagDetectorCard,
-    // agent_010: ProductRecommendationAgent,
+    agent_010: ProductRecommendationAgent,
     agent_011: BusinessIntelligenceExplainerBot,
     agent_012: ProductFeedbackSummarizer,
     agent_013: DynamicPricingAgent,
@@ -100,7 +100,7 @@ const workflowComponents: { [key: string]: React.ComponentType<any> } = {
     agent_039: LeaveBalanceChatbot,
     agent_040: PRSummaryAgent,
     agent_041: PRReviewerAgent,
-    // agent_042: ProjectCostReports,
+    agent_042: ProjectCostReports,
     agent_043: FraudDetectionSystem,
     agent_044: AmazonProductScraper,
     agent_045: AIPoweredRestaurantOrderChatbot,
@@ -133,7 +133,7 @@ export function RunAgentPage() {
   }, [id]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#fff6ed] px-4 font-sans">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-bg-secondary px-4 font-sans">
       <div className="w-full max-w-3xl my-10">
         <Button
           variant="ghost"
@@ -153,7 +153,7 @@ export function RunAgentPage() {
             </>
           ) : (
             <div className="text-center text-muted-foreground">
-              No workflow UI found for agent ID: <span className="font-mono font-semibold text-gray-800">{id}</span>
+              No workflow UI found for agent ID: <span className="font-mono font-semibold text-text-primary">{id}</span>
             </div>
           )}
         </div>
