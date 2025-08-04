@@ -173,7 +173,6 @@ export function VisualAgentBuilder({ selectedWorkflow }: VisualAgentBuilderProps
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-sm truncate">{node.name}</p>
                       <p className="text-xs text-muted-foreground truncate">{node.description}</p>
-                            <h1>Selected Workflow: {selectedWorkflow}</h1>
                     </div>
                   </div>
                 )
@@ -249,7 +248,7 @@ export function VisualAgentBuilder({ selectedWorkflow }: VisualAgentBuilderProps
   )
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col min-h-0">
       {/* Toolbar */}
       <div className="border-b bg-card/50 p-4">
         <div className="flex items-center justify-between">
@@ -319,7 +318,7 @@ export function VisualAgentBuilder({ selectedWorkflow }: VisualAgentBuilderProps
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 min-h-0">
         <ResizablePanelGroup direction="horizontal">
           {/* Node Palette */}
           <ResizablePanel defaultSize={20} minSize={15} maxSize={30}>

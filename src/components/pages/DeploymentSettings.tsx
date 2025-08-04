@@ -505,7 +505,7 @@ export function DeploymentSettings() {
   )
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col min-h-0">
       {/* Header */}
       <div className="border-b p-4">
         <div className="flex items-center justify-between">
@@ -521,7 +521,7 @@ export function DeploymentSettings() {
             <Button 
               onClick={handleDeploy}
               disabled={isDeploying}
-              className="bg-gradient-to-r from-green-600 to-blue-600"
+              className="bg-gradient-to-r from-orange-600 to-orange-500 text-white hover:from-orange-700 hover:to-orange-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
             >
               {isDeploying ? (
                 <>
@@ -540,7 +540,7 @@ export function DeploymentSettings() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 min-h-0">
         <div className="grid grid-cols-1 lg:grid-cols-4 h-full">
           {/* Agent Selector */}
           <div className="border-r p-4">

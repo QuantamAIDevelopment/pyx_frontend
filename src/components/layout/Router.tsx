@@ -40,6 +40,7 @@ import { GDPRPage } from '../pages/GDPRPage'
 import { SecurityPage } from '../pages/SecurityPage'
 // import { CreateAgentPage } from '../pages/CreateAgentPage'
 import {GenerateAppPage} from '../pages/GenerateAppPage'
+import { CodePreviewPage } from '../pages/CodePreviewPage'
 import { WorkflowBuilder } from '../pages/WorkflowBuilder'
 import { UploadAgentPage } from '../pages/UploadAgentPage'
 import { ProfilePage } from '../pages/ProfilePage'
@@ -466,6 +467,13 @@ function AppRoutes() {
         <Route path="/generate-app" element={
           isLoggedIn ? (
             <GenerateAppPage />
+          ) : (
+            <Navigate to="/" replace />
+          )
+        } />
+        <Route path="/code-preview" element={
+          isLoggedIn ? (
+            <CodePreviewPage />
           ) : (
             <Navigate to="/" replace />
           )

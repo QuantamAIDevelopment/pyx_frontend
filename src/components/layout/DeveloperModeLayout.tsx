@@ -141,7 +141,7 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
       </div>
 
       {/* Main Layout */}
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1">
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Sidebar */}
           <ResizablePanel
@@ -219,7 +219,7 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
 
           {/* Main Content Area */}
           <ResizablePanel defaultSize={80} minSize={50}>
-            <div className="h-full overflow-hidden">
+            <div className="h-full">
               {renderMainContent()}
             </div>
           </ResizablePanel>

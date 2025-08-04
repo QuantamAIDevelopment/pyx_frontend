@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../common/ui/button'
 import { Textarea } from '../common/ui/textarea'
 import { Card } from '../common/ui/card'
@@ -15,6 +16,7 @@ import { usePyX } from '../layout/PyXContextProvider'
 export function GenerateAppPage() {
   const [prompt, setPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
+  const navigate = useNavigate()
   const { setCurrentPage } = usePyX()
 
   React.useEffect(() => {
@@ -33,8 +35,7 @@ export function GenerateAppPage() {
     setTimeout(() => {
       setIsGenerating(false)
       // Navigate to code preview
-      window.history.pushState({}, '', '/app/code-preview')
-      window.dispatchEvent(new PopStateEvent('popstate'))
+      navigate('/code-preview')
     }, 3000)
   }
 

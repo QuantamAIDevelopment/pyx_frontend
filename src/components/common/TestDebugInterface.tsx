@@ -469,7 +469,7 @@ export function TestDebugInterface() {
   )
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col min-h-0">
       {/* Header */}
       <div className="border-b p-4">
         <div className="flex items-center justify-between">
@@ -491,7 +491,7 @@ export function TestDebugInterface() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 min-h-0">
         <ResizablePanelGroup direction="horizontal">
           {/* Left Panel - Test Input & History */}
           <ResizablePanel defaultSize={30} minSize={25}>
