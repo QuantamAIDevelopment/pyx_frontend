@@ -7,6 +7,7 @@ import { AIServiceProvider } from './components/services/AIService'
 import { VoiceServiceProvider } from './components/services/VoiceService'
 import { I18nProvider } from './components/services/I18nService'
 import { RecommendationEngineProvider } from './components/services/RecommendationEngine'
+// import { GenerateAppPage } from './components/pages/GenerateAppPage'
 import './components/styles/globals.css'
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
       <AIServiceProvider>
         <VoiceServiceProvider>
           <PyXContextProvider>
+            {/* <GenerateAppPage /> removed, now only rendered via router */}
             <RecommendationEngineProvider>
               <div className="min-h-screen bg-background text-foreground">
                 <Router />
@@ -52,6 +54,7 @@ function App() {
                 <PyXChatbot />
               </div>
             </RecommendationEngineProvider>
+            
           </PyXContextProvider>
         </VoiceServiceProvider>
       </AIServiceProvider>

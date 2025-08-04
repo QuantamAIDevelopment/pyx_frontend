@@ -30,7 +30,7 @@ import {
   Activity,
   Upload,
   Settings,
-  
+  Code2,
   Wallet,
   CreditCard,
   Eye,
@@ -56,6 +56,7 @@ interface DashboardProps {
   onUploadAgent: () => void
   onViewProfile: () => void
   onTestingLab: () => void
+  onGenerateApp: () => void
   onManageAPI: (apiData: any) => void
   onAnalytics: (apiData: any) => void
   onViewAgentDetail: (agentData: any) => void
@@ -192,7 +193,7 @@ const myAPIs = [
   }
 ]
 
-export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWorkflows, onUploadAgent, onViewProfile, onTestingLab, onManageAPI, onAnalytics, onViewAgentDetail, onRunAgent }: DashboardProps) {
+export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWorkflows, onUploadAgent, onViewProfile, onTestingLab, onManageAPI, onAnalytics, onViewAgentDetail, onRunAgent,onGenerateApp}: DashboardProps) {
   const [activeTab, setActiveTab] = useState('overview')
 
 
@@ -249,10 +250,10 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
               <Zap className="h-4 w-4 mr-2" />
               Build Agent
             </Button>
-            <Button onClick={onCreateAgent} variant="outline">
+            {/* <Button onClick={onCreateAgent} variant="outline">
               <Plus className="h-4 w-4 mr-2" />
               Create Agent
-            </Button>
+            </Button> */}
             <Button variant="outline" onClick={onViewWorkflows}>
               <GitBranch className="h-4 w-4 mr-2" />
               Link Agents
@@ -265,6 +266,12 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
               <Upload className="h-4 w-4 mr-2" />
               Upload Agent
             </Button>
+            <Button variant="outline" onClick={onGenerateApp}>
+              <Code2 className="h-4 w-4 mr-2" />
+              Generate App
+            </Button>
+
+            
           </div>
         </div>
 
@@ -342,14 +349,14 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                     <Zap className="h-6 w-6" />
                     <span>Build Agent</span>
                   </Button>
-                  <Button 
+                  {/* <Button 
                     variant="outline" 
                     onClick={onCreateAgent}
                     className="h-auto flex-col space-y-2 p-4"
                   >
                     <Plus className="h-6 w-6" />
                     <span>Create Agent</span>
-                  </Button>
+                  </Button> */}
                   <Button 
                     variant="outline" 
                     onClick={onTestingLab}
@@ -373,6 +380,14 @@ export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWor
                   >
                     <Upload className="h-6 w-6" />
                     <span>Upload Agent</span>
+                  </Button>
+                   <Button 
+                    variant="outline" 
+                    onClick={onGenerateApp}
+                    className="h-auto flex-col space-y-2 p-4"
+                  >
+                    <Code2 className="h-6 w-6" />
+                    <span>Generate App</span>
                   </Button>
                 </div>
               </CardContent>

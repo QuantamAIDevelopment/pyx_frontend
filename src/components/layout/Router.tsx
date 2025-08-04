@@ -38,7 +38,8 @@ import { TermsOfServicePage } from '../pages/TermsOfServicePage'
 import { CookiePolicyPage } from '../pages/CookiePolicyPage'
 import { GDPRPage } from '../pages/GDPRPage'
 import { SecurityPage } from '../pages/SecurityPage'
-import { CreateAgentPage } from '../pages/CreateAgentPage'
+// import { CreateAgentPage } from '../pages/CreateAgentPage'
+import {GenerateAppPage} from '../pages/GenerateAppPage'
 import { WorkflowBuilder } from '../pages/WorkflowBuilder'
 import { UploadAgentPage } from '../pages/UploadAgentPage'
 import { ProfilePage } from '../pages/ProfilePage'
@@ -197,6 +198,7 @@ function AppRoutes() {
       '/api/manage',
       '/api/analytics',
       '/api/docs',
+      '/generate-app',
       '/agents/:id/run' // Add this line to exclude RunAgentPage
     ]
     
@@ -285,7 +287,7 @@ function AppRoutes() {
           )
         } />
 
-        <Route path="/agents/create" element={
+        {/* <Route path="/agents/create" element={
           isLoggedIn ? (
             <CreateAgentPage 
               onBack={() => navigate(-1)}
@@ -300,7 +302,7 @@ function AppRoutes() {
           ) : (
             <Navigate to="/" replace />
           )
-        } />
+        } /> */}
 
         <Route path="/agents/upload" element={
           isLoggedIn ? (
@@ -415,6 +417,7 @@ function AppRoutes() {
               onUploadAgent={() => navigate('/agents/upload')}
               onViewProfile={() => navigate('/profile')}
               onTestingLab={() => navigate('/testing-lab')}
+              onGenerateApp={() => navigate('/generate-app')}
               onManageAPI={handleManageAPI}
               onAnalytics={handleAnalytics}
               onViewAgentDetail={handleViewAgentDetail}
@@ -455,6 +458,14 @@ function AppRoutes() {
               selectedAgent={selectedAgent}
               onSelectAgent={setSelectedAgent}
             />
+          ) : (
+            <Navigate to="/" replace />
+          )
+        } />
+
+        <Route path="/generate-app" element={
+          isLoggedIn ? (
+            <GenerateAppPage />
           ) : (
             <Navigate to="/" replace />
           )

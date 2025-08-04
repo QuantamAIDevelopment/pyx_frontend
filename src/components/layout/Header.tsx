@@ -117,8 +117,7 @@ export function Header({
                     <Label className="text-xs">Dev</Label>
                   </div>
                   {currentMode === 'developer' && (
-                    <Badge className="
-bg-brand-primary  text-white text-xs px-1 py-0">
+                    <Badge className="bg-brand-primary  text-white text-xs px-1 py-0">
                       BETA
                     </Badge>
                   )}
@@ -127,7 +126,7 @@ bg-brand-primary  text-white text-xs px-1 py-0">
                 {/* Action Buttons Group */}
                 <div className="flex items-center space-x-2">
                   {/* Create Agent Button */}
-                  <Link to={currentMode === 'developer' ? '/developer-mode' : '/agents/create'}>
+                  <Link to={currentMode === 'developer' ? '/developer-mode' : '/agent-builder'}>
                     <Button
                       variant="outline"
                       size="sm"
@@ -135,7 +134,7 @@ bg-brand-primary  text-white text-xs px-1 py-0">
                     >
                       <Plus className="h-3 w-3 mr-1" />
                       <span className="hidden lg:inline ">
-                        {currentMode === 'developer' ? 'Dev Mode' : 'Create'}
+                        {currentMode === 'developer' ? 'Dev Mode' : 'Build Agent'}
                       </span>
                     </Button>
                   </Link>
@@ -215,6 +214,12 @@ bg-brand-primary  text-white text-xs px-1 py-0">
                         <Link to="/testing-lab" className="flex items-center">
                           <TestTube className="mr-2 h-4 w-4" />
                           <span>Testing Lab</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link to="/integrations" className="flex items-center">
+                          <Code2 className="mr-2 h-4 w-4" />
+                          <span>Integrations</span>
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>

@@ -327,12 +327,12 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto ">
               <Button 
                 size="lg" 
-                className="bg-[#FF620A] hover:bg-[#993B06] w-full sm:w-auto border-none text-white"
+                className="bg-[#FF620A] hover:bg-[#993B06] w-full sm:w-auto border-none !text-black"
                 onClick={handleGetStarted}
               >
                 <Settings className="h-4 w-4 mr-2" />
                 Start Integrating
-                <ArrowRight className="h-4 w-4 ml-2" />
+                <ArrowRight className="h-4 w-4 ml-2 " />
               </Button>
               <Button 
                 variant="outline" 
@@ -475,7 +475,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                     
                     <div className="flex gap-2 mt-auto">
                       <Button 
-                        className="flex-1 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all !bg-black border-none text-white"
+                        className="flex-1 group-hover:bg-gradient-to-r group-hover:orange-600   transition-all !bg-black border-none text-white"
                         onClick={handleGetStarted}
                       >
                         <Settings className="h-4 w-4 mr-2" />
@@ -516,7 +516,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <Card className="border-2 border-dashed border-muted-foreground/30 hover:border-blue-500/50 transition-colors">
+            <Card className="border-2 border-dashed border-muted-foreground/30 hover:border-orange-500/50 transition-colors">
               <CardContent className="p-12 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-6">
                   <Code className="h-8 w-8 text-white" />
@@ -529,10 +529,10 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
                   <Button 
                     size="lg"
-                    className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                    className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto border-none"
                     onClick={() => navigate('/contact')}
                   >
-                    <Webhook className="h-4 w-4 mr-2" />
+                    <Code className="h-4 w-4 mr-2" />
                     Request Integration
                   </Button>
                   <Button 
@@ -563,7 +563,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
               Start building powerful automations with our extensive library of integrations. 
               Get started in minutes, not hours.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto ">
               <Button 
                 size="lg" 
                 variant="secondary"

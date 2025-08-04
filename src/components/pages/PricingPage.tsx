@@ -182,7 +182,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-bg-secondary via-bg-muted to-bg-secondary dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <Badge className="mb-6 bg-brand-primary  text-white">
@@ -191,7 +191,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Choose Your{' '}
-              <span className="bg-brand-gradient bg-clip-text text-transparent">
+              <span className="bg-brand-gradient bg-clip-text text-brand-primary">
                 AI Automation
               </span>{' '}
               Plan
@@ -209,7 +209,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
               <Switch 
                 checked={isYearly} 
                 onCheckedChange={setIsYearly}
-                className=" bg-bg-muted data-[state=checked]:bg-brand-gradient "
+                className=" bg-bg-muted data-[state=checked]:bg-black "
               />
               <span className={`text-sm ${isYearly ? 'font-medium' : 'text-muted-foreground'}`}>
                 Yearly
