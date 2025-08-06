@@ -655,11 +655,11 @@ export function PrivacyPolicyPage({ onViewChange }: PrivacyPolicyPageProps) {
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
-                          <span>+1 (555) 123-QAID</span>
+                          <span>+91 9866669542-QAID</span>
                         </div>
                         <div className="flex items-start space-x-2 text-sm">
                           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
-                          <span>123 AI Innovation Drive<br />San Francisco, CA 94105</span>
+                          <span>123 AI Street, Hyderabad, India - 500001</span>
                         </div>
                       </CardContent>
                     </Card>
@@ -686,7 +686,7 @@ export function PrivacyPolicyPage({ onViewChange }: PrivacyPolicyPageProps) {
 
                 {/* Quick Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12 pt-8 border-t">
-                  <Button onClick={() => onViewChange('terms')}>
+                  <Button onClick={() => onViewChange('terms')} className='text-black'>
                     <Gavel className="h-4 w-4 mr-2" />
                     Terms of Service
                   </Button>

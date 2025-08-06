@@ -18,7 +18,7 @@ import {
   TabsList,
   TabsTrigger
 } from '../common/ui/tabs'
-import { Github, Mail, Eye, EyeOff } from 'lucide-react'
+import { Mail, Eye, EyeOff, ArrowLeft } from 'lucide-react'
 
 interface AuthModalProps {
   isOpen: boolean
@@ -36,6 +36,8 @@ export function AuthModal({
   onLogin
 }: AuthModalProps) {
   const [showPassword, setShowPassword] = useState(false)
+  const [showOtpModal, setShowOtpModal] = useState(false)
+  const [otp, setOtp] = useState('')
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -45,7 +47,25 @@ export function AuthModal({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onLogin()
+    if (mode === 'signup') {
+      // Show OTP modal for signup
+      setShowOtpModal(true)
+    } else {
+      // Direct login for signin
+      onLogin()
+    }
+  }
+
+  const handleOtpSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you would typically verify the OTP with your backend
+    console.log('OTP submitted:', otp)
+    
+    // After successful OTP verification, switch to login mode
+    setShowOtpModal(false)
+    setOtp('')
+    onModeChange('login')
+    resetForm()
   }
 
   const handleSocialLogin = (provider: string) => {
@@ -61,6 +81,8 @@ export function AuthModal({
       name: ''
     })
     setShowPassword(false)
+    setOtp('')
+    setShowOtpModal(false)
   }
 
   const handleClose = () => {
@@ -69,16 +91,12 @@ export function AuthModal({
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md">
+    <>
+      <Dialog open={isOpen} onOpenChange={handleClose}>
+        <DialogContent className="sm:max-w-md">
         <DialogHeader className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06]">
-              <Zap className="h-5 w-5 text-white" />
-            </div> */}
-            {/* <span className="text-xl font-bold bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
-              PYX
-            </span> */}
+          
              <img src='./assets/logo.png' width={70} height={50} alt='' className='ml-0 ' />
           </div>
           <DialogTitle>
@@ -101,10 +119,10 @@ export function AuthModal({
           </TabsList>
 
           {/* --- LOGIN FORM --- */}
-          <TabsContent value="login" className="space-y-4">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+          <TabsContent value="login" className="space-y-2">
+            <form onSubmit={handleSubmit} className="space-y-2">
+              <div className="space-y-0.5">
+                <Label htmlFor="email" className="text-xs">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -114,11 +132,12 @@ export function AuthModal({
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
+                  className="h-8 text-sm"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+              <div className="space-y-0.5">
+                <Label htmlFor="password" className="text-xs">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -129,40 +148,40 @@ export function AuthModal({
                       setFormData({ ...formData, password: e.target.value })
                     }
                     required
-                    className="pr-10"
+                    className="pr-10 h-8 text-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-md border border-gary-200 bg-white hover:bg-accent shadow-md "
+                    className="absolute right-0 top-1/2 -translate-y-1/2 p-1 rounded-md border border-gray-200 bg-white hover:bg-accent shadow-md"
                     tabIndex={-1}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      <EyeOff className="h-5 w-4 text-muted-foreground" />
                     ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
+                      <Eye className="h-5 w-4 text-muted-foreground" />
                     )}
                   </button>
                 </div>
               </div>
 
               <div className="flex items-center justify-between">
-                <Button variant="link" className="px-0 text-sm">
+                <Button variant="link" className="px-0 text-xs">
                   Forgot password?
                 </Button>
               </div>
 
-              <Button type="submit" className="w-full !bg-black text-white border-none">
+              <Button type="submit" className="w-full !bg-black text-white border-none h-8 text-sm">
                 Sign In
               </Button>
             </form>
           </TabsContent>
 
           {/* --- SIGNUP FORM --- */}
-          <TabsContent value="signup" className="space-y-4">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
+          <TabsContent value="signup" className="space-y-2 max-h-[300px] overflow-y-auto">
+            <form onSubmit={handleSubmit} className="space-y-2">
+              <div className="space-y-0.5">
+                <Label htmlFor="name" className="text-xs">Full Name</Label>
                 <Input
                   id="name"
                   type="text"
@@ -172,11 +191,12 @@ export function AuthModal({
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
+                  className="h-8 text-sm"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="signup-email">Email</Label>
+              <div className="space-y-0.5">
+                <Label htmlFor="signup-email" className="text-xs">Email</Label>
                 <Input
                   id="signup-email"
                   type="email"
@@ -186,11 +206,12 @@ export function AuthModal({
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
+                  className="h-8 text-sm"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="signup-password">Password</Label>
+              <div className="space-y-0.5">
+                <Label htmlFor="signup-password" className="text-xs">Password</Label>
                 <div className="relative">
                   <Input
                     id="signup-password"
@@ -201,25 +222,25 @@ export function AuthModal({
                       setFormData({ ...formData, password: e.target.value })
                     }
                     required
-                    className="pr-10"
+                    className="pr-10 h-8 text-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-md  border border-gary-200 bg-white hover:bg-accent shadow-md"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 p-1 rounded-md border border-gray-200 bg-white hover:bg-accent shadow-md"
                     tabIndex={-1}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      <EyeOff className="h-5 w-4 text-muted-foreground" />
                     ) : (
-                      <Eye className="h-4 w-4 text-muted-foreground" />
+                      <Eye className="h-5 w-4 text-muted-foreground" />
                     )}
                   </button>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="confirm-password">Confirm Password</Label>
+              <div className="space-y-0.5">
+                <Label htmlFor="confirm-password" className="text-xs">Confirm Password</Label>
                 <Input
                   id="confirm-password"
                   type="password"
@@ -232,10 +253,11 @@ export function AuthModal({
                     })
                   }
                   required
+                  className="h-8 text-sm"
                 />
               </div>
 
-              <Button type="submit" className="w-full !bg-black text-white border-none">
+              <Button type="submit" className="w-full !bg-black text-white border-none h-8 mt-1 text-sm">
                 Create Account
               </Button>
             </form>
@@ -253,7 +275,7 @@ export function AuthModal({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols mr-8 ml-8">
           <Button
             variant="outline"
             onClick={() => handleSocialLogin('google')}
@@ -262,14 +284,7 @@ export function AuthModal({
             <Mail className="h-4 w-4 mr-2" />
             Google
           </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleSocialLogin('github')}
-            className="w-full"
-          >
-            <Github className="h-4 w-4 mr-2" />
-            GitHub
-          </Button>
+        
         </div>
 
         <div className="text-center text-xs text-muted-foreground">
@@ -284,5 +299,59 @@ export function AuthModal({
         </div>
       </DialogContent>
     </Dialog>
+
+    {/* OTP Verification Modal */}
+    <Dialog open={showOtpModal} onOpenChange={setShowOtpModal}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader className="text-center">
+          <div className="flex items-center justify-center space-x-2 mb-4">
+            <img src='./assets/logo.png' width={70} height={50} alt='' className='ml-0 ' />
+          </div>
+          <DialogTitle>Verify Your Email</DialogTitle>
+          <DialogDescription>
+            We've sent a verification code to <span className="font-medium">{formData.email}</span>
+          </DialogDescription>
+        </DialogHeader>
+
+        <form onSubmit={handleOtpSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="otp">Enter OTP</Label>
+            <Input
+              id="otp"
+              type="text"
+              placeholder="Enter 6-digit code"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              maxLength={6}
+              className="text-center text-lg tracking-widest"
+              required
+            />
+          </div>
+
+          <div className="flex gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setShowOtpModal(false)}
+              className="flex-1"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back
+            </Button>
+            <Button type="submit" className="flex-1 !bg-black text-white border-none">
+              Verify & Continue
+            </Button>
+          </div>
+        </form>
+
+        <div className="text-center text-xs text-muted-foreground">
+          Didn't receive the code?{' '}
+          <Button variant="link" className="px-0 text-xs">
+            Resend
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+    </>
   )
 }

@@ -96,7 +96,7 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
             </Button>
             <div>
               <h1 className="text-3xl font-bold flex items-center space-x-3">
-                <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06]p-2 rounded-lg text-white">
+                <div className="bg-brand-primary flex items-center justify-center p-2 rounded-lg text-white">
                   <Settings className="h-6 w-6" />
                 </div>
                 <span>API Management</span>
@@ -113,7 +113,7 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
         </div>
 
         {/* API Info Card */}
-        <Card className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20">
+        <Card className="mb-6 bg-bg-secondary dark:from-blue-950/20 dark:to-purple-950/20">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">

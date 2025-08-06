@@ -17,11 +17,8 @@ import {
   Sparkles,
   Settings,
   Zap,
-  // Clock,
   Target,
   GitBranch,
-  // FileCode,
-  // Cloud,
   Globe
 } from 'lucide-react'
 
@@ -36,8 +33,40 @@ interface AgentGenerationOutputPageProps {
   onBack: () => void
 }
 
+// Generation steps data
+const GENERATION_STEPS = [
+  'Analyzing your requirements...',
+  'Configuring data sources...',
+  'Setting up processing pipeline...',
+  'Connecting output channels...',
+  'Optimizing performance...',
+  'Testing connections...',
+  'Finalizing agent configuration...'
+] as const
+
+// Flow steps data
+const FLOW_STEPS = [
+  {
+    title: 'Data Collection',
+    description: 'Collects data from configured sources',
+    icon: <Target className="h-5 w-5" />,
+    status: 'configured'
+  },
+  {
+    title: 'AI Processing',
+    description: 'Sentiment analysis and pattern recognition',
+    icon: <Bot className="h-5 w-5" />,
+    status: 'configured'
+  },
+  {
+    title: 'Output Delivery',
+    description: 'Delivers processed results to configured outputs',
+    icon: <Zap className="h-5 w-5" />,
+    status: 'configured'
+  }
+] as const
+
 export function AgentGenerationOutputPage({ 
-  // prompt, 
   inputOption, 
   outputOption, 
   credentials, 
@@ -50,29 +79,6 @@ export function AgentGenerationOutputPage({
   const [generationProgress, setGenerationProgress] = useState(0)
   const [currentStep, setCurrentStep] = useState('')
 
-  const generationSteps = [
-    'Analyzing your requirements...',
-    'Configuring data sources...',
-    'Setting up processing pipeline...',
-    'Connecting output channels...',
-    'Optimizing performance...',
-    'Testing connections...',
-    'Finalizing agent configuration...'
-  ]
-
-  useEffect(() => {
-    const generateAgent = async () => {
-      for (let i = 0; i < generationSteps.length; i++) {
-        setCurrentStep(generationSteps[i])
-        setGenerationProgress(((i + 1) / generationSteps.length) * 100)
-        await new Promise(resolve => setTimeout(resolve, 1000))
-      }
-      setIsGenerating(false)
-    }
-
-    generateAgent()
-  }, [])
-
   const agentSummary = {
     name: credentials.agentName || 'Customer Sentiment Monitor',
     description: 'AI agent that monitors customer feedback and delivers insights',
@@ -83,44 +89,36 @@ export function AgentGenerationOutputPage({
     expectedAccuracy: '94%'
   }
 
-  const flowSteps = [
-    {
-      title: 'Data Collection',
-      description: inputOption.description,
-      icon: <Target className="h-5 w-5" />,
-      status: 'configured'
-    },
-    {
-      title: 'AI Processing',
-      description: 'Sentiment analysis and pattern recognition',
-      icon: <Bot className="h-5 w-5" />,
-      status: 'configured'
-    },
-    {
-      title: 'Output Delivery',
-      description: outputOption.description,
-      icon: <Zap className="h-5 w-5" />,
-      status: 'configured'
+  useEffect(() => {
+    const generateAgent = async () => {
+      for (let i = 0; i < GENERATION_STEPS.length; i++) {
+        setCurrentStep(GENERATION_STEPS[i])
+        setGenerationProgress(((i + 1) / GENERATION_STEPS.length) * 100)
+        await new Promise(resolve => setTimeout(resolve, 1000))
+      }
+      setIsGenerating(false)
     }
-  ]
+
+    generateAgent()
+  }, [])
 
   if (isGenerating) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="max-w-lg mx-auto text-center space-y-6">
           <div className="relative">
-            <div className="bg-brand-gradient p-6 rounded-full w-24 h-24 mx-auto flex items-center justify-center">
-              <Sparkles className="h-12 w-12 text-text-white animate-pulse" />
+            <div className="bg-brand-primary p-6 rounded-full w-24 h-24 mx-auto flex items-center justify-center">
+              <Sparkles className="h-12 w-12 text-white animate-pulse" />
             </div>
-            <div className="absolute inset-0 bg-brand-gradient/20 rounded-full animate-ping"></div>
+            <div className="absolute inset-0 bg-brand-secondary opacity-25 rounded-full animate-ping"></div>
           </div>
           
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Generating Your AI Agent</h2>
+            <h2 className="text-2xl font-bold text-brand-primary">Generating Your AI Agent</h2>
             <p className="text-muted-foreground">{currentStep}</p>
             
             <div className="space-y-2">
-              <Progress value={generationProgress} className="h-3" />
+              <Progress value={generationProgress} className="h-3 bg-gray-200" />
               <p className="text-sm text-muted-foreground">{Math.round(generationProgress)}% complete</p>
             </div>
           </div>
@@ -136,11 +134,11 @@ export function AgentGenerationOutputPage({
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
-              <div className="bg-gradient-to-r from-ui-success to-emerald-500 p-4 rounded-full">
+              <div className="bg-brand-primary p-4 rounded-full">
                 <CheckCircle className="h-8 w-8 text-text-white" />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-brand-gradient-via bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-brand-primary bg-clip-text text-brand-primary text-transparent">
               Your Agent is Ready
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -191,7 +189,7 @@ export function AgentGenerationOutputPage({
             </CardHeader>
             <CardContent>
               <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
-                {flowSteps.map((step, index) => (
+                {FLOW_STEPS.map((step, index) => (
                   <div key={index} className="flex flex-col items-center text-center space-y-2 flex-1">
                     <div className="bg-brand-gradient p-3 rounded-full text-text-white">
                       {step.icon}
@@ -203,7 +201,7 @@ export function AgentGenerationOutputPage({
                       Configured
                     </Badge>
                     
-                    {index < flowSteps.length - 1 && (
+                    {index < FLOW_STEPS.length - 1 && (
                       <div className="hidden md:block absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2">
                         <ArrowRight className="h-6 w-6 text-muted-foreground" />
                       </div>
@@ -309,7 +307,7 @@ export function AgentGenerationOutputPage({
               
               <Button 
                 onClick={onDeploy}
-                className="bg-brand-gradient-via hover:from-purple-700 hover:to-pink-700 text-text-white flex items-center space-x-2"
+                className="bg-brand-primary text-text-white flex items-center space-x-2"
               >
                 <Play className="h-4 w-4" />
                 <span>Deploy Now</span>

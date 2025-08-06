@@ -13,6 +13,53 @@ import {
 } from 'lucide-react'
 import { usePyX } from '../layout/PyXContextProvider'
 
+// Prompt suggestions data
+const PROMPT_SUGGESTIONS = [
+  {
+    icon: MessageSquare,
+    title: "AI Chatbot",
+    description: "A customer support chatbot that answers questions from my knowledge base",
+    category: "Customer Service"
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics Dashboard",
+    description: "A real-time dashboard showing sales metrics and KPIs from my database",
+    category: "Analytics"
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-commerce Store",
+    description: "An online store with product catalog, cart, and payment processing",
+    category: "E-commerce"
+  },
+  {
+    icon: Calendar,
+    title: "Booking System",
+    description: "A scheduling app for appointments with calendar integration",
+    category: "Productivity"
+  },
+  {
+    icon: FileText,
+    title: "Blog Platform",
+    description: "A content management system for publishing articles and blogs",
+    category: "Content"
+  },
+  {
+    icon: Database,
+    title: "Inventory Manager",
+    description: "A system to track products, stock levels, and generate reports",
+    category: "Business Tools"
+  }
+] as const
+
+// Generation progress steps
+const GENERATION_STEPS = [
+  { color: 'bg-blue-500', text: 'Analyzing your requirements and generating architecture' },
+  { color: 'bg-purple-500', text: 'Creating React components and API endpoints' },
+  { color: 'bg-pink-500', text: 'Setting up database schema and configurations' }
+] as const
+
 export function GenerateAppPage() {
   const [prompt, setPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
@@ -38,45 +85,6 @@ export function GenerateAppPage() {
       navigate('/code-preview')
     }, 3000)
   }
-
-  const promptSuggestions = [
-    {
-      icon: MessageSquare,
-      title: "AI Chatbot",
-      description: "A customer support chatbot that answers questions from my knowledge base",
-      category: "Customer Service"
-    },
-    {
-      icon: BarChart3,
-      title: "Analytics Dashboard",
-      description: "A real-time dashboard showing sales metrics and KPIs from my database",
-      category: "Analytics"
-    },
-    {
-      icon: ShoppingCart,
-      title: "E-commerce Store",
-      description: "An online store with product catalog, cart, and payment processing",
-      category: "E-commerce"
-    },
-    {
-      icon: Calendar,
-      title: "Booking System",
-      description: "A scheduling app for appointments with calendar integration",
-      category: "Productivity"
-    },
-    {
-      icon: FileText,
-      title: "Blog Platform",
-      description: "A content management system for publishing articles and blogs",
-      category: "Content"
-    },
-    {
-      icon: Database,
-      title: "Inventory Manager",
-      description: "A system to track products, stock levels, and generate reports",
-      category: "Business Tools"
-    }
-  ]
 
   const handleSuggestionClick = (description: string) => {
     setPrompt(description)
@@ -161,18 +169,12 @@ export function GenerateAppPage() {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 animate-pulse"></div>
-                      Analyzing your requirements and generating architecture
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 animate-pulse"></div>
-                      Creating React components and API endpoints
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                      <div className="w-2 h-2 bg-pink-500 rounded-full mr-3 animate-pulse"></div>
-                      Setting up database schema and configurations
-                    </div>
+                    {GENERATION_STEPS.map((step, index) => (
+                      <div key={index} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                        <div className={`w-2 h-2 ${step.color} rounded-full mr-3 animate-pulse`}></div>
+                        {step.text}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -193,7 +195,7 @@ export function GenerateAppPage() {
               </p>
               
               <div className="space-y-4">
-                {promptSuggestions.map((suggestion, index) => {
+                {PROMPT_SUGGESTIONS.map((suggestion, index) => {
                   const IconComponent = suggestion.icon
                   return (
                     <div

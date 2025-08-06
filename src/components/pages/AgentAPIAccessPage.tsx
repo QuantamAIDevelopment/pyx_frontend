@@ -157,10 +157,10 @@ export function AgentAPIAccessPage({ agentData, onBack }: AgentAPIAccessPageProp
           </div>
 
           {/* Agent Info */}
-          <Card className="mb-8 border-2 border-purple-200 bg-purple-50/50 dark:border-purple-800 dark:bg-purple-900/10">
+          <Card className="mb-8 border-2 border-brand-primary hover:border-brand-primary/50 transition-all duration-300 bg-bg-secondary">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-2 rounded-lg text-white">
+                <div className="bg-brand-primary p-2 rounded-lg text-white">
                   <Package className="h-5 w-5" />
                 </div>
                 <span>{currentAgent.name}</span>

@@ -859,8 +859,8 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                 </section>
 
                 {/* Quick Actions */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12 pt-8 border-t">
-                  <Button onClick={() => onViewChange('privacy')}>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12 pt-8 border-t ">
+                  <Button onClick={() => onViewChange('privacy')} className='text-black'>
                     <Shield className="h-4 w-4 mr-2" />
                     Privacy Policy
                   </Button>

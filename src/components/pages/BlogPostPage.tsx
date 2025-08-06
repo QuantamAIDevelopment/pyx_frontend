@@ -27,6 +27,57 @@ interface BlogPostPageProps {
   onBack: () => void
 }
 
+// Sample blog content
+const SAMPLE_CONTENT = `
+  <p>In the rapidly evolving world of e-commerce, artificial intelligence has emerged as a game-changing force that's reshaping how businesses operate, engage with customers, and drive growth. As we look toward 2024, AI agents are becoming increasingly sophisticated, offering unprecedented opportunities for automation and optimization.</p>
+
+  <h2>The Current State of AI in E-commerce</h2>
+  <p>Today's AI agents are no longer simple chatbots or basic recommendation engines. They've evolved into sophisticated systems capable of understanding context, learning from interactions, and making complex decisions autonomously. From the SmartSummarizer that crafts compelling product descriptions to PriceOptimizerAI that adjusts pricing in real-time, these agents are becoming integral to business operations.</p>
+
+  <h2>Key Trends Shaping 2024</h2>
+  <h3>1. Hyper-Personalization at Scale</h3>
+  <p>AI agents are becoming increasingly adept at delivering personalized experiences to individual customers. By analyzing browsing patterns, purchase history, and real-time behavior, these systems can create unique shopping experiences for millions of users simultaneously.</p>
+
+  <h3>2. Predictive Commerce</h3>
+  <p>The future of e-commerce lies in anticipating customer needs before they're even expressed. Advanced AI agents like StockSense are already demonstrating how predictive analytics can optimize inventory management and reduce costs by up to 40%.</p>
+
+  <h3>3. Conversational Commerce Evolution</h3>
+  <p>Customer support agents like SupportGenie are evolving beyond simple Q&A to become sophisticated sales assistants capable of understanding context, emotion, and intent. They're not just answering questions—they're actively driving conversions.</p>
+
+  <h2>Implementation Strategies for Success</h2>
+  <p>For businesses looking to leverage AI agents effectively, the key is to start with clear objectives and gradually expand capabilities. Here are the essential steps:</p>
+
+  <ul>
+    <li><strong>Identify High-Impact Use Cases:</strong> Focus on areas where AI can deliver immediate value, such as customer support or inventory management.</li>
+    <li><strong>Ensure Data Quality:</strong> AI agents are only as good as the data they're trained on. Invest in data cleaning and organization.</li>
+    <li><strong>Plan for Integration:</strong> Consider how AI agents will work with your existing systems and workflows.</li>
+    <li><strong>Monitor and Optimize:</strong> Continuously track performance and refine agent capabilities based on real-world results.</li>
+  </ul>
+
+  <h2>Looking Ahead: What to Expect</h2>
+  <p>As we move through 2024, we can expect to see AI agents become even more sophisticated, with capabilities including:</p>
+
+  <ul>
+    <li>Advanced multi-modal understanding (text, images, voice)</li>
+    <li>Real-time adaptation to market changes</li>
+    <li>Seamless integration across all customer touchpoints</li>
+    <li>Enhanced emotional intelligence and empathy</li>
+  </ul>
+
+  <h2>Conclusion</h2>
+  <p>The future of e-commerce is being written by AI agents today. Businesses that embrace these technologies now will be best positioned to thrive in an increasingly competitive marketplace. The question isn't whether to adopt AI agents, but how quickly you can implement them effectively.</p>
+
+  <p>At QAID, we're committed to making this transition as smooth as possible, providing the tools and support businesses need to harness the full potential of AI automation. The future is here—are you ready to embrace it?</p>
+`
+
+// Share buttons data
+const SHARE_BUTTONS = [
+  { icon: Twitter, label: 'Twitter' },
+  { icon: Linkedin, label: 'LinkedIn' },
+  { icon: Link, label: 'Copy Link' },
+  { icon: Bookmark, label: 'Save' }
+] as const
+
 export function BlogPostPage({ post, onBack }: BlogPostPageProps) {
   if (!post) {
     return (
@@ -38,48 +89,6 @@ export function BlogPostPage({ post, onBack }: BlogPostPageProps) {
       </div>
     )
   }
-
-  const sampleContent = `
-    <p>In the rapidly evolving world of e-commerce, artificial intelligence has emerged as a game-changing force that's reshaping how businesses operate, engage with customers, and drive growth. As we look toward 2024, AI agents are becoming increasingly sophisticated, offering unprecedented opportunities for automation and optimization.</p>
-
-    <h2>The Current State of AI in E-commerce</h2>
-    <p>Today's AI agents are no longer simple chatbots or basic recommendation engines. They've evolved into sophisticated systems capable of understanding context, learning from interactions, and making complex decisions autonomously. From the SmartSummarizer that crafts compelling product descriptions to PriceOptimizerAI that adjusts pricing in real-time, these agents are becoming integral to business operations.</p>
-
-    <h2>Key Trends Shaping 2024</h2>
-    <h3>1. Hyper-Personalization at Scale</h3>
-    <p>AI agents are becoming increasingly adept at delivering personalized experiences to individual customers. By analyzing browsing patterns, purchase history, and real-time behavior, these systems can create unique shopping experiences for millions of users simultaneously.</p>
-
-    <h3>2. Predictive Commerce</h3>
-    <p>The future of e-commerce lies in anticipating customer needs before they're even expressed. Advanced AI agents like StockSense are already demonstrating how predictive analytics can optimize inventory management and reduce costs by up to 40%.</p>
-
-    <h3>3. Conversational Commerce Evolution</h3>
-    <p>Customer support agents like SupportGenie are evolving beyond simple Q&A to become sophisticated sales assistants capable of understanding context, emotion, and intent. They're not just answering questions—they're actively driving conversions.</p>
-
-    <h2>Implementation Strategies for Success</h2>
-    <p>For businesses looking to leverage AI agents effectively, the key is to start with clear objectives and gradually expand capabilities. Here are the essential steps:</p>
-
-    <ul>
-      <li><strong>Identify High-Impact Use Cases:</strong> Focus on areas where AI can deliver immediate value, such as customer support or inventory management.</li>
-      <li><strong>Ensure Data Quality:</strong> AI agents are only as good as the data they're trained on. Invest in data cleaning and organization.</li>
-      <li><strong>Plan for Integration:</strong> Consider how AI agents will work with your existing systems and workflows.</li>
-      <li><strong>Monitor and Optimize:</strong> Continuously track performance and refine agent capabilities based on real-world results.</li>
-    </ul>
-
-    <h2>Looking Ahead: What to Expect</h2>
-    <p>As we move through 2024, we can expect to see AI agents become even more sophisticated, with capabilities including:</p>
-
-    <ul>
-      <li>Advanced multi-modal understanding (text, images, voice)</li>
-      <li>Real-time adaptation to market changes</li>
-      <li>Seamless integration across all customer touchpoints</li>
-      <li>Enhanced emotional intelligence and empathy</li>
-    </ul>
-
-    <h2>Conclusion</h2>
-    <p>The future of e-commerce is being written by AI agents today. Businesses that embrace these technologies now will be best positioned to thrive in an increasingly competitive marketplace. The question isn't whether to adopt AI agents, but how quickly you can implement them effectively.</p>
-
-    <p>At QAID, we're committed to making this transition as smooth as possible, providing the tools and support businesses need to harness the full potential of AI automation. The future is here—are you ready to embrace it?</p>
-  `
 
   return (
     <div className="min-h-screen py-8">
@@ -132,22 +141,15 @@ export function BlogPostPage({ post, onBack }: BlogPostPageProps) {
             {/* Share buttons */}
             <div className="flex items-center space-x-3 mb-8">
               <span className="text-sm text-muted-foreground">Share:</span>
-              <Button variant="outline" size="sm">
-                <Twitter className="h-4 w-4 mr-2" />
-                Twitter
-              </Button>
-              <Button variant="outline" size="sm">
-                <Linkedin className="h-4 w-4 mr-2" />
-                LinkedIn
-              </Button>
-              <Button variant="outline" size="sm">
-                <Link className="h-4 w-4 mr-2" />
-                Copy Link
-              </Button>
-              <Button variant="outline" size="sm">
-                <Bookmark className="h-4 w-4 mr-2" />
-                Save
-              </Button>
+              {SHARE_BUTTONS.map((button, index) => {
+                const IconComponent = button.icon
+                return (
+                  <Button key={index} variant="outline" size="sm">
+                    <IconComponent className="h-4 w-4 mr-2" />
+                    {button.label}
+                  </Button>
+                )
+              })}
             </div>
           </div>
 
@@ -163,7 +165,7 @@ export function BlogPostPage({ post, onBack }: BlogPostPageProps) {
           {/* Article content */}
           <div className="prose prose-lg max-w-none mb-8">
             <div 
-              dangerouslySetInnerHTML={{ __html: sampleContent }}
+              dangerouslySetInnerHTML={{ __html: SAMPLE_CONTENT }}
               className="space-y-6"
             />
           </div>
@@ -202,7 +204,7 @@ export function BlogPostPage({ post, onBack }: BlogPostPageProps) {
           </div>
 
           {/* Call to action */}
-          <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06]dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg p-6 text-center">
+          <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg p-6 text-center">
             <h3 className="font-medium mb-2">Ready to Transform Your Business?</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Discover how QAID's AI agents can automate your workflows and boost productivity.

@@ -130,7 +130,7 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
               </Button>
               <Button variant="outline" size="sm">
                 <Wallet className="h-4 w-4 mr-2" />
-                Rs{userWallet.balance}
+                ₹ {userWallet.balance}
               </Button>
               <Button variant="outline" size="sm">
                 <Bell className="h-4 w-4" />

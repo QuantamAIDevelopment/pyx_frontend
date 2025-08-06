@@ -4,105 +4,64 @@ import { useState } from 'react'
 import { Button } from '../common/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
-// import { Separator } from '../common/ui/separator'
-// import { ScrollArea } from '../common/ui/scroll-area'
 import { 
   Scale,
   Gavel,
-  // FileText,
   Shield,
-  // Users,
-  // Globe,
   Calendar,
   Mail,
   Phone,
   ArrowRight,
-  // ChevronRight,
   AlertCircle,
   CheckCircle,
   Info,
-  // ExternalLink,
   Download,
-  // Share2,
   Settings,
-  // Database,
-  // Cloud,
-  // Server,
   Lock,
-  // Key,
-  // Trash2,
-  // Edit,
   RefreshCw,
-  // Bell,
   MapPin,
   Building2,
   BookOpen,
   HelpCircle,
   MessageSquare,
-  // Clock,
-  // Target,
-  // Zap,
-  // Award,
-  // Star,
   DollarSign,
   CreditCard,
   ShoppingCart,
-  // Package,
-  // Truck,
   RotateCcw,
   XCircle,
   AlertTriangle,
   Ban,
   UserX,
-  // Eye,
-  // EyeOff,
   Copyright,
-  // Briefcase,
-  // Home,
-  // Smartphone,
-  // Monitor,
-  // Tablet,
-  // Laptop,
   Code,
-  // Cpu,
-  // Network,
-  // Wifi,
-  // Router,
-  // HardDrive,
-  // Upload,
-  // CloudUpload,
-  // Link,
-  // Unlink,
-  // Share,
-  // Forward,
-  // Reply,
-  // Send,
-  // Inbox,
-  // Archive,
-  // Flag,
-  // Tag,
-  // Bookmark,
-  // Heart,
-  // ThumbsUp,
-  // ThumbsDown,
-  // Plus,
-  // Minus,
-  // X,
-  // Check,
-  // Search,
-  // Filter,
-  // Sort,
-  // List,
-  // Grid,
-  // Map,
-  // Calendar as CalendarIcon,
   User,
   UserPlus,
-  // UserMinus,
-  // UserCheck,
-  Crown,
-  // Sparkles
+  Crown
 } from 'lucide-react'
+
+// Constants
+const DOCUMENT_INFO = {
+  lastUpdated: 'December 15, 2024',
+  effectiveDate: 'January 1, 2024'
+}
+
+const TABLE_OF_CONTENTS = [
+  { id: 'introduction', title: 'Introduction', icon: Info },
+  { id: 'acceptance', title: 'Acceptance of Terms', icon: CheckCircle },
+  { id: 'description', title: 'Description of Service', icon: Settings },
+  { id: 'user-accounts', title: 'User Accounts', icon: User },
+  { id: 'acceptable-use', title: 'Acceptable Use Policy', icon: Shield },
+  { id: 'intellectual-property', title: 'Intellectual Property', icon: Copyright },
+  { id: 'payment-terms', title: 'Payment and Billing', icon: CreditCard },
+  { id: 'privacy', title: 'Privacy and Data', icon: Lock },
+  { id: 'disclaimers', title: 'Disclaimers', icon: AlertTriangle },
+  { id: 'limitations', title: 'Limitation of Liability', icon: Scale },
+  { id: 'indemnification', title: 'Indemnification', icon: Shield },
+  { id: 'termination', title: 'Termination', icon: XCircle },
+  { id: 'governing-law', title: 'Governing Law', icon: Gavel },
+  { id: 'changes', title: 'Changes to Terms', icon: RefreshCw },
+  { id: 'contact', title: 'Contact Information', icon: MessageSquare }
+]
 
 interface TermsOfServicePageProps {
   onViewChange: (view: string) => void
@@ -110,27 +69,6 @@ interface TermsOfServicePageProps {
 
 export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
   const [activeSection, setActiveSection] = useState('introduction')
-
-  const lastUpdated = 'December 15, 2024'
-  const effectiveDate = 'January 1, 2024'
-
-  const tableOfContents = [
-    { id: 'introduction', title: 'Introduction', icon: Info },
-    { id: 'acceptance', title: 'Acceptance of Terms', icon: CheckCircle },
-    { id: 'description', title: 'Description of Service', icon: Settings },
-    { id: 'user-accounts', title: 'User Accounts', icon: User },
-    { id: 'acceptable-use', title: 'Acceptable Use Policy', icon: Shield },
-    { id: 'intellectual-property', title: 'Intellectual Property', icon: Copyright },
-    { id: 'payment-terms', title: 'Payment and Billing', icon: CreditCard },
-    { id: 'privacy', title: 'Privacy and Data', icon: Lock },
-    { id: 'disclaimers', title: 'Disclaimers', icon: AlertTriangle },
-    { id: 'limitations', title: 'Limitation of Liability', icon: Scale },
-    { id: 'indemnification', title: 'Indemnification', icon: Shield },
-    { id: 'termination', title: 'Termination', icon: XCircle },
-    { id: 'governing-law', title: 'Governing Law', icon: Gavel },
-    { id: 'changes', title: 'Changes to Terms', icon: RefreshCw },
-    { id: 'contact', title: 'Contact Information', icon: MessageSquare }
-  ]
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId)
@@ -143,9 +81,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
@@ -191,14 +127,14 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                   <Calendar className="h-4 w-4 text-blue-600" />
                   <span className="font-medium">Last Updated</span>
                 </div>
-                <div className="text-sm text-muted-foreground">{lastUpdated}</div>
+                <div className="text-sm text-muted-foreground">{DOCUMENT_INFO.lastUpdated}</div>
               </div>
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg p-4 border border-white/20">
                 <div className="flex items-center space-x-2 mb-2">
                   <CheckCircle className="h-4 w-4 text-green-600" />
                   <span className="font-medium">Effective Date</span>
                 </div>
-                <div className="text-sm text-muted-foreground">{effectiveDate}</div>
+                <div className="text-sm text-muted-foreground">{DOCUMENT_INFO.effectiveDate}</div>
               </div>
             </div>
           </div>
@@ -221,7 +157,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                   </CardHeader>
                   <CardContent>
                     <nav className="space-y-1">
-                      {tableOfContents.map((item) => {
+                      {TABLE_OF_CONTENTS.map((item) => {
                         const IconComponent = item.icon
                         return (
                           <button
@@ -585,7 +521,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                   </ul>
                   
                   <div className="flex justify-center mt-6">
-                    <Button onClick={() => onViewChange('privacy')}>
+                    <Button onClick={() => onViewChange('privacy')} className='text-black'>
                       <Lock className="h-4 w-4 mr-2" />
                       View Privacy Policy
                     </Button>
@@ -767,7 +703,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                       <CardHeader className="pb-3">
                         <CardTitle className="text-base flex items-center space-x-2">
                           <Building2 className="h-4 w-4" />
-                          <span>QAID Technologies, Inc.</span>
+                          <span>QAID Software Private Limited, Inc.</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="pt-0 space-y-2">
@@ -777,11 +713,11 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
-                          <span>+1 (555) 123-QAID</span>
+                          <span>+91 9866665471-QAID</span>
                         </div>
                         <div className="flex items-start space-x-2 text-sm">
                           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
-                          <span>123 AI Innovation Drive<br />San Francisco, CA 94105</span>
+                          <span>123 AI Street<br />Hyderabad, Telangana - 500001</span>
                         </div>
                       </CardContent>
                     </Card>
@@ -808,7 +744,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
 
                 {/* Quick Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12 pt-8 border-t">
-                  <Button onClick={() => onViewChange('privacy')}>
+                  <Button onClick={() => onViewChange('privacy')} className='text-black'>
                     <Lock className="h-4 w-4 mr-2" />
                     Privacy Policy
                   </Button>

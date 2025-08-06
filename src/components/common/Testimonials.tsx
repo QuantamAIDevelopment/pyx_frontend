@@ -5,7 +5,8 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Badge } from './ui/badge'
 import { Star, Quote } from 'lucide-react'
 
-const testimonials = [
+// Testimonials data
+const TESTIMONIALS = [
   {
     id: 1,
     name: "Sarah Chen",
@@ -72,12 +73,21 @@ const testimonials = [
     results: "30% cost reduction",
     agent: "Multiple Agents"
   }
-]
+] as const
+
+// Stats data
+const STATS = [
+  { value: "500+", label: "Happy Customers" },
+  { value: "$2M+", label: "Revenue Generated" },
+  { value: "99.9%", label: "Uptime" },
+  { value: "24/7", label: "Support" }
+] as const
 
 export function Testimonials() {
   return (
     <section className="py-20 sm:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Trusted by Leading Businesses
@@ -87,8 +97,9 @@ export function Testimonials() {
           </p>
         </div>
 
+        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 px-20">
-          {testimonials.map((testimonial) => (
+          {TESTIMONIALS.map((testimonial) => (
             <Card key={testimonial.id} className="bg-card border-border hover:shadow-lg transition-all duration-300 relative overflow-hidden group">
               <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Quote className="h-12 w-12 text-primary" />
@@ -140,22 +151,12 @@ export function Testimonials() {
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">500+</div>
-            <div className="text-sm text-muted-foreground">Happy Customers</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">$2M+</div>
-            <div className="text-sm text-muted-foreground">Revenue Generated</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
-            <div className="text-sm text-muted-foreground">Uptime</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-            <div className="text-sm text-muted-foreground">Support</div>
-          </div>
+          {STATS.map((stat, index) => (
+            <div key={index}>
+              <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

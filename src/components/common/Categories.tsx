@@ -10,11 +10,11 @@ import {
   Megaphone,
   FileText,
   BarChart3,
-  // Users,
   Zap
 } from 'lucide-react'
 
-const categories = [
+// Categories data
+const CATEGORIES = [
   {
     id: 'customer-support',
     name: 'Customer Support',
@@ -69,14 +69,20 @@ const categories = [
     color: 'from-orange-500 to-orange-600',
     agents: ['Content AI', 'SEO Writer', 'Description Pro']
   }
-]
+] as const
 
 export function Categories() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
+  const totalAgents = CATEGORIES.reduce((sum, cat) => sum + cat.count, 0)
+  const filteredCategories = selectedCategory 
+    ? CATEGORIES.filter(category => category.id === selectedCategory)
+    : CATEGORIES
+
   return (
     <section className="py-20 sm:py-32 bg-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Categories & Use Cases
@@ -88,78 +94,75 @@ export function Categories() {
 
         {/* Category Filter Chips */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-  <Button
-    variant={selectedCategory === null ? "default" : "outline"}
-    onClick={() => setSelectedCategory(null)}
-    className={`rounded-full ${selectedCategory === null ? '!bg-black text-white' : ''}`}
-  >
-    All Categories
-    <Badge variant="secondary" className="ml-2">
-      {categories.reduce((sum, cat) => sum + cat.count, 0)}
-    </Badge>
-  </Button>
+          <Button
+            variant={selectedCategory === null ? "default" : "outline"}
+            onClick={() => setSelectedCategory(null)}
+            className={`rounded-full ${selectedCategory === null ? '!bg-black text-white' : ''}`}
+          >
+            All Categories
+            <Badge variant="secondary" className="ml-2">
+              {totalAgents}
+            </Badge>
+          </Button>
 
-  {categories.map((category) => (
-    <Button
-      key={category.id}
-      variant={selectedCategory === category.id ? "default" : "outline"}
-      onClick={() => setSelectedCategory(category.id)}
-      className={`rounded-full ${selectedCategory === category.id ? '!bg-black text-white' : ''}`}
-    >
-      {category.name}
-      <Badge variant="secondary" className="ml-2">
-        {category.count}
-      </Badge>
-    </Button>
-  ))}
-</div>
-
+          {CATEGORIES.map((category) => (
+            <Button
+              key={category.id}
+              variant={selectedCategory === category.id ? "default" : "outline"}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`rounded-full ${selectedCategory === category.id ? '!bg-black text-white' : ''}`}
+            >
+              {category.name}
+              <Badge variant="secondary" className="ml-2">
+                {category.count}
+              </Badge>
+            </Button>
+          ))}
+        </div>
 
         {/* Category Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-20 ">
-          {categories
-            .filter(category => selectedCategory === null || category.id === selectedCategory)
-            .map((category) => {
-              const IconComponent = category.icon
-              return (
-                <div
-                  key={category.id}
-                  className="group bg-card rounded-xl p-6 border border-border hover:border-primary/20 transition-all duration-300 hover:shadow-lg cursor-pointer bg-white"
-                  onClick={() => setSelectedCategory(category.id === selectedCategory ? null : category.id)}
-                >
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className={`flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${category.color} group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg group-hover:text-primary transition-colors">
-                        {category.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {category.count} agents available
-                      </p>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-20">
+          {filteredCategories.map((category) => {
+            const IconComponent = category.icon
+            return (
+              <div
+                key={category.id}
+                className="group bg-card rounded-xl p-6 border border-border hover:border-primary/20 transition-all duration-300 hover:shadow-lg cursor-pointer bg-white"
+                onClick={() => setSelectedCategory(category.id === selectedCategory ? null : category.id)}
+              >
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className={`flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${category.color} group-hover:scale-110 transition-transform duration-300`}>
+                    <IconComponent className="h-6 w-6 text-white" />
                   </div>
-                  
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {category.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {category.agents.slice(0, 3).map((agent, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
-                        {agent}
-                      </Badge>
-                    ))}
-                  </div>
-                  
-                  <div className="flex items-center text-sm text-primary font-medium group-hover:text-primary/80 transition-colors">
-                    <Zap className="h-4 w-4 mr-1" />
-                    Explore {category.name}
+                  <div>
+                    <h3 className="font-bold text-lg group-hover:text-primary transition-colors">
+                      {category.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {category.count} agents available
+                    </p>
                   </div>
                 </div>
-              )
-            })}
+                
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  {category.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {category.agents.slice(0, 3).map((agent, index) => (
+                    <Badge key={index} variant="outline" className="text-xs">
+                      {agent}
+                    </Badge>
+                  ))}
+                </div>
+                
+                <div className="flex items-center text-sm text-primary font-medium group-hover:text-primary/80 transition-colors">
+                  <Zap className="h-4 w-4 mr-1" />
+                  Explore {category.name}
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

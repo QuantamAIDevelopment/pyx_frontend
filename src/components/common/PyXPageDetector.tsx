@@ -7,26 +7,43 @@ interface PyXPageDetectorProps {
   currentPath: string
 }
 
+// Path to page context mapping
+const PATH_CONTEXT_MAP: Record<string, string> = {
+  '/': 'home',
+  '/home': 'home',
+  '/agents': 'marketplace',
+  '/marketplace': 'marketplace',
+  '/create-agent': 'create-agent',
+  '/agent-builder': 'agent-builder',
+  '/builder': 'agent-builder',
+  '/visual-builder': 'agent-builder',
+  '/dashboard': 'dashboard',
+  '/workflow-builder': 'flow-builder',
+  '/flows': 'flow-builder',
+  '/upload-agent': 'upload',
+  '/upload': 'upload',
+  '/developer': 'developer-mode',
+  '/testing-lab': 'developer-mode',
+  '/documentation': 'api',
+  '/docs': 'api',
+  '/tutorials': 'developer-mode'
+}
+
 export function PyXPageDetector({ currentPath }: PyXPageDetectorProps) {
   const { setCurrentPage } = usePyX()
 
   useEffect(() => {
-    // Map URL paths to page contexts
+    // Get page context from path mapping
     const getPageContext = (path: string): string => {
-      if (path === '/' || path === '/home') return 'home'
-      if (path === '/agents' || path === '/marketplace') return 'marketplace'
+      // Check exact matches first
+      if (PATH_CONTEXT_MAP[path]) {
+        return PATH_CONTEXT_MAP[path]
+      }
+      
+      // Check path patterns
       if (path.startsWith('/agent/')) return 'agent-detail'
-      if (path === '/create-agent') return 'create-agent'
-      if (path === '/agent-builder' || path === '/builder') return 'agent-builder'
-      if (path === '/visual-builder') return 'agent-builder'
       if (path.startsWith('/api')) return 'api'
-      if (path === '/dashboard') return 'dashboard'
-      if (path === '/workflow-builder' || path === '/flows') return 'flow-builder'
-      if (path === '/upload-agent' || path === '/upload') return 'upload'
-      if (path === '/developer' || path.startsWith('/developer')) return 'developer-mode'
-      if (path === '/testing-lab') return 'developer-mode'
-      if (path === '/documentation' || path === '/docs') return 'api'
-      if (path === '/tutorials') return 'developer-mode'
+      if (path.startsWith('/developer')) return 'developer-mode'
       
       return 'default'
     }

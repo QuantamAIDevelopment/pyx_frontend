@@ -26,9 +26,11 @@ import {
   CheckCircle,
   AlertCircle,
   Info,
-  Wallet
+  Wallet,
+  X
 } from 'lucide-react'
 
+// Types
 interface APIKey {
   id: string
   name: string
@@ -57,6 +59,7 @@ interface ProfilePageProps {
   onWalletUpdate: (wallet: any) => void
 }
 
+// Mock Data
 const mockAPIKeys: APIKey[] = [
   {
     id: '1',
@@ -91,7 +94,7 @@ const mockNotifications: Notification[] = [
     id: '2',
     type: 'warning',
     title: 'Low Wallet Balance',
-    message: 'Your wallet balance is running low (Rs1250 remaining). Consider adding funds.',
+    message: 'Your wallet balance is running low (₹ 1250 remaining). Consider adding funds.',
     date: '1 day ago',
     read: false
   },
@@ -113,14 +116,101 @@ const mockNotifications: Notification[] = [
   }
 ]
 
+// Constants
+const NOTIFICATION_ICONS = {
+  success: <CheckCircle className="h-4 w-4 text-green-600" />,
+  warning: <AlertCircle className="h-4 w-4 text-yellow-600" />,
+  error: <AlertCircle className="h-4 w-4 text-red-600" />,
+  info: <Info className="h-4 w-4 text-blue-600" />
+} as const
+
+const ACCOUNT_STATS = [
+  { label: 'Member Since', value: 'Jan 2024' },
+  { label: 'Active Agents', value: '3' },
+  { label: 'Uploaded Agents', value: '4' },
+  { label: 'API Calls', value: '12,847' }
+] as const
+
+// Reusable Components
+const PasswordInput = ({ 
+  id, 
+  label, 
+  placeholder, 
+  value, 
+  onChange, 
+  showPassword, 
+  onToggleVisibility 
+}: {
+  id: string
+  label: string
+  placeholder: string
+  value: string
+  onChange: (value: string) => void
+  showPassword: boolean
+  onToggleVisibility: () => void
+}) => (
+  <div className="space-y-2">
+    <Label htmlFor={id} className="text-sm">{label}</Label>
+    <div className="relative">
+      <Input
+        id={id}
+        type={showPassword ? 'text' : 'password'}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        required
+        className="pr-10 h-9"
+      />
+      <button
+        type="button"
+        onClick={onToggleVisibility}
+        className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-md border border-gray-200 bg-white hover:bg-accent shadow-md"
+        tabIndex={-1}
+      >
+        {showPassword ? (
+          <EyeOff className="h-5 w-4 text-muted-foreground" />
+        ) : (
+          <Eye className="h-5 w-4 text-muted-foreground" />
+        )}
+      </button>
+    </div>
+  </div>
+)
+
+const NotificationSetting = ({ 
+  title, 
+  description, 
+  checked, 
+  onToggle 
+}: {
+  title: string
+  description: string
+  checked: boolean
+  onToggle: (checked: boolean) => void
+}) => (
+  <div className="flex items-center justify-between">
+    <div>
+      <p className="font-medium">{title}</p>
+      <p className="text-sm text-muted-foreground">{description}</p>
+    </div>
+    <Switch
+      className="bg-gray-300"
+      checked={checked}
+      onCheckedChange={onToggle}
+    />
+  </div>
+)
+
 export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
+  // State Management
   const [apiKeys, setApiKeys] = useState<APIKey[]>(mockAPIKeys)
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications)
   const [profile, setProfile] = useState({
     name: 'PYX',
     email: 'pyx@pyxnetwork.com',
     company: 'AI Automation .',
-    bio: 'AI enthusiast and developer building the future of automation.'
+    bio: 'AI enthusiast and developer building the future of automation.',
+    password: '**********'
   })
   const [notificationSettings, setNotificationSettings] = useState({
     email: true,
@@ -130,6 +220,23 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
     marketingEmails: false
   })
 
+  // Password Change Modal State
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false)
+  const [showOtpStep, setShowOtpStep] = useState(false)
+  const [passwordVisibility, setPasswordVisibility] = useState({
+    newPassword: false,
+    confirmPassword: false
+  })
+  const [changePasswordData, setChangePasswordData] = useState({
+    newPassword: '',
+    confirmPassword: ''
+  })
+  const [otp, setOtp] = useState('')
+
+  // Computed Values
+  const unreadCount = notifications.filter(n => !n.read).length
+
+  // Event Handlers
   const toggleKeyVisibility = (keyId: string) => {
     setApiKeys(keys => keys.map(key => 
       key.id === keyId ? { ...key, isVisible: !key.isVisible } : key
@@ -138,7 +245,6 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
-    // Add toast notification here
   }
 
   const deleteAPIKey = (keyId: string) => {
@@ -151,31 +257,43 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
     ))
   }
 
-  const getNotificationIcon = (type: Notification['type']) => {
-    switch (type) {
-      case 'success':
-        return <CheckCircle className="h-4 w-4 text-green-600" />
-      case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-600" />
-      case 'error':
-        return <AlertCircle className="h-4 w-4 text-red-600" />
-      case 'info':
-        return <Info className="h-4 w-4 text-blue-600" />
+  const handleChangePassword = (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!showOtpStep) {
+      setShowOtpStep(true)
+      console.log('Password validation passed, showing OTP step')
+    } else {
+      console.log('OTP submitted:', otp)
+      console.log('Changing password:', changePasswordData)
+      
+      // Reset form and close modal
+      resetChangePasswordForm()
+      setShowChangePasswordModal(false)
     }
   }
 
-  const unreadCount = notifications.filter(n => !n.read).length
+  const resetChangePasswordForm = () => {
+    setChangePasswordData({ newPassword: '', confirmPassword: '' })
+    setPasswordVisibility({ newPassword: false, confirmPassword: false })
+    setShowOtpStep(false)
+    setOtp('')
+  }
+
+  const updateNotificationSetting = (key: keyof typeof notificationSettings, value: boolean) => {
+    setNotificationSettings(prev => ({ ...prev, [key]: value }))
+  }
+
+  const updateProfile = (key: keyof typeof profile, value: string) => {
+    setProfile(prev => ({ ...prev, [key]: value }))
+  }
 
   return (
     <div className="min-h-screen py-8 px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center mb-8">
-          <Button 
-            variant="ghost" 
-            onClick={onBack}
-            className="mr-4"
-          >
+          <Button variant="ghost" onClick={onBack} className="mr-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Dashboard
           </Button>
@@ -214,6 +332,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
             </TabsTrigger>
           </TabsList>
 
+          {/* Profile Tab */}
           <TabsContent value="profile" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <Card className="lg:col-span-2">
@@ -230,8 +349,9 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                       <AvatarFallback>{profile.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <Button
-                      className="mb-0 !bg-black border-none hover:bg-transparent">Change Photo</Button>
+                      <Button className="mb-0 !bg-black border-none hover:bg-transparent">
+                        Change Photo
+                      </Button>
                       <p className="text-sm text-muted-foreground mt-1">
                         JPG, PNG or GIF. Max size 2MB.
                       </p>
@@ -239,13 +359,13 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2 ">
+                    <div className="space-y-2">
                       <Label htmlFor="name">Full Name</Label>
                       <Input
                         id="name"
                         value={profile.name}
-                        onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                        className='shadow-md '
+                        onChange={(e) => updateProfile('name', e.target.value)}
+                        className="shadow-md"
                       />
                     </div>
                     <div className="space-y-2">
@@ -254,8 +374,28 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                         id="email"
                         type="email"
                         value={profile.email}
-                        onChange={(e) => setProfile({ ...profile, email: e.target.value })}
+                        onChange={(e) => updateProfile('email', e.target.value)}
                       />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="password">Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type="password"
+                        value={profile.password}
+                        readOnly
+                        className="pr-20"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowChangePasswordModal(true)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-blue-600 hover:text-blue-800 font-medium"
+                      >
+                        Change Password
+                      </button>
                     </div>
                   </div>
 
@@ -264,7 +404,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                     <Input
                       id="company"
                       value={profile.company}
-                      onChange={(e) => setProfile({ ...profile, company: e.target.value })}
+                      onChange={(e) => updateProfile('company', e.target.value)}
                     />
                   </div>
 
@@ -274,12 +414,13 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                       id="bio"
                       rows={3}
                       value={profile.bio}
-                      onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
+                      onChange={(e) => updateProfile('bio', e.target.value)}
                     />
                   </div>
 
-                  <Button
-                  className='!bg-black border-none hover:bg-transparent'>Save Changes</Button>
+                  <Button className="!bg-black border-none hover:bg-transparent">
+                    Save Changes
+                  </Button>
                 </CardContent>
               </Card>
 
@@ -288,27 +429,18 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                   <CardTitle>Account Stats</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex justify-between">
-                    <span className="text-sm">Member Since</span>
-                    <span className="text-sm font-medium">Jan 2024</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm">Active Agents</span>
-                    <span className="text-sm font-medium">3</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm">Uploaded Agents</span>
-                    <span className="text-sm font-medium">4</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm">API Calls</span>
-                    <span className="text-sm font-medium">12,847</span>
-                  </div>
+                  {ACCOUNT_STATS.map(({ label, value }) => (
+                    <div key={label} className="flex justify-between">
+                      <span className="text-sm">{label}</span>
+                      <span className="text-sm font-medium">{value}</span>
+                    </div>
+                  ))}
                 </CardContent>
               </Card>
             </div>
           </TabsContent>
 
+          {/* API Keys Tab */}
           <TabsContent value="api-keys" className="space-y-6">
             <Card>
               <CardHeader>
@@ -319,7 +451,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                       Manage your API keys for programmatic access
                     </CardDescription>
                   </div>
-                  <Button className='text-black'>
+                  <Button className="text-black">
                     <Plus className="h-4 w-4 mr-2" />
                     Generate New Key
                   </Button>
@@ -381,6 +513,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
             </Card>
           </TabsContent>
 
+          {/* Notifications Tab */}
           <TabsContent value="notifications" className="space-y-6">
             <Card>
               <CardHeader>
@@ -400,7 +533,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                       onClick={() => markAsRead(notification.id)}
                     >
                       <div className="flex items-start space-x-3">
-                        {getNotificationIcon(notification.type)}
+                        {NOTIFICATION_ICONS[notification.type]}
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
                             <h3 className={`font-medium ${!notification.read ? 'text-foreground' : 'text-muted-foreground'}`}>
@@ -421,6 +554,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
             </Card>
           </TabsContent>
 
+          {/* Billing Tab */}
           <TabsContent value="billing" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
@@ -436,8 +570,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                     <p className="text-sm text-muted-foreground">Available balance</p>
                   </div>
                   <div className="flex space-x-2">
-                    <Button className="flex-1 bg-white text-black ">Add Funds</Button>
-                    <Button variant="outline" className="flex-1">Auto-reload</Button>
+                    <Button className="flex-1 bg-white text-black">Add Funds</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -462,6 +595,7 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
             </div>
           </TabsContent>
 
+          {/* Settings Tab */}
           <TabsContent value="settings" className="space-y-6">
             <Card>
               <CardHeader>
@@ -471,72 +605,143 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium">Email Notifications</p>
-                    <p className="text-sm text-muted-foreground">Receive notifications via email</p>
-                  </div>
-                  <Switch
-                   className='bg-gray-300'
-                    checked={notificationSettings.email}
-                    onCheckedChange={(checked) => 
-                      setNotificationSettings({ ...notificationSettings, email: checked })
-                    }
-                  />
-                </div>
-
+                <NotificationSetting
+                  title="Email Notifications"
+                  description="Receive notifications via email"
+                  checked={notificationSettings.email}
+                  onToggle={(checked) => updateNotificationSetting('email', checked)}
+                />
                 <Separator />
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium">Agent Status Updates</p>
-                    <p className="text-sm text-muted-foreground">Get notified when agents are approved or rejected</p>
-                  </div>
-                  <Switch
-                  className='bg-gray-300'
-                    checked={notificationSettings.agentUpdates}
-                    onCheckedChange={(checked) => 
-                      setNotificationSettings({ ...notificationSettings, agentUpdates: checked })
-                    }
-                  />
-                </div>
-
+                <NotificationSetting
+                  title="Agent Status Updates"
+                  description="Get notified when agents are approved or rejected"
+                  checked={notificationSettings.agentUpdates}
+                  onToggle={(checked) => updateNotificationSetting('agentUpdates', checked)}
+                />
                 <Separator />
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium">Wallet Alerts</p>
-                    <p className="text-sm text-muted-foreground">Receive low balance warnings</p>
-                  </div>
-                  <Switch
-                  className='bg-gray-300'
-                    checked={notificationSettings.walletAlerts}
-                    onCheckedChange={(checked) => 
-                      setNotificationSettings({ ...notificationSettings, walletAlerts: checked })
-                    }
-                  />
-                </div>
-
+                <NotificationSetting
+                  title="Wallet Alerts"
+                  description="Receive low balance warnings"
+                  checked={notificationSettings.walletAlerts}
+                  onToggle={(checked) => updateNotificationSetting('walletAlerts', checked)}
+                />
                 <Separator />
-
-                <div className="flex items-center justify-between ">
-                  <div>
-                    <p className="font-medium">Marketing Emails</p>
-                    <p className="text-sm text-muted-foreground">Receive product updates and tips</p>
-                  </div>
-                  <Switch
-                  className='bg-gray-300'
-                    checked={notificationSettings.marketingEmails}
-                    onCheckedChange={(checked) => 
-                      setNotificationSettings({ ...notificationSettings, marketingEmails: checked })
-                    }
-                  />
-                </div>
+                <NotificationSetting
+                  title="Marketing Emails"
+                  description="Receive product updates and tips"
+                  checked={notificationSettings.marketingEmails}
+                  onToggle={(checked) => updateNotificationSetting('marketingEmails', checked)}
+                />
               </CardContent>
             </Card>
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Change Password Modal */}
+      {showChangePasswordModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-semibold">Change Password</h2>
+              <button
+                onClick={() => {
+                  setShowChangePasswordModal(false)
+                  resetChangePasswordForm()
+                }}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleChangePassword} className="space-y-4">
+              {!showOtpStep ? (
+                <>
+                  <PasswordInput
+                    id="new-password"
+                    label="New Password"
+                    placeholder="Enter new password"
+                    value={changePasswordData.newPassword}
+                    onChange={(value) => setChangePasswordData(prev => ({ ...prev, newPassword: value }))}
+                    showPassword={passwordVisibility.newPassword}
+                    onToggleVisibility={() => setPasswordVisibility(prev => ({ ...prev, newPassword: !prev.newPassword }))}
+                  />
+
+                  <PasswordInput
+                    id="confirm-new-password"
+                    label="Confirm New Password"
+                    placeholder="Confirm new password"
+                    value={changePasswordData.confirmPassword}
+                    onChange={(value) => setChangePasswordData(prev => ({ ...prev, confirmPassword: value }))}
+                    showPassword={passwordVisibility.confirmPassword}
+                    onToggleVisibility={() => setPasswordVisibility(prev => ({ ...prev, confirmPassword: !prev.confirmPassword }))}
+                  />
+
+                  <div className="flex gap-3 pt-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => {
+                        setShowChangePasswordModal(false)
+                        resetChangePasswordForm()
+                      }}
+                      className="flex-1 h-9"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      type="submit"
+                      className="flex-1 !bg-black text-white border-none h-9"
+                    >
+                      Update Password
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="text-center mb-4">
+                    <p className="text-sm text-muted-foreground">
+                      We've sent a verification code to <span className="font-medium">{profile.email}</span>
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="otp" className="text-sm">Enter OTP</Label>
+                    <Input
+                      id="otp"
+                      type="text"
+                      placeholder="Enter 6-digit code"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value)}
+                      maxLength={6}
+                      className="text-center text-lg tracking-widest h-9"
+                      required
+                    />
+                  </div>
+
+                  <div className="flex gap-3 pt-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => setShowOtpStep(false)}
+                      className="flex-1 h-9"
+                    >
+                      Back
+                    </Button>
+                    <Button
+                      type="submit"
+                      className="flex-1 !bg-black text-white border-none h-9"
+                    >
+                      Verify & Update
+                    </Button>
+                  </div>
+                </>
+              )}
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

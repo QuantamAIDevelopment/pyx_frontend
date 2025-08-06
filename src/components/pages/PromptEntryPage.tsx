@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Button } from '../common/ui/button'
 import { Textarea } from '../common/ui/textarea'
 import { Card, CardContent } from '../common/ui/card'
-// import { Badge } from '../common/ui/badge'
 import { Lightbulb, ArrowRight, Sparkles, Bot, Target, Zap } from 'lucide-react'
 
 interface PromptEntryPageProps {
@@ -12,16 +11,42 @@ interface PromptEntryPageProps {
   onBack: () => void
 }
 
+// Example prompts data
+const EXAMPLE_PROMPTS = [
+  "Summarize customer reviews and send a Slack alert",
+  "Monitor inventory levels and update Google Sheets",
+  "Generate weekly sales reports and email them",
+  "Track support tickets and create dashboard summaries"
+] as const
+
+// Features data
+const FEATURES = [
+  {
+    icon: Bot,
+    title: "AI-Powered",
+    description: "Smart interpretation of your requirements",
+    bgColor: "from-orange-500/20",
+    iconColor: "text-blue-600"
+  },
+  {
+    icon: Target,
+    title: "No-Code",
+    description: "Build powerful automations without coding",
+    bgColor: "from-green-500/20 to-emerald-500/20",
+    iconColor: "text-green-600"
+  },
+  {
+    icon: Sparkles,
+    title: "Instant Deploy",
+    description: "Your agent goes live in minutes",
+    bgColor: "from-purple-500/20 to-pink-500/20",
+    iconColor: "text-purple-600"
+  }
+] as const
+
 export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
   const [prompt, setPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
-
-  const examplePrompts = [
-    "Summarize customer reviews and send a Slack alert",
-    "Monitor inventory levels and update Google Sheets",
-    "Generate weekly sales reports and email them",
-    "Track support tickets and create dashboard summaries"
-  ]
 
   const handleSubmit = async () => {
     if (!prompt.trim()) return
@@ -44,7 +69,7 @@ export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
-              <div className="bg-gradient-to-r from-[#FF620A] via-[#D94B05] to-[#993B06] p-3 rounded-full">
+              <div className="bg-brand-primary p-3 rounded-full">
                 <Bot className="h-8 w-8 text-white" />
               </div>
             </div>
@@ -109,7 +134,7 @@ export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {examplePrompts.map((example, index) => (
+              {EXAMPLE_PROMPTS.map((example, index) => (
                 <Card 
                   key={index}
                   className="cursor-pointer hover:shadow-lg hover:border-orange-500/50 transition-all duration-300 group"
@@ -117,7 +142,7 @@ export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
                 >
                   <CardContent className="p-4">
                     <div className="flex items-start space-x-3">
-                      <div className="bg-gradient-to-r from-orange-500/20 to-pink-500/20 p-2 rounded-lg  group-hover:to-orange-500/30 transition-colors">
+                      <div className="bg-gradient-to-r from-orange-500/20 to-pink-500/20 p-2 rounded-lg group-hover:to-orange-500/30 transition-colors">
                         <Zap className="h-4 w-4 text-orange-600" />
                       </div>
                       <div className="flex-1">
@@ -137,33 +162,20 @@ export function PromptEntryPage({ onNext }: PromptEntryPageProps) {
 
           {/* Features Preview */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center space-y-2">
-              <div className="bg-gradient-to-r from-orange-500/20  p-3 rounded-full w-fit mx-auto">
-                <Bot className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="font-semibold">AI-Powered</h3>
-              <p className="text-sm text-muted-foreground">
-                Smart interpretation of your requirements
-              </p>
-            </div>
-            <div className="text-center space-y-2">
-              <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 p-3 rounded-full w-fit mx-auto">
-                <Target className="h-6 w-6 text-green-600" />
-              </div>
-              <h3 className="font-semibold">No-Code</h3>
-              <p className="text-sm text-muted-foreground">
-                Build powerful automations without coding
-              </p>
-            </div>
-            <div className="text-center space-y-2">
-              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 p-3 rounded-full w-fit mx-auto">
-                <Sparkles className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="font-semibold">Instant Deploy</h3>
-              <p className="text-sm text-muted-foreground">
-                Your agent goes live in minutes
-              </p>
-            </div>
+            {FEATURES.map((feature, index) => {
+              const IconComponent = feature.icon
+              return (
+                <div key={index} className="text-center space-y-2">
+                  <div className={`bg-gradient-to-r ${feature.bgColor} p-3 rounded-full w-fit mx-auto`}>
+                    <IconComponent className={`h-6 w-6 ${feature.iconColor}`} />
+                  </div>
+                  <h3 className="font-semibold">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
