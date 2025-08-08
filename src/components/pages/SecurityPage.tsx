@@ -12,7 +12,6 @@ import {
   Eye,
   Server,
   Database,
- 
   Network,
   FileText,
   Mail,
@@ -22,8 +21,7 @@ import {
   CheckCircle,
   ExternalLink,
   Download,
-  RefreshCw,
-  
+  RefreshCw, 
   Building2,
   Scale,
   Gavel,
@@ -35,18 +33,12 @@ import {
   Award,
   Users,
   UserCheck,
-  // Settings,
   Search,
   Cpu,
   Code,
-  // BarChart3,
   Activity,
   CreditCard,
   GraduationCap,
-  // AlertTriangle,
-  // Building,
-  // Globe,
-  // Ban
 } from 'lucide-react'
 
 interface SecurityPageProps {
