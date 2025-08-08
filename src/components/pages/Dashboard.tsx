@@ -22,11 +22,8 @@ import {
   Cell
 } from 'recharts'
 import { 
-  Plus, 
   Zap, 
-  // RupeeSign, 
-  TrendingUp, 
-  
+  TrendingUp,
   Activity,
   Upload,
   Settings,
@@ -193,7 +190,7 @@ const myAPIs = [
   }
 ]
 
-export function Dashboard({ userWallet, onCreateAgent, onAgentBuilder, onViewWorkflows, onUploadAgent, onViewProfile, onTestingLab, onManageAPI, onAnalytics, onViewAgentDetail, onRunAgent,onGenerateApp}: DashboardProps) {
+export function Dashboard({ userWallet, onAgentBuilder, onViewWorkflows, onUploadAgent, onViewProfile, onTestingLab, onManageAPI, onAnalytics, onViewAgentDetail, onRunAgent,onGenerateApp}: DashboardProps) {
   const [activeTab, setActiveTab] = useState('overview')
 
 

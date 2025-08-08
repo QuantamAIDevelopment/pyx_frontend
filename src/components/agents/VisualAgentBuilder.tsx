@@ -84,7 +84,7 @@ const nodeTypes = {
   ]
 }
 
-export function VisualAgentBuilder({ selectedWorkflow }: VisualAgentBuilderProps) {
+export function VisualAgentBuilder({  }: VisualAgentBuilderProps) {
   const [nodes, setNodes] = useState<WorkflowNode[]>([])
   const [connections, setConnections] = useState<WorkflowConnection[]>([])
   const [selectedNode, setSelectedNode] = useState<WorkflowNode | null>(null)

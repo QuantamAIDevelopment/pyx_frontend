@@ -230,7 +230,7 @@ function AppRoutes() {
             onExploreAgents={() => navigate('/agents')}
             onGetStarted={() => isLoggedIn ? navigate('/dashboard') : showAuth('signup')}
             onAgentSelect={handleAgentSelect}
-            onCreateAgent={() => isLoggedIn ? navigate('/agents/create') : showAuth('signup')}
+            // onCreateAgent={() => isLoggedIn ? navigate('/agents/create') : showAuth('signup')}
           />
         } />
 

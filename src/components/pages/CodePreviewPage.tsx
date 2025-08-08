@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../common/ui/button'
 import { Card } from '../common/ui/card'
@@ -8,7 +8,7 @@ import { Badge } from '../common/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { 
   Code2, Download, Play, RotateCcw, CheckCircle, 
-  FileText, Settings, Database, Globe, ArrowRight,
+  FileText, Settings, Globe, ArrowRight,
   Copy, ExternalLink, Bot, Lightbulb
 } from 'lucide-react'
 import { usePyX } from '../layout/PyXContextProvider'
