@@ -6,8 +6,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Badge } from '../common/ui/badge'
 import { Input } from '../common/ui/input'
 import { Tabs, TabsList, TabsTrigger } from '../common/ui/tabs'
-// import { Progress } from '../common/ui/progress'
-// import { Separator } from '../common/ui/separator'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../common/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../common/ui/select'
 import { ScrollArea } from '../common/ui/scroll-area'
@@ -21,11 +19,6 @@ import {
   // Filter,
   ArrowRight,
   Play,
-  // Eye,
-  // ThumbsUp,
-  // Share2,
-  // BookOpen,
-  // BarChart3,
   Video,
   // Mic,
   Phone,
@@ -39,69 +32,9 @@ import {
   // MapPin,
   Building2,
   GraduationCap,
-  // Briefcase,
-  // Stethoscope,
-  // ShoppingCart,
-  // Banknote,
-  // Truck,
-  // Target,
-  // Sparkles,
-  // Flame,
-  // TrendingUp,
-  // Heart,
-  // MessageSquare,
-  // Bell,
-  // BellRing,
-  // Volume2,
-  // VolumeX,
-  // Maximize,
-  // Minimize,
   PlayCircle,
-  // PauseCircle,
-  // SkipForward,
-  // SkipBack,
-  // RotateCcw,
-  // Settings,
-  // Info,
-  // AlertCircle,
-  // CheckSquare,
-  // X,
-  // Plus,
-  // Minus,
-  // ChevronRight,
-  // ChevronLeft,
-  // ChevronDown,
-  // ChevronUp,
-  // ExternalLink,
-  // Copy,
-  // Facebook,
-  // Twitter,
-  // Linkedin,
-  // Youtube,
-  // Instagram,
-  // Github,
-  // Twitch,
-  // Figma,
-  // Dribbble,
-  // Behance, // Not available in lucide-react
-  // Medium,
-  // Slack,
-  // Discord,
-  // Telegram,
-  // WhatsApp,
   Zap,
   Code,
-  // Database,
-  // Cloud,
-  // Server,
-  // Monitor,
-  // Smartphone,
-  // Tablet,
-  // Laptop,
-  // Headphones,
-  // Camera,
-  // Webcam,
-  // Microphone
 } from 'lucide-react'
 
 interface WebinarsPageProps {
@@ -484,18 +417,16 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-bg-secondary text-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-brand-primary text-white">
               <Video className="h-3 w-3 mr-1" />
               Live Learning
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Expert-Led{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-primary bg-clip-text text-transparent">
                 AI Webinars
               </span>
             </h1>
@@ -507,7 +438,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                className="!bg-brand-primary text-white border-none w-full sm:w-auto"
                 onClick={handleGetStarted}
               >
                 <Rocket className="h-4 w-4 mr-2" />
@@ -563,9 +494,9 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
               const CategoryIcon = getCategoryIcon(webinar.category)
               return (
                 <Card key={webinar.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group" onClick={() => handleWebinarClick(webinar)}>
-                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                      <CategoryIcon className="h-16 w-16 text-white opacity-80" />
+                  <div className="aspect-video bg-bg-secondary relative overflow-hidden">
+                    <div className="absolute inset-0  flex items-center justify-center">
+                      <CategoryIcon className="h-16 w-16 text-black opacity-80" />
                     </div>
                     <div className="absolute top-4 left-4">
                       <Badge className={getStatusColor(webinar.status)}>
@@ -609,7 +540,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                         <span className="text-sm font-medium">{webinar.rating}</span>
                       </div>
                     </div>
-                    <CardTitle className="text-lg group-hover:text-blue-600 transition-colors line-clamp-2">
+                    <CardTitle className="text-lg group-hover:text-brand-primary transition-colors line-clamp-2">
                       {webinar.title}
                     </CardTitle>
                     <CardDescription className="text-sm line-clamp-2">
@@ -639,7 +570,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                       </div>
                       <Button
                         size="sm"
-                        className="group-hover:bg-primary group-hover:text-primary-foreground"
+                        className="!bg-black text-white group-hover:bg-primary group-hover:text-primary-foreground"
                         onClick={(e) => {
                           e.stopPropagation()
                           if (webinar.status === 'upcoming') {
@@ -651,7 +582,8 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                       >
                         {webinar.status === 'upcoming' ? (
                           <>
-                            <Calendar className="h-3 w-3 mr-1" />
+
+                            <Calendar className="h-3 w-3 mr-1 " />
                             Register
                           </>
                         ) : (
@@ -741,9 +673,9 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                 const CategoryIcon = getCategoryIcon(webinar.category)
                 return (
                   <Card key={webinar.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group" onClick={() => handleWebinarClick(webinar)}>
-                    <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                        <CategoryIcon className="h-12 w-12 text-white opacity-80" />
+                    <div className="aspect-video bg-bg-secondary relative overflow-hidden">
+                      <div className="absolute inset-0  flex items-center justify-center">
+                        <CategoryIcon className="h-12 w-12 text-black opacity-80" />
                       </div>
                       <div className="absolute top-4 left-4">
                         <Badge className={getStatusColor(webinar.status)}>
@@ -776,7 +708,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                           <span className="text-xs font-medium">{webinar.rating}</span>
                         </div>
                       </div>
-                      <CardTitle className="text-base group-hover:text-blue-600 transition-colors line-clamp-2">
+                      <CardTitle className="text-base group-hover:text-orange transition-colors line-clamp-2">
                         {webinar.title}
                       </CardTitle>
                       <CardDescription className="text-sm line-clamp-2">
@@ -804,8 +736,8 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                         </div>
                         <Button
                           size="sm"
-                          variant="outline"
-                          className="group-hover:bg-primary group-hover:text-primary-foreground"
+                          variant="ghost"
+                            className="!bg-black text-white group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                           onClick={(e) => {
                             e.stopPropagation()
                             if (webinar.status === 'upcoming') {
@@ -827,6 +759,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
                             </>
                           )}
                         </Button>
+
                       </div>
                     </CardContent>
                   </Card>
@@ -838,8 +771,8 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
- text-white">
+      <section className="py-20 bg-bg-secondary
+ text-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -853,7 +786,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
               <Button
                 size="lg"
                 variant="secondary"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto !bg-brand-primary text-white hover:bg-brand-primary-foreground"
                 onClick={handleGetStarted}
               >
                 <Rocket className="h-4 w-4 mr-2" />

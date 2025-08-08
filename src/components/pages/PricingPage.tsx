@@ -182,7 +182,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]">
+      <section className="py-20 bg-bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <Badge className="mb-6 bg-brand-primary  text-white">
@@ -202,7 +202,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
             </p>
             
             {/* Billing Toggle */}
-            <div className="flex items-center justify-center gap-4 mb-12">
+            <div className="flex items-center justify-center gap-4 mb-12 ">
               <span className={`text-sm ${!isYearly ? 'font-medium' : 'text-muted-foreground'}`}>
                 Monthly
               </span>
@@ -431,7 +431,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-brand-primary text-white">
+      <section className="py-20 bg-bg-secondary text-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -446,6 +446,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                 size="lg" 
                 variant="secondary"
                 onClick={() => handleGetStarted('free')}
+                className='!bg-brand-primary text-white'
               >
                 <Rocket className="h-4 w-4 mr-2" />
                 Start Free Today

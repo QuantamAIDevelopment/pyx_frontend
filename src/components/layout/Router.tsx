@@ -25,7 +25,7 @@ import { CommunityForumPage } from '../pages/CommunityForumPage'
 import { GitHubIssuesPage } from '../pages/GitHubIssuesPage'
 import { PremiumSupportPage } from '../pages/PremiumSupportPage'
 import { ChangelogPage } from '../pages/ChangelogPage'
-import { CareersPage } from '../pages/CareersPage'
+// import { CareersPage } from '../pages/CareersPage'
 import { JobApplicationPage } from '../pages/JobApplicationPage'
 // import { PressKitPage } from '../pages/PressKitPage'
 import { HelpCenterPage } from '../pages/HelpCenterPage'
@@ -706,13 +706,13 @@ function AppRoutes() {
         } />
 
         {/* Company Pages */}
-        <Route path="/careers" element={
+        {/* <Route path="/careers" element={
           <CareersPage 
             onViewChange={handleViewChange}
             isLoggedIn={isLoggedIn}
             onShowAuth={showAuth}
           />
-        } />
+        } /> */}
 
         <Route path="/apply/:jobId" element={
           <JobApplicationWrapper 

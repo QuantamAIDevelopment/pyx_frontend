@@ -1,7 +1,7 @@
 'use client'
 
 import { Link, useLocation } from 'react-router-dom'
-import {  Menu, X, LayoutDashboard, Store, BookOpen, Phone, Plus, Bell, Wallet, TestTube, User, Code2, Info } from 'lucide-react'
+import { Menu, X, LayoutDashboard, Store, BookOpen, Phone, Plus, Bell, Wallet, TestTube, User, Code2, Info } from 'lucide-react'
 import { Button } from '../common/ui/button'
 import { Badge } from '../common/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '../common/ui/avatar'
@@ -16,8 +16,6 @@ export type ViewType = 'landing' | 'home' | 'agents' | 'agent-detail' | 'active-
 export type Mode = 'user' | 'developer'
 
 interface HeaderProps {
-  // currentView: ViewType
-  // onViewChange: (view: ViewType) => void
   currentMode: Mode
   onModeToggle: (mode: Mode) => void
   isLoggedIn: boolean
@@ -29,21 +27,19 @@ interface HeaderProps {
   }
 }
 
-export function Header({ 
-  // currentView, 
-  // onViewChange, 
+export function Header({
   currentMode,
   onModeToggle,
-  isLoggedIn, 
-  onLogin, 
+  isLoggedIn,
+  onLogin,
   onLogout,
-  userWallet 
+  userWallet
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
 
   const navItems = [
-    ...(isLoggedIn 
+    ...(isLoggedIn
       ? [{ id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' }]
       : [{ id: 'landing', label: 'Home', icon: null, path: '/' }]
     ),
@@ -69,34 +65,28 @@ export function Header({
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 ml-0 ">
-           
             <img src="/assets/logo.png" width={60} height={50} alt='' className='ml-0 ' />
           </Link>
-
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-  {navItems.map((item) => {
-    const IconComponent = item.icon
-    const isItemActive = isActive(item.path)
+            {navItems.map((item) => {
+              const IconComponent = item.icon
+              const isItemActive = isActive(item.path)
 
-    return (
-      <Link key={item.id} to={item.path}>
-        <Button
-          variant={isItemActive ? 'ghost' : 'ghost'} 
-          className={`flex items-center space-x-2 ${
-            isItemActive ? '!bg-black !text-white hover:!bg-black border-none '  : ''
-          } !focus:ring-0 !focus:ring-transparent !focus-visible:outline-none`}
-        >
-          {IconComponent && <IconComponent className="h-4 w-4" />}
-          <span>{item.label}</span>
-        </Button>
-      </Link>
-    )
-  })}
-</nav>
-
-
+              return (
+                <Link key={item.id} to={item.path}>
+                  <Button
+                    variant={isItemActive ? 'ghost' : 'ghost'}
+                    className={`flex items-center space-x-2 ${isItemActive ? '!bg-black !text-white hover:!bg-black border-none ' : ''
+                      } !focus:ring-0 !focus:ring-transparent !focus-visible:outline-none`}
+                  >
+                    {IconComponent && <IconComponent className="h-4 w-4" />}
+                    <span>{item.label}</span>
+                  </Button>
+                </Link>
+              )
+            })}
+          </nav>
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-3">
             {isLoggedIn ? (
@@ -186,11 +176,10 @@ export function Header({
                           <p className="text-xs leading-none text-muted-foreground">
                             pyx@pyxnetwork.com
                           </p>
-                          <Badge className={`mt-1 w-fit text-xs  ${
-                            currentMode === 'developer' 
+                          <Badge className={`mt-1 w-fit text-xs  ${currentMode === 'developer'
                               ? 'bg-gradient-to-r from-[#FF620A] to-[#993B06]text-white'
                               : 'bg-gradient-to-r from-[#993B06] to-[#FF620A] text-white'
-                          }`}>
+                            }`}>
                             {currentMode === 'developer' ? 'Developer Mode' : 'User Mode'}
                           </Badge>
                         </div>
@@ -251,7 +240,7 @@ export function Header({
             ) : (
               <>
                 {/* Removed theme toggle for non-logged users */}
-                
+
                 {/* Sign In Button */}
                 <Button onClick={onLogin} className='!bg-black border-none'>
                   Sign In
@@ -282,12 +271,12 @@ export function Header({
               {navItems.map((item) => {
                 const IconComponent = item.icon
                 return (
-                  <Link 
+                  <Link
                     key={item.id}
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Button 
+                    <Button
                       variant={isActive(item.path) ? 'default' : 'ghost'}
                       className="flex items-center justify-start space-x-2 w-full"
                     >
@@ -297,7 +286,7 @@ export function Header({
                   </Link>
                 )
               })}
-              
+
               {isLoggedIn && (
                 <>
                   {/* Mode Toggle Mobile */}
@@ -314,7 +303,7 @@ export function Header({
                   </div>
 
                   <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)}>
-                    <Button 
+                    <Button
                       variant={isActive('/dashboard') ? 'default' : 'ghost'}
                       className="flex items-center justify-start space-x-2 w-full"
                     >
@@ -325,7 +314,7 @@ export function Header({
 
                   {currentMode === 'developer' && (
                     <Link to="/developer-mode" onClick={() => setMobileMenuOpen(false)}>
-                      <Button 
+                      <Button
                         variant={isActive('/developer-mode') ? 'default' : 'ghost'}
                         className="flex items-center justify-start space-x-2 w-full"
                       >
@@ -336,7 +325,7 @@ export function Header({
                   )}
 
                   <Link to="/testing-lab" onClick={() => setMobileMenuOpen(false)}>
-                    <Button 
+                    <Button
                       variant={isActive('/testing-lab') ? 'default' : 'ghost'}
                       className="flex items-center justify-start space-x-2 w-full"
                     >
@@ -345,11 +334,11 @@ export function Header({
                     </Button>
                   </Link>
 
-                  <Link 
+                  <Link
                     to={currentMode === 'developer' ? '/developer-mode' : '/agents/create'}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Button 
+                    <Button
                       className="flex items-center justify-start space-x-2 w-full bg-gradient-to-r from-[#FF620A] to-[#993B06]"
                     >
                       <Plus className="h-4 w-4" />
@@ -359,7 +348,7 @@ export function Header({
 
                   {userWallet && (
                     <Link to="/profile" onClick={() => setMobileMenuOpen(false)}>
-                      <Button 
+                      <Button
                         variant="outline"
                         className="flex items-center justify-start space-x-2 w-full"
                       >
@@ -370,10 +359,10 @@ export function Header({
                   )}
                 </>
               )}
-              
+
               <div className="flex items-center justify-between pt-4 border-t">
                 {/* Removed theme toggle */}
-                
+
                 {isLoggedIn ? (
                   <Button variant="outline" onClick={() => {
                     onLogout()
