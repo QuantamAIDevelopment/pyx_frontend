@@ -12,17 +12,13 @@ import {
   Key,
   Zap,
   Shield,
-  // Globe,
   Copy,
-  // ExternalLink,
   Terminal,
   Settings,
-  // Webhook,
   AlertCircle,
   CheckCircle,
   ArrowRight,
   ArrowLeft,
-  // FileText,
   Download,
   Github,
   PlayCircle,
@@ -30,7 +26,7 @@ import {
   Users,
   MessageSquare,
   Star,
-  // Search
+ 
 } from 'lucide-react'
 import { Footer } from '../layout/Footer'
 
@@ -896,7 +892,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
+        <section className="py-20 bg-brand-primary
  text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
