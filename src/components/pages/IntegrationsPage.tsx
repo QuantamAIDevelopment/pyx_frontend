@@ -13,9 +13,7 @@ import {
   BarChart3,
   Users,
   Mail,
-  // Calendar,
   FileText,
-  // Cloud,
   Zap,
   Settings,
   CheckCircle,
@@ -23,7 +21,6 @@ import {
   ArrowRight,
   ExternalLink,
   Code,
-  Webhook,
   Database,
   Globe,
   Lock,
@@ -518,7 +515,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 border-dashed border-muted-foreground/30 hover:border-orange-500/50 transition-colors">
               <CardContent className="p-12 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] mx-auto mb-6">
+                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-brand-primary mx-auto mb-6">
                   <Code className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Don't See Your Tool?</h3>
@@ -528,8 +525,9 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
                   <Button 
+                    variant='outline'
                     size="lg"
-                    className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto border-none"
+                    className="bg-brand-primary w-full sm:w-auto border-none text-black"
                     onClick={() => navigate('/contact')}
                   >
                     <Code className="h-4 w-4 mr-2" />
@@ -552,8 +550,7 @@ export function IntegrationsPage({ onViewChange, isLoggedIn, onShowAuth }: Integ
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
- text-white">
+      <section className="py-20 bg-brand-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">

@@ -288,6 +288,22 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
     setProfile(prev => ({ ...prev, [key]: value }))
   }
 
+  const [passwordErrors, setPasswordErrors] = useState({
+  newPassword: '',
+  confirmPassword: ''
+})
+const validatePassword = (password: string) => {
+  const errors = []
+  if (password.length < 8) errors.push("at least 8 characters")
+  if (!/[A-Z]/.test(password)) errors.push("one uppercase letter")
+  if (!/[a-z]/.test(password)) errors.push("one lowercase letter")
+  if (!/[0-9]/.test(password)) errors.push("one number")
+  if (!/[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]+/.test(password)) errors.push("one special character")
+
+  return errors.length > 0 ? `Password must contain ${errors.join(", ")}` : ''
+}
+
+
   return (
     <div className="min-h-screen py-8 px-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -657,47 +673,73 @@ export function ProfilePage({ onBack, userWallet }: ProfilePageProps) {
 
             <form onSubmit={handleChangePassword} className="space-y-4">
               {!showOtpStep ? (
-                <>
-                  <PasswordInput
-                    id="new-password"
-                    label="New Password"
-                    placeholder="Enter new password"
-                    value={changePasswordData.newPassword}
-                    onChange={(value) => setChangePasswordData(prev => ({ ...prev, newPassword: value }))}
-                    showPassword={passwordVisibility.newPassword}
-                    onToggleVisibility={() => setPasswordVisibility(prev => ({ ...prev, newPassword: !prev.newPassword }))}
-                  />
+              <>
+  <PasswordInput
+    id="new-password"
+    label="New Password"
+    placeholder="Enter new password"
+    value={changePasswordData.newPassword}
+    onChange={(value) => {
+      setChangePasswordData(prev => ({ ...prev, newPassword: value }))
+      const error = validatePassword(value)
+      setPasswordErrors(prev => ({ ...prev, newPassword: error }))
+    }}
+    showPassword={passwordVisibility.newPassword}
+    onToggleVisibility={() =>
+      setPasswordVisibility(prev => ({ ...prev, newPassword: !prev.newPassword }))
+    }
+  />
+  {passwordErrors.newPassword && (
+    <p className="text-xs text-red-500 mt-1">{passwordErrors.newPassword}</p>
+  )}
 
-                  <PasswordInput
-                    id="confirm-new-password"
-                    label="Confirm New Password"
-                    placeholder="Confirm new password"
-                    value={changePasswordData.confirmPassword}
-                    onChange={(value) => setChangePasswordData(prev => ({ ...prev, confirmPassword: value }))}
-                    showPassword={passwordVisibility.confirmPassword}
-                    onToggleVisibility={() => setPasswordVisibility(prev => ({ ...prev, confirmPassword: !prev.confirmPassword }))}
-                  />
+  <PasswordInput
+    id="confirm-new-password"
+    label="Confirm New Password"
+    placeholder="Confirm new password"
+    value={changePasswordData.confirmPassword}
+    onChange={(value) => {
+      setChangePasswordData(prev => ({ ...prev, confirmPassword: value }))
+      const error =
+        value !== changePasswordData.newPassword ? 'Passwords do not match.' : ''
+      setPasswordErrors(prev => ({ ...prev, confirmPassword: error }))
+    }}
+    showPassword={passwordVisibility.confirmPassword}
+    onToggleVisibility={() =>
+      setPasswordVisibility(prev => ({ ...prev, confirmPassword: !prev.confirmPassword }))
+    }
+  />
+  {passwordErrors.confirmPassword && (
+    <p className="text-xs text-red-500 mt-1">{passwordErrors.confirmPassword}</p>
+  )}
 
-                  <div className="flex gap-3 pt-2">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => {
-                        setShowChangePasswordModal(false)
-                        resetChangePasswordForm()
-                      }}
-                      className="flex-1 h-9"
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      type="submit"
-                      className="flex-1 !bg-black text-white border-none h-9"
-                    >
-                      Update Password
-                    </Button>
-                  </div>
-                </>
+  <div className="flex gap-3 pt-2">
+    <Button
+      type="button"
+      variant="outline"
+      onClick={() => {
+        setShowChangePasswordModal(false)
+        resetChangePasswordForm()
+      }}
+      className="flex-1 h-9"
+    >
+      Cancel
+    </Button>
+    <Button
+      type="submit"
+      className="flex-1 !bg-black text-white border-none h-9"
+      disabled={
+        !!passwordErrors.newPassword ||
+        !!passwordErrors.confirmPassword ||
+        !changePasswordData.newPassword ||
+        !changePasswordData.confirmPassword
+      }
+    >
+      Update Password
+    </Button>
+  </div>
+</>
+
               ) : (
                 <>
                   <div className="text-center mb-4">
