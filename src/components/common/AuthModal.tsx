@@ -39,6 +39,7 @@ export function AuthModal({
   const [showOtpModal, setShowOtpModal] = useState(false)
   const [otp, setOtp] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const [confirmPasswordError, setConfirmPasswordError] = useState('')
 
   const [formData, setFormData] = useState({
     email: '',
@@ -74,6 +75,14 @@ export function AuthModal({
       if (error) {
         setPasswordError(error)
         return
+      } else {
+        setPasswordError('')
+      }
+      if (formData.password !== formData.confirmPassword) {
+        setConfirmPasswordError('Passwords do not match.')
+        return
+      } else {
+        setConfirmPasswordError('')
       }
       setShowOtpModal(true)
     } else {
@@ -263,6 +272,12 @@ export function AuthModal({
                         setFormData({ ...formData, password: value })
                         const error = validatePassword(value)
                         setPasswordError(error)
+                        // Also check confirm password live
+                        if (formData.confirmPassword && value !== formData.confirmPassword) {
+                          setConfirmPasswordError('Passwords do not match.')
+                        } else {
+                          setConfirmPasswordError('')
+                        }
                       }}
                       required
                       className="pr-10 h-8 text-sm"
@@ -296,15 +311,25 @@ export function AuthModal({
                     type="password"
                     placeholder="Confirm your password"
                     value={formData.confirmPassword}
-                    onChange={(e) =>
+                    onChange={(e) => {
                       setFormData({
                         ...formData,
                         confirmPassword: e.target.value
                       })
-                    }
+                      if (mode === 'signup' && e.target.value && e.target.value !== formData.password) {
+                        setConfirmPasswordError('Passwords do not match.')
+                      } else {
+                        setConfirmPasswordError('')
+                      }
+                    }}
                     required
                     className="h-8 text-sm"
                   />
+                  {confirmPasswordError && formData.confirmPassword && (
+                    <p className="text-xs text-red-500 mt-1">
+                      {confirmPasswordError}
+                    </p>
+                  )}
                 </div>
 
                 <Button

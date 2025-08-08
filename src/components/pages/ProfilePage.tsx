@@ -701,7 +701,7 @@ const validatePassword = (password: string) => {
     onChange={(value) => {
       setChangePasswordData(prev => ({ ...prev, confirmPassword: value }))
       const error =
-        value !== changePasswordData.newPassword ? 'Passwords do not match.' : ''
+        value && value !== changePasswordData.newPassword ? 'Passwords do not match.' : ''
       setPasswordErrors(prev => ({ ...prev, confirmPassword: error }))
     }}
     showPassword={passwordVisibility.confirmPassword}
@@ -709,7 +709,7 @@ const validatePassword = (password: string) => {
       setPasswordVisibility(prev => ({ ...prev, confirmPassword: !prev.confirmPassword }))
     }
   />
-  {passwordErrors.confirmPassword && (
+  {passwordErrors.confirmPassword && changePasswordData.confirmPassword && (
     <p className="text-xs text-red-500 mt-1">{passwordErrors.confirmPassword}</p>
   )}
 
