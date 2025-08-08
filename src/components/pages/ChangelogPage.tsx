@@ -5,47 +5,27 @@ import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
 import { Input } from '../common/ui/input'
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
-// import { Separator } from '../common/ui/separator'
 import { 
   Calendar,
   Search,
-  // Star,
   Bug,
-  // Zap,
   Shield,
-  // Settings,
-  // Code,
   Sparkles,
   ArrowRight,
-  // Plus,
-  // Minus,
   AlertTriangle,
   CheckCircle,
   Clock,
   GitCommit,
   Tag,
   Rocket,
-  // Wrench,
-  // Eye,
-  // Heart,
   Download,
   ExternalLink,
   BookOpen,
-  // Users,
   TrendingUp,
-  // Database,
-  // Globe,
-  // Terminal,
-  // Workflow,
-  // MessageSquare,
   Filter,
   ChevronDown,
   ChevronRight,
   Info,
-  // Lightbulb,
-  // Target,
-  // Gem
 } from 'lucide-react'
 
 interface ChangelogPageProps {
@@ -419,7 +399,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'latest': return 'bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white'
+      case 'latest': return 'bg-brand-primary text-white'
       case 'stable': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
       case 'deprecated': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
       default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
@@ -449,18 +429,16 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-bg-secondary text-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-brand-primary text-white">
               <GitCommit className="h-3 w-3 mr-1" />
               Platform Updates
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               What's New in{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-primary bg-clip-text text-transparent">
                 QAID
               </span>
             </h1>
@@ -484,7 +462,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                className="!bg-brand-primary w-full sm:w-auto border-none text-white"
                 onClick={handleGetStarted}
               >
                 <Rocket className="h-4 w-4 mr-2" />
@@ -707,7 +685,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
                                 Download
                               </Button>
                               {version.status === 'latest' && (
-                                <Button size="sm" className="bg-gradient-to-r from-[#FF620A] to-[#993B06]">
+                                <Button size="sm" className="!bg-brand-primary text-white border-none">
                                   <Rocket className="h-3 w-3 mr-1" />
                                   Try Now
                                 </Button>
@@ -761,7 +739,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
                     placeholder="Enter your email address"
                     className="flex-1"
                   />
-                  <Button className="bg-gradient-to-r from-[#FF620A] to-[#993B06]">
+                  <Button className="!bg-brand-primary text-white border-none">
                     Subscribe
                   </Button>
                 </div>
@@ -775,8 +753,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
- text-white">
+      <section className="py-20 bg-bg-secondary text-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -790,7 +767,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
               <Button 
                 size="lg" 
                 variant="secondary"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto !bg-brand-primary text-white border-none"
                 onClick={handleGetStarted}
               >
                 <Rocket className="h-4 w-4 mr-2" />

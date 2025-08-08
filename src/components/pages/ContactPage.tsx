@@ -447,7 +447,7 @@ export function ContactPage() {
               Join thousands of businesses already using PYX AI agents to automate their operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="!bg-text-primary !border-0 text-white shadow-md rounded-lg hover:!bg-text-primary/90">
+              <Button size="lg" className="!bg-brand-primary !border-0 text-white shadow-md rounded-lg hover:!bg-text-primary/90">
                 Start Free Trial
               </Button>
               <Button variant="outline" size="lg">

@@ -320,7 +320,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
       <section className="py-20 !bg-bg-secondary text-text-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 ">
               Ready to Join the AI Revolution?
             </h2>
             <p className="text-xl mb-8 opacity-90">
@@ -332,6 +332,7 @@ export function AboutPage({ onViewChange, isLoggedIn, onShowAuth }: AboutPagePro
                 size="lg" 
                 variant="secondary"
                 onClick={handleGetStarted}
+                className='!bg-brand-primary text-white'
               >
                 <Rocket className="h-4 w-4 mr-2" />
                 Get Started

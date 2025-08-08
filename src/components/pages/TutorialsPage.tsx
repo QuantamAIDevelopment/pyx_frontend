@@ -24,40 +24,18 @@ import {
   Video,
   FileText,
   Code,
-  // Zap,
-  // Users,
-  // Settings,
-  // Target,
-  // TrendingUp,
-  // Award,
   ArrowRight,
-  // ExternalLink,
-  // Download,
   Eye,
-  // ThumbsUp,
-  // MessageCircle,
   Share2,
   Bookmark,
   PlayCircle,
-  // PauseCircle,
-  // SkipForward,
-  // Volume2,
-  // Maximize,
   ChevronRight,
-  // Lightbulb,
   Rocket,
   Globe,
   ShoppingCart,
-  // Mail,
-  // BarChart3,
   Workflow,
   Bot,
-  // Smartphone,
-  // Monitor,
-  // TabletSmartphone,
   GraduationCap,
-  // Calendar,
-  // Timer,
   Library
 } from 'lucide-react'
 
@@ -245,7 +223,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
       modules: 4,
       difficulty: 'Beginner',
       icon: GraduationCap,
-      color: 'from-green-500 to-emerald-600'
+      color: 'bg-brand-primary'
     },
     {
       id: 'path-2',
@@ -255,7 +233,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
       modules: 6,
       difficulty: 'Intermediate',
       icon: ShoppingCart,
-      color: 'from-blue-500 to-cyan-600'
+      color: 'bg-brand-primary'
     },
     {
       id: 'path-3',
@@ -265,7 +243,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
       modules: 8,
       difficulty: 'Advanced',
       icon: Code,
-      color: 'from-purple-500 to-pink-600'
+      color: 'bg-brand-primary'
     }
   ]
 
@@ -379,19 +357,6 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
     setShowTutorialViewer(true)
   }
 
-  // const updateTutorialProgress = (tutorialId: string, progress: number) => {
-  //   setTutorialProgress(prev => ({
-  //     ...prev,
-  //     [tutorialId]: progress
-  //   }))
-  // }
-
-  // const updateSeriesProgress = (seriesId: string, progress: number) => {
-  //   setSeriesProgress(prev => ({
-  //     ...prev,
-  //     [seriesId]: progress
-  //   }))
-  // }
 
   const handleFilterApply = () => {
     setShowFilterDialog(false)
@@ -443,18 +408,16 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-brand-primary text-white">
               <GraduationCap className="h-3 w-3 mr-1" />
               Tutorials
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Learn{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-primary bg-clip-text text-transparent">
                 QAID
               </span>
             </h1>
@@ -466,7 +429,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                className="!bg-brand-primary border-none  w-full sm:w-auto"
                 onClick={handleStartLearning}
               >
                 <Play className="h-4 w-4 mr-2" />
@@ -532,7 +495,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                         {path.difficulty}
                       </Badge>
                     </div>
-                    <CardTitle className="text-xl group-hover:text-blue-600 transition-colors">
+                    <CardTitle className="text-xl group-hover:text-brand-primary transition-colors">
                       {path.title}
                     </CardTitle>
                     <CardDescription className="text-sm leading-relaxed">
@@ -554,7 +517,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                         </div>
                       </div>
                       <Button 
-                        className="w-full group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all !bg-black border-none text-white"
+                        className="w-full group-hover:!bg-brand-primary  transition-all !bg-black border-none text-white"
                         onClick={() => handleLearningPathClick(path)}
                       >
                         <Play className="h-4 w-4 mr-2" />
@@ -625,9 +588,9 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                   const TypeIcon = getTypeIcon(tutorial.type)
                   return (
                     <Card key={tutorial.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 group cursor-pointer" onClick={() => handleTutorialClick(tutorial)}>
-                      <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                          <Play className="h-16 w-16 text-white opacity-80 group-hover:scale-110 transition-transform" />
+                      <div className="aspect-video bg-bg-secondary relative overflow-hidden">
+                        <div className="absolute inset-0  flex items-center justify-center">
+                          <Play className="h-16 w-16 text-black opacity-80 group-hover:scale-110 transition-transform" />
                         </div>
                         <div className="absolute top-4 left-4 flex items-center space-x-2">
                           <Badge variant="secondary" className="text-xs">
@@ -646,7 +609,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                         </div>
                       </div>
                       <CardHeader className="pb-4">
-                        <CardTitle className="text-lg group-hover:text-blue-600 transition-colors line-clamp-2">
+                        <CardTitle className="text-lg group-hover:text-brand-primary transition-colors line-clamp-2">
                           {tutorial.title}
                         </CardTitle>
                         <CardDescription className="text-sm line-clamp-2">
@@ -656,7 +619,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                       <CardContent>
                         <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center space-x-2">
-                            <div className="h-6 w-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] rounded-full flex items-center justify-center">
+                            <div className="h-6 w-6 bg-brand-primary rounded-full flex items-center justify-center">
                               <User className="h-3 w-3 text-white" />
                             </div>
                             <span className="text-sm font-medium">{tutorial.instructor}</span>
@@ -763,13 +726,13 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                           </div>
                           <div className="w-32 bg-muted rounded-full h-2">
                             <div 
-                              className="bg-gradient-to-r from-[#FF620A] to-[#993B06] h-2 rounded-full transition-all duration-300"
+                              className="bg-brand-primary h-2 rounded-full transition-all duration-300"
                               style={{ width: `${series.progress}%` }}
                             />
                           </div>
                           <Button 
                             size="sm" 
-                            className="bg-gradient-to-r from-[#FF620A] to-[#993B06]"
+                            className="!bg-brand-primary border-none text-white "
                             onClick={(e) => {
                               e.stopPropagation()
                               handleSeriesClick(series)
@@ -835,7 +798,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                   <Card key={guide.id} className="hover:shadow-lg transition-all duration-300 cursor-pointer group" onClick={() => handleQuickGuideClick(guide)}>
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r from-[#FF620A] to-[#993B06] group-hover:scale-110 transition-transform">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-primary group-hover:scale-110 transition-transform">
                           <FileText className="h-6 w-6 text-white" />
                         </div>
                         <div className="flex-1">
@@ -866,8 +829,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#FF620A] to-[#993B06]
- text-white">
+      <section className="py-20 bg-bg-secondary text-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -881,7 +843,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
               <Button 
                 size="lg" 
                 variant="secondary"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto !bg-brand-primary border-none text-white hover:bg-brand-primary/90"
                 onClick={handleStartLearning}
               >
                 <Play className="h-4 w-4 mr-2" />
@@ -917,9 +879,9 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
           <ScrollArea className="h-[70vh]">
             <div className="space-y-6">
               {/* Video Player Area */}
-              <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg flex items-center justify-center">
+              <div className="aspect-video bg-bg-secondary rounded-lg flex items-center justify-center">
                 <div className="text-center">
-                  <Play className="h-16 w-16 mx-auto mb-4 text-blue-600" />
+                  <Play className="h-16 w-16 mx-auto mb-4 text-black" />
                   <p className="text-sm text-muted-foreground">Video player would be embedded here</p>
                   <p className="text-xs text-muted-foreground mt-2">Duration: {selectedTutorial?.duration}</p>
                 </div>

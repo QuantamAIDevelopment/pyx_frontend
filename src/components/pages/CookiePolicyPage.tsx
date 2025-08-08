@@ -26,36 +26,20 @@ import {
   Download,
   Share2,
   Database,
-  // Cloud,
-  // Server,
-  // Lock,
-  // Key,
-  // Trash2,
-  // Edit,
   RefreshCw,
- 
   MapPin,
   Building2,
-  
   Gavel,
   BookOpen,
   HelpCircle,
   MessageSquare,
   Clock,
   Target,
- 
   Users,
   BarChart3,
- 
   Monitor,
-
   Share,
-
-  // MapPin as Location,
-  // Flag,
   Home,
- 
-  // Zap as Lightning,
  
 } from 'lucide-react'
 
@@ -224,18 +208,16 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-brand-primary text-white">
               <Cookie className="h-3 w-3 mr-1" />
               Cookie Information
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Cookie{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-primary bg-clip-text text-transparent">
                 Policy
               </span>
             </h1>
@@ -247,7 +229,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                className="!bg-brand-primary border-none w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
                 <MessageSquare className="h-4 w-4 mr-2" />
@@ -349,7 +331,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                       </div>
                     ))}
                     <Separator />
-                    <Button size="sm" className="w-full">
+                    <Button size="sm" className="w-full text-black">
                       Save Preferences
                     </Button>
                   </CardContent>
@@ -656,7 +638,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                         <p className="text-sm mb-3">
                           Use our cookie preference center to control which cookies we set.
                         </p>
-                        <Button size="sm" className="w-full">
+                        <Button size="sm" className="w-full text-black">
                           Manage Preferences
                         </Button>
                       </CardContent>

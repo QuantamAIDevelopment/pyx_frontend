@@ -223,12 +223,10 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
         )}
 
         {/* Hero Section */}
-        <section className={`${agentId ? 'py-12' : 'py-20'} bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20`}>
+        <section className={`${agentId ? 'py-12' : 'py-20'} bg-bg-secondary text-black`}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
-              <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+              <Badge className="mb-6 bg-brand-primary text-white">
                 <Code className="h-3 w-3 mr-1" />
                 {agentId ? `${agentName} API` : 'REST API v1.0'}
               </Badge>
@@ -243,7 +241,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 ) : (
                   <>
                     Build with the{' '}
-                    <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+                    <span className="bg-brand-primary bg-clip-text text-transparent">
                       QAID API
                     </span>
                   </>
@@ -260,7 +258,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                  className="!bg-brand-primary w-full sm:w-auto border-none text-white"
                   onClick={handleGetStarted}
                 >
                   <PlayCircle className="h-4 w-4 mr-2" />
@@ -878,7 +876,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                       GitHub Issues
                     </Button>
                     <Button
-                      className="w-full bg-gradient-to-r from-[#FF620A] to-[#993B06] border-none"
+                      className="w-full !bg-brand-primary border-none"
                       onClick={() => onViewChange('premium-support')}
                     >
                       <Star className="h-4 w-4 mr-2" />
@@ -892,8 +890,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-brand-primary
- text-white">
+        <section className="py-20 bg-bg-secondary text-black">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
@@ -907,7 +904,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 <Button
                   size="lg"
                   variant="secondary"
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto !bg-brand-primary hover:!bg-brand-primary/90 text-white"
                   onClick={handleGetStarted}
                 >
                   <Zap className="h-4 w-4 mr-2" />

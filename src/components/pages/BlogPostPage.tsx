@@ -204,12 +204,12 @@ export function BlogPostPage({ post, onBack }: BlogPostPageProps) {
           </div>
 
           {/* Call to action */}
-          <div className="bg-gradient-to-r from-[#FF620A] to-[#993B06] dark:from-blue-950/20 dark:to-purple-950/20 rounded-lg p-6 text-center">
+          <div className="bg-bg-secondary  rounded-lg p-6 text-center">
             <h3 className="font-medium mb-2">Ready to Transform Your Business?</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Discover how QAID's AI agents can automate your workflows and boost productivity.
             </p>
-            <Button>
+            <Button className='!bg-brand-primary text-white border-none hover:bg-brand-primary/90' size="lg" onClick={() => window.location.href = '/get-started'}>
               Get Started Free
             </Button>
           </div>

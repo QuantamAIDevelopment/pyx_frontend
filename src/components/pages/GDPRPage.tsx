@@ -4,8 +4,6 @@ import { useState } from 'react'
 import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
-// import { Separator } from '../common/ui/separator'
-// import { ScrollArea } from '../common/ui/scroll-area'
 import { 
   Shield,
   Scale,
@@ -45,108 +43,9 @@ import {
   // Star,
   Users,
   UserCheck,
-  // UserX,
-  // UserPlus,
   Settings,
-  // Sliders,
-  // ToggleLeft,
-  // ToggleRight,
-  // Search,
-  // Filter,
-  // Copy,
-  // Clipboard,
-  // ClipboardCheck,
-  // FileSearch,
-  // FileX,
-  // FilePlus,
-  // FolderOpen,
-  // Archive,
-  // Package,
-  // Inbox,
-  // Send,
-  // Upload,
-  // Download as DownloadIcon,
-  // Link,
-  // Unlink,
-  // Network,
-  // Wifi,
-  // Router,
-  // HardDrive,
-  // Cpu,
-  // Code,
-  // Terminal,
-  // Command,
-  // Play,
-  // Pause,
-  // Stop,
-  // SkipForward,
-  // SkipBack,
-  // Home,
-  // Building,
-  // Store,
-  // Briefcase,
-  // GraduationCap,
-  // Stethoscope,
-  // Flag,
-  // Navigation,
-  // Compass,
-  // Map,
-  // Layers,
-  // Grid,
-  // List,
-  // Table,
-  // BarChart3,
-  // TrendingUp,
-  // Activity,
-  // PieChart,
-  // LineChart,
-  // AreaChart,
-  // Monitor,
-  // Smartphone,
-  // Tablet,
-  // Laptop,
-  // MousePointer,
-  // Keyboard,
-  // Mic,
-  // Camera,
-  // Video,
-  // Image,
-  // FileVideo,
-  // FileImage,
-  // Folder,
-  // FolderPlus,
-  // FolderMinus,
-  // ShoppingCart,
-  // CreditCard,
-  // DollarSign,
-  // Percent,
-  // Calculator,
-  // Plus,
-  // Minus,
   X,
-  // Check,
-  // AlertTriangle,
   Ban,
-  // XCircle,
-  // CheckCircle2,
-  // Crown,
-  // Sparkles,
-  // Flame,
-  // Sun,
-  // Moon,
-  // Stars,
-  // CloudRain,
-  // Snowflake,
-  // Wind,
-  // Thermometer,
-  // Rocket,
-  // Plane,
-  // Car,
-  // Bus,
-  // Bike,
-  // Train,
-  // Ship,
-  // Truck
 } from 'lucide-react'
 
 interface GDPRPageProps {
@@ -378,18 +277,16 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]
-
- dark:from-blue-950/20 dark:via-purple-950/20 dark:to-pink-950/20">
+      <section className="py-20 bg-bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-brand-primary text-white">
               <Shield className="h-3 w-3 mr-1" />
               GDPR Compliance
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               GDPR{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-primary bg-clip-text text-transparent">
                 Compliance
               </span>
             </h1>
@@ -401,7 +298,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                className="!bg-brand-primary border-none w-full sm:w-auto"
                 onClick={() => onViewChange('contact')}
               >
                 <UserCheck className="h-4 w-4 mr-2" />
@@ -933,7 +830,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
                     <Card>
                       <CardContent className="pt-4">
-                        <h4 className="font-semibold mb-2 flex items-center space-x-2">
+                        <h4 className="font-semibold mb-2 flex items-center space-x-2 ">
                           <Settings className="h-4 w-4 text-blue-600" />
                           <span>Self-Service Portal</span>
                         </h4>
@@ -941,7 +838,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                           Access your account settings to update information, download data, 
                           or delete your account.
                         </p>
-                        <Button size="sm" className="w-full">
+                        <Button size="sm" className="w-full !text-black">
                           Access Portal
                         </Button>
                       </CardContent>
@@ -1044,7 +941,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                             </div>
                             <div className="flex items-center space-x-2 text-sm">
                               <Phone className="h-4 w-4 text-muted-foreground" />
-                              <span>+1 (555) 123-GDPR</span>
+                              <span>+91 8776677886-GDPR</span>
                             </div>
                           </div>
                         </div>
@@ -1079,11 +976,11 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
-                          <span>+1 (555) 123-QAID</span>
+                          <span>+91 9866667786</span>
                         </div>
                         <div className="flex items-start space-x-2 text-sm">
                           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
-                          <span>123 AI Innovation Drive<br />San Francisco, CA 94105</span>
+                          <span>123 AI Street<br />Hyderabad, India - 500001</span>
                         </div>
                       </CardContent>
                     </Card>
@@ -1110,7 +1007,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
 
                 {/* Quick Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12 pt-8 border-t">
-                  <Button onClick={() => onViewChange('privacy')}>
+                  <Button onClick={() => onViewChange('privacy')} className='text-black'>
                     <Shield className="h-4 w-4 mr-2" />
                     Privacy Policy
                   </Button>

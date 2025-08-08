@@ -81,16 +81,16 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#FFE8DC] via-[#FFD4BD] to-[#FCD2BD]">
+      <section className="py-20 bg-bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-[#FF620A] to-[#993B06] text-white">
+            <Badge className="mb-6 bg-brand-primary text-white">
               <Gavel className="h-3 w-3 mr-1" />
               Legal Agreement
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Terms of{' '}
-              <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
+              <span className="bg-brand-primary bg-clip-text text-transparent">
                 Service
               </span>
             </h1>
@@ -102,7 +102,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
+                className="!bg-brand-primary w-full sm:w-auto border-none"
                 onClick={() => onViewChange('contact')}
               >
                 <MessageSquare className="h-4 w-4 mr-2" />
