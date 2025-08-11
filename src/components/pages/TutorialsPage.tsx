@@ -81,7 +81,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
   const featuredTutorials = [
     {
       id: '1',
-      title: 'Complete QAID Setup Guide',
+      title: 'Complete PYX Setup Guide',
       description: 'Learn how to set up your first AI agent from scratch in under 10 minutes',
       type: 'video',
       duration: '9:45',
@@ -138,15 +138,15 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
   const tutorialSeries = [
     {
       id: 'series-1',
-      title: 'QAID Fundamentals',
-      description: 'Complete foundation course covering all basics of QAID',
+      title: 'PYX Fundamentals',
+      description: 'Complete foundation course covering all basics of PYX',
       totalLessons: 8,
       totalDuration: '2h 15m',
       difficulty: 'Beginner',
       progress: 62,
       instructor: 'Jennifer Liu',
       lessons: [
-        { id: 1, title: 'Introduction to QAID', duration: '12:30', completed: true },
+        { id: 1, title: 'Introduction to PYX', duration: '12:30', completed: true },
         { id: 2, title: 'Creating Your First Agent', duration: '18:45', completed: true },
         { id: 3, title: 'Understanding Workflows', duration: '15:20', completed: true },
         { id: 4, title: 'Data Connections', duration: '22:10', completed: true },
@@ -218,7 +218,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
     {
       id: 'path-1',
       title: 'Complete Beginner',
-      description: 'Start from zero and become proficient with QAID',
+      description: 'Start from zero and become proficient with PYX',
       duration: '6-8 hours',
       modules: 4,
       difficulty: 'Beginner',
@@ -348,7 +348,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
     // Create a tutorial-like object for the guide
     const guideTutorial = {
       ...guide,
-      instructor: 'QAID Team',
+      instructor: 'PYX Team',
       views: '2.5K',
       rating: 4.6,
       progress: 0
@@ -418,7 +418,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Learn{' '}
               <span className="bg-brand-primary bg-clip-text text-transparent">
-                QAID
+                PYX
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -833,11 +833,11 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Ready to Master QAID?
+              Ready to Master PYX?
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Join thousands of learners who are already automating their workflows 
-              and boosting productivity with QAID.
+              and boosting productivity with PYX.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 
@@ -944,7 +944,7 @@ export function TutorialsPage({ onViewChange, isLoggedIn, onShowAuth }: Tutorial
                   <li>Common pitfalls to avoid</li>
                 </ul>
                 <h4>Prerequisites:</h4>
-                <p>Basic understanding of QAID platform recommended but not required.</p>
+                <p>Basic understanding of PYX platform recommended but not required.</p>
               </div>
             </div>
           </ScrollArea>

@@ -65,13 +65,13 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
     {
       id: '1',
       title: 'Building Your First AI Agent: A Complete Guide',
-      description: 'Learn how to create, deploy, and manage your first AI agent from scratch using QAID\'s powerful platform.',
+      description: 'Learn how to create, deploy, and manage your first AI agent from scratch using PYX\'s powerful platform.',
       host: {
         name: 'Dr. Sarah Chen',
         role: 'Lead AI Researcher',
         avatar: '/api/placeholder/50/50',
         bio: 'AI researcher with 10+ years of experience in machine learning and automation.',
-        company: 'QAID Technologies'
+        company: 'PYX Technologies'
       },
       category: 'ai-fundamentals',
       date: '2024-12-20',
@@ -85,7 +85,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
       thumbnail: '/api/placeholder/400/250',
       agenda: [
         'Introduction to AI Agents',
-        'Setting up your QAID workspace',
+        'Setting up your PYX workspace',
         'Creating your first agent',
         'Testing and debugging',
         'Deployment strategies',
@@ -94,7 +94,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
       learningOutcomes: [
         'Understand AI agent fundamentals',
         'Build and deploy your first agent',
-        'Master QAID development tools',
+        'Master PYX development tools',
         'Implement best practices'
       ],
       tags: ['AI', 'Beginner', 'Tutorial', 'Free'],
@@ -112,7 +112,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
         role: 'Senior Solutions Architect',
         avatar: '/api/placeholder/50/50',
         bio: 'Expert in distributed systems and multi-agent architectures.',
-        company: 'QAID Technologies'
+        company: 'PYX Technologies'
       },
       category: 'agent-development',
       date: '2024-12-22',
@@ -147,13 +147,13 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
     {
       id: '3',
       title: 'E-commerce Automation Success Stories',
-      description: 'Learn from real businesses that achieved 300%+ growth using QAID AI agents for e-commerce automation.',
+      description: 'Learn from real businesses that achieved 300%+ growth using PYX AI agents for e-commerce automation.',
       host: {
         name: 'Jennifer Walsh',
         role: 'Business Development Director',
         avatar: '/api/placeholder/50/50',
         bio: 'Specializes in AI-driven business transformation and growth strategies.',
-        company: 'QAID Technologies'
+        company: 'PYX Technologies'
       },
       category: 'case-studies',
       date: '2024-12-25',
@@ -194,7 +194,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
         role: 'Healthcare AI Specialist',
         avatar: '/api/placeholder/50/50',
         bio: 'Medical doctor and AI researcher focused on healthcare applications.',
-        company: 'QAID Technologies'
+        company: 'PYX Technologies'
       },
       category: 'industry-specific',
       date: '2024-12-18',
@@ -241,7 +241,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
         role: 'Financial Technology Expert',
         avatar: '/api/placeholder/50/50',
         bio: 'Former banking executive specializing in AI and fintech innovations.',
-        company: 'QAID Technologies'
+        company: 'PYX Technologies'
       },
       category: 'industry-specific',
       date: '2024-12-15',
@@ -288,7 +288,7 @@ export function WebinarsPage({ onViewChange, isLoggedIn, onShowAuth }: WebinarsP
         role: 'Process Automation Consultant',
         avatar: '/api/placeholder/50/50',
         bio: 'Business process expert with 15+ years in operational excellence.',
-        company: 'QAID Technologies'
+        company: 'PYX Technologies'
       },
       category: 'business-automation',
       date: '2024-12-12',

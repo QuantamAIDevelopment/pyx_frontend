@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaFileUpload} from 'react-icons/fa';
 import axios from 'axios';
  
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/testmonial';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/testmonial';
  
 type TestimonialResult = {
   testimonial: string;

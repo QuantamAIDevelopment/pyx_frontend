@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 // import { motion } from 'framer-motion';
 import { FaSync, FaCheckCircle, FaExclamationTriangle, FaClock, FaDownload } from 'react-icons/fa';
  
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/details-sync';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/details-sync';
  
 type Candidate = {
   'Candidate ID': string;

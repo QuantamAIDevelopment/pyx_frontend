@@ -74,29 +74,29 @@
 //     {
 //       name: 'Sarah Chen',
 //       title: 'CEO & Co-Founder',
-//       bio: 'Former VP of Engineering at Google, Sarah leads QAID with a vision to democratize AI automation. She holds a PhD in Computer Science from Stanford and has 15+ years of experience in AI and machine learning.',
+//       bio: 'Former VP of Engineering at Google, Sarah leads PYX with a vision to democratize AI automation. She holds a PhD in Computer Science from Stanford and has 15+ years of experience in AI and machine learning.',
 //       avatar: '/api/placeholder/150/150',
 //       linkedin: 'https://linkedin.com/in/sarahchen',
 //       twitter: '@sarahchen',
-//       email: 'sarah@qaid.ai'
+//       email: 'sarah@PYX.ai'
 //     },
 //     {
 //       name: 'Marcus Rodriguez',
 //       title: 'CTO & Co-Founder',
-//       bio: 'Previously Principal Engineer at Meta, Marcus architected QAID\'s core platform. He specializes in distributed systems and has led engineering teams at scale for over 12 years.',
+//       bio: 'Previously Principal Engineer at Meta, Marcus architected PYX\'s core platform. He specializes in distributed systems and has led engineering teams at scale for over 12 years.',
 //       avatar: '/api/placeholder/150/150',
 //       linkedin: 'https://linkedin.com/in/marcusrodriguez',
 //       twitter: '@marcusrtech',
-//       email: 'marcus@qaid.ai'
+//       email: 'marcus@PYX.ai'
 //     },
 //     {
 //       name: 'Emma Thompson',
 //       title: 'VP of Product',
-//       bio: 'Former Product Director at Stripe, Emma drives product strategy at QAID. She has a proven track record of building developer-first products that scale to millions of users.',
+//       bio: 'Former Product Director at Stripe, Emma drives product strategy at PYX. She has a proven track record of building developer-first products that scale to millions of users.',
 //       avatar: '/api/placeholder/150/150',
 //       linkedin: 'https://linkedin.com/in/emmathompson',
 //       twitter: '@emmathompson',
-//       email: 'emma@qaid.ai'
+//       email: 'emma@PYX.ai'
 //     },
 //     {
 //       name: 'David Kim',
@@ -105,42 +105,42 @@
 //       avatar: '/api/placeholder/150/150',
 //       linkedin: 'https://linkedin.com/in/davidkim',
 //       twitter: '@davidkim',
-//       email: 'david@qaid.ai'
+//       email: 'david@PYX.ai'
 //     }
 //   ]
 
 //   const pressReleases = [
 //     {
 //       date: '2024-01-15',
-//       title: 'QAID Announces Major Platform Update with Advanced AI Capabilities',
+//       title: 'PYX Announces Major Platform Update with Advanced AI Capabilities',
 //       summary: 'New features include custom node development, enterprise security suite, and enhanced workflow templates.',
 //       link: '#',
 //       category: 'Product Update'
 //     },
 //     {
 //       date: '2023-12-01',
-//       title: 'QAID Raises $50M Series B to Accelerate AI Automation Platform',
+//       title: 'PYX Raises $50M Series B to Accelerate AI Automation Platform',
 //       summary: 'Funding round led by Sequoia Capital with participation from existing investors to expand global operations.',
 //       link: '#',
 //       category: 'Funding'
 //     },
 //     {
 //       date: '2023-10-20',
-//       title: 'QAID Surpasses 10,000 Active Users Milestone',
+//       title: 'PYX Surpasses 10,000 Active Users Milestone',
 //       summary: 'Platform growth driven by enterprise adoption and developer community engagement.',
 //       link: '#',
 //       category: 'Milestone'
 //     },
 //     {
 //       date: '2023-09-15',
-//       title: 'QAID Launches Integration Marketplace with 50+ Supported Platforms',
+//       title: 'PYX Launches Integration Marketplace with 50+ Supported Platforms',
 //       summary: 'New marketplace enables seamless connections with popular business tools and e-commerce platforms.',
 //       link: '#',
 //       category: 'Product Launch'
 //     },
 //     {
 //       date: '2023-08-01',
-//       title: 'QAID Wins "Best AI Platform" at TechCrunch Disrupt 2023',
+//       title: 'PYX Wins "Best AI Platform" at TechCrunch Disrupt 2023',
 //       summary: 'Recognition for innovation in democratizing AI automation for businesses of all sizes.',
 //       link: '#',
 //       category: 'Award'
@@ -151,7 +151,7 @@
 //     {
 //       date: '2024-01-20',
 //       publication: 'TechCrunch',
-//       title: 'How QAID is Making AI Automation Accessible to Every Business',
+//       title: 'How PYX is Making AI Automation Accessible to Every Business',
 //       author: 'Sarah Perez',
 //       link: '#',
 //       logo: '/api/placeholder/60/30'
@@ -167,7 +167,7 @@
 //     {
 //       date: '2023-12-15',
 //       publication: 'Wired',
-//       title: 'Inside QAID: Building the Operating System for AI Workflows',
+//       title: 'Inside PYX: Building the Operating System for AI Workflows',
 //       author: 'Jane Doe',
 //       link: '#',
 //       logo: '/api/placeholder/60/30'
@@ -175,7 +175,7 @@
 //     {
 //       date: '2023-11-30',
 //       publication: 'VentureBeat',
-//       title: 'QAID\'s No-Code Approach to AI is Transforming Business Operations',
+//       title: 'PYX\'s No-Code Approach to AI is Transforming Business Operations',
 //       author: 'Mike Johnson',
 //       link: '#',
 //       logo: '/api/placeholder/60/30'
@@ -183,7 +183,7 @@
 //     {
 //       date: '2023-11-15',
 //       publication: 'The Information',
-//       title: 'QAID Emerges as Leader in Enterprise AI Automation Space',
+//       title: 'PYX Emerges as Leader in Enterprise AI Automation Space',
 //       author: 'Lisa Wang',
 //       link: '#',
 //       logo: '/api/placeholder/60/30'
@@ -193,18 +193,18 @@
 //   const brandAssets = [
 //     {
 //       category: 'Logos',
-//       description: 'QAID logos in various formats and configurations',
+//       description: 'PYX logos in various formats and configurations',
 //       assets: [
-//         { name: 'QAID Logo - Primary (PNG)', size: '2.1 MB', format: 'PNG', dimensions: '2000x600px' },
-//         { name: 'QAID Logo - Primary (SVG)', size: '45 KB', format: 'SVG', dimensions: 'Vector' },
-//         { name: 'QAID Logo - White (PNG)', size: '1.8 MB', format: 'PNG', dimensions: '2000x600px' },
-//         { name: 'QAID Logo - Icon Only (PNG)', size: '890 KB', format: 'PNG', dimensions: '512x512px' },
-//         { name: 'QAID Logo - Horizontal (PNG)', size: '1.5 MB', format: 'PNG', dimensions: '1200x400px' }
+//         { name: 'PYX Logo - Primary (PNG)', size: '2.1 MB', format: 'PNG', dimensions: '2000x600px' },
+//         { name: 'PYX Logo - Primary (SVG)', size: '45 KB', format: 'SVG', dimensions: 'Vector' },
+//         { name: 'PYX Logo - White (PNG)', size: '1.8 MB', format: 'PNG', dimensions: '2000x600px' },
+//         { name: 'PYX Logo - Icon Only (PNG)', size: '890 KB', format: 'PNG', dimensions: '512x512px' },
+//         { name: 'PYX Logo - Horizontal (PNG)', size: '1.5 MB', format: 'PNG', dimensions: '1200x400px' }
 //       ]
 //     },
 //     {
 //       category: 'Product Screenshots',
-//       description: 'High-resolution screenshots of QAID platform',
+//       description: 'High-resolution screenshots of PYX platform',
 //       assets: [
 //         { name: 'Dashboard Overview', size: '3.2 MB', format: 'PNG', dimensions: '1920x1080px' },
 //         { name: 'Workflow Builder Interface', size: '2.8 MB', format: 'PNG', dimensions: '1920x1080px' },
@@ -215,7 +215,7 @@
 //     },
 //     {
 //       category: 'Executive Photos',
-//       description: 'Professional headshots of QAID leadership team',
+//       description: 'Professional headshots of PYX leadership team',
 //       assets: [
 //         { name: 'Sarah Chen - CEO (High-res)', size: '2.4 MB', format: 'JPG', dimensions: '2000x2000px' },
 //         { name: 'Marcus Rodriguez - CTO (High-res)', size: '2.2 MB', format: 'JPG', dimensions: '2000x2000px' },
@@ -227,7 +227,7 @@
 //       category: 'Brand Guidelines',
 //       description: 'Complete brand guidelines and style guide',
 //       assets: [
-//         { name: 'QAID Brand Guidelines (PDF)', size: '8.5 MB', format: 'PDF', dimensions: 'Document' },
+//         { name: 'PYX Brand Guidelines (PDF)', size: '8.5 MB', format: 'PDF', dimensions: 'Document' },
 //         { name: 'Color Palette Guide', size: '1.2 MB', format: 'PDF', dimensions: 'Document' },
 //         { name: 'Typography Guidelines', size: '950 KB', format: 'PDF', dimensions: 'Document' }
 //       ]
@@ -269,7 +269,7 @@
 //     { date: '2023-03', milestone: 'Series A Funding - $15M', description: 'Led by Andreessen Horowitz' },
 //     { date: '2022-12', milestone: 'Developer Mode Beta Launch', description: 'Advanced workflow builder' },
 //     { date: '2022-08', milestone: 'Seed Funding - $3M', description: 'Initial funding round' },
-//     { date: '2022-06', milestone: 'Company Founded', description: 'QAID AI Agents Marketplace established' }
+//     { date: '2022-06', milestone: 'Company Founded', description: 'PYX AI Agents Marketplace established' }
 //   ]
 
 //   const copyToClipboard = (text: string, type: string) => {
@@ -301,7 +301,7 @@
 //               Press Kit
 //             </Badge>
 //             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-//               QAID{' '}
+//               PYX{' '}
 //               <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
 //                 Press Kit
 //               </span>
@@ -340,7 +340,7 @@
 //           <div className="text-center mb-12">
 //             <h2 className="text-3xl font-bold mb-4">Company at a Glance</h2>
 //             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-//               Key facts and figures about QAID AI Agents Marketplace
+//               Key facts and figures about PYX AI Agents Marketplace
 //             </p>
 //           </div>
 
@@ -466,7 +466,7 @@
 //                 <div className="text-center mb-8">
 //                   <h2 className="text-3xl font-bold mb-4">Company Information</h2>
 //                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-//                     Key information and messaging about QAID
+//                     Key information and messaging about PYX
 //                   </p>
 //                 </div>
 
@@ -485,7 +485,7 @@
 //                       <div>
 //                         <h4 className="font-medium mb-2">Company Description</h4>
 //                         <p className="text-sm text-muted-foreground">
-//                           QAID is the leading AI agents marketplace that enables businesses to create, deploy, and manage intelligent automation workflows without requiring technical expertise. Our platform combines the power of artificial intelligence with an intuitive no-code interface, making advanced automation accessible to organizations of all sizes.
+//                           PYX is the leading AI agents marketplace that enables businesses to create, deploy, and manage intelligent automation workflows without requiring technical expertise. Our platform combines the power of artificial intelligence with an intuitive no-code interface, making advanced automation accessible to organizations of all sizes.
 //                         </p>
 //                       </div>
 //                       <div>
@@ -509,13 +509,13 @@
 //                           <Button
 //                             variant="ghost"
 //                             size="sm"
-//                             onClick={() => copyToClipboard("QAID is the leading AI agents marketplace that democratizes automation for businesses. Our no-code platform enables companies to create intelligent workflows using pre-built AI agents, reducing costs by 60% and increasing productivity 3x.", "short")}
+//                             onClick={() => copyToClipboard("PYX is the leading AI agents marketplace that democratizes automation for businesses. Our no-code platform enables companies to create intelligent workflows using pre-built AI agents, reducing costs by 60% and increasing productivity 3x.", "short")}
 //                           >
 //                             {copiedText === "short" ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
 //                           </Button>
 //                         </div>
 //                         <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded">
-//                           QAID is the leading AI agents marketplace that democratizes automation for businesses. Our no-code platform enables companies to create intelligent workflows using pre-built AI agents, reducing costs by 60% and increasing productivity 3x.
+//                           PYX is the leading AI agents marketplace that democratizes automation for businesses. Our no-code platform enables companies to create intelligent workflows using pre-built AI agents, reducing costs by 60% and increasing productivity 3x.
 //                         </p>
 //                       </div>
 
@@ -525,13 +525,13 @@
 //                           <Button
 //                             variant="ghost"
 //                             size="sm"
-//                             onClick={() => copyToClipboard("QAID AI Agents Marketplace is revolutionizing business automation by making artificial intelligence accessible to everyone. Founded in 2022 by former Google and Meta executives, QAID provides a comprehensive platform where businesses can discover, customize, and deploy AI agents for various operational needs. With over 10,000 active users and $50M in Series B funding, QAID has processed over 1 million workflows, helping companies reduce operational costs by up to 60% while increasing productivity threefold. The platform features 50+ integrations with popular business tools and supports both no-code and developer-friendly customization options.", "medium")}
+//                             onClick={() => copyToClipboard("PYX AI Agents Marketplace is revolutionizing business automation by making artificial intelligence accessible to everyone. Founded in 2022 by former Google and Meta executives, PYX provides a comprehensive platform where businesses can discover, customize, and deploy AI agents for various operational needs. With over 10,000 active users and $50M in Series B funding, PYX has processed over 1 million workflows, helping companies reduce operational costs by up to 60% while increasing productivity threefold. The platform features 50+ integrations with popular business tools and supports both no-code and developer-friendly customization options.", "medium")}
 //                           >
 //                             {copiedText === "medium" ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
 //                           </Button>
 //                         </div>
 //                         <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded">
-//                           QAID AI Agents Marketplace is revolutionizing business automation by making artificial intelligence accessible to everyone. Founded in 2022 by former Google and Meta executives, QAID provides a comprehensive platform where businesses can discover, customize, and deploy AI agents for various operational needs. With over 10,000 active users and $50M in Series B funding, QAID has processed over 1 million workflows, helping companies reduce operational costs by up to 60% while increasing productivity threefold. The platform features 50+ integrations with popular business tools and supports both no-code and developer-friendly customization options.
+//                           PYX AI Agents Marketplace is revolutionizing business automation by making artificial intelligence accessible to everyone. Founded in 2022 by former Google and Meta executives, PYX provides a comprehensive platform where businesses can discover, customize, and deploy AI agents for various operational needs. With over 10,000 active users and $50M in Series B funding, PYX has processed over 1 million workflows, helping companies reduce operational costs by up to 60% while increasing productivity threefold. The platform features 50+ integrations with popular business tools and supports both no-code and developer-friendly customization options.
 //                         </p>
 //                       </div>
 
@@ -556,7 +556,7 @@
 //                 <div className="text-center mb-8">
 //                   <h2 className="text-3xl font-bold mb-4">Executive Team</h2>
 //                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-//                     Meet the leadership team driving QAID's mission
+//                     Meet the leadership team driving PYX's mission
 //                   </p>
 //                 </div>
 
@@ -602,7 +602,7 @@
 //                 <div className="text-center mb-8">
 //                   <h2 className="text-3xl font-bold mb-4">Press Releases & Coverage</h2>
 //                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-//                     Latest news and media coverage about QAID
+//                     Latest news and media coverage about PYX
 //                   </p>
 //                 </div>
 
@@ -714,7 +714,7 @@
 //                 <div className="text-center mb-8">
 //                   <h2 className="text-3xl font-bold mb-4">Company Timeline</h2>
 //                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-//                     Key milestones in QAID's journey
+//                     Key milestones in PYX's journey
 //                   </p>
 //                 </div>
 
@@ -762,7 +762,7 @@
 //                     <div className="flex items-center gap-3">
 //                       <Mail className="h-5 w-5 text-muted-foreground" />
 //                       <div>
-//                         <p className="font-medium">press@qaid.ai</p>
+//                         <p className="font-medium">press@PYX.ai</p>
 //                         <p className="text-sm text-muted-foreground">General press inquiries</p>
 //                       </div>
 //                     </div>
@@ -789,7 +789,7 @@
 //                     <div className="flex items-center gap-3">
 //                       <Users className="h-5 w-5 text-muted-foreground" />
 //                       <div>
-//                         <p className="font-medium">executives@qaid.ai</p>
+//                         <p className="font-medium">executives@PYX.ai</p>
 //                         <p className="text-sm text-muted-foreground">Leadership interviews</p>
 //                       </div>
 //                     </div>

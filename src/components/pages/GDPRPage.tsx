@@ -292,7 +292,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Your privacy rights under the General Data Protection Regulation. 
-              Learn how QAID protects your personal data and ensures compliance.
+              Learn how PYX protects your personal data and ensures compliance.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto mb-12">
@@ -426,7 +426,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                     </p>
                   </div>
                   <p>
-                    QAID is committed to full compliance with GDPR requirements and ensuring your privacy rights 
+                    PYX is committed to full compliance with GDPR requirements and ensuring your privacy rights 
                     are protected. This page explains how we comply with GDPR, your rights under the regulation, 
                     and how you can exercise those rights.
                   </p>
@@ -436,7 +436,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                       <div>
                         <h4 className="font-semibold text-green-800 dark:text-green-200 m-0 mb-1">Our Commitment</h4>
                         <p className="text-sm text-green-700 dark:text-green-300 m-0">
-                          QAID applies GDPR standards globally, ensuring consistent privacy protection 
+                          PYX applies GDPR standards globally, ensuring consistent privacy protection 
                           for all users regardless of their location.
                         </p>
                       </div>
@@ -451,7 +451,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                     <h2 className="text-2xl font-bold m-0">Our GDPR Commitment</h2>
                   </div>
                   <p>
-                    QAID is dedicated to maintaining the highest standards of data protection and privacy. 
+                    PYX is dedicated to maintaining the highest standards of data protection and privacy. 
                     Our GDPR compliance framework includes:
                   </p>
                   
@@ -937,7 +937,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                           <div className="space-y-2">
                             <div className="flex items-center space-x-2 text-sm">
                               <Mail className="h-4 w-4 text-muted-foreground" />
-                              <span>dpo@qaid.ai</span>
+                              <span>dpo@PYX.ai</span>
                             </div>
                             <div className="flex items-center space-x-2 text-sm">
                               <Phone className="h-4 w-4 text-muted-foreground" />
@@ -966,13 +966,13 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                       <CardHeader className="pb-3">
                         <CardTitle className="text-base flex items-center space-x-2">
                           <Building2 className="h-4 w-4" />
-                          <span>QAID Technologies, Inc.</span>
+                          <span>PYX Technologies, Inc.</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>privacy@qaid.ai</span>
+                          <span>privacy@PYX.ai</span>
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
@@ -994,7 +994,7 @@ export function GDPRPage({ onViewChange }: GDPRPageProps) {
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>dpo@qaid.ai</span>
+                          <span>dpo@PYX.ai</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                           For GDPR-related inquiries, data subject requests, 

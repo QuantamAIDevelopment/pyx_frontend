@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 
 const API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/03855d19-fadb-4ded-8aaa-07566948c44d';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/03855d19-fadb-4ded-8aaa-07566948c44d';
 
 const AIPoweredRestaurantOrderChatbot: React.FC = () => {
   const [input, setInput] = useState<string>('');

@@ -52,7 +52,7 @@ const ContractRedFlagDetectorCard: React.FC<ContractRedFlagDetectorCardProps> = 
     });
 
     try {
-      const response = await fetch('https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/contract', {
+      const response = await fetch('https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/contract', {
         method: 'POST',
         body: formData,
       });

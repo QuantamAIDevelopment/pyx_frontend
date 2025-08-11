@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const SENTIMENT_API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/Sentiment agent';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/Sentiment agent';
 
 const SentimentAgentPage: React.FC = () => {
   const [report, setReport] = useState<string>('');

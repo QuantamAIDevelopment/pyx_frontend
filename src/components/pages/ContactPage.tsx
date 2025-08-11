@@ -19,7 +19,6 @@ import {
   HelpCircle,
   CheckCircle,
   Users,
-  
   Twitter,
   Linkedin,
   Github,

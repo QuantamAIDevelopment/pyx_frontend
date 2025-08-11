@@ -6,7 +6,7 @@ import axios from 'axios';
 import { BUTTON_CLASSES } from '../utils/colors';
 
 // API logic from mcqGenerator.js, converted to TypeScript
-const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
+const API_BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
 const handleRequest = async (endpoint: string, formData: FormData) => {
     try {

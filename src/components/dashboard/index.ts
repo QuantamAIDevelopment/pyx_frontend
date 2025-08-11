@@ -1,0 +1,5 @@
+export { OverviewTab } from './OverviewTab'
+export { AgentsTab } from './AgentsTab'
+export { WalletTab } from './WalletTab'
+export { APIsTab } from './APIsTab'
+export { AnalyticsTab } from './AnalyticsTab'

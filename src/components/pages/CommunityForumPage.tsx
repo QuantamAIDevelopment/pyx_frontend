@@ -5,41 +5,31 @@ import { Button } from '../common/ui/button'
 import { Card, CardContent,  CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
 import { Input } from '../common/ui/input'
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { Avatar, AvatarFallback, AvatarImage } from '../common/ui/avatar'
 import { 
   MessageSquare,
   Search,
   Users,
-  // Zap,
-  // Heart,
   Eye,
   MessageCircle,
   ThumbsUp,
   Clock,
   Star,
   Trophy,
-  // Fire,
   TrendingUp,
   HelpCircle,
   Lightbulb,
   Code,
   Bug,
-  // Settings,
   Pin,
   ArrowRight,
   Plus,
   Filter,
   BookOpen,
-  // Gem,
   Crown,
   CheckCircle,
   Calendar,
   MapPin,
-  // Globe,
-  // Github,
-  // Twitter,
-  // Linkedin
 } from 'lucide-react'
 
 interface CommunityForumPageProps {
@@ -65,7 +55,7 @@ export function CommunityForumPage({ onViewChange, isLoggedIn, onShowAuth }: Com
   const forumPosts = [
     {
       id: '1',
-      title: 'How to implement custom authentication with QAID agents?',
+      title: 'How to implement custom authentication with PYX agents?',
       category: 'help',
       author: {
         name: 'Sarah Chen',
@@ -73,7 +63,7 @@ export function CommunityForumPage({ onViewChange, isLoggedIn, onShowAuth }: Com
         reputation: 1250,
         badge: 'Expert'
       },
-      content: 'I\'m trying to implement custom authentication for my QAID agents but running into issues with the OAuth flow. Has anyone successfully integrated custom auth providers?',
+      content: 'I\'m trying to implement custom authentication for my PYX agents but running into issues with the OAuth flow. Has anyone successfully integrated custom auth providers?',
       replies: 12,
       views: 234,
       likes: 8,
@@ -93,7 +83,7 @@ export function CommunityForumPage({ onViewChange, isLoggedIn, onShowAuth }: Com
         reputation: 2100,
         badge: 'Pro'
       },
-      content: 'Just wanted to share our success story with QAID. We built an automated customer support system that handles 80% of inquiries and increased our conversion rate by 40%.',
+      content: 'Just wanted to share our success story with PYX. We built an automated customer support system that handles 80% of inquiries and increased our conversion rate by 40%.',
       replies: 28,
       views: 1542,
       likes: 45,
@@ -218,7 +208,7 @@ export function CommunityForumPage({ onViewChange, isLoggedIn, onShowAuth }: Com
       attendees: 234
     },
     {
-      title: 'Community AMA with QAID Team',
+      title: 'Community AMA with PYX Team',
       date: 'Jan 25, 2024',
       time: '11:00 AM PST',
       location: 'Discord',
@@ -272,7 +262,7 @@ export function CommunityForumPage({ onViewChange, isLoggedIn, onShowAuth }: Com
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Connect with the{' '}
               <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
-                QAID Community
+                PYX Community
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">

@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import {  FaBell } from 'react-icons/fa';
 
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/c21ff5b7-64e9-465c-aa20-77a5501a67f3';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/c21ff5b7-64e9-465c-aa20-77a5501a67f3';
 
 const LeaveApprovalRemainder: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);

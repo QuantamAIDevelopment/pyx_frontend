@@ -28,7 +28,7 @@ const parseProductEffected = (str: string): ProductEffected => {
 };
 
 const INVENTORY_API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/inventory-check';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/inventory-check';
 
 const triggerInventoryManagementWorkflow = async (formData: {
   SKU?: string;

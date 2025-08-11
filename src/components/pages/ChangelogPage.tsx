@@ -118,7 +118,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
             'Real-time debugging console',
             'Improved error messages with suggestions',
             'Enhanced code examples in documentation',
-            'VS Code extension for QAID development'
+            'VS Code extension for PYX development'
           ]
         },
         {
@@ -439,7 +439,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               What's New in{' '}
               <span className="bg-brand-primary bg-clip-text text-transparent">
-                QAID
+                PYX
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -760,7 +760,7 @@ export function ChangelogPage({ onViewChange, isLoggedIn, onShowAuth }: Changelo
               Ready to Experience the Latest?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Try the newest features and improvements in QAID. 
+              Try the newest features and improvements in PYX. 
               Start building smarter automation workflows today.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">

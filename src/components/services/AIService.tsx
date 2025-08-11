@@ -143,7 +143,7 @@ export function AIServiceProvider({ children }: AIServiceProviderProps) {
           messages: [
             {
               role: 'system',
-              content: `You are PyX, an AI assistant for the QAID platform. You help users with AI agents, workflows, and automation. 
+              content: `You are PyX, an AI assistant for the PYX platform. You help users with AI agents, workflows, and automation. 
               
               Current context: ${context?.currentPage || 'general'}
               User profile: ${JSON.stringify(context?.userProfile || {})}
@@ -227,7 +227,7 @@ export function AIServiceProvider({ children }: AIServiceProviderProps) {
           model: 'claude-3-sonnet-20240229',
           max_tokens: config.maxTokens,
           temperature: config.temperature,
-          system: `You are PyX, an AI assistant for the QAID platform. You help users with AI agents, workflows, and automation. 
+          system: `You are PyX, an AI assistant for the PYX platform. You help users with AI agents, workflows, and automation. 
           
           Current context: ${context?.currentPage || 'general'}
           User profile: ${JSON.stringify(context?.userProfile || {})}
@@ -334,7 +334,7 @@ export function AIServiceProvider({ children }: AIServiceProviderProps) {
         "Show me popular agents",
         "How do I get started?",
         "What can AI agents do?",
-        "Explain QAID marketplace"
+        "Explain PYX marketplace"
       ],
       marketplace: [
         "Recommend an agent for my task",
@@ -479,15 +479,15 @@ function fallbackResponse(prompt: string): AIResponse {
   const lowerPrompt = prompt.toLowerCase()
   
   // Provide contextual responses even without AI services
-  let content = "I'm currently running in local mode to ensure privacy and reliability. I can still provide helpful information about the QAID platform based on your questions."
+  let content = "I'm currently running in local mode to ensure privacy and reliability. I can still provide helpful information about the PYX platform based on your questions."
   let suggestions = ['Platform overview', 'Agent creation', 'API docs', 'Get support']
 
   // Basic keyword matching for better fallback responses
   if (lowerPrompt.includes('create') || lowerPrompt.includes('build')) {
-    content = "🤖 **Creating AI Agents on QAID**\n\n**Quick Start Guide:**\n1. **Define Purpose** - What should your agent do?\n2. **Write Clear Prompts** - Give specific instructions\n3. **Configure I/O** - Set up inputs and outputs\n4. **Test Thoroughly** - Validate before deployment\n5. **Deploy & Monitor** - Track performance\n\n💡 *Tip: Start with simple tasks and gradually add complexity.*"
+    content = "🤖 **Creating AI Agents on PYX**\n\n**Quick Start Guide:**\n1. **Define Purpose** - What should your agent do?\n2. **Write Clear Prompts** - Give specific instructions\n3. **Configure I/O** - Set up inputs and outputs\n4. **Test Thoroughly** - Validate before deployment\n5. **Deploy & Monitor** - Track performance\n\n💡 *Tip: Start with simple tasks and gradually add complexity.*"
     suggestions = ['Agent templates', 'Prompt writing guide', 'Testing checklist', 'Deployment tips']
   } else if (lowerPrompt.includes('api') || lowerPrompt.includes('integrate')) {
-    content = "🔗 **QAID API Integration**\n\n**Authentication:**\n```\nAuthorization: Bearer YOUR_API_KEY\n```\n\n**Base URL:** `https://api.qaid.com/v1`\n\n**Key Endpoints:**\n• `/agents` - List and manage agents\n• `/execute` - Run agent workflows\n• `/status` - Check execution status\n\n**Rate Limits:** Varies by subscription plan"
+    content = "🔗 **PYX API Integration**\n\n**Authentication:**\n```\nAuthorization: Bearer YOUR_API_KEY\n```\n\n**Base URL:** `https://api.PYX.com/v1`\n\n**Key Endpoints:**\n• `/agents` - List and manage agents\n• `/execute` - Run agent workflows\n• `/status` - Check execution status\n\n**Rate Limits:** Varies by subscription plan"
     suggestions = ['Authentication guide', 'Endpoint examples', 'Rate limits', 'SDK options']
   } else if (lowerPrompt.includes('help') || lowerPrompt.includes('how')) {
     content = "🚀 **How Can I Help You?**\n\n**Popular Topics:**\n🤖 **Agent Development** - Create, test, and optimize\n🔗 **API Integration** - Connect with your apps\n📊 **Platform Features** - Marketplace, workflows, analytics\n🛠️ **Troubleshooting** - Solve common issues\n📚 **Learning** - Tutorials and best practices\n\nWhat would you like to explore?"
@@ -529,7 +529,7 @@ function localResponse(prompt: string, context?: any): AIResponse {
   
   if (currentPage === 'marketplace') {
     return {
-      content: `🛍️ **Exploring the QAID Marketplace**\n\nDiscover powerful AI agents created by our community:\n\n• **Text Processing** - Summarization, translation, analysis\n• **Data Analysis** - Insights, visualization, reporting\n• **Content Creation** - Writing, design, multimedia\n• **Automation** - Workflows, integrations, tasks\n\nWhat type of agent are you looking for?`,
+      content: `🛍️ **Exploring the PYX Marketplace**\n\nDiscover powerful AI agents created by our community:\n\n• **Text Processing** - Summarization, translation, analysis\n• **Data Analysis** - Insights, visualization, reporting\n• **Content Creation** - Writing, design, multimedia\n• **Automation** - Workflows, integrations, tasks\n\nWhat type of agent are you looking for?`,
       suggestions: ['Browse by category', 'View trending agents', 'Filter by rating', 'See new releases'],
       metadata: {
         model: 'local-contextual',
@@ -541,7 +541,7 @@ function localResponse(prompt: string, context?: any): AIResponse {
   }
   
   return {
-    content: `👋 **Hi! I'm PyX, your AI assistant for QAID.**\n\nI'm here to help you navigate our platform and make the most of AI agents. Whether you want to create, discover, or integrate agents, I've got you covered!\n\n✨ *Currently running in local mode for optimal privacy and performance.*`,
+    content: `👋 **Hi! I'm PyX, your AI assistant for PYX.**\n\nI'm here to help you navigate our platform and make the most of AI agents. Whether you want to create, discover, or integrate agents, I've got you covered!\n\n✨ *Currently running in local mode for optimal privacy and performance.*`,
     suggestions: ['Create an agent', 'Browse marketplace', 'API documentation', 'Platform tour'],
     metadata: {
       model: 'local-general',

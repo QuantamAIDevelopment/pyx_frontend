@@ -86,14 +86,14 @@ export function APIDocsPage({ onViewChange, isLoggedIn, onShowAuth, agentId, age
     if (agentId && agentName) {
       // Agent-specific examples
       return {
-        javascript: `// Initialize QAID API client
-const qaid = new QAIDClient({
+        javascript: `// Initialize PYX API client
+const PYX = new PYXClient({
   apiKey: 'your-api-key',
-  baseURL: 'https://api.qaid.ai/v1'
+  baseURL: 'https://api.PYX.ai/v1'
 });
 
 // Execute ${agentName}
-const result = await qaid.agents.execute('${agentId}', {
+const result = await PYX.agents.execute('${agentId}', {
   input: 'Your input data here',
   options: {
     format: 'json',
@@ -103,12 +103,12 @@ const result = await qaid.agents.execute('${agentId}', {
 
 console.log('Agent result:', result);`,
 
-        python: `# Initialize QAID API client
-import qaid
+        python: `# Initialize PYX API client
+import PYX
 
-client = qaid.Client(
+client = PYX.Client(
     api_key="your-api-key",
-    base_url="https://api.qaid.ai/v1"
+    base_url="https://api.PYX.ai/v1"
 )
 
 # Execute ${agentName}
@@ -124,7 +124,7 @@ result = client.agents.execute(
 print(f"Agent result: {result}")`,
 
         curl: `# Execute ${agentName}
-curl -X POST "https://api.qaid.ai/v1/agents/${agentId}/execute" \\
+curl -X POST "https://api.PYX.ai/v1/agents/${agentId}/execute" \\
   -H "Authorization: Bearer your-api-key" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -138,14 +138,14 @@ curl -X POST "https://api.qaid.ai/v1/agents/${agentId}/execute" \\
     } else {
       // General examples
       return {
-        javascript: `// Initialize QAID API client
-const qaid = new QAIDClient({
+        javascript: `// Initialize PYX API client
+const PYX = new PYXClient({
   apiKey: 'your-api-key',
-  baseURL: 'https://api.qaid.ai/v1'
+  baseURL: 'https://api.PYX.ai/v1'
 });
 
 // Create a new agent
-const agent = await qaid.agents.create({
+const agent = await PYX.agents.create({
   name: 'Customer Support Agent',
   type: 'customer_support',
   configuration: {
@@ -157,12 +157,12 @@ const agent = await qaid.agents.create({
 
 console.log('Agent created:', agent.id);`,
 
-        python: `# Initialize QAID API client
-import qaid
+        python: `# Initialize PYX API client
+import PYX
 
-client = qaid.Client(
+client = PYX.Client(
     api_key="your-api-key",
-    base_url="https://api.qaid.ai/v1"
+    base_url="https://api.PYX.ai/v1"
 )
 
 # Create a new agent
@@ -179,7 +179,7 @@ agent = client.agents.create(
 print(f"Agent created: {agent.id}")`,
 
         curl: `# Create a new agent
-curl -X POST "https://api.qaid.ai/v1/agents" \\
+curl -X POST "https://api.PYX.ai/v1/agents" \\
   -H "Authorization: Bearer your-api-key" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -242,7 +242,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                   <>
                     Build with the{' '}
                     <span className="bg-brand-primary bg-clip-text text-transparent">
-                      QAID API
+                      PYX API
                     </span>
                   </>
                 )}
@@ -269,7 +269,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
-                  onClick={() => window.open('https://github.com/qaid-ai/examples', '_blank')}
+                  onClick={() => window.open('https://github.com/PYX-ai/examples', '_blank')}
                 >
                   <Github className="h-4 w-4 mr-2" />
                   View Examples
@@ -336,7 +336,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 <div className="text-center mb-12">
                   <h2 className="text-3xl font-bold mb-4">Getting Started</h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Get up and running with the QAID API in minutes. Follow these simple steps to make your first API call.
+                    Get up and running with the PYX API in minutes. Follow these simple steps to make your first API call.
                   </p>
                 </div>
 
@@ -352,7 +352,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground mb-4">
-                        Sign up for a free QAID account to get access to your API keys and dashboard.
+                        Sign up for a free PYX account to get access to your API keys and dashboard.
                       </p>
                       <Button
                         className="w-full !bg-black border-none text-white hover:bg-gray-800"
@@ -377,7 +377,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                         Generate your API key from the dashboard to authenticate your requests.
                       </p>
                       <div className="bg-muted p-3 rounded-lg font-mono text-sm">
-                        qaid_sk_1234567890abcdef...
+                        PYX_sk_1234567890abcdef...
                       </div>
                     </CardContent>
                   </Card>
@@ -463,15 +463,15 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                         <h4 className="font-medium mb-2">Example Request:</h4>
                         <div className="bg-muted p-4 rounded-lg relative">
                           <pre className="text-sm overflow-x-auto">
-                            {`curl -X GET "https://api.qaid.ai/v1/agents" \\
-  -H "Authorization: Bearer qaid_sk_1234567890abcdef" \\
+                            {`curl -X GET "https://api.PYX.ai/v1/agents" \\
+  -H "Authorization: Bearer PYX_sk_1234567890abcdef" \\
   -H "Content-Type: application/json"`}
                           </pre>
                           <Button
                             size="sm"
                             variant="outline"
                             className="absolute top-2 right-2"
-                            onClick={() => copyToClipboard(`curl -X GET "https://api.qaid.ai/v1/agents" \\n  -H "Authorization: Bearer qaid_sk_1234567890abcdef" \\n  -H "Content-Type: application/json"`, 'auth-example')}
+                            onClick={() => copyToClipboard(`curl -X GET "https://api.PYX.ai/v1/agents" \\n  -H "Authorization: Bearer PYX_sk_1234567890abcdef" \\n  -H "Content-Type: application/json"`, 'auth-example')}
                           >
                             {copiedCode === 'auth-example' ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                           </Button>
@@ -726,7 +726,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                     <CardContent>
                       <div className="space-y-3">
                         <div className="bg-muted p-3 rounded-lg">
-                          <code className="text-sm">npm install @qaid/sdk</code>
+                          <code className="text-sm">npm install @PYX/sdk</code>
                         </div>
                         <div className="flex gap-2">
                           <Button size="sm" variant="outline" className="flex-1">
@@ -754,7 +754,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                     <CardContent>
                       <div className="space-y-3">
                         <div className="bg-muted p-3 rounded-lg">
-                          <code className="text-sm">pip install qaid-python</code>
+                          <code className="text-sm">pip install PYX-python</code>
                         </div>
                         <div className="flex gap-2">
                           <Button size="sm" variant="outline" className="flex-1">
@@ -782,7 +782,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                     <CardContent>
                       <div className="space-y-3">
                         <div className="bg-muted p-3 rounded-lg">
-                          <code className="text-sm">go get github.com/qaid/go-sdk</code>
+                          <code className="text-sm">go get github.com/PYX/go-sdk</code>
                         </div>
                         <div className="flex gap-2">
                           <Button size="sm" variant="outline" className="flex-1">
@@ -897,7 +897,7 @@ curl -X POST "https://api.qaid.ai/v1/agents" \\
                 Ready to Start Building?
               </h2>
               <p className="text-xl mb-8 opacity-90">
-                Join thousands of developers using QAID API to power their AI applications.
+                Join thousands of developers using PYX API to power their AI applications.
                 Get started with our free tier today.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">

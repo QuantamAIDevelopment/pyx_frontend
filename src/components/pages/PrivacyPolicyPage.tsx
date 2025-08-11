@@ -92,7 +92,7 @@ export function PrivacyPolicyPage({ onViewChange }: PrivacyPolicyPageProps) {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Your privacy is important to us. This policy explains how QAID collects, 
+              Your privacy is important to us. This policy explains how PYX collects, 
               uses, and protects your personal information.
             </p>
             
@@ -189,7 +189,7 @@ export function PrivacyPolicyPage({ onViewChange }: PrivacyPolicyPageProps) {
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-950/20 p-6 rounded-lg border-l-4 border-blue-600 mb-6">
                     <p className="m-0">
-                      QAID Technologies, Inc. ("QAID," "we," "us," or "our") is committed to protecting your privacy. 
+                      PYX Technologies, Inc. ("PYX," "we," "us," or "our") is committed to protecting your privacy. 
                       This Privacy Policy explains how we collect, use, disclose, and safeguard your information when 
                       you visit our website, use our AI agent marketplace platform, or engage with our services.
                     </p>
@@ -204,7 +204,7 @@ export function PrivacyPolicyPage({ onViewChange }: PrivacyPolicyPageProps) {
                       <div>
                         <h4 className="font-semibold text-amber-800 dark:text-amber-200 m-0 mb-1">Important Notice</h4>
                         <p className="text-sm text-amber-700 dark:text-amber-300 m-0">
-                          This policy applies to all QAID services, including our AI agent marketplace, 
+                          This policy applies to all PYX services, including our AI agent marketplace, 
                           developer tools, and related platforms.
                         </p>
                       </div>
@@ -632,17 +632,17 @@ export function PrivacyPolicyPage({ onViewChange }: PrivacyPolicyPageProps) {
                       <CardHeader className="pb-3">
                         <CardTitle className="text-base flex items-center space-x-2">
                           <Building2 className="h-4 w-4" />
-                          <span>QAID Technologies, Inc.</span>
+                          <span>PYX Technologies, Inc.</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>privacy@qaid.ai</span>
+                          <span>privacy@PYX.ai</span>
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
-                          <span>+91 9866669542-QAID</span>
+                          <span>+91 9866669542-PYX</span>
                         </div>
                         <div className="flex items-start space-x-2 text-sm">
                           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
@@ -660,7 +660,7 @@ export function PrivacyPolicyPage({ onViewChange }: PrivacyPolicyPageProps) {
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>dpo@qaid.ai</span>
+                          <span>dpo@PYX.ai</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                           For specific data protection and privacy concerns, 

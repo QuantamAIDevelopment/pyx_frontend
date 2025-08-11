@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BUTTON_CLASSES } from '../utils/colors';
  
 // Updated API URL to match working endpoint
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/book_price';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/book_price';
  
 interface BookPriceResult {
   imageurl: string;

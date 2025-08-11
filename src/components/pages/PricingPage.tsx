@@ -6,18 +6,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Badge } from '../common/ui/badge'
 import { Switch } from '../common/ui/switch'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../common/ui/accordion'
-import { 
-  Check, 
-  X, 
-  Zap, 
-  Users, 
-  
-  Rocket, 
- 
+import {
+  Check,
+  X,
+  Zap,
+  Users,
+
+  Rocket,
+
   Crown,
   Building,
   ArrowRight,
- 
+
   Phone
 } from 'lucide-react'
 
@@ -30,14 +30,14 @@ interface PricingPageProps {
 export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPageProps) {
   const [isYearly, setIsYearly] = useState(false)
 
- const handleGetStarted = (plan: string) => {
-  console.log(`Selected plan: ${plan}`);
-  if (isLoggedIn) {
-    onViewChange('dashboard')
-  } else {
-    onShowAuth('signup')
+  const handleGetStarted = (plan: string) => {
+    console.log(`Selected plan: ${plan}`);
+    if (isLoggedIn) {
+      onViewChange('dashboard')
+    } else {
+      onShowAuth('signup')
+    }
   }
-}
 
   const pricingPlans = [
     {
@@ -115,7 +115,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
   ]
 
   const comparisonFeatures = [
-    { 
+    {
       category: 'Core Features',
       features: [
         { name: 'AI Agents', starter: '3 agents', pro: 'Unlimited', enterprise: 'Unlimited' },
@@ -197,29 +197,33 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
               Plan
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Start free and scale as you grow. All plans include our core AI agents 
+              Start free and scale as you grow. All plans include our core AI agents
               and integrations to automate your business workflows.
             </p>
-            
+
             {/* Billing Toggle */}
-            <div className="flex items-center justify-center gap-4 mb-12 ">
+            <div className="flex items-center justify-center gap-4 mb-12">
               <span className={`text-sm ${!isYearly ? 'font-medium' : 'text-muted-foreground'}`}>
                 Monthly
               </span>
-              <Switch 
-                checked={isYearly} 
+              <Switch
+                checked={isYearly}
                 onCheckedChange={setIsYearly}
-                className=" bg-bg-muted data-[state=checked]:bg-black "
+                className="bg-bg-muted data-[state=checked]:bg-black"
               />
               <span className={`text-sm ${isYearly ? 'font-medium' : 'text-muted-foreground'}`}>
                 Yearly
               </span>
-              {isYearly && (
-                <Badge className="bg-ui-success text-white ml-2">
-                  Save 20%
-                </Badge>
-              )}
+
+              {/* Always render but toggle visibility */}
+              <Badge
+                className={`bg-ui-success text-white ml-2 transition-opacity duration-200 ${isYearly ? 'opacity-100' : 'opacity-0'
+                  }`}
+              >
+                Save 20%
+              </Badge>
             </div>
+
           </div>
         </div>
       </section>
@@ -231,42 +235,41 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
             {pricingPlans.map((plan, index) => {
               const IconComponent = plan.icon
               const currentPrice = isYearly ? plan.price.yearly : plan.price.monthly
-              
+
               return (
-                <Card 
-                  key={index} 
-                  className={`relative overflow-hidden ${
-                    plan.popular 
-                      ? 'border-2 border-brand-accent shadow-xl scale-105' 
+                <Card
+                  key={index}
+                  className={`relative overflow-hidden ${plan.popular
+                      ? 'border-2 border-brand-accent shadow-xl scale-105'
                       : 'hover:shadow-lg'
-                  } transition-all duration-300`}
+                    } transition-all duration-300`}
                 >
                   {plan.popular && (
                     <div className="absolute top-0 left-0 right-0 bg-brand-primary  text-white text-center py-2 text-sm font-medium">
                       {plan.badge}
                     </div>
                   )}
-                  
+
                   <CardHeader className={`text-center ${plan.popular ? 'pt-14' : 'pt-6'}`}>
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-gradient mx-auto mb-4">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
-                    
+
                     {!plan.popular && (
                       <Badge className={`${plan.badgeColor} text-white mb-4 mx-auto w-fit`}>
                         {plan.badge}
                       </Badge>
                     )}
-                    
+
                     <CardTitle className="text-2xl">{plan.name}</CardTitle>
                     <CardDescription className="text-base mb-6">
                       {plan.description}
                     </CardDescription>
-                    
+
                     <div className="mb-6 ">
                       <div className="flex items-baseline justify-center">
                         <span className="text-4xl font-bold">
-                        ₹ {currentPrice}
+                          ₹ {currentPrice}
                         </span>
                         <span className="text-muted-foreground ml-1">
                           {currentPrice > 0 ? (isYearly ? '/month' : '/month') : ''}
@@ -278,12 +281,12 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                         </p>
                       )}
                     </div>
-                    
-                    <Button 
+
+                    <Button
                       onClick={() => handleGetStarted(plan.name)}
                       className={
-                        plan.popular 
-                          ? 'w-full !bg-brand-primary  hover:shadow-lg border-none' 
+                        plan.popular
+                          ? 'w-full !bg-brand-primary  hover:shadow-lg border-none'
                           : 'w-full'
                       }
                       variant={plan.popular ? 'default' : 'outline'}
@@ -292,7 +295,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>
                   </CardHeader>
-                  
+
                   <CardContent>
                     <ul className="space-y-3">
                       {plan.features.map((feature, featureIndex) => (
@@ -408,7 +411,7 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Got questions? We've got answers. If you can't find what you're looking for, 
+              Got questions? We've got answers. If you can't find what you're looking for,
               feel free to contact our support team.
             </p>
           </div>
@@ -438,12 +441,12 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
               Ready to Automate Your Business?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Join thousands of businesses already using QAID to streamline their operations 
+              Join thousands of businesses already using PYX to streamline their operations
               and boost productivity with AI automation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="secondary"
                 onClick={() => handleGetStarted('free')}
                 className='!bg-brand-primary text-white'
@@ -452,9 +455,9 @@ export function PricingPage({ onViewChange, isLoggedIn, onShowAuth }: PricingPag
                 Start Free Today
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="border-none hover:bg-white hover:text-primary"
                 onClick={() => onViewChange('contact')}
               >

@@ -65,7 +65,7 @@ export function CallToAction({ onGetStarted }: CallToActionProps) {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of businesses already using QAID AI agents to automate their operations and boost productivity.
+            Join thousands of businesses already using PYX AI agents to automate their operations and boost productivity.
           </p>
 
           {/* CTA Button */}

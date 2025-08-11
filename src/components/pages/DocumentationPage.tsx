@@ -71,8 +71,8 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
     // Quick Start
     {
       id: 'getting-started',
-      title: 'Getting Started with QAID',
-      description: 'Learn the basics of QAID and create your first AI agent in under 5 minutes.',
+      title: 'Getting Started with PYX',
+      description: 'Learn the basics of PYX and create your first AI agent in under 5 minutes.',
       category: 'quickstart',
       duration: '5 min',
       difficulty: 'Beginner',
@@ -129,7 +129,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
     {
       id: 'integration-patterns',
       title: 'Integration Patterns & Strategies',
-      description: 'Common patterns for integrating QAID with your existing systems.',
+      description: 'Common patterns for integrating PYX with your existing systems.',
       category: 'guides',
       duration: '25 min',
       difficulty: 'Advanced',
@@ -142,7 +142,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
     {
       id: 'api-overview',
       title: 'API Overview',
-      description: 'Complete overview of the QAID REST API with examples and best practices.',
+      description: 'Complete overview of the PYX REST API with examples and best practices.',
       category: 'api',
       duration: '12 min',
       difficulty: 'Intermediate',
@@ -177,7 +177,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
     {
       id: 'shopify-integration',
       title: 'Shopify Integration Guide',
-      description: 'Connect QAID with Shopify for automated e-commerce workflows.',
+      description: 'Connect PYX with Shopify for automated e-commerce workflows.',
       category: 'integrations',
       duration: '15 min',
       difficulty: 'Intermediate',
@@ -188,7 +188,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
     {
       id: 'slack-integration',
       title: 'Slack Integration Setup',
-      description: 'Integrate QAID with Slack for team notifications and collaboration.',
+      description: 'Integrate PYX with Slack for team notifications and collaboration.',
       category: 'integrations',
       duration: '8 min',
       difficulty: 'Beginner',
@@ -201,7 +201,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
     {
       id: 'security-overview',
       title: 'Security Best Practices',
-      description: 'Essential security practices for protecting your QAID implementation.',
+      description: 'Essential security practices for protecting your PYX implementation.',
       category: 'security',
       duration: '20 min',
       difficulty: 'Intermediate',
@@ -280,7 +280,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Everything You Need to{' '}
               <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
-                Build with QAID
+                Build with PYX
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -446,7 +446,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Featured Tutorials</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              In-depth video tutorials to help you master QAID and build amazing AI-powered applications.
+              In-depth video tutorials to help you master PYX and build amazing AI-powered applications.
             </p>
           </div>
 
@@ -533,7 +533,7 @@ export function DocumentationPage({ onViewChange, isLoggedIn, onShowAuth }: Docu
                     size="sm"
                     variant="outline"
                     onClick={() => copyToClipboard(`// Create a new agent
-const agent = await qaid.agents.create({
+const agent = await PYX.agents.create({
   name: 'Customer Support Agent',
   type: 'customer_support',
   configuration: {
@@ -550,7 +550,7 @@ const agent = await qaid.agents.create({
                 <div className="bg-muted p-4 rounded-lg">
                   <pre className="text-sm overflow-x-auto">
                     <code>{`// Create a new agent
-const agent = await qaid.agents.create({
+const agent = await PYX.agents.create({
   name: 'Customer Support Agent',
   type: 'customer_support',
   configuration: {
@@ -611,7 +611,7 @@ result = client.workflows.execute(
               Ready to Start Building?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Join thousands of developers using QAID to create intelligent automation solutions.
+              Join thousands of developers using PYX to create intelligent automation solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 

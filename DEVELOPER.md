@@ -1,8 +1,8 @@
-# QAID - AI Agents Marketplace - Developer Guide
+# PYX - AI Agents Marketplace - Developer Guide
 
 ## 🏗️ Project Overview
 
-QAID is a comprehensive AI agents marketplace built with React, TypeScript, and Vite. The platform features an embedded smart assistant (PyX) that provides context-aware help across the entire application. The project combines a modern web application with advanced AI capabilities, offering both marketplace functionality and intelligent user assistance.
+PYX is a comprehensive AI agents marketplace built with React, TypeScript, and Vite. The platform features an embedded smart assistant (PyX) that provides context-aware help across the entire application. The project combines a modern web application with advanced AI capabilities, offering both marketplace functionality and intelligent user assistance.
 
 ## 🚀 Quick Start
 
@@ -233,7 +233,7 @@ The platform integrates with external AI services via webhooks:
 
 ```typescript
 // Example webhook integration
-const WEBHOOK_BASE = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/'
+const WEBHOOK_BASE = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/'
 
 const callWorkflow = async (workflowName: string, data: FormData) => {
   const response = await fetch(`${WEBHOOK_BASE}${workflowName}`, {

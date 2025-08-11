@@ -1,8 +1,8 @@
-# 🚀 QAID - AI Agents Marketplace
+# 🚀 PYX - AI Agents Marketplace
 
 <div align="center">
 
-![QAID Logo](https://img.shields.io/badge/QAID-AI%20Marketplace-blue?style=for-the-badge&logo=robot)
+![PYX Logo](https://img.shields.io/badge/PYX-AI%20Marketplace-blue?style=for-the-badge&logo=robot)
 
 **A next-generation AI agents marketplace with PyX - your intelligent assistant**
 
@@ -17,9 +17,9 @@
 
 ---
 
-## ✨ What is QAID?
+## ✨ What is PYX?
 
-QAID is a revolutionary AI agents marketplace that democratizes access to artificial intelligence. Built with modern web technologies, it features **PyX** - an intelligent assistant that provides context-aware help, making AI accessible to everyone from beginners to experts.
+PYX is a revolutionary AI agents marketplace that democratizes access to artificial intelligence. Built with modern web technologies, it features **PyX** - an intelligent assistant that provides context-aware help, making AI accessible to everyone from beginners to experts.
 
 ### 🎯 Key Highlights
 
@@ -59,7 +59,7 @@ Open [http://localhost:5173](http://localhost:5173) and start exploring!
 
 ## 🤖 Meet PyX - Your AI Assistant
 
-PyX is the heart of QAID - an intelligent assistant that understands context, speaks multiple languages, and learns from your interactions. It's designed to work seamlessly whether you're a beginner exploring AI or an expert building complex workflows.
+PyX is the heart of PYX - an intelligent assistant that understands context, speaks multiple languages, and learns from your interactions. It's designed to work seamlessly whether you're a beginner exploring AI or an expert building complex workflows.
 
 ### ⚡ PyX Capabilities
 
@@ -198,7 +198,7 @@ VITE_DEFAULT_AI_PROVIDER=openai
 ## 📊 Project Architecture
 
 ```
-QAID Platform
+PYX Platform
 ├── 🎨 Frontend (React + TypeScript)
 │   ├── PyX Assistant (Context-aware AI)
 │   ├── Marketplace UI (Agent discovery)
@@ -284,10 +284,10 @@ We welcome contributions! Here's how to get started:
 
 ## 📞 Support & Community
 
-- 💬 [Discord Community](https://discord.gg/qaid) - Real-time discussions
-- 🐛 [GitHub Issues](https://github.com/qaid/issues) - Bug reports and feature requests
-- 📧 [Email Support](mailto:support@qaid.ai) - Direct assistance
-- 📖 [Knowledge Base](https://docs.qaid.ai) - Comprehensive guides
+- 💬 [Discord Community](https://discord.gg/PYX) - Real-time discussions
+- 🐛 [GitHub Issues](https://github.com/PYX/issues) - Bug reports and feature requests
+- 📧 [Email Support](mailto:support@PYX.ai) - Direct assistance
+- 📖 [Knowledge Base](https://docs.PYX.ai) - Comprehensive guides
 
 ## 📄 License
 
@@ -297,8 +297,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Built with ❤️ by the QAID Team**
+**Built with ❤️ by the PYX Team**
 
-[Website](https://qaid.ai) • [Documentation](./DEVELOPER.md) • [Community](https://discord.gg/qaid) • [Support](mailto:support@qaid.ai)
+[Website](https://PYX.ai) • [Documentation](./DEVELOPER.md) • [Community](https://discord.gg/PYX) • [Support](mailto:support@PYX.ai)
 
 </div>

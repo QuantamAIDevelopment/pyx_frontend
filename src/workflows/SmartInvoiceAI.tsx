@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 import { BUTTON_CLASSES } from '../utils/colors';
 
 const API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/invoice%20summary';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/invoice%20summary';
 
 const SmartInvoiceAI: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);

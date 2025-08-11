@@ -189,7 +189,7 @@
 //       experience: 'Mid-level',
 //       remote: true,
 //       salary: 'Rs11000 - Rs15000',
-//       description: 'Build relationships with our developer community and create technical content to help developers succeed with QAID.',
+//       description: 'Build relationships with our developer community and create technical content to help developers succeed with PYX.',
 //       requirements: [
 //         '3+ years of software development experience',
 //         'Strong technical writing and communication skills',
@@ -215,7 +215,7 @@
 //       experience: 'Senior',
 //       remote: false,
 //       salary: 'Rs13000 - Rs17000 + Commission',
-//       description: 'Work with enterprise customers to understand their automation needs and demonstrate how QAID can solve their challenges.',
+//       description: 'Work with enterprise customers to understand their automation needs and demonstrate how PYX can solve their challenges.',
 //       requirements: [
 //         '5+ years of technical sales or solutions engineering',
 //         'Strong technical background in software development',
@@ -357,7 +357,7 @@
 
 //   const testimonials = [
 //     {
-//       quote: "Working at QAID has been incredibly rewarding. The problems we're solving are complex and meaningful, and the team is brilliant.",
+//       quote: "Working at PYX has been incredibly rewarding. The problems we're solving are complex and meaningful, and the team is brilliant.",
 //       author: "David Park",
 //       role: "Senior AI Engineer",
 //       avatar: "/api/placeholder/48/48"
@@ -462,7 +462,7 @@
 //                 onClick={() => onViewChange('about')}
 //               >
 //                 <Users className="h-4 w-4 mr-2" />
-//                 About QAID
+//                 About PYX
 //               </Button>
 //             </div>
 //           </div>
@@ -791,7 +791,7 @@
 //           <div className="text-center mb-12">
 //             <h2 className="text-3xl font-bold mb-4">What Our Team Says</h2>
 //             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-//               Hear from our team members about their experience working at QAID.
+//               Hear from our team members about their experience working at PYX.
 //             </p>
 //           </div>
 

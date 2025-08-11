@@ -69,7 +69,7 @@ import React from 'react';
 // Dynamic imports for large pages
 const DocumentationPage = React.lazy(() => import('../pages/DocumentationPage').then(m => ({ default: m.DocumentationPage })));
 const TutorialsPage = React.lazy(() => import('../pages/TutorialsPage').then(m => ({ default: m.TutorialsPage })));
-const CaseStudiesPage = React.lazy(() => import('../pages/CaseStudiesPage').then(m => ({ default: m.CaseStudiesPage })));
+// const CaseStudiesPage = React.lazy(() => import('../pages/CaseStudiesPage').then(m => ({ default: m.CaseStudiesPage })));
 const WebinarsPage = React.lazy(() => import('../pages/WebinarsPage').then(m => ({ default: m.WebinarsPage })));
 
 export type Mode = 'user' | 'developer'
@@ -116,7 +116,7 @@ function AppRoutes() {
     if (mode === 'developer' && isLoggedIn) {
       navigate('/developer-mode')
     } else if (mode === 'user' && location.pathname === '/developer-mode') {
-      navigate('/dashboard')
+      navigate('/dashboard/overview')
     }
   }
 
@@ -128,7 +128,7 @@ function AppRoutes() {
     if (currentMode === 'developer') {
       navigate('/developer-mode')
     } else {
-      navigate('/dashboard')
+      navigate('/dashboard/overview')
     }
   }
 
@@ -207,7 +207,8 @@ function AppRoutes() {
       location.pathname === route || 
       location.pathname.startsWith(route + '/') ||
       (route === '/agents/:id/run' && /^\/agents\/[^/]+\/run$/.test(location.pathname)) ||
-      location.pathname.startsWith('/api/access/')
+      location.pathname.startsWith('/api/access/') ||
+      location.pathname.startsWith('/dashboard/')
     )
   }
 
@@ -228,7 +229,7 @@ function AppRoutes() {
         <Route path="/" element={
           <LandingPage 
             onExploreAgents={() => navigate('/agents')}
-            onGetStarted={() => isLoggedIn ? navigate('/dashboard') : showAuth('signup')}
+            onGetStarted={() => isLoggedIn ? navigate('/dashboard/overview') : showAuth('signup')}
             onAgentSelect={handleAgentSelect}
             // onCreateAgent={() => isLoggedIn ? navigate('/agents/create') : showAuth('signup')}
           />
@@ -294,7 +295,7 @@ function AppRoutes() {
               onBack={() => navigate(-1)}
               onDeploy={(agent: any) => {
                   console.log(agent);
-                navigate('/dashboard')
+                navigate('/dashboard/overview')
               }}
               onViewAPIDocs={() => navigate('/api/docs')}
               isLoggedIn={isLoggedIn}
@@ -320,7 +321,7 @@ function AppRoutes() {
         <Route path="/agent-builder" element={
           isLoggedIn ? (
             <AgentBuilderFlow 
-              onBack={() => navigate('/dashboard')}
+              onBack={() => navigate('/dashboard/overview')}
               onComplete={(agentConfig) => {
                 if (agentConfig.action === 'edit') {
                   navigate('/workflows')
@@ -408,7 +409,8 @@ function AppRoutes() {
         } />
 
         {/* Dashboard and User Routes */}
-        <Route path="/dashboard" element={
+        <Route path="/dashboard" element={<Navigate to="/dashboard/overview" replace />} />
+        <Route path="/dashboard/:tab" element={
           isLoggedIn ? (
             <Dashboard 
               userWallet={userWallet}
@@ -482,7 +484,7 @@ function AppRoutes() {
         <Route path="/developer-mode" element={
           isLoggedIn ? (
             <DeveloperModeLayout 
-              onBack={() => navigate('/dashboard')}
+              onBack={() => navigate('/dashboard/overview')}
               userWallet={userWallet}
             />
           ) : (
@@ -539,7 +541,7 @@ function AppRoutes() {
           isLoggedIn ? (
             <APIManagementPage 
               apiData={selectedAPIAgent}
-              onBack={() => navigate('/dashboard')}
+              onBack={() => navigate('/dashboard/overview')}
             />
           ) : (
             <Navigate to="/" replace />
@@ -550,7 +552,7 @@ function AppRoutes() {
           isLoggedIn ? (
             <APIAnalyticsPage 
               apiData={selectedAnalyticsAgent}
-              onBack={() => navigate('/dashboard')}
+              onBack={() => navigate('/dashboard/overview')}
             />
           ) : (
             <Navigate to="/" replace />
@@ -569,7 +571,7 @@ function AppRoutes() {
               if (selectedAgent || selectedAgentDetail) {
                 navigate(-1)
               } else {
-                navigate('/dashboard')
+                navigate('/dashboard/overview')
               }
             }}
           />
@@ -677,7 +679,7 @@ function AppRoutes() {
           </Suspense>
         } />
 
-        <Route path="/case-studies" element={
+        {/* <Route path="/case-studies" element={
           <Suspense fallback={<div>Loading Case Studies...</div>}>
             <CaseStudiesPage 
               onViewChange={handleViewChange}
@@ -685,7 +687,7 @@ function AppRoutes() {
               onShowAuth={showAuth}
             />
           </Suspense>
-        } />
+        } /> */}
 
         <Route path="/webinars" element={
           <Suspense fallback={<div>Loading Webinars...</div>}>

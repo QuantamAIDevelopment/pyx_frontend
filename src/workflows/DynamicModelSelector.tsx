@@ -2,7 +2,7 @@ import React, { useState, FormEvent, ChangeEvent } from 'react';
 // import { motion } from 'framer-motion';
 // import { FaRobot, FaPaperPlane } from 'react-icons/fa';
  
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/dynamic routing agent';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/dynamic routing agent';
  
 const modelLabels: Record<string, string> = {
   'perplexity/sonar': 'Perplexity Sonar (Web Search)',

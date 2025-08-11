@@ -7,8 +7,6 @@ import { Badge } from '../common/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../common/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { 
-  // BarChart,
-  // Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -30,12 +28,9 @@ import {
   Clock, 
   AlertTriangle,
   CheckCircle,
-  // Globe,
   Zap,
-  // Users,
   Eye,
   Download,
-  // Calendar,
   BarChart3,
   MapPin,
   Smartphone,

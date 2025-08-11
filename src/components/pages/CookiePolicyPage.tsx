@@ -5,20 +5,16 @@ import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
 import { Separator } from '../common/ui/separator'
-// import { ScrollArea } from '../common/ui/scroll-area'
 import { Switch } from '../common/ui/switch'
 import { 
   Cookie,
   Shield,
   Eye,
   Settings,
-  // Globe,
-  // FileText,
   Calendar,
   Mail,
   Phone,
   ArrowRight,
-  // ChevronRight,
   AlertCircle,
   CheckCircle,
   Info,
@@ -222,7 +218,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Learn how QAID uses cookies and similar technologies to enhance your 
+              Learn how PYX uses cookies and similar technologies to enhance your 
               experience and understand your preferences.
             </p>
             
@@ -357,7 +353,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                     </p>
                   </div>
                   <p>
-                    QAID uses cookies and similar technologies (such as web beacons, pixels, and local storage) 
+                    PYX uses cookies and similar technologies (such as web beacons, pixels, and local storage) 
                     to enhance your experience on our platform, understand your preferences, and improve our services.
                   </p>
                   <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
@@ -453,7 +449,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                     <h2 className="text-2xl font-bold m-0">Cookies We Use</h2>
                   </div>
                   <p>
-                    QAID uses different categories of cookies for various purposes. 
+                    PYX uses different categories of cookies for various purposes. 
                     Here's a detailed breakdown of each category:
                   </p>
                   
@@ -631,7 +627,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                       <CardHeader className="pb-3">
                         <CardTitle className="text-base flex items-center space-x-2">
                           <Settings className="h-4 w-4 text-indigo-600" />
-                          <span>QAID Settings</span>
+                          <span>PYX Settings</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="pt-0">
@@ -801,17 +797,17 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                       <CardHeader className="pb-3">
                         <CardTitle className="text-base flex items-center space-x-2">
                           <Building2 className="h-4 w-4" />
-                          <span>QAID Technologies, Inc.</span>
+                          <span>PYX Technologies, Inc.</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>cookies@qaid.ai</span>
+                          <span>cookies@PYX.ai</span>
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
-                          <span>+1 (555) 123-QAID</span>
+                          <span>+1 (555) 123-PYX</span>
                         </div>
                         <div className="flex items-start space-x-2 text-sm">
                           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
@@ -829,7 +825,7 @@ export function CookiePolicyPage({ onViewChange }: CookiePolicyPageProps) {
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>dpo@qaid.ai</span>
+                          <span>dpo@PYX.ai</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                           For cookie-related privacy concerns and 

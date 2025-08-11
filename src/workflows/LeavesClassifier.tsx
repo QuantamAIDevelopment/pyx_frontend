@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { BUTTON_CLASSES } from '../utils/colors';
 
 const API_URL =
-  "https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/leaves-classifier";
+  "https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/leaves-classifier";
 
 interface LeaveRecord {
   id: string;

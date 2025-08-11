@@ -3,7 +3,7 @@ import { motion} from 'framer-motion';
 import {  FaUserTie, FaCheckCircle } from 'react-icons/fa';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
+const API_BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
 interface CandidateData {
   'Candidate Name': string;

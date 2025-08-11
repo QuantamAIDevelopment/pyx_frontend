@@ -332,7 +332,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
                   onClick={() => onViewChange('dashboard')}
                 >
                   <Sparkles className="h-4 w-4 mr-2" />
-                  Explore QAID
+                  Explore PYX
                 </Button>
               </div>
             </CardContent>
@@ -909,7 +909,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
                   Cover Letter & Motivation
                 </CardTitle>
                 <CardDescription>
-                  Tell us why you're interested in this role and QAID
+                  Tell us why you're interested in this role and PYX
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -928,7 +928,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
                 </div>
 
                 <div>
-                  <Label>Why do you want to join QAID?</Label>
+                  <Label>Why do you want to join PYX?</Label>
                   <Textarea
                     value={formData.whyJoin}
                     onChange={(e) => handleInputChange('whyJoin', e.target.value)}
@@ -1024,7 +1024,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
                         onCheckedChange={(checked) => handleInputChange('privacyAccepted', checked as boolean)}
                       />
                       <Label htmlFor="privacy" className="text-sm leading-relaxed">
-                        I consent to QAID processing my personal data for recruitment purposes *
+                        I consent to PYX processing my personal data for recruitment purposes *
                       </Label>
                     </div>
                     
@@ -1035,7 +1035,7 @@ export function JobApplicationPage({ onViewChange , jobId = 'sr-ai-engineer' }: 
                         onCheckedChange={(checked) => handleInputChange('communicationConsent', checked as boolean)}
                       />
                       <Label htmlFor="communication" className="text-sm leading-relaxed">
-                        I would like to receive updates about QAID and future opportunities (optional)
+                        I would like to receive updates about PYX and future opportunities (optional)
                       </Label>
                     </div>
                   </div>

@@ -68,7 +68,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
         avatar: '/api/placeholder/32/32'
       },
       assignee: {
-        name: 'qaid-bot',
+        name: 'PYX-bot',
         avatar: '/api/placeholder/32/32'
       },
       labels: ['bug', 'webhook', 'shopify', 'high-priority'],
@@ -109,7 +109,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
         avatar: '/api/placeholder/32/32'
       },
       assignee: {
-        name: 'qaid-docs',
+        name: 'PYX-docs',
         avatar: '/api/placeholder/32/32'
       },
       labels: ['documentation', 'examples', 'custom-nodes'],
@@ -131,7 +131,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
         avatar: '/api/placeholder/32/32'
       },
       assignee: {
-        name: 'qaid-api',
+        name: 'PYX-api',
         avatar: '/api/placeholder/32/32'
       },
       labels: ['bug', 'api', 'rate-limiting', 'fixed'],
@@ -153,7 +153,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
         avatar: '/api/placeholder/32/32'
       },
       assignee: {
-        name: 'qaid-security',
+        name: 'PYX-security',
         avatar: '/api/placeholder/32/32'
       },
       labels: ['security', 'oauth', 'authentication', 'pkce'],
@@ -172,10 +172,10 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
       description: 'Implements exponential backoff for webhook retries and improves error handling',
       status: 'open',
       author: {
-        name: 'qaid-bot',
+        name: 'PYX-bot',
         avatar: '/api/placeholder/32/32'
       },
-      reviewers: ['qaid-api', 'qaid-security'],
+      reviewers: ['PYX-api', 'PYX-security'],
       labels: ['bug-fix', 'webhook', 'retry-logic'],
       comments: 4,
       commits: 8,
@@ -198,7 +198,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
         name: 'alex-kumar',
         avatar: '/api/placeholder/32/32'
       },
-      reviewers: ['qaid-api'],
+      reviewers: ['PYX-api'],
       labels: ['feature', 'api', 'batch-processing'],
       comments: 2,
       commits: 15,
@@ -218,10 +218,10 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
       description: 'Adds comprehensive examples and tutorials for custom node development',
       status: 'merged',
       author: {
-        name: 'qaid-docs',
+        name: 'PYX-docs',
         avatar: '/api/placeholder/32/32'
       },
-      reviewers: ['sarah-chen', 'qaid-team'],
+      reviewers: ['sarah-chen', 'PYX-team'],
       labels: ['documentation', 'examples'],
       comments: 6,
       commits: 5,
@@ -239,8 +239,8 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
 
   const repositories = [
     {
-      name: 'qaid-api',
-      description: 'Official QAID REST API and backend services',
+      name: 'PYX-api',
+      description: 'Official PYX REST API and backend services',
       language: 'TypeScript',
       stars: 1234,
       forks: 89,
@@ -249,8 +249,8 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
       isPublic: true
     },
     {
-      name: 'qaid-sdk-js',
-      description: 'JavaScript/TypeScript SDK for QAID API',
+      name: 'PYX-sdk-js',
+      description: 'JavaScript/TypeScript SDK for PYX API',
       language: 'TypeScript',
       stars: 567,
       forks: 45,
@@ -259,8 +259,8 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
       isPublic: true
     },
     {
-      name: 'qaid-sdk-python',
-      description: 'Python SDK for QAID API',
+      name: 'PYX-sdk-python',
+      description: 'Python SDK for PYX API',
       language: 'Python',
       stars: 432,
       forks: 34,
@@ -269,7 +269,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
       isPublic: true
     },
     {
-      name: 'qaid-examples',
+      name: 'PYX-examples',
       description: 'Code examples and sample applications',
       language: 'JavaScript',
       stars: 789,
@@ -279,7 +279,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
       isPublic: true
     },
     {
-      name: 'qaid-docs',
+      name: 'PYX-docs',
       description: 'Official documentation and guides',
       language: 'MDX',
       stars: 234,
@@ -367,11 +367,11 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Contribute to{' '}
               <span className="bg-gradient-to-r from-[#FF620A] to-[#993B06] bg-clip-text text-transparent">
-                QAID Development
+                PYX Development
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Report bugs, request features, and contribute to the QAID platform. 
+              Report bugs, request features, and contribute to the PYX platform. 
               Join our open-source community and help shape the future of AI automation.
             </p>
             
@@ -391,7 +391,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-[#FF620A] to-[#993B06] w-full sm:w-auto"
-                onClick={() => window.open('https://github.com/qaid-ai/qaid/issues/new', '_blank')}
+                onClick={() => window.open('https://github.com/PYX-ai/PYX/issues/new', '_blank')}
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Report Issue
@@ -401,7 +401,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
                 variant="outline" 
                 size="lg"
                 className="w-full sm:w-auto"
-                onClick={() => window.open('https://github.com/qaid-ai/qaid', '_blank')}
+                onClick={() => window.open('https://github.com/PYX-ai/PYX', '_blank')}
               >
                 <Github className="h-4 w-4 mr-2" />
                 View on GitHub
@@ -745,7 +745,7 @@ export function GitHubIssuesPage({ onViewChange }: GitHubIssuesPageProps) {
                 size="lg" 
                 variant="secondary"
                 className="w-full sm:w-auto"
-                onClick={() => window.open('https://github.com/qaid-ai/qaid/blob/main/CONTRIBUTING.md', '_blank')}
+                onClick={() => window.open('https://github.com/PYX-ai/PYX/blob/main/CONTRIBUTING.md', '_blank')}
               >
                 <Github className="h-4 w-4 mr-2" />
                 Contributing Guide

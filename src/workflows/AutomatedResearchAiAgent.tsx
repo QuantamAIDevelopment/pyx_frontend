@@ -52,7 +52,7 @@ const PageRevealWrapper: React.FC<PageRevealWrapperProps> = ({ children, heading
 };
 
 // --- automatedResearch.js (converted to TS) ---
-const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
+const API_BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
 const startResearch = async (topic: string): Promise<ResearchResult> => {
   try {

@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 // import { FaEnvelopeOpenText, FaPaperPlane } from 'react-icons/fa';
 import axios from 'axios';
  
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/incoming-email';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/incoming-email';
  
 interface FormState {
   category: string;

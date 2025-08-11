@@ -6,27 +6,21 @@ import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
 import { Progress } from '../common/ui/progress'
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { Avatar, AvatarFallback } from '../common/ui/avatar'
 import { Input } from '../common/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../common/ui/select'
 import {
-  // BarChart,
-  // Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  // LineChart,
-  // Line,
   Area,
   AreaChart
 } from 'recharts'
 import { 
   Play,
   Pause,
-  // MoreHorizontal,
   Settings,
   TestTube,
   Activity,
@@ -35,20 +29,13 @@ import {
   TrendingUp,
   AlertCircle,
   CheckCircle,
-  // Clock,
   Bot,
   Search,
-  // Filter,
   RefreshCw,
   Eye,
-  // BarChart3,
   Download,
   Bell,
-  // Maximize2,
   ArrowUpRight,
-  // ArrowDownRight,
-  // Calendar,
-  // Users,
   ArrowLeft
 } from 'lucide-react'
 
@@ -89,7 +76,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '2 minutes ago',
     usage: 89,
     performance: 94,
-    cost: 'Rs12.50',
+    cost: '₹ 12.50',
     dailyCost: 4.25,
     executions: 1247,
     successRate: 98.5,
@@ -116,7 +103,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '1 minute ago',
     usage: 67,
     performance: 91,
-    cost: 'Rs8.30',
+    cost: '₹ 8.30',
     dailyCost: 2.85,
     executions: 2156,
     successRate: 96.2,
@@ -143,7 +130,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '30 minutes ago',
     usage: 45,
     performance: 96,
-    cost: 'Rs5.20',
+    cost: '₹5.20',
     dailyCost: 1.75,
     executions: 456,
     successRate: 99.1,
@@ -170,7 +157,7 @@ const activeAgents: ActiveAgent[] = [
     lastActivity: '5 minutes ago',
     usage: 78,
     performance: 87,
-    cost: 'Rs9.80',
+    cost: '₹ 9.80',
     dailyCost: 3.45,
     executions: 892,
     successRate: 94.8,

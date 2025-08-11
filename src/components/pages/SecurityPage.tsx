@@ -319,7 +319,7 @@ export function SecurityPage({ onViewChange }: SecurityPageProps) {
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-950/20 p-6 rounded-lg border-l-4 border-blue-600 mb-6">
                     <p className="m-0">
-                      Security is at the core of everything we do at QAID. We implement a comprehensive, 
+                      Security is at the core of everything we do at PYX. We implement a comprehensive, 
                       multi-layered security approach that protects your data, ensures system availability, 
                       and maintains the highest standards of information security.
                     </p>
@@ -927,7 +927,7 @@ export function SecurityPage({ onViewChange }: SecurityPageProps) {
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>admin@qaid.co.in</span>
+                          <span>admin@PYX.co.in</span>
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
@@ -948,7 +948,7 @@ export function SecurityPage({ onViewChange }: SecurityPageProps) {
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>admin@qaid.co.in</span>
+                          <span>admin@PYX.co.in</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                           Responsible disclosure program for security researchers

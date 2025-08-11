@@ -168,7 +168,7 @@ export function UploadAgentPage({ onBack }: UploadAgentPageProps) {
           </Button>
           <div>
             <h1 className="text-3xl font-bold">Upload Your Agent</h1>
-            <p className="text-muted-foreground">Submit your AI agent to the QAID marketplace</p>
+            <p className="text-muted-foreground">Submit your AI agent to the PYX marketplace</p>
           </div>
         </div>
 

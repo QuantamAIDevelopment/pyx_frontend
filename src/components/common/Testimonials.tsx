@@ -69,7 +69,7 @@ const TESTIMONIALS = [
     company: "Gadget Galaxy",
     avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
     rating: 5,
-    content: "QAID's AI agents have transformed our entire operation. We've reduced operational costs by 30% while improving customer satisfaction. It's like having a team of experts working 24/7.",
+    content: "PYX's AI agents have transformed our entire operation. We've reduced operational costs by 30% while improving customer satisfaction. It's like having a team of experts working 24/7.",
     results: "30% cost reduction",
     agent: "Multiple Agents"
   }
@@ -93,7 +93,7 @@ export function Testimonials() {
             Trusted by Leading Businesses
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            See how companies are transforming their operations with QAID AI agents.
+            See how companies are transforming their operations with PYX AI agents.
           </p>
         </div>
 

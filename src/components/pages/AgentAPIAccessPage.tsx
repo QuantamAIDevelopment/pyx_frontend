@@ -11,14 +11,12 @@ import { Progress } from '../common/ui/progress'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../common/ui/select'
 import { Switch } from '../common/ui/switch'
 import { Label } from '../common/ui/label'
-// import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { 
   ArrowLeft,
   Copy,
   RefreshCw,
   Play,
   Key,
-  // Globe,
   Shield,
   Zap,
   CheckCircle,
@@ -27,7 +25,6 @@ import {
   EyeOff,
   Link,
   Package,
-  // Settings,
   Activity,
   Clock,
   Lock
@@ -67,7 +64,7 @@ export function AgentAPIAccessPage({ agentData, onBack }: AgentAPIAccessPageProp
   const [lastTestTime, setLastTestTime] = useState<Date | null>(null)
   const [webhookUrl, setWebhookUrl] = useState('')
 
-  const apiEndpoint = `https://qaid.ai/api/agents/${currentAgent.id}`
+  const apiEndpoint = `https://PYX.ai/api/agents/${currentAgent.id}`
   const usageThisMonth = 234
   const usageLimit = 1000
   const usagePercentage = (usageThisMonth / usageLimit) * 100

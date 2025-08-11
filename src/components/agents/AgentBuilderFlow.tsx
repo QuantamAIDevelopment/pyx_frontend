@@ -73,7 +73,7 @@ export function AgentBuilderFlow({ onBack, onComplete, onUseAPI }: AgentBuilderF
     const agentData = {
       id: 'agent_' + Math.random().toString(36).substring(2, 15),
       name: flowData.credentials?.agentName || 'My AI Agent',
-      description: flowData.prompt || 'AI Agent created with QAID',
+      description: flowData.prompt || 'AI Agent created with PYX',
       category: flowData.inputOption?.badge || 'General'
     }
     onUseAPI(agentData)

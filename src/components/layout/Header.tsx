@@ -40,7 +40,7 @@ export function Header({
 
   const navItems = [
     ...(isLoggedIn
-      ? [{ id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' }]
+      ? [{ id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: currentMode === 'developer' ? '/developer-mode' : '/dashboard' }]
       : [{ id: 'landing', label: 'Home', icon: null, path: '/' }]
     ),
     { id: 'agents', label: 'Agents', icon: Store, path: '/agents' },
@@ -116,7 +116,7 @@ export function Header({
                 {/* Action Buttons Group */}
                 <div className="flex items-center space-x-2">
                   {/* Create Agent Button */}
-                  <Link to={currentMode === 'developer' ? '/developer-mode' : '/agent-builder'}>
+                  <Link to= '/agent-builder'>
                     <Button
                       variant="outline"
                       size="sm"
@@ -124,7 +124,7 @@ export function Header({
                     >
                       <Plus className="h-3 w-3 mr-1" />
                       <span className="hidden lg:inline ">
-                        {currentMode === 'developer' ? 'Dev Mode' : 'Build Agent'}
+                         Build Agent
                       </span>
                     </Button>
                   </Link>
@@ -186,7 +186,7 @@ export function Header({
                       </DropdownMenuLabel>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem asChild>
-                        <Link to="/dashboard" className="flex items-center">
+                        <Link to={currentMode === 'developer' ? '/developer-dashboard' : '/dashboard'} className="flex items-center">
                           <LayoutDashboard className="mr-2 h-4 w-4" />
                           <span>Dashboard</span>
                         </Link>
@@ -302,7 +302,7 @@ export function Header({
                     </div>
                   </div>
 
-                  <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                  <Link to={currentMode === 'developer' ? '/developer-dashboard' : '/dashboard'} onClick={() => setMobileMenuOpen(false)}>
                     <Button
                       variant={isActive('/dashboard') ? 'default' : 'ghost'}
                       className="flex items-center justify-start space-x-2 w-full"

@@ -259,7 +259,7 @@ if (selectedPlan) {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Fast, reliable, and expert support from our team of QAID specialists. 
+              Fast, reliable, and expert support from our team of PYX specialists. 
               Get personalized assistance to maximize your AI automation success.
             </p>
             
@@ -424,7 +424,7 @@ if (selectedPlan) {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Meet Our Expert Team</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our support engineers are QAID experts with years of experience in AI automation, 
+              Our support engineers are PYX experts with years of experience in AI automation, 
               system integration, and enterprise software development.
             </p>
           </div>
@@ -480,7 +480,7 @@ if (selectedPlan) {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              See how our premium support has helped businesses succeed with QAID.
+              See how our premium support has helped businesses succeed with PYX.
             </p>
           </div>
 
@@ -527,7 +527,7 @@ if (selectedPlan) {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Need Help Now?</h2>
               <p className="text-lg text-muted-foreground">
-                Contact our support team directly for immediate assistance with your QAID implementation.
+                Contact our support team directly for immediate assistance with your PYX implementation.
               </p>
             </div>
 
@@ -657,7 +657,7 @@ if (selectedPlan) {
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Join hundreds of businesses that rely on our expert support team to maximize 
-              their QAID implementation success.
+              their PYX implementation success.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 

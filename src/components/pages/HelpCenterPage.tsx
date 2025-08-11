@@ -76,7 +76,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
     {
       id: '3',
       title: 'Setting up Shopify integration',
-      description: 'Connect your Shopify store with QAID for automated e-commerce workflows.',
+      description: 'Connect your Shopify store with PYX for automated e-commerce workflows.',
       category: 'integrations',
       readTime: '6 min',
       views: '12.1K',
@@ -106,7 +106,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
     {
       id: '6',
       title: 'Upgrading and managing your subscription',
-      description: 'How to upgrade, downgrade, and manage your QAID subscription plan.',
+      description: 'How to upgrade, downgrade, and manage your PYX subscription plan.',
       category: 'billing',
       readTime: '5 min',
       views: '4.2K',
@@ -120,15 +120,15 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
       category: 'General',
       faqs: [
         {
-          question: 'What is QAID and how does it work?',
-          answer: 'QAID is an AI agents marketplace that enables businesses to create, deploy, and manage intelligent automation workflows. Our platform provides pre-built AI agents for various tasks like customer support, inventory management, and sales optimization. You can also create custom agents using our visual builder or API.'
+          question: 'What is PYX and how does it work?',
+          answer: 'PYX is an AI agents marketplace that enables businesses to create, deploy, and manage intelligent automation workflows. Our platform provides pre-built AI agents for various tasks like customer support, inventory management, and sales optimization. You can also create custom agents using our visual builder or API.'
         },
         {
-          question: 'Do I need technical knowledge to use QAID?',
-          answer: 'No! QAID is designed for both technical and non-technical users. Our visual workflow builder allows you to create complex automations through drag-and-drop interface. However, we also provide powerful APIs and developer tools for technical users who want more control.'
+          question: 'Do I need technical knowledge to use PYX?',
+          answer: 'No! PYX is designed for both technical and non-technical users. Our visual workflow builder allows you to create complex automations through drag-and-drop interface. However, we also provide powerful APIs and developer tools for technical users who want more control.'
         },
         {
-          question: 'How secure is my data with QAID?',
+          question: 'How secure is my data with PYX?',
           answer: 'Security is our top priority. We use enterprise-grade encryption, comply with SOC 2 Type II standards, and are GDPR compliant. Your data is encrypted in transit and at rest, and we never share it with third parties. We also provide detailed audit logs and access controls.'
         }
       ]
@@ -221,7 +221,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
       title: 'System Status',
       description: 'Check platform status and uptime',
       icon: Activity,
-      action: () => window.open('https://status.qaid.ai', '_blank')
+      action: () => window.open('https://status.PYX.ai', '_blank')
     },
     {
       title: 'Feature Requests',
@@ -263,7 +263,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Find answers to your questions, learn how to use QAID effectively, 
+              Find answers to your questions, learn how to use PYX effectively, 
               and get the support you need to succeed with AI automation.
             </p>
             
@@ -445,7 +445,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Quick answers to the most common questions about QAID
+                  Quick answers to the most common questions about PYX
                 </p>
               </div>
 
@@ -522,7 +522,7 @@ export function HelpCenterPage({ onViewChange, isLoggedIn, onShowAuth }: HelpCen
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Our support team is here to help you succeed. Get personalized assistance 
-              from AI automation experts who know QAID inside and out.
+              from AI automation experts who know PYX inside and out.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 

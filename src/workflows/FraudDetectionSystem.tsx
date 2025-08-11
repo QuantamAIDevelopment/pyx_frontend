@@ -22,7 +22,7 @@ type FraudResultRow = {
   aiNotes: string;
 };
 
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/fraud3';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/fraud3';
 
 const uploadFraudDataAndGetResults = async (file: File): Promise<any> => {
   const formData = new FormData();

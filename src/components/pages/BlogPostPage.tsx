@@ -67,7 +67,7 @@ const SAMPLE_CONTENT = `
   <h2>Conclusion</h2>
   <p>The future of e-commerce is being written by AI agents today. Businesses that embrace these technologies now will be best positioned to thrive in an increasingly competitive marketplace. The question isn't whether to adopt AI agents, but how quickly you can implement them effectively.</p>
 
-  <p>At QAID, we're committed to making this transition as smooth as possible, providing the tools and support businesses need to harness the full potential of AI automation. The future is here—are you ready to embrace it?</p>
+  <p>At PYX, we're committed to making this transition as smooth as possible, providing the tools and support businesses need to harness the full potential of AI automation. The future is here—are you ready to embrace it?</p>
 `
 
 // Share buttons data
@@ -207,7 +207,7 @@ export function BlogPostPage({ post, onBack }: BlogPostPageProps) {
           <div className="bg-bg-secondary  rounded-lg p-6 text-center">
             <h3 className="font-medium mb-2">Ready to Transform Your Business?</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Discover how QAID's AI agents can automate your workflows and boost productivity.
+              Discover how PYX's AI agents can automate your workflows and boost productivity.
             </p>
             <Button className='!bg-brand-primary text-white border-none hover:bg-brand-primary/90' size="lg" onClick={() => window.location.href = '/get-started'}>
               Get Started Free

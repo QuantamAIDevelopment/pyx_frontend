@@ -8,7 +8,6 @@ import { ScrollArea } from '../common/ui/scroll-area'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../common/ui/select'
 import { usePyX } from '../layout/PyXContextProvider'
-// import { useAIService } from '../services/AIService'
 import {
   BarChart,
   Bar,
@@ -27,24 +26,11 @@ import {
 } from 'recharts'
 import {
   TrendingUp,
-  // TrendingDown,
   MessageSquare,
   Clock,
-  // Users,
-  // Brain,
   Target,
-  // Zap,
-  // AlertCircle,
   CheckCircle,
-  // Activity,
-  // Globe,
-  // Search,
-  // Filter,
   Download,
-  // Calendar,
-  // BarChart3,
-  // PieChart as PieChartIcon,
-  // LineChart as LineChartIcon,
   X
 } from 'lucide-react'
 

@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 // import { FaPaperPlane, FaBook } from 'react-icons/fa';
  
-const NOTION_API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/notion';
+const NOTION_API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/notion';
  
 const parseMarkdownLink = (text: string): React.ReactNode => {
     // Matches [text](url)

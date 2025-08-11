@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaRupeeSign, FaFileUpload, FaRobot } from 'react-icons/fa';
 import axios from 'axios';
 
-const BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
+const BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
 const chatExpenditure = async (message: string): Promise<any> => {
   const response = await axios.post(`${BASE_URL}/chat`, message, {

@@ -47,7 +47,7 @@ const mockAgents: Agent[] = [
     description: 'Advanced sentiment analysis workflow',
     version: '1.2.0',
     status: 'deployed',
-    endpoint: 'https://api.qaid.ai/agents/sentiment-analyzer',
+    endpoint: 'https://api.PYX.ai/agents/sentiment-analyzer',
     deployedAt: '2 hours ago'
   },
   {
@@ -87,7 +87,7 @@ export function DeploymentSettings() {
     autoScale: true,
     monitoring: true
   })
-  const [apiKey, setApiKey] = useState('qaid_live_sk_1234567890abcdef')
+  const [apiKey, setApiKey] = useState('PYX_live_sk_1234567890abcdef')
   const [showApiKey, setShowApiKey] = useState(false)
   const [isDeploying, setIsDeploying] = useState(false)
 
@@ -101,7 +101,7 @@ export function DeploymentSettings() {
     setSelectedAgent(prev => ({
       ...prev,
       status: 'deployed',
-      endpoint: `https://api.qaid.ai/agents/${deploymentConfig.name}`,
+      endpoint: `https://api.PYX.ai/agents/${deploymentConfig.name}`,
       deployedAt: 'just now'
     }))
       setApiKey('new_api_key_value');
@@ -521,7 +521,7 @@ export function DeploymentSettings() {
             <Button 
               onClick={handleDeploy}
               disabled={isDeploying}
-              className="bg-gradient-to-r from-orange-600 to-orange-500 text-white hover:from-orange-700 hover:to-orange-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+              className="!bg-brand-primary  text-white border-none hover:from-orange-700 hover:to-orange-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
             >
               {isDeploying ? (
                 <>

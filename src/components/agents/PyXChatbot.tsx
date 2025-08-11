@@ -96,10 +96,10 @@ export function PyXChatbot() {
         <div className="relative group">
           <Button
             onClick={() => setIsOpen(true)}
-            className="h-14 w-14 rounded-full bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-[#FF7C33] hover:to-[#B3470A] shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-110 relative overflow-hidden border-0"
+            className="h-14 w-14 rounded-full !bg-brand-primary  shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-110 relative overflow-hidden border-0"
           >
             {/* Background gradients */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-[#FF7C33] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+            <div className="absolute inset-0 bg-brand-primary  opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
             <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-20" />
             
             {/* Icon with better visibility */}
@@ -131,9 +131,9 @@ export function PyXChatbot() {
         "fixed z-50 transition-all duration-300",
         isMobile ? "inset-4" : "bottom-6 right-6 w-96 max-w-[calc(100vw-2rem)]"
       )}>
-        <Card className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border border-gray-200/50 shadow-2xl overflow-hidden">
+        <Card className="bg-white/95  backdrop-blur-xl border border-gray-200/50 shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#FF620A] to-[#993B06]  text-white">
+          <div className="flex items-center justify-between p-4 bg-brand-primary  text-white">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
@@ -177,7 +177,7 @@ export function PyXChatbot() {
                   )}
                 >
                   {message.type === 'assistant' && (
-                    <div className="w-8 h-8 bg-gradient-to-r from-[#FF620A] to-[#993B06] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <Bot className="h-4 w-4 text-white" />
                     </div>
                   )}
@@ -189,7 +189,7 @@ export function PyXChatbot() {
                     <div className={cn(
                       "rounded-2xl px-4 py-3 text-sm",
                       message.type === 'user'
-                        ? "bg-gradient-to-r from-[#FF620A] to-[#993B06]  text-white ml-auto"
+                        ? "bg-brand-primary  text-white ml-auto"
                         : "bg-gray-100 dark:bg-gray-800"
                     )}>
                       <div className="whitespace-pre-wrap">{message.content}</div>
@@ -229,7 +229,7 @@ export function PyXChatbot() {
 
               {isTyping && (
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#FF620A] to-[#993B06]  rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 bg-brand-primary  rounded-full flex items-center justify-center flex-shrink-0">
                     <Bot className="h-4 w-4 text-white" />
                   </div>
                   <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl px-4 py-3 max-w-[80%]">
@@ -271,7 +271,7 @@ export function PyXChatbot() {
               <Button
                 onClick={() => handleSendMessage(inputValue)}
                 disabled={!inputValue.trim() || isTyping}
-                className="h-9 w-9 p-0 bg-gradient-to-r from-[#FF620A] to-[#993B06] hover:from-blue-400 hover:to-purple-400 text-white"
+                className="h-9 w-9 p-0 !bg-brand-primary  text-white"
               >
                 <Send className="h-4 w-4" />
               </Button>

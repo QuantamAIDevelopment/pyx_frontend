@@ -10,7 +10,7 @@ interface PricingResult {
   "Reason": string;
 }
 
-const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/Dynamic_Post';
+const API_BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/Dynamic_Post';
 
 const uploadDynamicPricingCSV = (file: File | null): Promise<any> => {
   const formData = new FormData();

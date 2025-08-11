@@ -4,7 +4,7 @@ import { FaUserAlt, FaCheckCircle, FaSpinner, FaFileAlt } from 'react-icons/fa';
 // import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const BASEURL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/upload-resume';
+const BASEURL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/upload-resume';
 
 interface ExtractedProfile {
   name: string;

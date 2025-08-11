@@ -16,7 +16,7 @@ function ErrorMessage({ error }: ErrorMessageProps) {
 }
  
 // Updated endpoint to match your cURL command, URL-encoded
-const API_URL ='https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/attandance%20anomiles%20-%20Sheet1%20(1).csv';
+const API_URL ='https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/attandance%20anomiles%20-%20Sheet1%20(1).csv';
 
 const AttendanceAnomalies: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);

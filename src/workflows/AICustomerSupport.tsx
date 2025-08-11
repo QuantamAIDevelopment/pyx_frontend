@@ -20,7 +20,7 @@ const AICustomerSupport: React.FC = () => {
       const formData = new FormData();
       formData.append('chat', input);
 
-      const response = await fetch('https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/AI customer', {
+      const response = await fetch('https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/AI customer', {
         method: 'POST',
         body: formData,
       });

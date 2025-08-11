@@ -1,6 +1,6 @@
 import React from "react";
 
-const API_URL = "https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/ResumeAnalyzer";
+const API_URL = "https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/ResumeAnalyzer";
 
 export default function ResumeAnalyzer() {
   const [resumeFile, setResumeFile] = React.useState<File | null>(null);

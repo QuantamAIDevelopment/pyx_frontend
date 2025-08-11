@@ -16,7 +16,7 @@ export function Footer() {
     ],
     company: [
       { label: 'About Us', path: '/about' },
-      { label: 'Careers', path: '/careers' },
+      // { label: 'Careers', path: '/careers' },
       { label: 'Blog', path: '/blog' },
       // { label: 'Press Kit', path: '/press-kit' },
       { label: 'Contact', path: '/contact' }
@@ -25,7 +25,7 @@ export function Footer() {
       { label: 'Help Center', path: '/help' },
       { label: 'Community', path: '/community' },
       { label: 'Tutorials', path: '/tutorials' },
-      { label: 'Case Studies', path: '/case-studies' },
+      // { label: 'Case Studies', path: '/case-studies' },
       { label: 'Webinars', path: '/webinars' }
     ],
     legal: [
@@ -179,7 +179,7 @@ export function Footer() {
             © 2024 PYX. All rights reserved.
           </div>
           <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-            <span>Built by QAID Software Pvt Ltd</span>
+            <span>Built by PYX Software Pvt Ltd</span>
           </div>
         </div>
       </div>

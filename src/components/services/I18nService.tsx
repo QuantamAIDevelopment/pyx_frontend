@@ -85,7 +85,7 @@ const DEFAULT_TRANSLATIONS: TranslationSet = {
   },
   pyx: {
     greeting: 'Hello! I\'m PyX, your AI assistant.',
-    askQuestion: 'Ask me anything about QAID...',
+    askQuestion: 'Ask me anything about PYX...',
     thinking: 'PyX is thinking...',
     voiceCommand: 'Voice command',
     startListening: 'Start listening',
@@ -181,8 +181,8 @@ const DEFAULT_TRANSLATIONS: TranslationSet = {
     contactSupport: 'Contact support if the problem persists'
   },
   messages: {
-    welcome: 'Welcome to QAID!',
-    goodbye: 'Thank you for using QAID!',
+    welcome: 'Welcome to PYX!',
+    goodbye: 'Thank you for using PYX!',
     saved: 'Changes saved successfully',
     deleted: 'Item deleted successfully',
     created: 'Item created successfully',
@@ -429,7 +429,7 @@ async function fetchTranslations(languageCode: string): Promise<TranslationSet> 
       },
       pyx: {
         greeting: 'Hola! Soy PyX, tu asistente de IA.',
-        askQuestion: 'Pregúntame sobre QAID...',
+        askQuestion: 'Pregúntame sobre PYX...',
         thinking: 'PyX está pensando...',
         voiceCommand: 'Comando de voz',
         startListening: 'Comenzar a escuchar',
@@ -480,7 +480,7 @@ async function fetchTranslations(languageCode: string): Promise<TranslationSet> 
       },
       pyx: {
         greeting: 'Bonjour! Je suis PyX, votre assistant IA.',
-        askQuestion: 'Demandez-moi à propos de QAID...',
+        askQuestion: 'Demandez-moi à propos de PYX...',
         thinking: 'PyX réfléchit...',
         voiceCommand: 'Commande vocale',
         startListening: 'Commencer à écouter',

@@ -43,7 +43,7 @@ const defaultRow: PerformanceReviewRow = {
 };
 
 const API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/performance-summary';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/performance-summary';
 
 async function triggerPerformanceReviewSummary(reviewsArray: PerformanceReviewRow[]): Promise<PerformanceReviewSummary[]> {
   try {

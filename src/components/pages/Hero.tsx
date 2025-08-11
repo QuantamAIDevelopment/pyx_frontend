@@ -13,7 +13,7 @@ interface HeroProps {
 const HERO_STATS = [
   {
     icon: Zap,
-    value: "8+",
+    value: "100+",
     label: "Specialized AI Agents",
     animationDelay: "0s"
   },

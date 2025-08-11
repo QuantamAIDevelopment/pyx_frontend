@@ -95,7 +95,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Please read these terms carefully before using QAID's AI agent marketplace 
+              Please read these terms carefully before using PYX's AI agent marketplace 
               and related services. By using our platform, you agree to these terms.
             </p>
             
@@ -192,13 +192,13 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-950/20 p-6 rounded-lg border-l-4 border-blue-600 mb-6">
                     <p className="m-0">
-                      Welcome to QAID Technologies, Inc. ("QAID," "we," "us," or "our"). These Terms of Service 
+                      Welcome to PYX Technologies, Inc. ("PYX," "we," "us," or "our"). These Terms of Service 
                       ("Terms") govern your use of our AI agent marketplace platform, development tools, and related 
                       services (collectively, the "Service").
                     </p>
                   </div>
                   <p>
-                    These Terms constitute a legally binding agreement between you ("User," "you," or "your") and QAID. 
+                    These Terms constitute a legally binding agreement between you ("User," "you," or "your") and PYX. 
                     By accessing or using our Service, you agree to be bound by these Terms and our Privacy Policy.
                   </p>
                   <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
@@ -241,7 +241,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                     <h2 className="text-2xl font-bold m-0">Description of Service</h2>
                   </div>
                   <p>
-                    QAID provides an AI agent marketplace platform that enables users to create, deploy, 
+                    PYX provides an AI agent marketplace platform that enables users to create, deploy, 
                     and manage artificial intelligence agents for various business applications.
                   </p>
                   
@@ -422,9 +422,9 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                     <h2 className="text-2xl font-bold m-0">Intellectual Property Rights</h2>
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-3">QAID's Rights</h3>
+                  <h3 className="text-xl font-semibold mb-3">PYX's Rights</h3>
                   <p>
-                    The Service and all content, features, and functionality are owned by QAID and are 
+                    The Service and all content, features, and functionality are owned by PYX and are 
                     protected by copyright, trademark, and other intellectual property laws.
                   </p>
                   
@@ -590,7 +590,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                     <h2 className="text-2xl font-bold m-0">Indemnification</h2>
                   </div>
                   <p>
-                    You agree to indemnify, defend, and hold harmless QAID, its officers, directors, 
+                    You agree to indemnify, defend, and hold harmless PYX, its officers, directors, 
                     employees, and agents from and against any claims, damages, losses, costs, and 
                     expenses arising from:
                   </p>
@@ -703,17 +703,17 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                       <CardHeader className="pb-3">
                         <CardTitle className="text-base flex items-center space-x-2">
                           <Building2 className="h-4 w-4" />
-                          <span>QAID Software Private Limited, Inc.</span>
+                          <span>PYX Software Private Limited, Inc.</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>legal@qaid.ai</span>
+                          <span>legal@PYX.ai</span>
                         </div>
                         <div className="flex items-center space-x-2 text-sm">
                           <Phone className="h-4 w-4 text-muted-foreground" />
-                          <span>+91 9866665471-QAID</span>
+                          <span>+91 9866665471-PYX</span>
                         </div>
                         <div className="flex items-start space-x-2 text-sm">
                           <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
@@ -731,7 +731,7 @@ export function TermsOfServicePage({ onViewChange }: TermsOfServicePageProps) {
                       <CardContent className="pt-0 space-y-2">
                         <div className="flex items-center space-x-2 text-sm">
                           <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span>terms@qaid.ai</span>
+                          <span>terms@PYX.ai</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                           For legal inquiries, contract questions, 

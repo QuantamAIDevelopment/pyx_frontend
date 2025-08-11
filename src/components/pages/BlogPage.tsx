@@ -110,7 +110,7 @@ const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: '6',
-    title: 'Getting Started with QAID: Your First AI Agent Implementation',
+    title: 'Getting Started with PYX: Your First AI Agent Implementation',
     excerpt: 'A step-by-step guide for businesses new to AI agents, from setup to seeing your first results.',
     content: '',
     author: {
@@ -144,7 +144,7 @@ export function BlogPage({ onPostSelect }: BlogPageProps) {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">
-              QAID Blog
+              PYX Blog
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Insights, tutorials, and case studies on AI automation and business transformation.

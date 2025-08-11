@@ -2,7 +2,7 @@
 
 
 const API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/amazon';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/amazon';
 
 interface AmazonWebScrapeProps {
   compact?: boolean;

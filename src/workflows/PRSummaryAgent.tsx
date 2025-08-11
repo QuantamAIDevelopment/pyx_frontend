@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa';
 
 const PR_SUMMARY_API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/pr-config';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/pr-config';
 
 interface PRSummaryResponse {
   html_url?: string;

@@ -3,11 +3,7 @@
 import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
-// import { ViewType } from '../App'
-/**
- * TODO: Replace the below with the correct import path for ViewType.
- * For now, define a temporary ViewType type to resolve the error.
- */
+
 type ViewType = 'dashboard' | 'contact' | 'agents'
 import { 
   Zap, 

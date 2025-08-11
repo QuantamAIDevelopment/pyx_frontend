@@ -11,7 +11,7 @@ interface OnBoardingQResult {
   [key: string]: any;
 }
 
-const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
+const API_BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
 const uploadOnBoardingODS = (file: File): Promise<any> => {
   const formData = new FormData();

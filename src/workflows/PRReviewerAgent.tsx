@@ -8,7 +8,7 @@ import {
 } from 'react-icons/fa';
 
 const PR_REVIEWER_API_URL =
-  'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/PR_rewiewer';
+  'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/PR_rewiewer';
 
 // Define a type for the response if possible
 interface PRReviewResponse {

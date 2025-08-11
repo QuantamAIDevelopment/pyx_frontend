@@ -7,7 +7,6 @@ import { Badge } from '../common/ui/badge'
 import { Input } from '../common/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../common/ui/tabs'
 import { Avatar, AvatarFallback, AvatarImage } from '../common/ui/avatar'
-// import { Separator } from '../common/ui/separator'
 import { 
   Users,
   MessageCircle,
@@ -15,15 +14,12 @@ import {
   Star,
   ArrowRight,
   Trophy,
-  // Heart,
   Share2,
   Bookmark,
-  // MapPin,
   Clock,
   User,
   Zap,
   Code,
-  // Rocket,
   Lightbulb, 
   ExternalLink,
   MessageSquare,
@@ -67,7 +63,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
       views: '2.3K',
       timeAgo: '2 hours ago',
       tags: ['ecommerce', 'automation', 'best-practices'],
-      excerpt: 'After implementing QAID for 6 months, here are the key strategies that increased our conversion rate by 340%...'
+      excerpt: 'After implementing PYX for 6 months, here are the key strategies that increased our conversion rate by 340%...'
     },
     {
       id: '2',
@@ -85,7 +81,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
     },
     {
       id: '3',
-      title: 'Scaling QAID for enterprise: Lessons learned',
+      title: 'Scaling PYX for enterprise: Lessons learned',
       author: 'Emily Watson',
       avatar: '/api/placeholder/40/40',
       role: 'Enterprise Architect',
@@ -95,7 +91,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
       views: '4.1K',
       timeAgo: '1 day ago',
       tags: ['enterprise', 'scaling', 'architecture'],
-      excerpt: 'How we successfully deployed QAID across 50+ departments and 5,000+ users. Key challenges and solutions...'
+      excerpt: 'How we successfully deployed PYX across 50+ departments and 5,000+ users. Key challenges and solutions...'
     }
   ]
 
@@ -141,7 +137,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
   const upcomingEvents = [
     {
       id: '1',
-      title: 'QAID Developer Workshop: Advanced Workflows',
+      title: 'PYX Developer Workshop: Advanced Workflows',
       date: '2024-07-15',
       time: '10:00 AM PST',
       type: 'Workshop',
@@ -161,7 +157,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
       attendees: 892,
       maxAttendees: 1000,
       speaker: 'Community Team',
-      speakerTitle: 'QAID Team',
+      speakerTitle: 'PYX Team',
       description: 'Monthly showcase of the most innovative AI agents and workflows created by our community.',
       tags: ['showcase', 'community', 'innovation']
     },
@@ -219,7 +215,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
     },
     {
       title: 'Developer Resources',
-      description: 'Tools and resources for QAID developers',
+      description: 'Tools and resources for PYX developers',
       icon: Code,
       action: () => onViewChange('developer-resources')
     },
@@ -267,7 +263,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Join the{' '}
               <span className="bg-brand-primary bg-clip-text text-transparent">
-                QAID Community
+                PYX Community
               </span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -697,7 +693,7 @@ export function CommunityPage({ onViewChange, isLoggedIn, onShowAuth }: Communit
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Connect with thousands of AI enthusiasts, share your innovations, 
-              and accelerate your automation journey with QAID.
+              and accelerate your automation journey with PYX.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
               <Button 

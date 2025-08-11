@@ -19,7 +19,6 @@ import {
   Globe, 
   Key, 
   Clock, 
-  // Users, 
   AlertTriangle,
   CheckCircle,
   Settings,
@@ -55,8 +54,8 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
   const [isEditing, setIsEditing] = useState(false)
 
   // Mock data
-  const apiKey = 'qaid_sk_test_4f7c8b9e2d1a3f6c9b8e2d1a3f6c9b8e'
-  const apiEndpoint = `https://qaid.ai/api/agents/${apiData.id}`
+  const apiKey = 'PYX_sk_test_4f7c8b9e2d1a3f6c9b8e2d1a3f6c9b8e'
+  const apiEndpoint = `https://PYX.ai/api/agents/${apiData.id}`
   const webhookSecret = 'whsec_8f3e4d2c9b7a6e5f4d3c2b1a0e9f8d7c'
 
   const copyToClipboard = (text: string, label: string) => {
@@ -363,7 +362,7 @@ export function APIManagementPage({ apiData, onBack }: APIManagementPageProps) {
                     id="webhook"
                     value={webhookUrl}
                     onChange={(e) => setWebhookUrl(e.target.value)}
-                    placeholder="https://your-app.com/webhooks/qaid"
+                    placeholder="https://your-app.com/webhooks/PYX"
                   />
                   <p className="text-sm text-muted-foreground">
                     We'll send POST requests to this URL when events occur

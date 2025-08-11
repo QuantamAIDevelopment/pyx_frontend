@@ -4,7 +4,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 import { BUTTON_CLASSES } from '../utils/colors';
 
-const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
+const API_BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
 const getLeaveBalance = async ({ Subject, snippet, From, Date }: { Subject: string; snippet: string; From: string; Date: string; }) => {
   try {

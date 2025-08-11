@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Button } from '../common/ui/button'
 // import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
@@ -38,7 +38,7 @@ interface DeveloperModeLayoutProps {
 type DeveloperView = 'builder' | 'custom-nodes' | 'deployment' | 'test-debug' | 'dashboard'
 
 export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutProps) {
-  const [currentView, setCurrentView] = useState<DeveloperView>('builder')
+  const [currentView, setCurrentView] = useState<DeveloperView>('dashboard')
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [selectedWorkflow, setSelectedWorkflow] = useState<any>(null)
 
@@ -97,6 +97,14 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
     }
   }
 
+  const sidebarRef = useRef<any>(null)
+
+  useEffect(() => {
+    if (sidebarRef.current) {
+      sidebarRef.current.resize(sidebarCollapsed ? 5 : 20)
+    }
+  }, [sidebarCollapsed])
+
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Developer Mode Header */}
@@ -104,10 +112,10 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" onClick={onBack}>
+              {/* <Button variant="ghost" size="sm" onClick={onBack}>
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Back
-              </Button>
+              </Button> */}
               <Separator orientation="vertical" className="h-6" />
               <div className="flex items-center space-x-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-orange-gradient ">
@@ -145,7 +153,8 @@ export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutP
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Sidebar */}
           <ResizablePanel
-            defaultSize={sidebarCollapsed ? 5 : 20}
+            ref={sidebarRef}
+            defaultSize={20}
             minSize={5}
             maxSize={30}
             className="border-r bg-sidebar"

@@ -7,7 +7,7 @@ interface MetricsBusinessAnalyticsProps {
   compact?: boolean;
 }
 
-const API_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/bi-insights';
+const API_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook/bi-insights';
 
 const triggerMetricsBusinessAnalyticsWorkflow = async (files: File[]): Promise<any> => {
   const formData = new FormData();

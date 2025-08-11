@@ -2,25 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '../common/ui/button'
-// import { Badge } from '../common/ui/badge'
-// import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../common/ui/card'
 import { Input } from '../common/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../common/ui/select'
 
 import {
-  // ShoppingCart,
-  // DollarSign,
-  // Package,
   Search,
-  // MessageCircle,
-  // Star,
-  // TrendingUp,
-  // Tag,
   Filter,
   SortAsc,
   Bot,
   Activity,
-  // Eye,
   BarChart3,
   Lock
 } from 'lucide-react'

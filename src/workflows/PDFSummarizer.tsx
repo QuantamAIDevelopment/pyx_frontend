@@ -7,7 +7,7 @@ interface PdfSummaryResult {
   [key: string]: any;
 }
 
-const API_BASE_URL = 'https://qaid-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
+const API_BASE_URL = 'https://PYX-marketplace-ayf0bggnfxbyckg5.australiaeast-01.azurewebsites.net/webhook';
 
 const uploadPdfAndGetSummary = async (file: File, email: string): Promise<{ text: string }[]> => {
   const formData = new FormData();
