@@ -37,7 +37,7 @@ interface DeveloperModeLayoutProps {
 
 type DeveloperView = 'builder' | 'custom-nodes' | 'deployment' | 'test-debug' | 'dashboard'
 
-export function DeveloperModeLayout({ onBack, userWallet }: DeveloperModeLayoutProps) {
+export function DeveloperModeLayout({ userWallet }: DeveloperModeLayoutProps) {
   const [currentView, setCurrentView] = useState<DeveloperView>('dashboard')
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [selectedWorkflow, setSelectedWorkflow] = useState<any>(null)
