@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Button } from '../common/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Input } from '../common/ui/input'
@@ -303,6 +304,15 @@ const validatePassword = (password: string) => {
   return errors.length > 0 ? `Password must contain ${errors.join(", ")}` : ''
 }
 
+  // Sync tabs with URL
+  const location = useLocation()
+  const navigate = useNavigate()
+  const allowedTabs = new Set(['profile', 'api-keys', 'notifications', 'billing', 'settings'])
+  const pathParts = location.pathname.split('/').filter(Boolean)
+  const currentTab = allowedTabs.has(pathParts[1] as any) ? (pathParts[1] as 'profile' | 'api-keys' | 'notifications' | 'billing' | 'settings') : 'profile'
+  const handleTabChange = (val: string) => {
+    navigate(val === 'profile' ? '/profile' : `/profile/${val}`)
+  }
 
   return (
     <div className="min-h-screen py-8 px-20">
@@ -319,7 +329,7 @@ const validatePassword = (password: string) => {
           </div>
         </div>
 
-        <Tabs defaultValue="profile" className="space-y-6">
+        <Tabs value={currentTab} onValueChange={handleTabChange} className="space-y-6">
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="profile">
               <User className="h-4 w-4 mr-2" />
@@ -467,7 +477,17 @@ const validatePassword = (password: string) => {
                       Manage your API keys for programmatic access
                     </CardDescription>
                   </div>
-                  <Button className="text-black">
+                  <Button className="text-black" onClick={async () => {
+                    try {
+                      const userId = (import.meta as any).env?.VITE_DEFAULT_USER_ID || 'user_11'
+                      // Simple demo create using the keys API
+                      const { createApiKey } = await import('../apiservices/keysApi')
+                      const created = await createApiKey(userId, { name: 'pardhu', permissions: ['read', 'write'] })
+                      alert(`API key created: ${created?.name}`)
+                    } catch (err: any) {
+                      alert(err?.message || 'Failed to create API key')
+                    }
+                  }}>
                     <Plus className="h-4 w-4 mr-2" />
                     Generate New Key
                   </Button>

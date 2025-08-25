@@ -8,6 +8,7 @@ import { Label } from '../common/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../common/ui/card'
 import { Badge } from '../common/ui/badge'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../common/ui/accordion'
+import { sendContact } from '../apiservices/contactApi'
 
 import { 
   Mail, 
@@ -122,25 +123,31 @@ export function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Reset form after success message
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        subject: '',
-        message: '',
-        type: 'general'
+    try {
+      await sendContact({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
       })
-    }, 3000)
+      setIsSubmitted(true)
+      // Reset form after success message
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          subject: '',
+          message: '',
+          type: 'general'
+        })
+      }, 3000)
+    } catch (err: any) {
+      alert(err?.message || 'Failed to send message')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (field: keyof ContactForm, value: string) => {

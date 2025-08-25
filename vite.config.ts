@@ -9,6 +9,19 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      // Proxies to your local backends during development to avoid CORS
+      '/api/contact': {
+        target: process.env.VITE_DEV_CONTACT_TARGET || 'http://localhost:8085',
+        changeOrigin: true,
+      },
+      '/api/keys': {
+        target: process.env.VITE_DEV_KEYS_TARGET || 'http://localhost:8084',
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
     rollupOptions: {
       output: {
@@ -26,6 +39,6 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Optional: raise limit to avoid noise for known big deps
+    chunkSizeWarningLimit: 1000, 
   },
 })

@@ -431,7 +431,7 @@ function AppRoutes() {
           )
         } />
 
-        <Route path="/profile" element={
+        <Route path="/profile/*" element={
           isLoggedIn ? (
             <ProfilePage 
               onBack={() => navigate(-1)}
